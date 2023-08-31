@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Basics.h"
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 
 namespace basics
 {
@@ -11,23 +11,10 @@ namespace basics
 		return choice;
 	}
 
-	int Basics::SetChoice(int& choice)
-	{
-		this->choice = choice;
-		return this->choice;
-	}
-
 	int Basics::GetChoiceInputFromUser()
 	{
 		std::cin >> choice;
 		return choice;
-	}
-
-	std::string Basics::GetSelectedChoice(BasicsMenu& basicsMenu)
-	{
-		// TO-DO
-		// return BasicsMenu.at(basicsMenu);
-		return "ASD";
 	}
 
 	void Basics::HelloWorld()
@@ -42,9 +29,18 @@ namespace basics
 
 	void Basics::PrintMenu()
 	{
-		std::cout << "1. Hello World!" << std::endl
-			<< "2. Hello <NAME>" << std::endl
-			<< "3. Exit" << std::endl
-			<< "Please enter your choice: ";
+		std::cout << "1. Hello World!"          << std::endl
+			      << "2. Hello <NAME>"          << std::endl
+			      << "3. Back to previous menu" << std::endl
+				  << "4. Exit"				    << std::endl
+			      << "Please enter your choice: ";
+	}
+
+	void Basics::PrintSelectedChoice(const int& choice)
+	{
+		std::cout << std::endl << std::endl
+				  << "You have chosen choice "
+				  << BasicsMenuMap.at(choice)
+				  << std::endl;
 	}
 }

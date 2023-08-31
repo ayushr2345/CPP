@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include "utils.h"
 #include "handlers.h"
 #include "Basics.h"
@@ -13,14 +13,11 @@ int main()
 
 	while (choice)
 	{
+		utils::PrintSelectedChoice(choice);
 		switch (choice)
 		{
 		case 1:
 		{
-			std::cout << std::endl << std::endl
-				<< "You have chosen choice "
-				<< utils::MainMenuMap.at(utils::MainMenu::BASICS)
-				<< std::endl;
 			basics::Basics basicObj;
 			handlers::Handle(basicObj);
 			break;
@@ -30,7 +27,8 @@ int main()
 			exit(0);
 		}
 		default:
-			std::cout << "herer";
+			std::cout << "The selected option is out of bounds!!! "
+					  << "Please select appropriate option: " << std::endl;
 			break;
 		}
 		utils::PrintMainMenu();

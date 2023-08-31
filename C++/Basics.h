@@ -1,7 +1,7 @@
 #pragma once
 
-#include<string>
-#include<map>
+#include <string>
+#include <map>
 
 namespace basics
 {
@@ -11,11 +11,12 @@ namespace basics
 		int choice{ 0 };
 		enum BasicsMenu
 		{
-			HELLO_WORLD = 1,
-			HELLO_NAME = 2,
-			EXIT = 3
+			HELLO_WORLD		      = 1,
+			HELLO_NAME			  =	2,
+			BACK_TO_PREVIOUS_MENU = 3,
+			EXIT_FROM_PROGRAM     = 4
 		};
-		std::map<BasicsMenu, std::string> BasicsMenuMap =
+		std::map<int, std::string> BasicsMenuMap =
 		{
 			{
 				BasicsMenu(HELLO_WORLD),
@@ -24,15 +25,22 @@ namespace basics
 			{
 				BasicsMenu(HELLO_NAME),
 				std::string("Hello Name")
-			}
+			},
+			{
+				BasicsMenu(BACK_TO_PREVIOUS_MENU),
+				std::string("Back to Main Menu")
+			},
+			{
+				BasicsMenu(EXIT_FROM_PROGRAM),
+				std::string("Exit")
+			}	
 		};
 	public:
 		Basics() = default;
 		int			GetChoice();
-		int			SetChoice(int&);
 		int			GetChoiceInputFromUser();
-		std::string GetSelectedChoice(BasicsMenu&);
 		void		PrintMenu();
+		void        PrintSelectedChoice(const int&);
 		void		HelloWorld();
 		void		HelloName(std::string const&);
 	};
