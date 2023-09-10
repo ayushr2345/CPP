@@ -1,4 +1,4 @@
-#include <iostream>
+//#include <iostream>
 #include "utils.h"
 #include "handlers.h"
 #include "Basics.h"
@@ -13,7 +13,11 @@ int main()
 
 	while (choice)
 	{
-		utils::PrintSelectedChoice(choice);
+		if (choice > utils::MainMenu::MIN_COUNT &&
+			choice < utils::MainMenu::MAX_COUNT + 1)
+		{
+			utils::PrintSelectedChoice(choice);
+		}
 		switch (choice)
 		{
 		case 1:

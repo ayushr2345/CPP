@@ -6,4 +6,4 @@
 namespace handlers
 {
 	void Handle(basics::Basics&);
-}
+} // namespace handlers

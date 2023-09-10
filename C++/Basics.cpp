@@ -2,45 +2,77 @@
 
 #include "Basics.h"
 #include <iostream>
-#include <string>
 
 namespace basics
 {
-	int Basics::GetChoice()
+	Basics::Basics():
+		m_choice(0)
 	{
-		return choice;
+		m_BasicsMenuMap.insert({ m_BasicsMenu(HELLO_WORLD), 
+								 std::string("Hello World") });
+		m_BasicsMenuMap.insert({ m_BasicsMenu(HELLO_NAME), 
+							     std::string("Hello Name") });
+		m_BasicsMenuMap.insert({ m_BasicsMenu(BACK_TO_PREVIOUS_MENU), 
+								 std::string("Back to Main Menu") });
+		m_BasicsMenuMap.insert({ m_BasicsMenu(EXIT_FROM_PROGRAM), 
+							     std::string("Exit") });
 	}
 
-	int Basics::GetChoiceInputFromUser()
+	const int Basics::GetMinCase()
 	{
-		std::cin >> choice;
-		return choice;
+		return m_BasicsMenu::MIN_COUNT;
+		return 1;
 	}
 
+	const int Basics::GetMaxCase()
+	{
+		return m_BasicsMenu::MAX_COUNT;
+		return 0;
+	}
+
+	const int& Basics::GetChoice()
+	{
+		return m_choice;
+	}
+
+	void Basics::GetChoiceInputFromUser()
+	{
+		std::cin >> m_choice;
+	}
+
+	void Basics::PrintMenu()
+	{
+		std::cout << "1. Hello World!" << std::endl
+			      << "2. Hello <NAME>" << std::endl
+			      << "3. Back to previous menu" << std::endl
+			      << "4. Exit" << std::endl
+			      << "Please enter your choice: ";
+	}
+
+	void Basics::PrintSelectedChoice()
+	{
+		std::cout << m_BasicsMenuMap.size() << std::endl;
+		std::cout << std::endl << std::endl
+				  << "You have chosen choice "
+				  << m_BasicsMenuMap.at(m_choice)
+				  << std::endl;
+	}
+	
 	void Basics::HelloWorld()
 	{
 		std::cout << "Hello World!" << std::endl;
 	}
 
-	void Basics::HelloName(std::string const& name)
+	void Basics::GetNameInputFromUser()
 	{
-		std::cout << "Hello " << name << std::endl;
+		// TODO: Print name not working properly.
+		getline(std::cin, m_name);
 	}
 
-	void Basics::PrintMenu()
+	void Basics::HelloName()
 	{
-		std::cout << "1. Hello World!"          << std::endl
-			      << "2. Hello <NAME>"          << std::endl
-			      << "3. Back to previous menu" << std::endl
-				  << "4. Exit"				    << std::endl
-			      << "Please enter your choice: ";
+		std::cout << "Hello " << m_name << std::endl;
 	}
 
-	void Basics::PrintSelectedChoice(const int& choice)
-	{
-		std::cout << std::endl << std::endl
-				  << "You have chosen choice "
-				  << BasicsMenuMap.at(choice)
-				  << std::endl;
-	}
-}
+	
+} // namespace basics

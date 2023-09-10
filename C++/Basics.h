@@ -8,40 +8,28 @@ namespace basics
 	class Basics
 	{
 	private:
-		int choice{ 0 };
-		enum BasicsMenu
+		enum m_BasicsMenu
 		{
-			HELLO_WORLD		      = 1,
-			HELLO_NAME			  =	2,
+			MIN_COUNT			  = 0,
+			HELLO_WORLD			  = 1,
+			HELLO_NAME			  = 2,
 			BACK_TO_PREVIOUS_MENU = 3,
-			EXIT_FROM_PROGRAM     = 4
+			EXIT_FROM_PROGRAM	  = 4,
+			MAX_COUNT			  = EXIT_FROM_PROGRAM
 		};
-		std::map<int, std::string> BasicsMenuMap =
-		{
-			{
-				BasicsMenu(HELLO_WORLD),
-				std::string("Hello World")
-			},
-			{
-				BasicsMenu(HELLO_NAME),
-				std::string("Hello Name")
-			},
-			{
-				BasicsMenu(BACK_TO_PREVIOUS_MENU),
-				std::string("Back to Main Menu")
-			},
-			{
-				BasicsMenu(EXIT_FROM_PROGRAM),
-				std::string("Exit")
-			}	
-		};
+		int						   m_choice{ 0 };
+		std::string				   m_name;
+		std::map<int, std::string> m_BasicsMenuMap;
 	public:
-		Basics() = default;
-		int			GetChoice();
-		int			GetChoiceInputFromUser();
-		void		PrintMenu();
-		void        PrintSelectedChoice(const int&);
-		void		HelloWorld();
-		void		HelloName(std::string const&);
+		Basics();
+		const int  GetMinCase();
+		const int  GetMaxCase();
+		const int& GetChoice();
+		void       GetChoiceInputFromUser();
+		void	   PrintMenu();
+		void       PrintSelectedChoice();
+		void	   HelloWorld();
+		void       GetNameInputFromUser();
+		void	   HelloName();
 	};
-}
+} // namespace basics

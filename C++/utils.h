@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <string>
 #include <map>
 
@@ -8,8 +7,10 @@ namespace utils
 {
 	enum MainMenu
 	{
-		BASICS = 1,
-		EXIT   = 2
+		MIN_COUNT = 0,
+		BASICS	  = 1,
+		EXIT      = 2,
+		MAX_COUNT = EXIT
 	};
 
 	// The extern keyword in C++ is used to declare a global variable 
@@ -33,4 +34,4 @@ namespace utils
 	void PrintWelcomeScreen();
 	void PrintMainMenu();
 	void PrintSelectedChoice(const int&);
-}
+} //namespace utils
