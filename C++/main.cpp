@@ -8,8 +8,8 @@ int main()
 	utils::PrintWelcomeScreen();
 	utils::PrintMainMenu();
 
-	int choice;
-	std::cin >> choice;
+	int choice { 0 };
+	utils::InputIntegerChoiceFromUser(choice);
 
 	while (choice)
 	{

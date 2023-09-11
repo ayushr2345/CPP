@@ -26,4 +26,22 @@ namespace utils
 			      << utils::MainMenuMap.at(choice)
 			      << std::endl;
 	}
+
+	void utils::IgnoreStdCinBufferTillEOL()
+	{
+		// ignore the input stream till the EOL
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+
+	void utils::InputIntegerChoiceFromUser(int& choice)
+	{
+		std::cin >> choice;
+		while (std::cin.fail() || std::cin.peek() != '\n')
+		{
+			std::cin.clear();
+			utils::IgnoreStdCinBufferTillEOL();
+			std::cout << "Wrong input type! Please enter an integer value: ";
+			std::cin >> choice;
+		}
+	}
 } // namespace utils

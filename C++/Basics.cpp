@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Basics.h"
+#include "utils.h"
 #include <iostream>
 
 namespace basics
@@ -37,7 +38,7 @@ namespace basics
 
 	void Basics::GetChoiceInputFromUser()
 	{
-		std::cin >> m_choice;
+		utils::InputIntegerChoiceFromUser(m_choice);
 	}
 
 	void Basics::PrintMenu()
@@ -51,7 +52,6 @@ namespace basics
 
 	void Basics::PrintSelectedChoice()
 	{
-		std::cout << m_BasicsMenuMap.size() << std::endl;
 		std::cout << std::endl << std::endl
 				  << "You have chosen choice "
 				  << m_BasicsMenuMap.at(m_choice)
@@ -65,8 +65,8 @@ namespace basics
 
 	void Basics::GetNameInputFromUser()
 	{
-		// TODO: Print name not working properly.
-		getline(std::cin, m_name);
+		utils::IgnoreStdCinBufferTillEOL();
+		std::getline(std::cin, m_name);
 	}
 
 	void Basics::HelloName()

@@ -34,4 +34,6 @@ namespace utils
 	void PrintWelcomeScreen();
 	void PrintMainMenu();
 	void PrintSelectedChoice(const int&);
+	void IgnoreStdCinBufferTillEOL();
+	void InputIntegerChoiceFromUser(int&);
 } //namespace utils
