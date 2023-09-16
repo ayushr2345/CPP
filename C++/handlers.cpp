@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include "handlers.h"
 
@@ -11,6 +13,7 @@ namespace handlers
 
 		while (basicObj.GetChoice())
 		{
+			char previousMenuFlag = 'n';
 			if (selectedChoice > basicObj.GetMinCase() &&
 				selectedChoice < basicObj.GetMaxCase() + 1)
 			{
@@ -33,9 +36,14 @@ namespace handlers
 			}
 			case 3:
 			{
-				break;
+				basicObj.PrintDataTypeSizeAndRanges();
 			}
 			case 4:
+			{
+				previousMenuFlag = 'y';
+				break;
+			}
+			case 5:
 			{
 				exit(0);
 			}
@@ -45,8 +53,15 @@ namespace handlers
 				break;
 			}
 
-			basicObj.PrintMenu();
-			basicObj.GetChoiceInputFromUser();
+			if (previousMenuFlag == 'y')
+			{
+				break;
+			}
+			else
+			{
+				basicObj.PrintMenu();
+				basicObj.GetChoiceInputFromUser();
+			}
 		}
 	}
 } // namespace handlers

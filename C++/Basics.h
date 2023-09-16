@@ -10,12 +10,13 @@ namespace basics
 	private:
 		enum m_BasicsMenu
 		{
-			MIN_COUNT			  = 0,
-			HELLO_WORLD			  = 1,
-			HELLO_NAME			  = 2,
-			BACK_TO_PREVIOUS_MENU = 3,
-			EXIT_FROM_PROGRAM	  = 4,
-			MAX_COUNT			  = EXIT_FROM_PROGRAM
+			MIN_COUNT                        = 0,
+			HELLO_WORLD                      = 1,
+			HELLO_NAME                       = 2,
+			PRINT_DATA_TYPES_SIZE_AND_RANGES = 3,
+			BACK_TO_PREVIOUS_MENU            = 4,
+			EXIT_FROM_PROGRAM                = 5,
+			MAX_COUNT                        = EXIT_FROM_PROGRAM
 		};
 		int						   m_choice{ 0 };
 		std::string				   m_name;
@@ -31,5 +32,6 @@ namespace basics
 		void	   HelloWorld();
 		void       GetNameInputFromUser();
 		void	   HelloName();
+		void	   PrintDataTypeSizeAndRanges();
 	};
 } // namespace basics

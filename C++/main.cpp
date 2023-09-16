@@ -1,4 +1,6 @@
-//#include <iostream>
+#pragma once
+
+#include <iostream>
 #include "utils.h"
 #include "handlers.h"
 #include "Basics.h"
