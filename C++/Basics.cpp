@@ -3,6 +3,8 @@
 #include "Basics.h"
 #include "utils.h"
 #include <iostream>
+#include <iomanip>
+#include <limits>	
 
 namespace basics
 {
@@ -46,19 +48,19 @@ namespace basics
 	void Basics::PrintMenu()
 	{
 		std::cout << "1. Hello World!" << std::endl
-			      << "2. Hello <NAME>" << std::endl
-				  << "3. Print data types with their sizes and ranges" << std::endl
-			      << "4. Back to previous menu" << std::endl
-			      << "5. Exit" << std::endl
-			      << "Please enter your choice: ";
+                  << "2. Hello <NAME>" << std::endl
+                  << "3. Print data types with their sizes and ranges" << std::endl
+                  << "4. Back to previous menu" << std::endl
+                  << "5. Exit" << std::endl
+                  << "Please enter your choice: ";
 	}
 
 	void Basics::PrintSelectedChoice()
 	{
 		std::cout << std::endl << std::endl
-				  << "You have chosen choice "
-				  << m_BasicsMenuMap.at(m_choice)
-				  << std::endl;
+                  << "You have chosen choice "
+                  << m_BasicsMenuMap.at(m_choice)
+                  << std::endl;
 	}
 	
 	void Basics::HelloWorld()
@@ -79,63 +81,45 @@ namespace basics
 
 	void Basics::PrintDataTypeSizeAndRanges()
 	{
-		// TODO: Convert this into a table [datatype, size, range, used for] 
-		// with borders
-		bool b;
-		char c;
-		wchar_t w;
-		char16_t ch16;
-		char32_t ch32;
-		short s;
-		int i;
-		long l;
-		long long ll;
-		float f;
-		double d;
-		long double ld;
+		// As there are 22 types in the table, counter is set to 23 and counterDec is a lambda which will decrement the counter
+		// counterDec is called in each row of the table. As all the counterDec are called in same cout statement, they will get executed
+		// in reverse order hence we use this approach. 
+		// NOTE: This is illegal in C++ and can give undefined behaviour
+		int counter { 23 };
+		auto counterDec = [&counter] () -> int
+			{
+				counter -= 1;
+				return counter; 
+			};
 
-		std::cout << "BOOL: ";
-		std::cout << sizeof(b) << std::endl;
 
-		std::cout << "CHAR: ";
-		std::cout << sizeof(c) << std::endl;
-		std::cout << "Range: " << CHAR_MIN << ":" << CHAR_MAX << std::endl << std::endl;
+		std::cout << std::left <<
+			" ---------------------------------------------------------------------------------------------------------\n"                              <<
+			"| " << std::setw(9) << "[S. NO.]"   << "| " << std::setw(19) << "[DATA TYPE]"        << "| " << std::setw(7) << "[SIZE]"                   << "| " << std::setw(17) << "[SIZE (in bits)]"             << "| " << std::setw(21) << "[RANGE (Min)]"                                << "| " << std::setw(21) << "[RANGE (Max)]"                                << "|\n" <<
+			" ---------------------------------------------------------------------------------------------------------\n"                <<																		  
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "BOOL"               << "| " << std::setw(7) << sizeof(bool)               << "| " << std::setw(17) << 8 * sizeof(bool)               << "| " << std::setw(21) << std::numeric_limits<bool>::min()               << "| " << std::setw(21) << std::numeric_limits<bool>::max()               << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "CHAR"               << "| " << std::setw(7) << sizeof(char)               << "| " << std::setw(17) << 8 * sizeof(char)               << "| " << std::setw(21) << (int)std::numeric_limits<char>::min()          << "| " << std::setw(21) << (int)std::numeric_limits<char>::max()          << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "SIGNED CHAR"        << "| " << std::setw(7) << sizeof(signed char)        << "| " << std::setw(17) << 8 * sizeof(signed char)        << "| " << std::setw(21) << (int)std::numeric_limits<signed char>::min()   << "| " << std::setw(21) << (int)std::numeric_limits<signed char>::max()   << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "UNSIGNED CHAR"      << "| " << std::setw(7) << sizeof(unsigned char)      << "| " << std::setw(17) << 8 * sizeof(unsigned char)      << "| " << std::setw(21) << (int)std::numeric_limits<unsigned char>::min() << "| " << std::setw(21) << (int)std::numeric_limits<unsigned char>::max() << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "WCHAR_T"            << "| " << std::setw(7) << sizeof(wchar_t)            << "| " << std::setw(17) << 8 * sizeof(wchar_t)            << "| " << std::setw(21) << (int)std::numeric_limits<wchar_t>::min()       << "| " << std::setw(21) << (int)std::numeric_limits<wchar_t>::max()       << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "CHAR16_T"           << "| " << std::setw(7) << sizeof(char16_t)           << "| " << std::setw(17) << 8 * sizeof(char16_t)           << "| " << std::setw(21) << (int)std::numeric_limits<char16_t>::min()      << "| " << std::setw(21) << (int)std::numeric_limits<char16_t>::max()      << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "CHAR32_T"           << "| " << std::setw(7) << sizeof(char32_t)           << "| " << std::setw(17) << 8 * sizeof(char32_t)           << "| " << std::setw(21) << (int)std::numeric_limits<char32_t>::min()      << "| " << std::setw(21) << (int)std::numeric_limits<char32_t>::max()      << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "SHORT"              << "| " << std::setw(7) << sizeof(short)              << "| " << std::setw(17) << 8 * sizeof(short)              << "| " << std::setw(21) << std::numeric_limits<short>::min()              << "| " << std::setw(21) << std::numeric_limits<short>::max()              << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "SIGNED SHORT"       << "| " << std::setw(7) << sizeof(signed short)       << "| " << std::setw(17) << 8 * sizeof(signed short)       << "| " << std::setw(21) << std::numeric_limits<signed short>::min()       << "| " << std::setw(21) << std::numeric_limits<signed short>::max()       << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "UNSIGNED SHORT"     << "| " << std::setw(7) << sizeof(unsigned short)     << "| " << std::setw(17) << 8 * sizeof(unsigned short)     << "| " << std::setw(21) << std::numeric_limits<unsigned short>::min()     << "| " << std::setw(21) << std::numeric_limits<unsigned short>::max()     << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "INT"                << "| " << std::setw(7) << sizeof(int)                << "| " << std::setw(17) << 8 * sizeof(int)                << "| " << std::setw(21) << std::numeric_limits<int>::min()                << "| " << std::setw(21) << std::numeric_limits<int>::max()                << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "SIGNED INT"         << "| " << std::setw(7) << sizeof(signed int)         << "| " << std::setw(17) << 8 * sizeof(signed int)         << "| " << std::setw(21) << std::numeric_limits<signed int>::min()         << "| " << std::setw(21) << std::numeric_limits<signed int>::max()         << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "UNSIGNED INT"       << "| " << std::setw(7) << sizeof(unsigned int)       << "| " << std::setw(17) << 8 * sizeof(unsigned int)       << "| " << std::setw(21) << std::numeric_limits<unsigned int>::min()       << "| " << std::setw(21) << std::numeric_limits<unsigned int>::max()       << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "LONG"               << "| " << std::setw(7) << sizeof(long)               << "| " << std::setw(17) << 8 * sizeof(long)               << "| " << std::setw(21) << std::numeric_limits<long>::min()               << "| " << std::setw(21) << std::numeric_limits<long>::max()               << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "SIGNED LONG"        << "| " << std::setw(7) << sizeof(signed long)        << "| " << std::setw(17) << 8 * sizeof(signed long)        << "| " << std::setw(21) << std::numeric_limits<signed long>::min()        << "| " << std::setw(21) << std::numeric_limits<signed long>::max()        << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "UNSIGNED LONG"      << "| " << std::setw(7) << sizeof(unsigned long)      << "| " << std::setw(17) << 8 * sizeof(unsigned long)      << "| " << std::setw(21) << std::numeric_limits<unsigned long>::min()      << "| " << std::setw(21) << std::numeric_limits<unsigned long>::max()      << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "LONG LONG"          << "| " << std::setw(7) << sizeof(long long)          << "| " << std::setw(17) << 8 * sizeof(long long)          << "| " << std::setw(21) << std::numeric_limits<long long>::min()          << "| " << std::setw(21) << std::numeric_limits<long long>::max()          << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "SIGNED LONG LONG"   << "| " << std::setw(7) << sizeof(signed long long)   << "| " << std::setw(17) << 8 * sizeof(signed long long)   << "| " << std::setw(21) << std::numeric_limits<signed long long>::min()   << "| " << std::setw(21) << std::numeric_limits<signed long long>::max()   << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "UNSIGNED LONG LONG" << "| " << std::setw(7) << sizeof(unsigned long long) << "| " << std::setw(17) << 8 * sizeof(unsigned long long) << "| " << std::setw(21) << std::numeric_limits<unsigned long long>::min() << "| " << std::setw(21) << std::numeric_limits<unsigned long long>::max() << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "FLOAT"              << "| " << std::setw(7) << sizeof(float)              << "| " << std::setw(17) << 8 * sizeof(float)              << "| " << std::setw(21) << std::numeric_limits<float>::min()              << "| " << std::setw(21) << std::numeric_limits<float>::max()              << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "DOUBLE"             << "| " << std::setw(7) << sizeof(double)	            << "| " << std::setw(17) << 8 * sizeof(double)             << "| " << std::setw(21) << std::numeric_limits<double>::min()             << "| " << std::setw(21) << std::numeric_limits<double>::max()             << "|\n" <<
+			"| " << std::setw(9) << counterDec() << "| " << std::setw(19) << "LONG DOUBLE"        << "| " << std::setw(7) << sizeof(long double)        << "| " << std::setw(17) << 8 * sizeof(long double)        << "| " << std::setw(21) << std::numeric_limits<long double>::min()        << "| " << std::setw(21) << std::numeric_limits<long double>::max()        << "|\n" <<
+			" ---------------------------------------------------------------------------------------------------------\n";
 
-		std::cout << "WCHAR: ";
-		std::cout << sizeof(w) << std::endl;
-		std::cout << "Range: " << WCHAR_MIN << ":" << WCHAR_MAX << std::endl << std::endl;
-
-		std::cout << "CHAR16_T: ";
-		std::cout << sizeof(ch16) << std::endl;
-		std::cout << "Range: " << SCHAR_MIN << ":" << SCHAR_MAX << std::endl << std::endl;
-
-		std::cout << "CHAR32_T: ";
-		std::cout << sizeof(ch32) << std::endl;
-		std::cout << "Range: " << 0 << ":" << UCHAR_MAX << std::endl << std::endl;
-
-		std::cout << "SHORT: ";
-		std::cout << sizeof(s) << std::endl;
-		std::cout << "Range: " << SHRT_MIN << ":" << SHRT_MAX << std::endl << std::endl;
-
-		std::cout << "INT: ";
-		std::cout << sizeof(i) << std::endl;
-		std::cout << "Range: " << INT_MIN << ":" << INT_MAX << std::endl << std::endl;
-
-		std::cout << "LONG INT: ";
-		std::cout << sizeof(l) << std::endl;
-		std::cout << "Range: " << LONG_MIN << ":" << LONG_MAX << std::endl << std::endl;
-
-		std::cout << "LONG LONG: ";
-		std::cout << sizeof(ll) << std::endl;
-		//std::cout << "Range: " << LONG_LONG_MIN << ":" << LONG_LONG_MAX << std::endl << std::endl;
-
-		std::cout << "FLOAT: ";
-		std::cout << sizeof(f) << std::endl;
-
-		std::cout << "DOUBLE: ";
-		std::cout << sizeof(d) << std::endl;
-
-		std::cout << "LONG DOUBLE: ";
-		std::cout << sizeof(ld) << std::endl;
 	}
 } // namespace basics
