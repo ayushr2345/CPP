@@ -37,13 +37,79 @@ namespace handlers
 			case 3:
 			{
 				basicObj.PrintDataTypeSizeAndRanges();
+				break;
 			}
 			case 4:
+			{
+				basicObj.ShowCaseIfElse();
+				break;
+			}
+			case 5:
+			{
+				basicObj.ShowCaseNestedIfElse();
+				break;
+			}
+			case 6:
+			{
+				basicObj.ShowCaseIfElseLadder();
+				break;
+			}
+			case 7:
+			{
+				basicObj.ShowCaseCompoundConditionalStatements();
+				break;
+			}
+			case 8:
+			{
+				basicObj.ShowCaseShortCircuiting();
+				break;
+			}
+			case 9:
+			{
+				basicObj.ShowCaseTernaryOperator();
+				break;
+			}
+			case 10:
+			{
+				basicObj.ShowCaseSwitchStatement();
+				break;
+			}
+			case 11:
+			{
+				basicObj.ShowCaseWhileLoop();
+				break;
+			}
+			case 12:
+			{
+				basicObj.ShowCaseDoWhileLoop();
+				break;
+			}
+			case 13:
+			{
+				basicObj.ShowCaseForLoop();
+				break;
+			}
+			case 14:
+			{
+				basicObj.ShowCaseArrays();
+				break;
+			}
+			case 15:
+			{
+				basicObj.ShowCaseForEachLoop();
+				break;
+			}
+			case 16:
+			{
+				basicObj.ShowCase2DArrays();
+				break;
+			}
+			case 17:
 			{
 				previousMenuFlag = 'y';
 				break;
 			}
-			case 5:
+			case 18:
 			{
 				exit(0);
 			}

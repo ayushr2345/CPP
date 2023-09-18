@@ -11,7 +11,7 @@ int main()
 	utils::PrintMainMenu();
 
 	int choice { 0 };
-	utils::InputIntegerChoiceFromUser(choice);
+	utils::InputIntegerFromUser(choice, 1, utils::MainMenu::MAX_COUNT);
 
 	while (choice)
 	{

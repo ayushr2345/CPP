@@ -35,14 +35,15 @@ namespace utils
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
-	void utils::InputIntegerChoiceFromUser(int& choice)
+	void utils::InputIntegerFromUser(int& choice, int range_start, int range_stop)
 	{
 		std::cin >> choice;
-		while (std::cin.fail() || std::cin.peek() != '\n')
+		while (std::cin.fail() || std::cin.peek() != '\n' || choice < range_start || choice > range_stop)
 		{
 			std::cin.clear();
 			utils::IgnoreStdCinBufferTillEOL();
-			std::cout << "Wrong input type! Please enter an integer value: ";
+			std::cout << "Wrong input type! Please enter an integer value within range: "
+				      << range_start << " to " << range_stop << ": ";
 			std::cin >> choice;
 		}
 	}

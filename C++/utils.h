@@ -35,5 +35,5 @@ namespace utils
 	void PrintMainMenu();
 	void PrintSelectedChoice(const int&);
 	void IgnoreStdCinBufferTillEOL();
-	void InputIntegerChoiceFromUser(int&);
+	void InputIntegerFromUser(int& choice, int range_start = INT_MIN, int range_stop = INT_MAX);
 } //namespace utils
