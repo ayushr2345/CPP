@@ -49,13 +49,13 @@ namespace basics
 							     std::string("Exit") });
 	}
 
-	const int Basics::GetMinCase()
+	const int& Basics::GetMinCase()
 	{
 		return m_BasicsMenu::MIN_COUNT;
 		return 1;
 	}
 
-	const int Basics::GetMaxCase()
+	const int& Basics::GetMaxCase()
 	{
 		return m_BasicsMenu::MAX_COUNT;
 		return 0;

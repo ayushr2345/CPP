@@ -1,9 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "utils.h"
 #include "handlers.h"
-#include "Basics.h"
 
 int main()
 {
@@ -29,6 +27,15 @@ int main()
 			break;
 		}
 		case 2:
+		{
+			int choiceForPointersAndReferences { 0 };
+			std::cout << "Please enter a number to get started with Pointers and References: ";
+			utils::InputIntegerFromUser(choiceForPointersAndReferences);
+			pointersAndReferences::PointersAndReferences pointersAndReferencesObj(choiceForPointersAndReferences);
+			handlers::Handle(pointersAndReferencesObj);
+			break;
+		}
+		case 3:
 		{
 			exit(0);
 		}

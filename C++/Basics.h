@@ -36,8 +36,8 @@ namespace basics
 		std::map<int, std::string> m_BasicsMenuMap;
 	public:
 		Basics();
-		const int  GetMinCase();
-		const int  GetMaxCase();
+		const int& GetMinCase();
+		const int& GetMaxCase();
 		const int& GetChoice();
 		void       GetChoiceInputFromUser();
 		void	   PrintMenu();

@@ -7,10 +7,11 @@ namespace utils
 {
 	enum MainMenu
 	{
-		MIN_COUNT = 0,
-		BASICS	  = 1,
-		EXIT      = 2,
-		MAX_COUNT = EXIT
+		MIN_COUNT               = 0,
+		BASICS	                = 1,
+		POINTERS_AND_REFERENCES = 2,
+		EXIT                    = 3,
+		MAX_COUNT               = EXIT
 	};
 
 	// The extern keyword in C++ is used to declare a global variable 
@@ -25,6 +26,10 @@ namespace utils
 			MainMenu(BASICS),
 			std::string("BASICS")
 		},
+		{
+			MainMenu(POINTERS_AND_REFERENCES),
+			std::string("Pointers and References")
+        },
 		{
 			MainMenu(EXIT),
 			std::string("EXIT")

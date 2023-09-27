@@ -130,12 +130,14 @@
     <ClCompile Include="Basics.cpp" />
     <ClCompile Include="handlers.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PointersAndReferences.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Basics.h" />
     <ClInclude Include="handlers.h" />
+    <ClInclude Include="PointersAndReferences.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

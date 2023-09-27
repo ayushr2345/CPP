@@ -30,12 +30,18 @@
     <ClCompile Include="utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PointersAndReferences.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="handlers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Basics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PointersAndReferences.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

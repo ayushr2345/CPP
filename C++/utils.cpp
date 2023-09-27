@@ -17,7 +17,8 @@ namespace utils
 	void PrintMainMenu()
 	{
 		std::cout << "1. Basics" << std::endl
-				  << "2. Exit" << std::endl;
+		          << "2. Pointers and References" << std::endl
+		          << "3. Exit" << std::endl;
 		std::cout << "Please enter your choice: ";
 	}
 
@@ -25,11 +26,11 @@ namespace utils
 	{
 		std::cout << std::endl << std::endl
 			      << "You have chosen choice "
-			      << utils::MainMenuMap.at(choice)
+			      << MainMenuMap.at(choice)
 			      << std::endl;
 	}
 
-	void utils::IgnoreStdCinBufferTillEOL()
+	void IgnoreStdCinBufferTillEOL()
 	{
 		// ignore the input stream till the EOL
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -41,7 +42,7 @@ namespace utils
 		while (std::cin.fail() || std::cin.peek() != '\n' || choice < range_start || choice > range_stop)
 		{
 			std::cin.clear();
-			utils::IgnoreStdCinBufferTillEOL();
+			IgnoreStdCinBufferTillEOL();
 			std::cout << "Wrong input type! Please enter an integer value within range: "
 				      << range_start << " to " << range_stop << ": ";
 			std::cin >> choice;
