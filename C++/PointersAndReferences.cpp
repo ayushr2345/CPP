@@ -72,7 +72,6 @@ namespace pointersAndReferences
 
     PointersAndReferences::~PointersAndReferences()
     {
-        delete   m_ptr;
         delete[] m_array;
     }
 
@@ -133,6 +132,11 @@ namespace pointersAndReferences
 
     const int& PointersAndReferences::DereferenceMemberPointer()
     {
+        if (m_ptr == nullptr)
+        {
+            std::cout << "The pointer points to nullptr currently! Initializing the pointer to point to the data member variable" << std::endl;
+            SetDataInPtr();
+        }
         return *m_ptr;
     }
 
@@ -168,11 +172,21 @@ namespace pointersAndReferences
     
     void PointersAndReferences::IncrementOrDecrementDataViaPointer(const int& ch)
     {
+        if (m_ptr == nullptr)
+        {
+            std::cout << "The pointer points to nullptr currently! Initializing the pointer to point to the data member variable" << std::endl;
+            SetDataInPtr();
+        }
         ch ? (*m_ptr)++ : (*m_ptr)--; 
     }
 
     void PointersAndReferences::CompareDataOfThree()
     {
+        if (m_ptr == nullptr)
+        {
+            std::cout << "The pointer points to nullptr currently! Initializing the pointer to point to the data member variable" << std::endl;
+            SetDataInPtr();
+        }
         std::cout << "The data stored in member data variable is: " << GetData() << std::endl
                   << "The data stored in member reference variable is: " << GetDataInReference() << std::endl
                   << "The data stored in member pointer variable is: " << GetDataInPointer()
@@ -181,6 +195,11 @@ namespace pointersAndReferences
 
     void PointersAndReferences::CompareAddressesOfThree()
     {
+        if (m_ptr == nullptr)
+        {
+            std::cout << "The pointer points to nullptr currently! Initializing the pointer to point to the data member variable" << std::endl;
+            SetDataInPtr();
+        }
         std::cout << "The address of member data variable is: " << GetDataAddress() << std::endl
                   << "The address of member reference variable is: " << GetAddressOfReference() << std::endl
                   << "The address of member pointer variable is: " << GetPointerAddress() << std::endl
@@ -201,6 +220,7 @@ namespace pointersAndReferences
         {
             std::cout << "Enter array element: ";
             utils::InputIntegerFromUser(element);
+            m_array[i] = element;
         }
     }
 
@@ -209,6 +229,11 @@ namespace pointersAndReferences
         std::cout << "Array declaration is C++ can be done as follows: ";
         basics::Basics basicsObj;
         basicsObj.ShowCaseArrays();
+        if (IsArrayNull())
+        {
+            std::cout << "The array does not exist! Please initialize and fill the array" << std::endl;
+            return;
+        }
         std::cout << "Declaring array normally, ...int A[10];...will reserve memory in stack while ...int *A = new int[10]... will reserve memory in heap" << std::endl;
         std::cout << "The address of first element of member array is (&A): " << m_array << std::endl;
         std::cout << "The first element of the array is (*A): " << *m_array << std::endl;

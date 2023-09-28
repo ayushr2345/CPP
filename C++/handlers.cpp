@@ -168,30 +168,31 @@ namespace handlers
 			case 4:
 			{
 				std::cout << "The member pointer variable points to location with data as: "
-					<< pointersAndReferencesObj.DereferenceMemberPointer() << std::endl;
+					      << pointersAndReferencesObj.DereferenceMemberPointer() << std::endl;
+				break;
 			}
 			case 5:
 			{
 				std::cout << "The address stored in the member pointer variable is: "
-					<< pointersAndReferencesObj.GetDataInPointer() << std::endl;
+					      << pointersAndReferencesObj.GetDataInPointer() << std::endl;
 				break;
 			}
 			case 6:
 			{
 				std::cout << "The address of the member pointer is: "
-					<< pointersAndReferencesObj.GetPointerAddress() << std::endl;
+					      << pointersAndReferencesObj.GetPointerAddress() << std::endl;
 				break;
 			}
 			case 7:
 			{
 				std::cout << "The data in member reference variable is: "
-					<< pointersAndReferencesObj.GetDataInReference();
+						  << pointersAndReferencesObj.GetDataInReference();
 				break;
 			}
 			case 8:
 			{
 				std::cout << "The addredd of the member reference variable is: "
-					<< pointersAndReferencesObj.GetAddressOfReference();
+					      << pointersAndReferencesObj.GetAddressOfReference();
 				break;
 			}
 			case 9:
@@ -233,10 +234,20 @@ namespace handlers
 			}
 			case 14:
 			{
-				std::cout << "Please enter the size of the array: ";
-				int size{ 0 };
-				utils::InputIntegerFromUser(size, 1, 10);
-				pointersAndReferencesObj.InitializeArray(size);
+				char ch { 'y' };
+				if (not pointersAndReferencesObj.IsArrayNull())
+				{
+					std::cout << "Data exists in the array. Do you wish to overwrite it? (y/n): ";
+					std::cin >> ch;
+				}
+				if (ch == 'y' or ch == 'Y')
+				{
+					std::cout << "Please enter the size of the array: ";
+					int size{ 0 };
+					utils::InputIntegerFromUser(size, 1, 10);
+					pointersAndReferencesObj.InitializeArray(size);
+					pointersAndReferencesObj.FillTheArray();
+				}
 				break;
 			}
 			case 15:

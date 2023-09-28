@@ -52,13 +52,11 @@ namespace basics
 	const int& Basics::GetMinCase()
 	{
 		return m_BasicsMenu::MIN_COUNT;
-		return 1;
 	}
 
 	const int& Basics::GetMaxCase()
 	{
 		return m_BasicsMenu::MAX_COUNT;
-		return 0;
 	}
 
 	const int& Basics::GetChoice()
