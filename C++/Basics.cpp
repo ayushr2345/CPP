@@ -9,7 +9,9 @@
 namespace basics
 {
 	Basics::Basics():
-		m_choice(0)
+		m_choice        (0),
+		m_name          (""),
+		m_BasicsMenuMap ({})
 	{
 		m_BasicsMenuMap.insert({ m_BasicsMenu(HELLO_WORLD), 
 								 std::string("Hello World") });
