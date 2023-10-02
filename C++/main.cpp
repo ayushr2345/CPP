@@ -37,6 +37,21 @@ int main()
 		}
 		case 3:
 		{
+			utils::IgnoreStdCinBufferTillEOL();
+			std::cout << "Please enter a name to get started with C Style Strings: ";
+			char str[20];
+			std::cin.getline(str, 20);
+			bool res = utils::CheckAndClearCharactersInStream(str, 20);
+			if (res)
+			{
+				std::cout << "You have entered a name greater than 19 characters. Only 19 characters will be taken input" << std::endl;
+			}
+			cStyleStrings::CStyleStrings cStyleStringsObj(str);
+			handlers::Handle(cStyleStringsObj);
+			break;
+		}
+		case 4:
+		{
 			exit(0);
 		}
 		default:

@@ -10,7 +10,8 @@ namespace utils
 		MIN_COUNT               = 0,
 		BASICS	                = 1,
 		POINTERS_AND_REFERENCES = 2,
-		EXIT                    = 3,
+		C_STYLE_STRINGS			= 3,
+		EXIT                    = 4,
 		MAX_COUNT               = EXIT
 	};
 
@@ -24,21 +25,27 @@ namespace utils
 	{
 		{
 			MainMenu(BASICS),
-			std::string("BASICS")
+			std::string("Basics")
 		},
 		{
 			MainMenu(POINTERS_AND_REFERENCES),
 			std::string("Pointers and References")
         },
 		{
+			MainMenu(C_STYLE_STRINGS),
+			std::string("C Style Strings")
+		},
+		{
 			MainMenu(EXIT),
-			std::string("EXIT")
+			std::string("Exit from program")
 		}
 	};
 
 	void PrintWelcomeScreen();
 	void PrintMainMenu();
 	void PrintSelectedChoice(const int&);
+	void ClearCinFlag();
 	void IgnoreStdCinBufferTillEOL();
+	bool CheckAndClearCharactersInStream(const char[], const int);
 	void InputIntegerFromUser(int& choice, int range_start = INT_MIN, int range_stop = INT_MAX);
 } //namespace utils

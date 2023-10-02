@@ -16,9 +16,13 @@ namespace utils
 
 	void PrintMainMenu()
 	{
-		std::cout << "1. Basics" << std::endl
-		          << "2. Pointers and References" << std::endl
-		          << "3. Exit" << std::endl;
+		std::cout << std::endl;
+		for (std::map<int, std::string>::iterator it = MainMenuMap.begin();
+			it != MainMenuMap.end();
+			it++)
+		{
+			std::cout << it->first << ". " << it->second << std::endl;
+		}
 		std::cout << "Please enter your choice: ";
 	}
 
@@ -30,13 +34,31 @@ namespace utils
 			      << std::endl;
 	}
 
+	void ClearCinFlag()
+	{
+		// clear cin error flag so that further operations can be performed correctly
+		std::cin.clear();
+	}
+
 	void IgnoreStdCinBufferTillEOL()
 	{
 		// ignore the input stream till the EOL
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
-	void utils::InputIntegerFromUser(int& choice, int range_start, int range_stop)
+	bool CheckAndClearCharactersInStream(const char str[], const int len)
+	{
+		if (std::cin.gcount() == (static_cast<long long>(len) - 1) && strlen(str) == (static_cast<unsigned long long>(len) - 1))
+		{
+			// there are characters in the stream before '\n'
+			ClearCinFlag();
+			IgnoreStdCinBufferTillEOL();
+			return true;
+		}
+		return false;
+	}
+
+	void InputIntegerFromUser(int& choice, int range_start, int range_stop)
 	{
 		std::cin >> choice;
 		while (std::cin.fail() || std::cin.peek() != '\n' || choice < range_start || choice > range_stop)

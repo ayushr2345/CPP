@@ -26,12 +26,11 @@ namespace pointersAndReferences
             COMPARE_DATA_OF_REFERENCE_DATA_POINTER_MEMBER_VARIABLES                   = 13,
             INITIALIZE_THE_ARRAY                                                      = 14,
             PRINT_SIZE_OF_ARRAY                                                       = 15,
-            FILL_THE_ARRAY                                                            = 16,
-            SHOWCASE_ARRAYS_WITH_POINTERS                                             = 17,
-            DISPLAY_THE_ARRAY                                                         = 18,
-            PROBLEMS_WITH_POINTERS                                                    = 19,
-            BACK_TO_PREVIOUS_MENU                                                     = 20,
-            EXIT_FROM_PROGRAM                                                         = 21,
+            SHOWCASE_ARRAYS_WITH_POINTERS                                             = 16,
+            DISPLAY_THE_ARRAY                                                         = 17,
+            PROBLEMS_WITH_POINTERS                                                    = 18,
+            BACK_TO_PREVIOUS_MENU                                                     = 19,
+            EXIT_FROM_PROGRAM                                                         = 20,
             MAX_COUNT                                                                 = EXIT_FROM_PROGRAM
         };
         int                        m_choice { 0 };
@@ -41,7 +40,6 @@ namespace pointersAndReferences
         int*                       m_array { nullptr };
         int                        m_arraySize;
         std::map<int, std::string> m_PointersAndReferencesMap{};
-
 
     public:
         PointersAndReferences(const int& data);

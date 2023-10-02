@@ -186,18 +186,18 @@ namespace handlers
 			case 7:
 			{
 				std::cout << "The data in member reference variable is: "
-						  << pointersAndReferencesObj.GetDataInReference();
+						  << pointersAndReferencesObj.GetDataInReference() << std::endl;
 				break;
 			}
 			case 8:
 			{
 				std::cout << "The addredd of the member reference variable is: "
-					      << pointersAndReferencesObj.GetAddressOfReference();
+					      << pointersAndReferencesObj.GetAddressOfReference() << std::endl;
 				break;
 			}
 			case 9:
 			{
-				std::cout << "Please enter a preference: (0 - addition / 1 - subtraction)";
+				std::cout << "Please enter a preference (0 - addition / 1 - subtraction): ";
 				int ch{ 0 };
 				utils::InputIntegerFromUser(ch, 0, 1);
 				pointersAndReferencesObj.IncrementOrDecrementDataViaRegular(ch);
@@ -206,7 +206,7 @@ namespace handlers
 			}
 			case 10:
 			{
-				std::cout << "Please enter a preference: (0 - addition / 1 - subtraction)";
+				std::cout << "Please enter a preference (0 - addition / 1 - subtraction): ";
 				int ch{ 0 };
 				utils::InputIntegerFromUser(ch, 0, 1);
 				pointersAndReferencesObj.IncrementOrDecrementDataViaReference(ch);
@@ -215,7 +215,7 @@ namespace handlers
 			}
 			case 11:
 			{
-				std::cout << "Please enter a preference: (0 - addition / 1 - subtraction)";
+				std::cout << "Please enter a preference (0 - addition / 1 - subtraction): ";
 				int ch{ 0 };
 				utils::InputIntegerFromUser(ch, 0, 1);
 				pointersAndReferencesObj.IncrementOrDecrementDataViaPointer(ch);
@@ -257,30 +257,25 @@ namespace handlers
 			}
 			case 16:
 			{
-				pointersAndReferencesObj.FillTheArray();
+				pointersAndReferencesObj.ShowCaseArraysWithPointers();
 				break;
 			}
 			case 17:
 			{
-				pointersAndReferencesObj.ShowCaseArraysWithPointers();
+				pointersAndReferencesObj.DisplayArray();
 				break;
 			}
 			case 18:
 			{
-				pointersAndReferencesObj.DisplayArray();
+				pointersAndReferencesObj.ShowCaseProblemsWithArrays();
 				break;
 			}
 			case 19:
 			{
-				pointersAndReferencesObj.ShowCaseProblemsWithArrays();
-				break;
-			}
-			case 20:
-			{
 				previousMenuFlag = 'y';
 				break;
 			}
-			case 21:
+			case 20:
 			{
 				exit(0);
 			}
@@ -300,6 +295,165 @@ namespace handlers
 			{
 				pointersAndReferencesObj.PrintMenu();
 				pointersAndReferencesObj.GetChoiceInputFromUser();
+			}
+		}
+	}
+
+	void Handle(cStyleStrings::CStyleStrings& cStyleStringsObj)
+	{
+		cStyleStringsObj.PrintMenu();
+		cStyleStringsObj.GetChoiceInputFromUser();
+		const int& selectedChoice = cStyleStringsObj.GetChoice();
+
+		while (cStyleStringsObj.GetChoice())
+		{
+			char previousMenuFlag = 'n';
+			if (selectedChoice > cStyleStringsObj.GetMinCase() &&
+				selectedChoice < cStyleStringsObj.GetMaxCase() + 1)
+			{
+				cStyleStringsObj.PrintSelectedChoice();
+			}
+
+			switch (selectedChoice)
+			{
+			case 1:
+			{
+				cStyleStringsObj.ShowcaseCStyleStrings();
+				break;
+			}
+			case 2:
+			{
+				std::cout << "The string is: " << cStyleStringsObj.GetString() << std::endl;
+				break;
+			}
+			case 3:
+			{
+				std::cout << "The length of the string is: " << cStyleStringsObj.GetStringLength() << std::endl;
+				break;
+			}
+			case 4:
+			{
+				int lengthOfString { 0 };
+				std::cout << "Enter the length of the string you want to input: ";
+				utils::InputIntegerFromUser(lengthOfString, 1, 20);
+				cStyleStringsObj.SetStringPointer(lengthOfString);
+				break;
+			}
+			case 5:
+			{
+				if (cStyleStringsObj.GetStringPointer() != nullptr)
+				{
+					std::cout << "The string pointer points to string: " << cStyleStringsObj.GetStringPointer() << std::endl;
+				}
+				break;
+			}
+			case 6:
+			{
+				std::cout << "The length of the string the string pointer points to is: " << cStyleStringsObj.GetStringPointerLength() << std::endl;
+				break;
+			}
+			case 7:
+			{
+				if (cStyleStringsObj.IsStringPointerEmpty())
+				{
+					std::cout << "The string pointer points to nullptr, hence the length of the string pointer is 0" << std::endl;
+				}
+				else
+				{
+					std::cout << "The length of the string pointer is: " << cStyleStringsObj.GetStringPointerLength() << std::endl;
+				}
+				break;
+			}
+			case 8:
+			{
+				int res = cStyleStringsObj.CompareStringWithStringPointer();
+				if (res == 0)
+				{
+					std::cout << "Both the strings are equal: " << cStyleStringsObj.GetString() << " == " << cStyleStringsObj.GetStringPointer() << std::endl;
+				}
+				else if (res < 0)
+				{
+					std::cout << "Both the strings are not equal: " << cStyleStringsObj.GetString() << " < " << cStyleStringsObj.GetStringPointer() << std::endl;
+					std::cout << "The difference is: " << res << std::endl;
+				}
+				else
+				{
+					std::cout << "Both the strings are not equal: " << cStyleStringsObj.GetString() << " > " << cStyleStringsObj.GetStringPointer() << std::endl;
+					std::cout << "The difference is: " << res << std::endl;
+				}
+				break;
+			}
+			case 9:
+			{
+				if (cStyleStringsObj.GetStringPointerLength() == 0)
+				{
+					std::cout << "String not set in string pointer member variable. Set that first!" << std::endl;
+					break;
+				}
+				int totalLength = cStyleStringsObj.GetStringLength() + cStyleStringsObj.GetStringPointerLength() + 1;
+				char* concat = new char[totalLength];
+				cStyleStringsObj.ConcatenateStringAndStringPointer(concat, totalLength);
+				std::cout << "The concatenated string is: " << concat << " and the original strings were: " << cStyleStringsObj.GetString() << ", " << cStyleStringsObj.GetStringPointer() << std::endl;
+				delete[] concat;
+				break;
+			}
+			case 10:
+			{
+				if (cStyleStringsObj.GetStringPointerLength() == 0)
+				{
+					std::cout << "String not set in string pointer member variable. Set that first!" << std::endl;
+					break;
+				}
+				int ind { 0 };
+				std::cout << "Enter the index length till which you want to concatenate: ";
+				utils::InputIntegerFromUser(ind, 0, (int)cStyleStringsObj.GetStringPointerLength());
+				int totalLength = cStyleStringsObj.GetStringLength() + cStyleStringsObj.GetStringPointerLength() + 1;
+				char* concat = new char[totalLength];
+				cStyleStringsObj.NConcatenateStringAndStringPointer(concat, totalLength, ind);
+				std::cout << "The concatenated string is: " << concat << " and the original strings were: " << cStyleStringsObj.GetString() << ", " << cStyleStringsObj.GetStringPointer() << std::endl;
+				delete[] concat;
+				break;
+			}
+			case 11:
+			{
+				cStyleStringsObj.ShowcaseStringToLong();
+				break;
+			}
+			case 12:
+			{
+				cStyleStringsObj.ShowcaseStringToFloat();
+				break;
+			}
+			case 13:
+			{
+				cStyleStringsObj.ShowcaseStringToToken();
+				break;
+			}
+			case 14:
+			{
+				previousMenuFlag = 'y';
+				break;
+			}
+			case 15:
+			{
+				exit(0);
+			}
+			default:
+			{
+				std::cout << "The selected option is out of bounds!!! "
+						  << "Please select appropriate option: " << std::endl;
+				break;
+			}
+			}
+
+			if (previousMenuFlag == 'y')
+			{
+				break;
+			}
+			else
+			{
+				cStyleStringsObj.PrintMenu();
+				cStyleStringsObj.GetChoiceInputFromUser();
 			}
 		}
 	}

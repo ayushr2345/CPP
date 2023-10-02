@@ -48,7 +48,7 @@ namespace basics
 		m_BasicsMenuMap.insert({ m_BasicsMenu(BACK_TO_PREVIOUS_MENU), 
 								 std::string("Back to Main Menu") });
 		m_BasicsMenuMap.insert({ m_BasicsMenu(EXIT_FROM_PROGRAM), 
-							     std::string("Exit") });
+							     std::string("Exit from program") });
 	}
 
 	const int& Basics::GetMinCase()
@@ -73,25 +73,14 @@ namespace basics
 
 	void Basics::PrintMenu()
 	{
-		std::cout << "1. Hello World!" << std::endl
-                  << "2. Hello <NAME>" << std::endl
-			      << "3. Print data types with their sizes and ranges" << std::endl
-			      << "4. Show Case If-Else" << std::endl
-			      << "5. Show Case Nested If-Else" << std::endl
-			      << "6. Show Case Nested If-Else Ladder" << std::endl
-			      << "7. Show Case Compound Conditional Statements" << std::endl
-			      << "8. Show Case Short Circuiting" << std::endl
-			      << "9. Show Case Ternary Operator" << std::endl
-			      << "10. Show Case Switch Statement" << std::endl
-			      << "11. Show Case While Loop" << std::endl
-			      << "12. Show Case Do-While Loop" << std::endl
-			      << "13. Show Case For Loop" << std::endl
-			      << "14. Show Case Arrays" << std::endl
-			      << "15. Show Case For Each Loop" << std::endl
-			      << "16. Show Case 2D Arrays" << std::endl
-			      << "17. Back to previous menu" << std::endl
-                  << "18. Exit" << std::endl
-                  << "Please enter your choice: ";
+		std::cout << std::endl;
+		for (std::map<int, std::string>::iterator it = m_BasicsMenuMap.begin();
+			it != m_BasicsMenuMap.end();
+			it++)
+		{
+			std::cout << it->first << ". " << it->second << std::endl;
+		}
+		std::cout << "Please enter your choice: ";
 	}
 
 	void Basics::PrintSelectedChoice()
@@ -322,19 +311,19 @@ namespace basics
 				      << " respectively. The second condition is skipped " << std::endl;
 		}
 
-		std::cout << "#########################################";
+		std::cout << "#########################################" << std::endl;
 
 		std::cout << "DEMO Problem #2: a: " << a << " b: " << b << " c: " << c
 			      << " we will run a condition here which will verify short circuiting!" << std::endl;
 		if (b > a || ++c < b)
 		{
+			std::cout << "The condition that was applied was" << std::endl
+				<< "....if (b > a || ++c < b)" << std::endl
+				<< " and not the values are a: " << a << " b: " << b << " c: " << c
+				<< " respectively. The second condition is skipped " << std::endl;
 		}
 		else
 		{
-			std::cout << "The condition that was applied was" << std::endl
-				      << "....if (b > a || ++c < b)" << std::endl
-				      << " and not the values are a: " << a << " b: " << b  << " c: " << c 
-				      << " respectively. The second condition is skipped " << std::endl;
 		}
 		std::cout << std::endl;
 	}
@@ -485,15 +474,17 @@ namespace basics
 			      << "........<WHILE CODE BLOCK>" << std::endl
 			      << "....} while (<condition>);" << std::endl << std::endl
 			      << "Unlike the while loop, this loop gets executed atleast once" << std::endl;
-		std::cout << "DEMO Problem: Enter a number from user and print numbers from 0 till that number!!" << std::endl;
+		std::cout << "DEMO Problem: Enter a number from user and print numbers from 0 till that number if the number is less than 20, if greater than 20, print only once!!" << std::endl;
 		std::cout << "Please enter the number: ";
-		utils::InputIntegerFromUser(number, 0, 10);
+		utils::InputIntegerFromUser(number, 0, 100);
 
-		int i = 20;
+		int i = 0;
 		do
 		{
-			std::cout << "i: " << i << " number: " << number;
-		} while (i <= number);
+			std::cout << "i: " << i << " number: " << number << std::endl;
+			i++;
+		} while (number <= 20 && i <= number);
+		std::cout << "Unlike the while loop, this loop will print the i and number at least once before checking for the condition" << std::endl;
 		std::cout << std::endl << std::endl;
 	}
 

@@ -128,6 +128,7 @@ namespace pointersAndReferences
     void PointersAndReferences::SetDataInPtr()
     {
         m_ptr = &m_data;
+        std::cout << "Member pointer variable is now pointing to member data variable" << std::endl;
     }
 
     const int& PointersAndReferences::DereferenceMemberPointer()
@@ -142,6 +143,11 @@ namespace pointersAndReferences
 
     const int* PointersAndReferences::GetDataInPointer()
     {
+        if (m_ptr == nullptr)
+        {
+            std::cout << "The pointer points to nullptr currently! Initializing the pointer to point to the data member variable" << std::endl;
+            SetDataInPtr();
+        }
         return m_ptr;
     }
 

@@ -34,6 +34,7 @@ namespace basics
 		int						   m_choice{ 0 };
 		std::string				   m_name;
 		std::map<int, std::string> m_BasicsMenuMap;
+
 	public:
 		Basics();
 		const int& GetMinCase();
