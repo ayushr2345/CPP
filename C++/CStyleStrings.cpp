@@ -1,8 +1,8 @@
 #pragma once
 
+#include <iostream>
 #include "CStyleStrings.h"
 #include "utils.h"
-#include <iostream>
 
 namespace cStyleStrings
 {

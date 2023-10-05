@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Basics.cpp" />
+    <ClCompile Include="CPPStrings.cpp" />
     <ClCompile Include="CStyleStrings.cpp" />
     <ClCompile Include="handlers.cpp" />
     <ClCompile Include="main.cpp" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Basics.h" />
+    <ClInclude Include="CPPStrings.h" />
     <ClInclude Include="CStyleStrings.h" />
     <ClInclude Include="handlers.h" />
     <ClInclude Include="PointersAndReferences.h" />

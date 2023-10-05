@@ -1,9 +1,9 @@
 #pragma once
 
+#include <iostream>
 #include "PointersAndReferences.h"
 #include "Basics.h"
 #include "utils.h"
-#include <iostream>
 
 namespace pointersAndReferences
 {

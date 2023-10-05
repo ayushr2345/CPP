@@ -1,7 +1,7 @@
 #pragma once
 
-#include <string>
 #include <map>
+#include <string>
 
 namespace utils
 {
@@ -11,7 +11,8 @@ namespace utils
 		BASICS	                = 1,
 		POINTERS_AND_REFERENCES = 2,
 		C_STYLE_STRINGS			= 3,
-		EXIT                    = 4,
+		CPP_STRINGS			    = 4,
+		EXIT                    = 5,
 		MAX_COUNT               = EXIT
 	};
 
@@ -34,6 +35,10 @@ namespace utils
 		{
 			MainMenu(C_STYLE_STRINGS),
 			std::string("C Style Strings")
+		},
+		{
+			MainMenu(CPP_STRINGS),
+			std::string("CPP Style Strings")
 		},
 		{
 			MainMenu(EXIT),

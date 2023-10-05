@@ -3,6 +3,7 @@
 #include <iostream>
 #include "handlers.h"
 
+
 namespace handlers
 {
 	void Handle(basics::Basics& basicObj)
@@ -454,6 +455,158 @@ namespace handlers
 			{
 				cStyleStringsObj.PrintMenu();
 				cStyleStringsObj.GetChoiceInputFromUser();
+			}
+		}
+	}
+
+	void Handle(cppStrings::CPPStrings& cppStringsObj)
+	{
+		cppStringsObj.PrintMenu();
+		cppStringsObj.GetChoiceInputFromUser();
+		const int& selectedChoice = cppStringsObj.GetChoice();
+
+		while (cppStringsObj.GetChoice())
+		{
+			char previousMenuFlag = 'n';
+			if (selectedChoice > cppStringsObj.GetMinCase() &&
+				selectedChoice < cppStringsObj.GetMaxCase() + 1)
+			{
+				cppStringsObj.PrintSelectedChoice();
+			}
+
+			switch (selectedChoice)
+			{
+			case 1:
+			{
+				cppStringsObj.ShowcaseCPPStyleStrings();
+				break;
+			}
+			case 2:
+			{
+				std::cout << "The string is: " << cppStringsObj.GetString() << std::endl;
+				break;
+			}
+			case 3:
+			{
+				std::cout << "The length of the string is: " << cppStringsObj.GetStringLength() << std::endl;
+				break;
+			}
+			case 4:
+			{
+				std::cout << "The capacity of the string is: " << cppStringsObj.GetStringCapacity() << std::endl;
+				break;
+			}
+			case 5:
+			{
+				cppStringsObj.SetStringPointer();
+				break;
+			}
+			case 6:
+			{
+				if (cppStringsObj.GetStringPointer() != "")
+				{
+					std::cout << "The string pointer points to string: " << cppStringsObj.GetStringPointer() << std::endl;
+				}
+				break;
+			}
+			case 7:
+			{
+				std::cout << "The length of the string the string pointer points to is: " << cppStringsObj.GetStringPointerLength() << std::endl;
+				break;
+			}
+			case 8:
+			{
+				if (cppStringsObj.IsStringPointerEmpty())
+				{
+					std::cout << "The string pointer points to nullptr, hence the length of the string pointer is 0" << std::endl;
+				}
+				else
+				{
+					std::cout << "The length of the string pointer is: " << cppStringsObj.GetStringPointerLength() << std::endl;
+				}
+				break;
+			}
+			case 9:
+			{
+				int res = cppStringsObj.CompareStringWithStringPointer();
+				if (res == 0)
+				{
+					std::cout << "Both the strings are equal: " << cppStringsObj.GetString() << " == " << cppStringsObj.GetStringPointer() << std::endl;
+				}
+				else if (res < 0)
+				{
+					std::cout << "Both the strings are not equal: " << cppStringsObj.GetString() << " < " << cppStringsObj.GetStringPointer() << std::endl;
+					std::cout << "The difference is: " << res << std::endl;
+				}
+				else
+				{
+					std::cout << "Both the strings are not equal: " << cppStringsObj.GetString() << " > " << cppStringsObj.GetStringPointer() << std::endl;
+					std::cout << "The difference is: " << res << std::endl;
+				}
+				break;
+			}
+			case 10:
+			{
+				std::string str;
+				cppStringsObj.ConcatenateStringAndStringPointer(str);
+				std::cout << "The concatenated string is: " << str << " and the original strings were: " << cppStringsObj.GetString() << ", " << cppStringsObj.GetStringPointer() << std::endl;
+				break;
+			}
+			case 11:
+			{
+				if (cppStringsObj.GetStringPointerLength() == 0)
+				{
+					std::cout << "String not set in string pointer member variable. Set that first!" << std::endl;
+					break;
+				}
+				int ind{ 0 };
+				std::string str;
+				std::cout << "Enter the index length till which you want to concatenate: ";
+				utils::InputIntegerFromUser(ind, 0, (int)cppStringsObj.GetStringPointerLength());
+				cppStringsObj.NConcatenateStringAndStringPointer(str, ind);
+				std::cout << "The concatenated string is: " << str << " and the original strings were: " << cppStringsObj.GetString() << ", " << cppStringsObj.GetStringPointer() << std::endl;
+				break;
+			}
+			case 12:
+			{
+				cppStringsObj.ShowcaseStringToInt();
+				break;
+			}
+			case 13:
+			{
+				cppStringsObj.ShowcaseStringToLong();
+				break;
+			}
+			case 14:
+			{
+				cppStringsObj.ShowcaseStringToFloat();
+				break;
+			}
+			case 15:
+			{
+				previousMenuFlag = 'y';
+				break;
+			}
+			case 16:
+			{
+				exit(0);
+			}
+			default:
+			{
+				std::cout << "The selected option is out of bounds!!! "
+						  << "Please select appropriate option: " << std::endl;
+				break;
+			}
+			}
+
+			if (previousMenuFlag == 'y')
+			{
+				break;
+			}
+			else
+			{
+				cppStringsObj.PrintMenu();
+				cppStringsObj.GetChoiceInputFromUser();
 			}
 		}
 	}

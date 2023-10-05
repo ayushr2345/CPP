@@ -52,6 +52,16 @@ int main()
 		}
 		case 4:
 		{
+			utils::IgnoreStdCinBufferTillEOL();
+			std::cout << "Please enter a name to get started with CPP Style Strings: ";
+			std::string str;
+			std::getline(std::cin, str);
+			cppStrings::CPPStrings cppStyleStringsObj(str);
+			handlers::Handle(cppStyleStringsObj);
+			break;
+		}
+		case 5:
+		{
 			exit(0);
 		}
 		default:
