@@ -201,7 +201,7 @@ namespace cppStrings
     {
         utils::IgnoreStdCinBufferTillEOL();
         std::cout << "If a numeric value is stored in a string, we can convert it into a float and perform operations on it using" << std::endl
-                  << "....stof(string, NULL, <RADIX / BASE OF THE NUMBER SYSTEM>)" << std::endl;
+                  << "....stof(string, NULL)" << std::endl;
         std::string str;
         std::cout << "Please enter a numeric value: ";
         std::getline(std::cin, str);
