@@ -70,7 +70,7 @@ namespace cppStrings
 
     void CPPStrings::GetChoiceInputFromUser()
     {
-        utils::InputIntegerFromUser(m_choice, 1, m_CPPStyleStringsMenu::MAX_COUNT);
+        utils::InputNumberFromUser(m_choice, 1, (int)m_CPPStyleStringsMenu::MAX_COUNT);
     }
 
     void CPPStrings::PrintMenu()

@@ -2,6 +2,7 @@
 
 #include <map>
 #include <string>
+#include <iostream>
 
 namespace utils
 {
@@ -12,7 +13,8 @@ namespace utils
 		POINTERS_AND_REFERENCES = 2,
 		C_STYLE_STRINGS			= 3,
 		CPP_STRINGS			    = 4,
-		EXIT                    = 5,
+		FUNCTIONS				= 5,
+		EXIT                    = 6,
 		MAX_COUNT               = EXIT
 	};
 
@@ -41,6 +43,10 @@ namespace utils
 			std::string("CPP Style Strings")
 		},
 		{
+			MainMenu(FUNCTIONS),
+			std::string("Functions")
+		},
+		{
 			MainMenu(EXIT),
 			std::string("Exit from program")
 		}
@@ -52,5 +58,20 @@ namespace utils
 	void ClearCinFlag();
 	void IgnoreStdCinBufferTillEOL();
 	bool CheckAndClearCharactersInStream(const char[], const int);
-	void InputIntegerFromUser(int& choice, int range_start = INT_MIN, int range_stop = INT_MAX);
+
+	// templates should not have definition in a separate source file 
+	// as it would give compilation and linking errors
+	template<typename T>
+	void InputNumberFromUser(T& choice, T range_start = std::numeric_limits<T>::min(), T range_stop = std::numeric_limits<T>::max())
+	{
+		std::cin >> choice;
+		while (std::cin.fail() || std::cin.peek() != '\n' || choice < range_start || choice > range_stop)
+		{
+			ClearCinFlag();
+			IgnoreStdCinBufferTillEOL();
+			std::cout << "Wrong input type! Please enter a value within range: "
+				      << range_start << " to " << range_stop << ": ";
+			std::cin >> choice;
+		}
+	}
 } //namespace utils

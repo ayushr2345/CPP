@@ -130,6 +130,7 @@
     <ClCompile Include="Basics.cpp" />
     <ClCompile Include="CPPStrings.cpp" />
     <ClCompile Include="CStyleStrings.cpp" />
+    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="handlers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PointersAndReferences.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Basics.h" />
     <ClInclude Include="CPPStrings.h" />
     <ClInclude Include="CStyleStrings.h" />
+    <ClInclude Include="Functions.h" />
     <ClInclude Include="handlers.h" />
     <ClInclude Include="PointersAndReferences.h" />
   </ItemGroup>

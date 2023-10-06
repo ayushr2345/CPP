@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include "handlers.h"
 
 int main()
@@ -9,7 +8,7 @@ int main()
 	utils::PrintMainMenu();
 
 	int choice { 0 };
-	utils::InputIntegerFromUser(choice, 1, utils::MainMenu::MAX_COUNT);
+	utils::InputNumberFromUser(choice, 1, (int)utils::MainMenu::MAX_COUNT);
 
 	while (choice)
 	{
@@ -30,7 +29,7 @@ int main()
 		{
 			int choiceForPointersAndReferences { 0 };
 			std::cout << "Please enter a number to get started with Pointers and References: ";
-			utils::InputIntegerFromUser(choiceForPointersAndReferences);
+			utils::InputNumberFromUser(choiceForPointersAndReferences);
 			pointersAndReferences::PointersAndReferences pointersAndReferencesObj(choiceForPointersAndReferences);
 			handlers::Handle(pointersAndReferencesObj);
 			break;
@@ -61,6 +60,12 @@ int main()
 			break;
 		}
 		case 5:
+		{
+			functions::Functions functionObj;
+			handlers::Handle(functionObj);
+			break;
+		}
+		case 6:
 		{
 			exit(0);
 		}

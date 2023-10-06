@@ -68,7 +68,7 @@ namespace basics
 
 	void Basics::GetChoiceInputFromUser()
 	{
-		utils::InputIntegerFromUser(m_choice, 1, m_BasicsMenu::MAX_COUNT);
+		utils::InputNumberFromUser(m_choice, 1, (int)m_BasicsMenu::MAX_COUNT);
 	}
 
 	void Basics::PrintMenu()
@@ -166,7 +166,7 @@ namespace basics
 		int age { 0 };
 		std::cout << "DEMO Problem: If the age is greater than or equal to 18, then the user is valid to access otherwise not!!" << std::endl;
 		std::cout << "Please enter age of the user: ";
-		utils::InputIntegerFromUser(age, 1, 100);
+		utils::InputNumberFromUser(age, 1, 100);
 		
 		if (age >= 18)
 		{
@@ -201,7 +201,7 @@ namespace basics
 		int age { 0 };
 		std::cout << "DEMO Problem: If the age is greater than or equal to 13 and less than 19 then the user is a teenager!!" << std::endl;
 		std::cout << "Please enter age of the user: ";
-		utils::InputIntegerFromUser(age, 1, 100);
+		utils::InputNumberFromUser(age, 1, 100);
 
 		if (age >= 13)
 		{
@@ -245,7 +245,7 @@ namespace basics
 		int age { 0 };
 		std::cout << "DEMO Problem: If the age is greater than or equal to 13 and less than 19 then the user is a teenager!!" << std::endl;
 		std::cout << "Please enter age of the user: ";
-		utils::InputIntegerFromUser(age, 1, 100);
+		utils::InputNumberFromUser(age, 1, 100);
 
 		// Just to showcase if-else ladder, the if and the else condition are same and can be combined in the else condition only as shown in 
 		// ShowCaseCompoundConditionalStatements()
@@ -275,7 +275,7 @@ namespace basics
 		int age { 0 };
 		std::cout << "DEMO Problem: If the age is greater than or equal to 13 and less than 19 then the user is a teenager!!" << std::endl;
 		std::cout << "Please enter age of the user: ";
-		utils::InputIntegerFromUser(age, 1, 100);
+		utils::InputNumberFromUser(age, 1, 100);
 
 		if (age >= 13 && age <= 19) 
 		{
@@ -337,7 +337,7 @@ namespace basics
 		std::cout << "DEMO Problem: If the age is greater than or equal to 18, then the user is valid to access otherwise not!! This could be solved "
 			      << "via the if - else block but we use ternary operator here" << std::endl;
 		std::cout << "Please enter age of the user: ";
-		utils::InputIntegerFromUser(age, 1, 100);
+		utils::InputNumberFromUser(age, 1, 100);
 
 		(age > 18) ?
 			std::cout << "Access is granted" << std::endl
@@ -372,7 +372,7 @@ namespace basics
 		int month { 0 };
 		std::cout << "DEMO Problem: Take month input from user as number and print the name of the month" << std::endl;
 		std::cout << "Please month (numeric): ";
-		utils::InputIntegerFromUser(month, 1, 12);
+		utils::InputNumberFromUser(month, 1, 12);
 
 		switch (month)
 		{
@@ -455,7 +455,7 @@ namespace basics
 			      << "....}" << std::endl << std::endl;
 		std::cout << "DEMO Problem: Enter a number from user and print numbers from 0 till that number!!" << std::endl;
 		std::cout << "Please enter the number: ";
-		utils::InputIntegerFromUser(number, 0, 10);
+		utils::InputNumberFromUser(number, 0, 10);
 
 		int i = 0;
 		while (i <= number)
@@ -476,7 +476,7 @@ namespace basics
 			      << "Unlike the while loop, this loop gets executed atleast once" << std::endl;
 		std::cout << "DEMO Problem: Enter a number from user and print numbers from 0 till that number if the number is less than 20, if greater than 20, print only once!!" << std::endl;
 		std::cout << "Please enter the number: ";
-		utils::InputIntegerFromUser(number, 0, 100);
+		utils::InputNumberFromUser(number, 0, 100);
 
 		int i = 0;
 		do
@@ -499,7 +499,7 @@ namespace basics
 			      << " 1. Initiation\n 2. Condition check\n 3. FOR code block execution\n 4. Updation\n 5. Repeat from step 2" << std::endl;
 		std::cout << "DEMO Problem: Enter a number from user and print numbers from 0 till that number!!" << std::endl;
 		std::cout << "Please enter the number: ";
-		utils::InputIntegerFromUser(number, 0, 10);
+		utils::InputNumberFromUser(number, 0, 10);
 
 		int i = 0;
 		for (i; i <= number; i++)

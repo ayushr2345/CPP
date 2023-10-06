@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <iomanip>
 #include "utils.h"
 
@@ -56,18 +55,5 @@ namespace utils
 			return true;
 		}
 		return false;
-	}
-
-	void InputIntegerFromUser(int& choice, int range_start, int range_stop)
-	{
-		std::cin >> choice;
-		while (std::cin.fail() || std::cin.peek() != '\n' || choice < range_start || choice > range_stop)
-		{
-			std::cin.clear();
-			IgnoreStdCinBufferTillEOL();
-			std::cout << "Wrong input type! Please enter an integer value within range: "
-				      << range_start << " to " << range_stop << ": ";
-			std::cin >> choice;
-		}
 	}
 } // namespace utils

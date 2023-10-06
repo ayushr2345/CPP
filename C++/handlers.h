@@ -5,6 +5,7 @@
 #include "PointersAndReferences.h"
 #include "CStyleStrings.h"
 #include "CPPStrings.h"
+#include "Functions.h"
 
 namespace handlers
 {
@@ -12,4 +13,5 @@ namespace handlers
 	void Handle(pointersAndReferences::PointersAndReferences&);
 	void Handle(cStyleStrings::CStyleStrings&);
 	void Handle(cppStrings::CPPStrings&);
+	void Handle(functions::Functions&);
 } // namespace handlers

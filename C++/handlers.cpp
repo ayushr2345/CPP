@@ -3,7 +3,6 @@
 #include <iostream>
 #include "handlers.h"
 
-
 namespace handlers
 {
 	void Handle(basics::Basics& basicObj)
@@ -200,7 +199,7 @@ namespace handlers
 			{
 				std::cout << "Please enter a preference (0 - addition / 1 - subtraction): ";
 				int ch{ 0 };
-				utils::InputIntegerFromUser(ch, 0, 1);
+				utils::InputNumberFromUser(ch, 0, 1);
 				pointersAndReferencesObj.IncrementOrDecrementDataViaRegular(ch);
 				std::cout << "The data in member data variable now is: " << pointersAndReferencesObj.GetData() << std::endl;
 				break;
@@ -209,7 +208,7 @@ namespace handlers
 			{
 				std::cout << "Please enter a preference (0 - addition / 1 - subtraction): ";
 				int ch{ 0 };
-				utils::InputIntegerFromUser(ch, 0, 1);
+				utils::InputNumberFromUser(ch, 0, 1);
 				pointersAndReferencesObj.IncrementOrDecrementDataViaReference(ch);
 				std::cout << "The data in member data variable now is: " << pointersAndReferencesObj.GetData() << std::endl;
 				break;
@@ -218,7 +217,7 @@ namespace handlers
 			{
 				std::cout << "Please enter a preference (0 - addition / 1 - subtraction): ";
 				int ch{ 0 };
-				utils::InputIntegerFromUser(ch, 0, 1);
+				utils::InputNumberFromUser(ch, 0, 1);
 				pointersAndReferencesObj.IncrementOrDecrementDataViaPointer(ch);
 				std::cout << "The data in member data variable now is: " << pointersAndReferencesObj.GetData() << std::endl;
 				break;
@@ -245,7 +244,7 @@ namespace handlers
 				{
 					std::cout << "Please enter the size of the array: ";
 					int size{ 0 };
-					utils::InputIntegerFromUser(size, 1, 10);
+					utils::InputNumberFromUser(size, 1, 10);
 					pointersAndReferencesObj.InitializeArray(size);
 					pointersAndReferencesObj.FillTheArray();
 				}
@@ -336,7 +335,7 @@ namespace handlers
 			{
 				int lengthOfString { 0 };
 				std::cout << "Enter the length of the string you want to input: ";
-				utils::InputIntegerFromUser(lengthOfString, 1, 20);
+				utils::InputNumberFromUser(lengthOfString, 1, 20);
 				cStyleStringsObj.SetStringPointer(lengthOfString);
 				break;
 			}
@@ -407,7 +406,7 @@ namespace handlers
 				}
 				int ind { 0 };
 				std::cout << "Enter the index length till which you want to concatenate: ";
-				utils::InputIntegerFromUser(ind, 0, (int)cStyleStringsObj.GetStringPointerLength());
+				utils::InputNumberFromUser(ind, 0, (int)cStyleStringsObj.GetStringPointerLength());
 				int totalLength = cStyleStringsObj.GetStringLength() + cStyleStringsObj.GetStringPointerLength() + 1;
 				char* concat = new char[totalLength];
 				cStyleStringsObj.NConcatenateStringAndStringPointer(concat, totalLength, ind);
@@ -562,7 +561,7 @@ namespace handlers
 				int ind{ 0 };
 				std::string str;
 				std::cout << "Enter the index length till which you want to concatenate: ";
-				utils::InputIntegerFromUser(ind, 0, (int)cppStringsObj.GetStringPointerLength());
+				utils::InputNumberFromUser(ind, 0, (int)cppStringsObj.GetStringPointerLength());
 				cppStringsObj.NConcatenateStringAndStringPointer(str, ind);
 				std::cout << "The concatenated string is: " << str << " and the original strings were: " << cppStringsObj.GetString() << ", " << cppStringsObj.GetStringPointer() << std::endl;
 				break;
@@ -607,6 +606,365 @@ namespace handlers
 			{
 				cppStringsObj.PrintMenu();
 				cppStringsObj.GetChoiceInputFromUser();
+			}
+		}
+	}
+
+	void Handle(functions::Functions& functionsObj)
+	{
+		functionsObj.PrintMenu();
+		functionsObj.GetChoiceInputFromUser();
+		const int& selectedChoice = functionsObj.GetChoice();
+
+		while (functionsObj.GetChoice())
+		{
+			char previousMenuFlag = 'n';
+			if (selectedChoice > functionsObj.GetMinCase() &&
+				selectedChoice < functionsObj.GetMaxCase() + 1)
+			{
+				functionsObj.PrintSelectedChoice();
+			}
+
+			switch (selectedChoice)
+			{
+			case 1:
+			{
+				functionsObj.ShowcaseFunctions();
+				break;
+			}
+			case 2:
+			{
+				functionsObj.ShowcaseOverloadedFunctions();
+				break;
+			}
+			case 3:
+			{
+				int a { 0 }, b { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+				
+				std::cout << "The sum is: " << functionsObj.Add2IntsOverloading(a, b) << std::endl;
+				break;
+			}
+			case 4:
+			{
+				float a { 0 }, b { 0 };
+				std::cout << "Please enter first float: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second float: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "The sum is: " << functionsObj.Add2FloatsOverloading(a, b) << std::endl;
+				break;
+			}
+			case 5:
+			{
+				int a { 0 }, b { 0 }, c { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+				
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+				
+				std::cout << "Please enter third integer: ";
+				utils::InputNumberFromUser(c);
+				utils::IgnoreStdCinBufferTillEOL();
+				
+				std::cout << "The sum is: " << functionsObj.Add3IntsOverloading(a, b, c) << std::endl;
+				break;
+			}
+			case 6:
+			{
+				functionsObj.ShowcaseFunctionTemplates();
+				break;
+			}
+			case 7:
+			{
+				int a { 0 }, b { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "The sum is: " << functionsObj.AddTemplate(a, b) << std::endl;
+				break;
+			}
+			case 8:
+			{
+				float a { 0 }, b { 0 };
+				std::cout << "Please enter first float: ";
+				utils::InputNumberFromUser(a);
+
+				std::cout << "Please enter second float: ";
+				utils::InputNumberFromUser(b);
+
+				std::cout << "The sum is: " << functionsObj.AddTemplate(a, b) << std::endl;
+				break;
+			}
+			case 9:
+			{
+				utils::IgnoreStdCinBufferTillEOL();
+				std::string str1, str2;
+				std::cout << "Please enter first string: ";
+				std::getline(std::cin, str1);
+				
+				std::cout << "Please enter second string: ";
+				std::getline(std::cin, str2);
+
+				std::cout << "The sum is: " << functionsObj.AddTemplate(str1, str2) << std::endl;
+				break;
+			}
+			case 10:
+			{
+				functionsObj.ShowcaseDefaultArguments();
+				break;
+			}
+			case 11:
+			{
+				int a { 0 }, b { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "The sum is: " << functionsObj.Add2Or3Or4IntsDefaultArgument(a, b) << std::endl;
+				break;
+			}
+			case 12:
+			{
+				int a { 0 }, b { 0 }, c { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter third integer: ";
+				utils::InputNumberFromUser(c);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "The sum is: " << functionsObj.Add2Or3Or4IntsDefaultArgument(a, b, c) << std::endl;
+				break;
+			}
+			case 13:
+			{
+				int a { 0 }, b { 0 }, c { 0 }, d { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter third integer: ";
+				utils::InputNumberFromUser(c);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter fourth integer: ";
+				utils::InputNumberFromUser(d);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "The sum is: " << functionsObj.Add2Or3Or4IntsDefaultArgument(a, b, c, d) << std::endl;
+				break;
+			}
+			case 14:
+			{
+				functionsObj.ShowcasePassingArgsToFunction();
+				break;
+			}
+			case 15:
+			{
+				int a { 0 }, b { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "BEFORE FUNCTION CALL: The value of a is: " << a << " and b is: " << b << std::endl;
+				std::cout << "CALLING FUNCTION: " << std::endl;
+				functionsObj.SwapByValue(a, b);
+				std::cout << "AFTER FUNCTION CALL: The value of a is: " << a << " and b is: " << b << std::endl;
+				std::cout << "The values of a and b  are not swapped as call by value cannot change the values of the actual parameters passed to the function" << std::endl;
+				break;
+			}
+			case 16:
+			{
+				int a { 0 }, b { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "BEFORE FUNCTION CALL: The value of a is: " << a << " and b is: " << b << std::endl;
+				std::cout << "CALLING FUNCTION: " << std::endl;
+				functionsObj.SwapByAddress(&a, &b);
+				std::cout << "AFTER FUNCTION CALL: The value of a is: " << a << " and b is: " << b << std::endl;
+				std::cout << "The values of a and b  are swapped as call by address can change the values of the actual parameters passed to the function" << std::endl;
+				break;
+			}
+			case 17:
+			{
+				int a { 0 }, b { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "BEFORE FUNCTION CALL: The value of a is: " << a << " and b is: " << b << std::endl;
+				std::cout << "CALLING FUNCTION: " << std::endl;
+				functionsObj.SwapByReference(a, b);
+				std::cout << "AFTER FUNCTION CALL: The value of a is: " << a << " and b is: " << b << std::endl;
+				std::cout << "The values of a and b  are swapped as call by reference can change the values of the actual parameters passed to the function" << std::endl;
+				break;
+			}
+			case 18:
+			{
+				std::cout << "Return by pointer functions can be used to create an array on heap" << std::endl;
+				
+				int size { 0 };
+				std::cout << "Please enter size of the array: ";
+				utils::InputNumberFromUser(size);
+				utils::IgnoreStdCinBufferTillEOL();
+				
+				std::cout << "CALLING FUNCTION" << std::endl;
+				int* arr = functionsObj.ReturnByAddressCreateArray(size);
+
+				std::cout << "FILLING THE ARRAY" << std::endl;
+				int element { 0 };
+				for (int i = 0; i < size; i++)
+				{
+					std::cout << "Enter array element: ";
+					utils::InputNumberFromUser(element);
+					arr[i] = element;
+				}
+
+				std::cout << "DISPLAY THE ARRAY" << std::endl;
+				for (int i = 0; i < size; i++)
+				{
+					std::cout << arr[i] << " ";
+				}
+				std::cout << std::endl;
+
+				std::cout << "DELETING THE ARRAY MEMORY FROM HEAP" << std::endl;
+				delete[] arr;
+				arr = nullptr;
+				break;
+			}
+			case 19:
+			{
+				std::cout << "A function returns a value or a pointer, then it is rvalue but if it is returning a reference to a variable that exists in the caller stack frame then, "
+						  << "it can act as lvalue" << std::endl;
+
+				int a { 0 };
+				std::cout << "Please enter an integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "The value of a is: " << a << std::endl;
+				std::cout << "Changing the value of a to 25 through return by reference function call acting as lvalue" << std::endl;
+				functionsObj.ReturnByReference(a) = 25;
+				std::cout << "The new value of a is: " << a << std::endl;
+				break;
+			}
+			case 20:
+			{
+				functionsObj.ShowcaseGlobalVsStaticVariables();
+				break;
+			}
+			case 21:
+			{
+				functionsObj.ShowcaseRecursiveFunctions();
+				break;
+			}
+			case 22:
+			{
+				functionsObj.ShowcaseFunctionPointers();
+				break;
+			}
+			case 23:
+			{
+				int a { 0 }, b { 0 };
+				std::cout << "Please enter first integer: ";
+				utils::InputNumberFromUser(a);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "Please enter second integer: ";
+				utils::InputNumberFromUser(b);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				int (functions::Functions::* fp)(int, int);
+				fp = &functions::Functions::Max2Int;
+				std::cout << "The max of the two values is: " << (functionsObj.*fp)(a, b) << std::endl;
+				std::cout << "Currectly the function pointer points to the MAX method in the Functions class, changing it to point to the MIN method" << std::endl;
+
+				fp = &functions::Functions::Min2Int;
+				std::cout << "The min of the two values is: " << (functionsObj.*fp)(a, b) << std::endl;
+				std::cout << "Currectly the function pointer points to the MIN method in the Functions class" << std::endl;
+				break;
+			}
+			case 24:
+			{
+				int a { 0 };
+				std::cout << "Please enter an integer to calculate recursice factorial for: ";
+				utils::InputNumberFromUser(a, 0);
+				utils::IgnoreStdCinBufferTillEOL();
+
+				std::cout << "The factorial of " << a << " is: " << functionsObj.Factorial(a) << std::endl;
+				break;
+			}
+			case 25:
+			{
+				previousMenuFlag = 'y';
+				break;
+			}
+			case 26:
+			{
+				exit(0);
+			}
+			default:
+			{
+				std::cout << "The selected option is out of bounds!!! "
+					<< "Please select appropriate option: " << std::endl;
+				break;
+			}
+			}
+
+			if (previousMenuFlag == 'y')
+			{
+				break;
+			}
+			else
+			{
+				functionsObj.PrintMenu();
+				functionsObj.GetChoiceInputFromUser();
 			}
 		}
 	}

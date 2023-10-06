@@ -69,7 +69,7 @@ namespace cStyleStrings
 
     void CStyleStrings::GetChoiceInputFromUser()
     {
-        utils::InputIntegerFromUser(m_choice, 1, m_CStyleStringsMenu::MAX_COUNT);
+        utils::InputNumberFromUser(m_choice, 1, (int)m_CStyleStringsMenu::MAX_COUNT);
     }
 
     void CStyleStrings::PrintMenu()
@@ -203,7 +203,7 @@ namespace cStyleStrings
     void CStyleStrings::ShowcaseStringToToken()
     {
         std::cout << "If a token is stored in a string, we can convert it into an long and perform operations on it using" << std::endl
-            << "....strtok(string, \"<Separators / Delimiters>\")" << std::endl;
+                  << "....strtok(string, \"<Separators / Delimiters>\")" << std::endl;
         char str[20] = "x=5;y=10;z=35";
         std::cout << "The string contains: " << str << std::endl;
         std::cout << "We will pass the string to function strtok(str, \"=;\") and we should get the output without the =  and ;. We will run it through a while loop." << std::endl;

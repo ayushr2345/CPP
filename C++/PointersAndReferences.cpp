@@ -92,7 +92,7 @@ namespace pointersAndReferences
 
     void PointersAndReferences::GetChoiceInputFromUser()
     {
-        utils::InputIntegerFromUser(m_choice, 1, m_PointersAndReferencesMenu::MAX_COUNT);
+        utils::InputNumberFromUser(m_choice, 1, (int)m_PointersAndReferencesMenu::MAX_COUNT);
     }
 
     void PointersAndReferences::PrintMenu()
@@ -225,7 +225,7 @@ namespace pointersAndReferences
         for (int i = 0; i < m_arraySize; i++)
         {
             std::cout << "Enter array element: ";
-            utils::InputIntegerFromUser(element);
+            utils::InputNumberFromUser(element);
             m_array[i] = element;
         }
     }
