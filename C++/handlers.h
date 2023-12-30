@@ -6,6 +6,8 @@
 #include "CStyleStrings.h"
 #include "CPPStrings.h"
 #include "Functions.h"
+#include "../C++/Object Oriented Programming/ClassesAndObjects.h"
+#include "IOStreams.h"
 
 namespace handlers
 {
@@ -14,4 +16,6 @@ namespace handlers
 	void Handle(cStyleStrings::CStyleStrings&);
 	void Handle(cppStrings::CPPStrings&);
 	void Handle(functions::Functions&);
+	void Handle(classesAndObjects::ClassesAndObjects&);
+	void Handle(iostreams::IOStreams&);
 } // namespace handlers

@@ -67,6 +67,18 @@ int main()
 		}
 		case 6:
 		{
+			classesAndObjects::ClassesAndObjects classesAndObjectsObj;
+			handlers::Handle(classesAndObjectsObj);
+			break;
+		}
+		case 7:
+		{
+			iostreams::IOStreams iostreamsObj;
+			handlers::Handle(iostreamsObj);
+			break;
+		}
+		case 8:
+		{
 			exit(0);
 		}
 		default:

@@ -934,7 +934,7 @@ namespace handlers
 			{
 				int a { 0 };
 				std::cout << "Please enter an integer to calculate recursice factorial for: ";
-				utils::InputNumberFromUser(a, 0);
+				utils::InputNumberFromUser(a, 0, 35);
 				utils::IgnoreStdCinBufferTillEOL();
 
 				std::cout << "The factorial of " << a << " is: " << functionsObj.Factorial(a) << std::endl;
@@ -965,6 +965,348 @@ namespace handlers
 			{
 				functionsObj.PrintMenu();
 				functionsObj.GetChoiceInputFromUser();
+			}
+		}
+	}
+
+	void Handle(classesAndObjects::ClassesAndObjects& classesAndObjectsObj)
+	{
+		classesAndObjectsObj.PrintMenu();
+		classesAndObjectsObj.GetChoiceInputFromUser();
+		const int& selectedChoice = classesAndObjectsObj.GetChoice();
+
+		while (classesAndObjectsObj.GetChoice())
+		{
+			char previousMenuFlag = 'n';
+			if (selectedChoice > classesAndObjectsObj.GetMinCase() &&
+				selectedChoice < classesAndObjectsObj.GetMaxCase() + 1)
+			{
+				classesAndObjectsObj.PrintSelectedChoice();
+			}
+
+			switch (selectedChoice)
+			{
+			case 1:
+			{
+				classesAndObjectsObj.ShowCasePrinciplesOfOops();
+				break;
+			}
+			case 2:
+			{
+				classesAndObjectsObj.ShowCaseClassesVsObjects();
+				break;
+			}
+			case 3:
+			{
+				classesAndObjectsObj.ShowCaseAccessorsAndMutators();
+				break;
+			}
+			case 4:
+			{
+				classesAndObjectsObj.ShowCaseConstructors();
+				break;
+			}
+			case 5:
+			{
+				classesAndObjectsObj.ShowCaseDefaultConstructors();
+				break;
+			}
+			case 6:
+			{
+				classesAndObjectsObj.ShowCaseNonParameterizedConstructors();
+				break;
+			}
+			case 7:
+			{
+				classesAndObjectsObj.ShowCaseParameterizedConstructors(10,20);
+				break;
+			}
+			case 8:
+			{
+				classesAndObjectsObj.ShowCaseCopyConstructors(10, 20);
+				break;
+			}
+			case 9:
+			{
+				classesAndObjectsObj.ShowCaseDeepCopyConstructors();
+				break;
+			}
+			case 10:
+			{
+				classesAndObjectsObj.ShowCaseTypesOfFunctionsInAClass();
+				break;
+			}
+			case 11:
+			{
+				classesAndObjectsObj.ShowCaseThisPointer();
+				break;
+			}
+			case 12:
+			{
+				classesAndObjectsObj.ShowCaseStructVsClass();
+				break;
+			}
+			case 13:
+			{
+				classesAndObjectsObj.ShowCaseOperatorOverloading();
+				break;
+			}
+			case 14:
+			{
+				classesAndObjectsObj.ShowCaseOperatorOverloadingWithFriendFunction();
+				break;
+			}
+			case 15:
+			{
+				classesAndObjectsObj.ShowCaseOverloadingInsertionAndExtractionOperator();
+				break;
+			}
+			case 16:
+			{
+				classesAndObjectsObj.ShowCaseInheritance();
+				break;
+			}
+			case 17:
+			{
+				classesAndObjectsObj.ShowCaseConstructorsInInheritance();
+				break;
+			}
+			case 18:
+			{
+				classesAndObjectsObj.ShowCaseAccessSpecifiers();
+				break;
+			}
+			case 19:
+			{
+				classesAndObjectsObj.ShowCaseTypesOfInteritance();
+				break;
+			}
+			case 20:
+			{
+				classesAndObjectsObj.ShowCaseWaysOfInheritance();
+				break;
+			}
+			case 21:
+			{
+				classesAndObjectsObj.ShowCaseGeneralizationVsSpecialization();
+				break;
+			}
+			case 22:
+			{
+				classesAndObjectsObj.ShowCaseBaseClassPointerDerivedClassObject();
+				break;
+			}
+			case 23:
+			{
+				classesAndObjectsObj.ShowCasePolymorphism();
+				break;
+			}
+			case 24:
+			{
+				classesAndObjectsObj.ShowCaseVirtualFunctions();
+				break;
+			}
+			case 25:
+			{
+				classesAndObjectsObj.ShowCaseRuntimePolymorphism();
+				break;
+			}
+			case 26:
+			{
+				classesAndObjectsObj.ShowCasePureVirtualFunctions();
+				break;
+			}
+			case 27:
+			{
+				classesAndObjectsObj.ShowCaseAbstractClasses();
+				break;
+			}
+			case 28:
+			{
+				classesAndObjectsObj.ShowCaseFriendFunctionAndClasses();
+				break;
+			}
+			case 29:
+			{
+				classesAndObjectsObj.ShowCaseStaticMembers();
+				break;
+			}
+			case 30:
+			{
+				classesAndObjectsObj.ShowCaseNestedClass();
+				break;
+			}
+			case 31:
+			{
+				classesAndObjectsObj.ShowCaseExceptionHandling();
+				break;
+			}
+			case 32:
+			{
+				classesAndObjectsObj.ShowCaseExceptionHandlingMultiCatchAndEpsilon();
+				break;
+			}
+			case 33:
+			{
+				classesAndObjectsObj.ShowCaseExceptionHandlingInheritance();
+				break;
+			}
+			case 34:
+			{
+				classesAndObjectsObj.ShowCaseTemplateFunctionsAndClasses();
+				break;
+			}
+			case 35:
+			{
+				classesAndObjectsObj.ShowCaseConstants();
+				break;
+			}
+			case 36:
+			{
+				classesAndObjectsObj.ShowCasePointerToAConstant();
+				break;
+			}
+			case 37:
+			{
+				classesAndObjectsObj.ShowCaseConstantPointer();
+				break;
+			}
+			case 38:
+			{
+				classesAndObjectsObj.ShowCaseConstantPointerToAConstant();
+				break;
+			}
+			case 39:
+			{
+				classesAndObjectsObj.ShowCaseConstantIdentifierForFunctions();
+				break;
+			}
+			case 40:
+			{
+				classesAndObjectsObj.ShowCaseConstantIdentifierForMemberFunction();
+				break;
+			}
+			case 41:
+			{
+				classesAndObjectsObj.ShowCaseMacros();
+				break;
+			}
+			case 42:
+			{
+				classesAndObjectsObj.ShowCaseNamespaces();
+				break;
+			}
+			case 43:
+			{
+				classesAndObjectsObj.ShowCaseDestructors();
+				break;
+			}
+			case 44:
+			{
+				classesAndObjectsObj.ShowCaseDestructorsHeapObject();
+				break;
+			}
+			case 45:
+			{
+				classesAndObjectsObj.ShowCaseBaseClassPointerDerivedClassObjectDestructorProblem();
+				break;
+			}
+			case 46:
+			{
+				previousMenuFlag = 'y';
+				break;
+			}
+			case 47:
+			{
+				exit(0);
+			}
+			default:
+			{
+				std::cout << "The selected option is out of bounds!!! "
+						  << "Please select appropriate option: " << std::endl;
+				break;
+			}
+			}
+
+			if (previousMenuFlag == 'y')
+			{
+				break;
+			}
+			else
+			{
+				classesAndObjectsObj.PrintMenu();
+				classesAndObjectsObj.GetChoiceInputFromUser();
+			}
+		}
+	}
+
+	void Handle(iostreams::IOStreams& iostreamsObj)
+	{
+		iostreamsObj.PrintMenu();
+		iostreamsObj.GetChoiceInputFromUser();
+		const int& selectedChoice = iostreamsObj.GetChoice();
+
+		while (iostreamsObj.GetChoice())
+		{
+			char previousMenuFlag = 'n';
+			if (selectedChoice > iostreamsObj.GetMinCase() &&
+				selectedChoice < iostreamsObj.GetMaxCase() + 1)
+			{
+				iostreamsObj.PrintSelectedChoice();
+			}
+
+			switch (selectedChoice)
+			{
+			case 1:
+			{
+				iostreamsObj.ShowCaseStreams();
+				break;
+			}
+			case 2:
+			{
+				iostreamsObj.ShowCaseWritingToAFile();
+				break;
+			}
+			case 3:
+			{
+				iostreamsObj.ShowCaseReadingFromAFile();
+				break;
+			}
+			case 4:
+			{
+				iostreamsObj.ShowCaseSerialization();
+				break;
+			}
+			case 5:
+			{
+				iostreamsObj.ShowCaseBinaryFilesOperations();
+				break;
+			}
+			case 6:
+			{
+				previousMenuFlag = 'y';
+				break;
+			}
+			case 7:
+			{
+				exit(0);
+			}
+			default:
+			{
+				std::cout << "The selected option is out of bounds!!! "
+						  << "Please select appropriate option: " << std::endl;
+				break;
+			}
+			}
+
+			if (previousMenuFlag == 'y')
+			{
+				break;
+			}
+			else
+			{
+				iostreamsObj.PrintMenu();
+				iostreamsObj.GetChoiceInputFromUser();
 			}
 		}
 	}
