@@ -60,20 +60,20 @@ namespace functions
         // templates should not have definition in a separate source file 
         // as it would give compilation and linking errors
         template <typename T>
-        T          AddTemplate(T a, T b) { return a + b; }
-        void       ShowcaseDefaultArguments();
-        int        Add2Or3Or4IntsDefaultArgument(int, int b = 0, int c = 0, int d = 0);
-        void       ShowcasePassingArgsToFunction();
-        void       SwapByValue(int, int);
-        void       SwapByAddress(int*, int*);
-        void       SwapByReference(int&, int&);
-        int*       ReturnByAddressCreateArray(int);
-        int&       ReturnByReference(int&);
-        void       ShowcaseGlobalVsStaticVariables();
-        void       ShowcaseRecursiveFunctions();
-        void       ShowcaseFunctionPointers();
-        int        Max2Int(int, int);
-        int        Min2Int(int, int);
-        int        Factorial(int);
+        T             AddTemplate(T a, T b) { return a + b; }
+        void          ShowcaseDefaultArguments();
+        int           Add2Or3Or4IntsDefaultArgument(int, int b = 0, int c = 0, int d = 0);
+        void          ShowcasePassingArgsToFunction();
+        void          SwapByValue(int, int);
+        void          SwapByAddress(int*, int*);
+        void          SwapByReference(int&, int&);
+        int*          ReturnByAddressCreateArray(int);
+        int&          ReturnByReference(int&);
+        void          ShowcaseGlobalVsStaticVariables();
+        void          ShowcaseRecursiveFunctions();
+        void          ShowcaseFunctionPointers();
+        int           Max2Int(int, int);
+        int           Min2Int(int, int);
+        long long int Factorial(int);
     };
 } // namespace functions

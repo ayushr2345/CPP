@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -133,6 +133,11 @@
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="handlers.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object Oriented Programming\Car.cpp" />
+    <ClCompile Include="Object Oriented Programming\ClassesAndObjects.cpp" />
+    <ClCompile Include="Object Oriented Programming\Complex.cpp" />
+    <ClCompile Include="Object Oriented Programming\Cuboid.cpp" />
+    <ClCompile Include="Object Oriented Programming\Rectangle.cpp" />
     <ClCompile Include="PointersAndReferences.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="utils.h" />
@@ -143,6 +148,11 @@
     <ClInclude Include="CStyleStrings.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="handlers.h" />
+    <ClInclude Include="Object Oriented Programming\Car.h" />
+    <ClInclude Include="Object Oriented Programming\ClassesAndObjects.h" />
+    <ClInclude Include="Object Oriented Programming\Complex.h" />
+    <ClInclude Include="Object Oriented Programming\Cuboid.h" />
+    <ClInclude Include="Object Oriented Programming\Rectangle.h" />
     <ClInclude Include="PointersAndReferences.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

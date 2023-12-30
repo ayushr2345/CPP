@@ -264,9 +264,9 @@ namespace functions
 
     int Functions::Min2Int(int x, int y) { return x < y ? x : y; }
 
-    int Functions::Factorial(int n)
+    long long int Functions::Factorial(int n)
     {
-        if (n == 0 or n == 1) return 1;
-        else return n * Factorial(n - 1);
+        if (n > 1) return (n * Factorial(n - 1));
+        else return 1;
     }
 } // namespace functions

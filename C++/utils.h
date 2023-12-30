@@ -14,7 +14,8 @@ namespace utils
 		C_STYLE_STRINGS			= 3,
 		CPP_STRINGS			    = 4,
 		FUNCTIONS				= 5,
-		EXIT                    = 6,
+		CLASSES_AND_OBJECTS     = 6,
+		EXIT                    = 7,
 		MAX_COUNT               = EXIT
 	};
 
@@ -45,6 +46,10 @@ namespace utils
 		{
 			MainMenu(FUNCTIONS),
 			std::string("Functions")
+		},
+		{
+			MainMenu(CLASSES_AND_OBJECTS),
+			std::string("Classes and Objects")
 		},
 		{
 			MainMenu(EXIT),

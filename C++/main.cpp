@@ -67,6 +67,12 @@ int main()
 		}
 		case 6:
 		{
+			classesAndObjects::ClassesAndObjects classesAndObjectsObj;
+			handlers::Handle(classesAndObjectsObj);
+			break;
+		}
+		case 7:
+		{
 			exit(0);
 		}
 		default:
