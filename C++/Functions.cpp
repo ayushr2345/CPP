@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include "Functions.h"
 #include "utils.h"
@@ -64,12 +62,12 @@ namespace functions
                                     std::string("Exit from program") });
     }
 
-    const int& Functions::GetMinCase()
+    const int Functions::GetMinCase()
     {
         return m_functionsMenu::MIN_COUNT;
     }
 
-    const int& Functions::GetMaxCase()
+    const int Functions::GetMaxCase()
     {
         return m_functionsMenu::MAX_COUNT;
     }
@@ -229,7 +227,7 @@ namespace functions
     void Functions::ShowcaseGlobalVsStaticVariables()
     {
         std::cout << "Global variables can be declared in C++ outside of any functions and their memory exists throughout the program and are accessible everywhere insidie the program" << std::endl
-                  << "Static variables can be declated in C++ outside or inside a function: " << std::endl
+                  << "Static variables can be declared in C++ outside or inside a function: " << std::endl
                   << "1. If declared inside a function, their memory exists through out the program but are only accessible within that function. If control comes inside this function a second time, memory for static"
                   << " variable won't be reserved second time as it already exists" << std::endl
                   << "2. If declared outside the functions, it basically acts as global variable" << std::endl;

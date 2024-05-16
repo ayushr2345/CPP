@@ -25,8 +25,8 @@ namespace iostreams
 
     public:
         IOStreams();
-        const int& GetMinCase();
-        const int& GetMaxCase();
+        const int  GetMinCase();
+        const int  GetMaxCase();
         const int& GetChoice();
         void       GetChoiceInputFromUser();
         void       PrintMenu();

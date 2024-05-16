@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include <map>
 #include <string>
@@ -46,7 +44,7 @@ namespace complex
     // friend function does not belong to class
     Complex operator-(Complex& comp1, Complex& comp2)
     {
-        std::cout << "Friend overloaded '+' called" << std::endl;
+        std::cout << "Friend overloaded '-' called" << std::endl;
 
         // can access pvt members here as this is a friend function
         Complex temp(0, 0);

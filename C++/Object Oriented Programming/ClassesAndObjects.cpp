@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include "ClassesAndObjects.h"
 #include "Rectangle.h"
@@ -110,12 +108,12 @@ namespace classesAndObjects
                                             std::string("Exit from program") });
     }
 
-    const int& ClassesAndObjects::GetMinCase()
+    const int ClassesAndObjects::GetMinCase()
     {
         return m_classesAndObjectsMenu::MIN_COUNT;
     }
 
-    const int& ClassesAndObjects::GetMaxCase()
+    const int ClassesAndObjects::GetMaxCase()
     {
         return m_classesAndObjectsMenu::MAX_COUNT;
     }
@@ -208,7 +206,7 @@ namespace classesAndObjects
     void ClassesAndObjects::ShowCaseConstructors()
     {
         std::cout << "Constructors for classes are called when the class object is created. "
-                     "Philosophically, if you buy a car, it has a proterties like shape, color, length and etc. So an object should have propterties at the time of its creation too" << std::endl
+                     "Philosophically, if you buy a car, it has a properties like shape, color, length and etc. So an object should have properties at the time of its creation too" << std::endl
                   << "To define a constructor:" << std::endl
                   << "class ExampleClass" << std::endl
                   << "{" << std::endl
@@ -522,7 +520,7 @@ namespace classesAndObjects
                   << "5. Hybrid Inheritance: Mix and match. eg: Phone, Camera <- Smartphone" << std::endl;
 
         std::cout << "A special type of hybrid inheritance causes the diamond problem. eg: A <- B, C <- D" << std::endl
-                  << "Now, D will have propertied of A from B and from C both so there'll be ambiguity. so B and C should inherited from A using virtual." << std::endl;
+                  << "Now, D will have properties of A from B and from C both so there'll be ambiguity. so B and C should inherited from A using virtual." << std::endl;
     }
 
     void ClassesAndObjects::ShowCaseWaysOfInheritance()
@@ -583,7 +581,6 @@ namespace classesAndObjects
         std::cout << "Calling the Display() for both the Rectangle and Cuboid Objects" << std::endl;
         rectobj.Display();
         cuboidObj.Display();
-
     }
 
     void ClassesAndObjects::ShowCaseVirtualFunctions()
@@ -782,7 +779,7 @@ namespace classesAndObjects
                   << "1. int thrown and catch(int) present before catch(...) - handle by catch(int)" << std::endl
                   << "2. int thrown and catch(int) not present but catch(...) present - handle by catch(...)" << std::endl
                   << "3. int thrown and catch(int) present but catch(...) not present- handle by catch(int)" << std::endl
-                  << "4. int thrown and catch(...) present before catch(...) - handle by catch(...)" << std::endl
+                  << "4. int thrown and catch(...) present before catch(int) - handle by catch(...)" << std::endl
                   << "catch(...) should be the last block" << std::endl;
         
         std::cout << "To throw a class as an exception, we can write our own Exception class or derive from in-built exception class and override the what method of the exception class" << std::endl;
@@ -969,9 +966,9 @@ namespace classesAndObjects
         Derived *derivedObj = new Derived;
         delete derivedObj;
 
-        std::cout << "But if there is a situation where the base class pointer points to the base class object, when the derived class object is deleted: " << std::endl
+        std::cout << "But if there is a situation where the base class pointer points to the derived class object, when the derived class object is deleted: " << std::endl
                   << "base constructor -> derived constructor -> base destructor" << std::endl
-                  << "the base class pointer cannot call derived class destructor hence deerived object is not deleted" << std::endl
+                  << "the base class pointer cannot call derived class destructor hence derived object is not deleted" << std::endl
                   << "to solve this issue, we have to make the base class destructor as virtual" << std::endl;
 
         Base* bptr = new Derived;

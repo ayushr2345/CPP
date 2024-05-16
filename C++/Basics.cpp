@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include <iomanip>
 #include <limits>	
@@ -51,12 +49,12 @@ namespace basics
 							     std::string("Exit from program") });
 	}
 
-	const int& Basics::GetMinCase()
+	const int Basics::GetMinCase()
 	{
 		return m_BasicsMenu::MIN_COUNT;
 	}
 
-	const int& Basics::GetMaxCase()
+	const int Basics::GetMaxCase()
 	{
 		return m_BasicsMenu::MAX_COUNT;
 	}

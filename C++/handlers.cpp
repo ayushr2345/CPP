@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include "handlers.h"
 
@@ -360,7 +358,7 @@ namespace handlers
 				}
 				else
 				{
-					std::cout << "The length of the string pointer is: " << cStyleStringsObj.GetStringPointerLength() << std::endl;
+					std::cout << "String is present in String pointer and the length of the string pointer is: " << cStyleStringsObj.GetStringPointerLength() << std::endl;
 				}
 				break;
 			}
@@ -390,7 +388,7 @@ namespace handlers
 					std::cout << "String not set in string pointer member variable. Set that first!" << std::endl;
 					break;
 				}
-				int totalLength = cStyleStringsObj.GetStringLength() + cStyleStringsObj.GetStringPointerLength() + 1;
+				size_t totalLength = cStyleStringsObj.GetStringLength() + cStyleStringsObj.GetStringPointerLength() + 1;
 				char* concat = new char[totalLength];
 				cStyleStringsObj.ConcatenateStringAndStringPointer(concat, totalLength);
 				std::cout << "The concatenated string is: " << concat << " and the original strings were: " << cStyleStringsObj.GetString() << ", " << cStyleStringsObj.GetStringPointer() << std::endl;
@@ -407,7 +405,7 @@ namespace handlers
 				int ind { 0 };
 				std::cout << "Enter the index length till which you want to concatenate: ";
 				utils::InputNumberFromUser(ind, 0, (int)cStyleStringsObj.GetStringPointerLength());
-				int totalLength = cStyleStringsObj.GetStringLength() + cStyleStringsObj.GetStringPointerLength() + 1;
+				size_t totalLength = cStyleStringsObj.GetStringLength() + cStyleStringsObj.GetStringPointerLength() + 1;
 				char* concat = new char[totalLength];
 				cStyleStringsObj.NConcatenateStringAndStringPointer(concat, totalLength, ind);
 				std::cout << "The concatenated string is: " << concat << " and the original strings were: " << cStyleStringsObj.GetString() << ", " << cStyleStringsObj.GetStringPointer() << std::endl;
@@ -521,7 +519,7 @@ namespace handlers
 				}
 				else
 				{
-					std::cout << "The length of the string pointer is: " << cppStringsObj.GetStringPointerLength() << std::endl;
+					std::cout << "String is present in String pointer and the length of the string pointer is: " << cppStringsObj.GetStringPointerLength() << std::endl;
 				}
 				break;
 			}

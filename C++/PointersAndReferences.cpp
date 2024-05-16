@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include "PointersAndReferences.h"
 #include "Basics.h"
@@ -75,12 +73,12 @@ namespace pointersAndReferences
         delete[] m_array;
     }
 
-    const int& PointersAndReferences::GetMinCase()
+    const int PointersAndReferences::GetMinCase()
     {
         return m_PointersAndReferencesMenu::MIN_COUNT;
     }
 
-    const int& PointersAndReferences::GetMaxCase()
+    const int PointersAndReferences::GetMaxCase()
     {
         return m_PointersAndReferencesMenu::MAX_COUNT;
     }
@@ -168,12 +166,13 @@ namespace pointersAndReferences
 
     void PointersAndReferences::IncrementOrDecrementDataViaRegular(const int& ch)
     {
-        ch ? m_data++ : m_data--; 
+        // if ch == 0, 
+        not ch ? m_data++ : m_data--; 
     }
 
     void PointersAndReferences::IncrementOrDecrementDataViaReference(const int& ch)
     {
-        ch ? m_dataRef++ : m_dataRef--; 
+        not ch ? m_dataRef++ : m_dataRef--; 
     }
     
     void PointersAndReferences::IncrementOrDecrementDataViaPointer(const int& ch)
@@ -183,7 +182,7 @@ namespace pointersAndReferences
             std::cout << "The pointer points to nullptr currently! Initializing the pointer to point to the data member variable" << std::endl;
             SetDataInPtr();
         }
-        ch ? (*m_ptr)++ : (*m_ptr)--; 
+        not ch ? (*m_ptr)++ : (*m_ptr)--; 
     }
 
     void PointersAndReferences::CompareDataOfThree()
@@ -279,9 +278,9 @@ namespace pointersAndReferences
         std::cout << "######################################################################################################################################################" << std::endl;
         std::cout << "There are 3 problems with using pointers in C++:" << std::endl
                   << "\t1. Uninitialized Pointer: If pointer is declared but not initialized and someone dereferences it, it will throw runtime errors which will crash the program." << std::endl
-                  << "\t1. Memory Leak: If we don't delete the memory reserved in heap after making use of it, at one point of time, the memory will be full and the program may crash. That is why Pointers should be handled with caution." << std::endl
-                  << "\t1. Dangling Pointer: If two pointers point to a single memory location, one pointer deletes the memory, the other one does not know about it and when it will try to access that location, runtime errors will be thrown." << std::endl
-                  << "It is important to delete the memory we reserves using the 'new' keyword and immediately point the pointer-variable to 0, NULL or nullptr in which, nullptr is prefered in C++." << std::endl;
+                  << "\t2. Memory Leak: If we don't delete the memory reserved in heap after making use of it, at one point of time, the memory will be full and the program may crash. That is why Pointers should be handled with caution." << std::endl
+                  << "\t3. Dangling Pointer: If two pointers point to a single memory location, one pointer deletes the memory, the other one does not know about it and when it will try to access that location, runtime errors will be thrown." << std::endl
+                  << "It is important to delete the memory we reserved using the 'new' keyword and immediately point the pointer-variable to 0, NULL or nullptr in which, nullptr is prefered in C++." << std::endl;
         std::cout << "######################################################################################################################################################" << std::endl;\
     }
 

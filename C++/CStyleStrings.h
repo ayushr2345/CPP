@@ -37,8 +37,8 @@ namespace cStyleStrings
     public:
         CStyleStrings(const char[]);
         ~CStyleStrings();
-        const int&   GetMinCase();
-        const int&   GetMaxCase();
+        const int    GetMinCase();
+        const int    GetMaxCase();
         const int&   GetChoice();
         void         GetChoiceInputFromUser();
         void         PrintMenu();
@@ -50,7 +50,7 @@ namespace cStyleStrings
         const char*  GetStringPointer();
         const size_t GetStringPointerLength();
         const bool   IsStringPointerEmpty();
-        const int&   CompareStringWithStringPointer();
+        const int    CompareStringWithStringPointer();
         void         ConcatenateStringAndStringPointer(char[], const int&);
         void         NConcatenateStringAndStringPointer(char[], const int&, const int&);
         void         ShowcaseStringToLong();

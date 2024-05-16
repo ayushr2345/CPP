@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include "CStyleStrings.h"
 #include "utils.h"
@@ -52,12 +50,12 @@ namespace cStyleStrings
         delete[] m_stringPtr;
     }
 
-    const int& CStyleStrings::GetMinCase()
+    const int CStyleStrings::GetMinCase()
     {
         return m_CStyleStringsMenu::MIN_COUNT;
     }
 
-    const int& CStyleStrings::GetMaxCase()
+    const int CStyleStrings::GetMaxCase()
     {
         return m_CStyleStringsMenu::MAX_COUNT;
     }
@@ -100,9 +98,9 @@ namespace cStyleStrings
                   << "....char str[<LENGTH OF STRING>];" << std::endl
                   << "....char str[<LENGTH OF STRING>] = \"Hello World\";" << std::endl
                   << "....char str[] = \"Hello World\";" << std::endl
-                  << "....char str[] = {'H', 'e', 'l', 'l', 'o', '\0'};" << std::endl
-                  << "....char str[] = {65, 66, 67, 68, '\0'};" << std::endl
-                  << "The \\0 represents the delimiter character and can be represented with \0 or 0" << std::endl   
+                  << "....char str[] = {'H', 'e', 'l', 'l', 'o', '\\0'};" << std::endl
+                  << "....char str[] = {65, 66, 67, 68, '\\0'};" << std::endl
+                  << "The \\0 represents the delimiter character and can be represented with \\0 or 0" << std::endl   
                   << "We can also declare char arrrays in the heap with the help of pointers and the new keyword" << std::endl
                   << "....char *str = new char[<LENGTH OF STRING>];" << std::endl;
     }
@@ -126,7 +124,7 @@ namespace cStyleStrings
         bool res = utils::CheckAndClearCharactersInStream(m_stringPtr, length);
         if (res)
         {
-            std::cout << "You have entered a name greater than 19 characters. Only 19 characters will be taken input" << std::endl;
+            std::cout << "You have entered a name greater than" << length << " characters.Only" << length << " characters will be taken input" << std::endl;
         }
     }
 
@@ -155,7 +153,7 @@ namespace cStyleStrings
         return m_stringPtr ? false : true;
     }
 
-    const int& CStyleStrings::CompareStringWithStringPointer()
+    const int CStyleStrings::CompareStringWithStringPointer()
     {
         return strcmp(m_string, m_stringPtr);
     }

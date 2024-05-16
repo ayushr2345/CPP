@@ -1,5 +1,3 @@
-#pragma once
-
 #include "handlers.h"
 
 int main()

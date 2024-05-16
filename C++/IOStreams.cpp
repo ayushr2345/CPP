@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include <fstream>
 #include "IOStreams.h"
@@ -28,12 +26,12 @@ namespace iostreams
                                     std::string("Exit from program") });
     }
 
-    const int& IOStreams::GetMinCase()
+    const int IOStreams::GetMinCase()
     {
         return m_iostreamsMenu::MIN_COUNT;
     }
 
-    const int& IOStreams::GetMaxCase()
+    const int IOStreams::GetMaxCase()
     {
         return m_iostreamsMenu::MAX_COUNT;
     }

@@ -37,8 +37,8 @@ namespace cppStrings
     public:
         CPPStrings(const std::string&);
         ~CPPStrings();
-        const int&         GetMinCase();
-        const int&         GetMaxCase();
+        const int          GetMinCase();
+        const int          GetMaxCase();
         const int&         GetChoice();
         void               GetChoiceInputFromUser();
         void               PrintMenu();
@@ -51,7 +51,7 @@ namespace cppStrings
         const std::string  GetStringPointer();
         const size_t       GetStringPointerLength();
         const bool         IsStringPointerEmpty();
-        const int&         CompareStringWithStringPointer();
+        const int          CompareStringWithStringPointer();
         void               ConcatenateStringAndStringPointer(std::string&);
         void               NConcatenateStringAndStringPointer(std::string&, const int&);
         void               ShowcaseStringToInt();

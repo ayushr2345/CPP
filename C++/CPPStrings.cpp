@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include "CPPStrings.h"
 #include "utils.h"
@@ -53,12 +51,12 @@ namespace cppStrings
         delete m_stringPtr;
     }
 
-    const int& CPPStrings::GetMinCase()
+    const int CPPStrings::GetMinCase()
     {
         return m_CPPStyleStringsMenu::MIN_COUNT;
     }
 
-    const int& CPPStrings::GetMaxCase()
+    const int CPPStrings::GetMaxCase()
     {
         return m_CPPStyleStringsMenu::MAX_COUNT;
     }
@@ -99,9 +97,9 @@ namespace cppStrings
                   << "To declare CPP Style strings:" << std::endl
                   << "....std::string str;" << std::endl
                   << "....std::string str = \"Hello World\";" << std::endl
-                  << "....std::string str = {'H', 'e', 'l', 'l', 'o', '\0'};" << std::endl
-                  << "....std::string str = {65, 66, 67, 68, '\0'};" << std::endl
-                  << "The \\0 represents the delimiter character and can be represented with \0 or 0" << std::endl
+                  << "....std::string str = {'H', 'e', 'l', 'l', 'o', '\\0'};" << std::endl
+                  << "....std::string str = {65, 66, 67, 68, '\\0'};" << std::endl
+                  << "The \\0 represents the delimiter character and can be represented with \\0 or 0" << std::endl
                   << "We can also declare char arrrays in the heap with the help of pointers and the new keyword" << std::endl
                   << "....std::string* str = new std::string;" << std::endl;
     }
@@ -154,7 +152,7 @@ namespace cppStrings
         return m_stringPtr ? false : true;
     }
 
-    const int& CPPStrings::CompareStringWithStringPointer()
+    const int CPPStrings::CompareStringWithStringPointer()
     {
         return m_string.compare(*m_stringPtr);
     }
@@ -192,7 +190,7 @@ namespace cppStrings
         std::string str;
         std::cout << "Please enter a numeric value: ";
         std::getline(std::cin, str);
-        float l = stol(str, NULL, 10);
+        long l = stol(str, NULL, 10);
         std::cout << "The numeric value is: " << l << std::endl;
         std::cout << "We can also perform operations such as incrementing it : " << ++l << std::endl;
     }
