@@ -5,12 +5,8 @@
 #include <iostream>
 
 #ifndef _WIN32
-	#include <cstring>
-#endif
-
-// include files for linux
-#ifndef _WIN32
 	#include <limits>
+	#include <cstring>
 #endif	
 
 

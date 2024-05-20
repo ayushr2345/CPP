@@ -12,8 +12,8 @@ namespace cStyleStrings
     {
         // added 1 to the length so as to give space for the \0 delimiter
         #ifndef _WIN32
-            strcpy(m_string, str);
-        #elif
+            strcpy(m_string, str)
+        #else
             strcpy_s(m_string, strlen(str) + 1, str);
         #endif
 
@@ -167,7 +167,7 @@ namespace cStyleStrings
         #ifndef _WIN32
             strcpy(dest, m_string);
             strcat(dest, m_stringPtr);
-        #elif
+        #else
             strcpy_s(dest, totalLength, m_string);
             strcat_s(dest, totalLength, m_stringPtr);
         #endif
@@ -178,7 +178,7 @@ namespace cStyleStrings
         #ifndef _WIN32
             strcpy(dest, m_string);
             strncat(dest, m_stringPtr, length);
-        #elif
+        #else
             strcpy_s(dest, totalLength, m_string);
             strncat_s(dest, totalLength, m_stringPtr, length);
         #endif
@@ -223,7 +223,7 @@ namespace cStyleStrings
         
         #ifndef _WIN32
             char* token = strtok(str, "=;");
-        #elif
+        #else
             char* token = strtok_s(str, "=;", &next_token);
         #endif
 
@@ -233,8 +233,8 @@ namespace cStyleStrings
             
             #ifndef _WIN32
                 token = strtok(NULL, "=;");
-            #elif
-                token = strtok_s(str, "=;", &next_token);
+            #else
+                token = strtok_s(NULL, "=;", &next_token);
             #endif
             
             std::cout << std::endl;
