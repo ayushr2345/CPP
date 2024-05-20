@@ -6,3 +6,9 @@
 * Run command: ``` cmake . ```
 * Run command: ``` make ```
 * Execute the binary named C++: ``` ./C++ ```
+
+
+## To compile project using Visual Studio"
+* Open the ``` C++.sln ``` file in Visual Studio
+* Goto ``` Build -> Build C++ ```
+* After the build is complete, click on the green arrow to execute the binary 
