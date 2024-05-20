@@ -1,3 +1,0 @@
-/home/ayushr2345/code/CPP/build/CMakeFiles/C++.dir
-/home/ayushr2345/code/CPP/build/CMakeFiles/edit_cache.dir
-/home/ayushr2345/code/CPP/build/CMakeFiles/rebuild_cache.dir
