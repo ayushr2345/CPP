@@ -8,7 +8,14 @@
 * Execute the binary named C++: ``` ./C++ ```
 
 
-## To compile project using Visual Studio"
+## To compile project using Visual Studio
 * Open the ``` C++.sln ``` file in Visual Studio
 * Goto ``` Build -> Build C++ ```
 * After the build is complete, click on the green arrow to execute the binary 
+
+
+## To compile project using CMake in Visual Studio
+* Open Visual Studio
+* Click on ``` File -> Open -> CMake ``` and select the CMakeLists.txt
+* Change the target to ``` C++.exe ```
+* Click on the green arrow to start the build and execution
