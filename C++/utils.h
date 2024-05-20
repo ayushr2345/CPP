@@ -4,6 +4,16 @@
 #include <string>
 #include <iostream>
 
+#ifndef _WIN32
+	#include <cstring>
+#endif
+
+// include files for linux
+#ifndef _WIN32
+	#include <limits>
+#endif	
+
+
 namespace utils
 {
 	enum MainMenu

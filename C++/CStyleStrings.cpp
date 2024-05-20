@@ -11,8 +11,12 @@ namespace cStyleStrings
         m_CStyleStringsMap ({})
     {
         // added 1 to the length so as to give space for the \0 delimiter
-        strcpy_s(m_string, strlen(str) + 1, str);
-        
+        #ifndef _WIN32
+            strcpy(m_string, str);
+        #elif
+            strcpy_s(m_string, strlen(str) + 1, str);
+        #endif
+
         m_CStyleStringsMap.insert({ m_CStyleStringsMenu(SHOW_CASE_C_STYLE_STRINGS),
                                     std::string("Showcase C Style Strings") });
         m_CStyleStringsMap.insert({ m_CStyleStringsMenu(GET_STRING),
@@ -124,7 +128,7 @@ namespace cStyleStrings
         bool res = utils::CheckAndClearCharactersInStream(m_stringPtr, length);
         if (res)
         {
-            std::cout << "You have entered a name greater than" << length << " characters.Only" << length << " characters will be taken input" << std::endl;
+            std::cout << "You have entered a name greater than " << length << " characters. Only " << length << " characters will be taken input" << std::endl;
         }
     }
 
@@ -160,14 +164,24 @@ namespace cStyleStrings
 
     void CStyleStrings::ConcatenateStringAndStringPointer(char dest[], const int& totalLength)
     {
-        strcpy_s(dest, totalLength, m_string);
-        strcat_s(dest, totalLength, m_stringPtr);
+        #ifndef _WIN32
+            strcpy(dest, m_string);
+            strcat(dest, m_stringPtr);
+        #elif
+            strcpy_s(dest, totalLength, m_string);
+            strcat_s(dest, totalLength, m_stringPtr);
+        #endif
     }
 
     void CStyleStrings::NConcatenateStringAndStringPointer(char dest[], const int& totalLength, const int& length)
-    {
-        strcpy_s(dest, totalLength, m_string);
-        strncat_s(dest, totalLength, m_stringPtr, length);
+    { 
+        #ifndef _WIN32
+            strcpy(dest, m_string);
+            strncat(dest, m_stringPtr, length);
+        #elif
+            strcpy_s(dest, totalLength, m_string);
+            strncat_s(dest, totalLength, m_stringPtr, length);
+        #endif
     }
 
     void CStyleStrings::ShowcaseStringToLong()
@@ -206,11 +220,23 @@ namespace cStyleStrings
         std::cout << "The string contains: " << str << std::endl;
         std::cout << "We will pass the string to function strtok(str, \"=;\") and we should get the output without the =  and ;. We will run it through a while loop." << std::endl;
         char* next_token = nullptr;
-        char* token = strtok_s(str, "=;", &next_token);
+        
+        #ifndef _WIN32
+            char* token = strtok(str, "=;");
+        #elif
+            char* token = strtok_s(str, "=;", &next_token);
+        #endif
+
         while (token != NULL)
         {
             std::cout << token;
-            token = strtok_s(NULL, "=;", &next_token);
+            
+            #ifndef _WIN32
+                token = strtok(NULL, "=;");
+            #elif
+                token = strtok_s(str, "=;", &next_token);
+            #endif
+            
             std::cout << std::endl;
         }
     }
