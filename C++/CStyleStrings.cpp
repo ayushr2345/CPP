@@ -12,7 +12,7 @@ namespace cStyleStrings
     {
         // added 1 to the length so as to give space for the \0 delimiter
         #ifndef _WIN32
-            strcpy(m_string, str)
+            strcpy(m_string, str);
         #else
             strcpy_s(m_string, strlen(str) + 1, str);
         #endif
@@ -47,7 +47,7 @@ namespace cStyleStrings
                                    std::string("Back to previous menu") });
         m_CStyleStringsMap.insert({ m_CStyleStringsMenu(EXIT_FROM_PROGRAM),
                                     std::string("Exit from program") });
-    }
+    };
 
     CStyleStrings::~CStyleStrings()
     {
