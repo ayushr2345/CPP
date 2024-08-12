@@ -44,7 +44,7 @@ namespace basics
 		m_BasicsMenuMap.insert({ m_BasicsMenu(SHOW_CASE_2D_ARRAYS),
 								 std::string("Show Case 2D Arrays") });
 		m_BasicsMenuMap.insert({ m_BasicsMenu(BACK_TO_PREVIOUS_MENU), 
-								 std::string("Back to Main Menu") });
+								 std::string("Back to Previous Menu") });
 		m_BasicsMenuMap.insert({ m_BasicsMenu(EXIT_FROM_PROGRAM), 
 							     std::string("Exit from program") });
 	}

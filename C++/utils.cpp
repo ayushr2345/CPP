@@ -7,15 +7,15 @@ namespace utils
 	{
 		std::cout << std::setw(100) << "#################### WELCOME ####################" << std::endl;
 		std::cout << "Welcome to the World of Learning C++, we have programs of all sorts starting"
-			" from Hello World to DSAs implemented using Classes or C style programs. Choose one"
-			" from the menu below : " << std::endl;
+				     " from Hello World to DSAs implemented using Classes or C style programs. Choose one"
+				     " from the menu below : " << std::endl;
 	}
 
-	void PrintMainMenu()
+	void PrintMenu(std::map<int, std::string>& menuMap)
 	{
 		std::cout << std::endl;
-		for (std::map<int, std::string>::iterator it = MainMenuMap.begin();
-			it != MainMenuMap.end();
+		for (std::map<int, std::string>::iterator it = menuMap.begin();
+			it != menuMap.end();
 			it++)
 		{
 			std::cout << it->first << ". " << it->second << std::endl;
@@ -23,11 +23,11 @@ namespace utils
 		std::cout << "Please enter your choice: ";
 	}
 
-	void PrintSelectedChoice(const int& choice)
+	void PrintSelectedChoice(const int& choice, std::map<int, std::string>& menuMap)
 	{
 		std::cout << std::endl << std::endl
 			      << "You have chosen choice "
-			      << MainMenuMap.at(choice)
+			      << menuMap.at(choice)
 			      << std::endl;
 	}
 

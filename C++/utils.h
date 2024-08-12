@@ -12,7 +12,16 @@
 
 namespace utils
 {
-	enum MainMenu
+	enum class MainMenu
+	{
+		MIN_COUNT = 0,
+		LANGUAGE  = 1,
+		DSA       = 2,
+		EXIT	  = 3,
+		MAX_COUNT = EXIT
+	};
+
+	enum class LanguageMenu
 	{
 		MIN_COUNT               = 0,
 		BASICS	                = 1,
@@ -22,7 +31,8 @@ namespace utils
 		FUNCTIONS				= 5,
 		CLASSES_AND_OBJECTS     = 6,
 		IOSTREAMS				= 7,
-		EXIT                    = 8,
+		BACK_TO_PREVIOUS_MENU   = 8,
+		EXIT                    = 9,
 		MAX_COUNT               = EXIT
 	};
 
@@ -35,42 +45,62 @@ namespace utils
 	static std::map<int, std::string> MainMenuMap =
 	{
 		{
-			MainMenu(BASICS),
+			static_cast<int>(MainMenu::LANGUAGE),
+			std::string("Language")
+		},
+		{
+			static_cast<int>(MainMenu::DSA),
+			std::string("DSA")
+		},
+		{
+			static_cast<int>(MainMenu::EXIT),
+			std::string("Exit from program")
+		}
+	};
+
+	static std::map<int, std::string> LanguageMenuMap =
+	{
+		{
+			static_cast<int>(LanguageMenu::BASICS),
 			std::string("Basics")
 		},
 		{
-			MainMenu(POINTERS_AND_REFERENCES),
+			static_cast<int>(LanguageMenu::POINTERS_AND_REFERENCES),
 			std::string("Pointers and References")
         },
 		{
-			MainMenu(C_STYLE_STRINGS),
+			static_cast<int>(LanguageMenu::C_STYLE_STRINGS),
 			std::string("C Style Strings")
 		},
 		{
-			MainMenu(CPP_STRINGS),
+			static_cast<int>(LanguageMenu::CPP_STRINGS),
 			std::string("CPP Style Strings")
 		},
 		{
-			MainMenu(FUNCTIONS),
+			static_cast<int>(LanguageMenu::FUNCTIONS),
 			std::string("Functions")
 		},
 		{
-			MainMenu(CLASSES_AND_OBJECTS),
+			static_cast<int>(LanguageMenu::CLASSES_AND_OBJECTS),
 			std::string("Classes and Objects")
 		},
 		{
-			MainMenu(IOSTREAMS),
+			static_cast<int>(LanguageMenu::IOSTREAMS),
 			std::string("I/O Streams")
 		},
 		{
-			MainMenu(EXIT),
+			static_cast<int>(LanguageMenu::BACK_TO_PREVIOUS_MENU),
+			std::string("Back to previous menu")
+		},
+		{
+			static_cast<int>(LanguageMenu::EXIT),
 			std::string("Exit from program")
 		}
 	};
 
 	void PrintWelcomeScreen();
-	void PrintMainMenu();
-	void PrintSelectedChoice(const int&);
+	void PrintMenu(std::map<int, std::string>&);
+	void PrintSelectedChoice(const int&, std::map<int, std::string>&);
 	void ClearCinFlag();
 	void IgnoreStdCinBufferTillEOL();
 	bool CheckAndClearCharactersInStream(const char[], const int);
