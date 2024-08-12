@@ -8,9 +8,11 @@
 #include "Language/Functions.h"
 #include "Language/Object Oriented Programming/ClassesAndObjects.h"
 #include "Language/IOStreams.h"
+#include "DSA/Recursion/Recursions.h"
 
 namespace handlers
 {
+	// Language Handlers
 	void Handle(basics::Basics&);
 	void Handle(pointersAndReferences::PointersAndReferences&);
 	void Handle(cStyleStrings::CStyleStrings&);
@@ -18,4 +20,7 @@ namespace handlers
 	void Handle(functions::Functions&);
 	void Handle(classesAndObjects::ClassesAndObjects&);
 	void Handle(iostreams::IOStreams&);
+
+	// DSA Handlers
+	void Handle(recursions::Recursions&);
 } // namespace handlers

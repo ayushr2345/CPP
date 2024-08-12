@@ -36,6 +36,15 @@ namespace utils
 		MAX_COUNT               = EXIT
 	};
 
+	enum class DSAMenu
+	{
+		MIN_COUNT             = 0,
+		RECURSIONS            = 1,
+		BACK_TO_PREVIOUS_MENU = 2,
+		EXIT                  = 3,
+		MAX_COUNT             = EXIT
+	};
+
 	// The extern keyword in C++ is used to declare a global variable 
 	// or function which can be accessed from any part of the program 
 	// or from other files included in the program's header.
@@ -94,6 +103,22 @@ namespace utils
 		},
 		{
 			static_cast<int>(LanguageMenu::EXIT),
+			std::string("Exit from program")
+		}
+	};
+
+	static std::map<int, std::string> DSAMenuMap =
+	{
+		{
+			static_cast<int>(DSAMenu::RECURSIONS),
+			std::string("Recursions")
+		},
+		{
+			static_cast<int>(DSAMenu::BACK_TO_PREVIOUS_MENU),
+			std::string("Back to previous menu")
+		},
+		{
+			static_cast<int>(DSAMenu::EXIT),
 			std::string("Exit from program")
 		}
 	};

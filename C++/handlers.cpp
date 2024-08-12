@@ -1308,4 +1308,96 @@ namespace handlers
 			}
 		}
 	}
+
+	void Handle(recursions::Recursions& recursionsObj)
+	{
+		recursionsObj.PrintMenu();
+		recursionsObj.GetChoiceInputFromUser();
+		const int& selectedChoice = recursionsObj.GetChoice();
+
+		while (recursionsObj.GetChoice())
+		{
+			char previousMenuFlag = 'n';
+			if (selectedChoice > recursionsObj.GetMinCase() &&
+				selectedChoice < recursionsObj.GetMaxCase() + 1)
+			{
+				recursionsObj.PrintSelectedChoice();
+			}
+
+			switch (selectedChoice)
+			{
+			case 1:
+			{
+				recursionsObj.ShowCaseRecursion();
+				break;
+			}
+			case 2:
+			{
+				recursionsObj.ShowCaseHeadRecursion();
+				break;
+			}
+			case 3:
+			{
+			}
+			case 4:
+			{
+			}
+			case 5:
+			{
+			}
+			case 6:
+			{
+			}
+			case 7:
+			{
+			}
+			case 8:
+			{
+			}
+			case 9:
+			{
+			}
+			case 10:
+			{
+			}
+			case 11:
+			{
+			}
+			case 12:
+			{
+			}
+			case 13:
+			{
+			}
+			case 14:
+			{
+			}
+			case 15:
+			{
+				previousMenuFlag = 'y';
+				break;
+			}
+			case 16:
+			{
+				exit(0);
+			}
+			default:
+			{
+				std::cout << "The selected option is out of bounds!!! "
+						  << "Please select appropriate option: " << std::endl;
+				break;
+			}
+			}
+
+			if (previousMenuFlag == 'y')
+			{
+				break;
+			}
+			else
+			{
+				recursionsObj.PrintMenu();
+				recursionsObj.GetChoiceInputFromUser();
+			}
+		}
+	}
 } // namespace handlers

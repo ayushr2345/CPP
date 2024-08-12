@@ -122,6 +122,52 @@ int main()
 		}
 		case 2:
 		{
+			char previousMenuFlag = 'n';
+			utils::PrintMenu(utils::DSAMenuMap);
+			int choice { 0 };
+			utils::InputNumberFromUser(choice, 1, static_cast<int>(utils::DSAMenu::MAX_COUNT));
+			while (choice)
+			{
+				if (choice > static_cast<int>(utils::DSAMenu::MIN_COUNT) &&
+					choice < static_cast<int>(utils::DSAMenu::MAX_COUNT) + 1)
+				{
+					utils::PrintSelectedChoice(choice, utils::DSAMenuMap);
+				}
+				switch (choice)
+				{
+				case 1:
+				{
+					recursions::Recursions recursionsObj;
+					handlers::Handle(recursionsObj);
+					break;
+				}
+				case 2:
+				{
+					previousMenuFlag = 'n';
+					break;
+				}
+				case 3:
+				{
+					exit(0);
+				}
+				default:
+				{
+					std::cout << "The selected option is out of bounds!!! "
+							  << "Please select appropriate option: " << std::endl;
+					break;
+				}
+				}
+
+				if (previousMenuFlag = 'y')
+				{
+					break;
+				}
+				else
+				{
+					utils::PrintMenu(utils::DSAMenuMap);
+					std::cin >> choice;
+				}
+			}
 			break;
 		}
 		case 3:
