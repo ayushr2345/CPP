@@ -1,13 +1,13 @@
 #pragma once
 
 #include "utils.h"
-#include "Basics.h"
-#include "PointersAndReferences.h"
-#include "CStyleStrings.h"
-#include "CPPStrings.h"
-#include "Functions.h"
-#include "../C++/Object Oriented Programming/ClassesAndObjects.h"
-#include "IOStreams.h"
+#include "Language/Basics.h"
+#include "Language/PointersAndReferences.h"
+#include "Language/CStyleStrings.h"
+#include "Language/CPPStrings.h"
+#include "Language/Functions.h"
+#include "Language/Object Oriented Programming/ClassesAndObjects.h"
+#include "Language/IOStreams.h"
 
 namespace handlers
 {

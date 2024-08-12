@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "IOStreams.h"
-#include "utils.h"
+#include "../utils.h"
 #include "Student.h"
 
 namespace iostreams

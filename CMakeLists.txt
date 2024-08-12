@@ -5,20 +5,20 @@ set (CMAKE_CXX_STANDARD 20)
 
 set(SOURCE_FILES
     C++/main.cpp
-    C++/Basics.cpp
-    C++/CPPStrings.cpp
-    C++/CStyleStrings.cpp
-    C++/Functions.cpp
+    C++/Language/Basics.cpp
+    C++/Language/CPPStrings.cpp
+    C++/Language/CStyleStrings.cpp
+    C++/Language/Functions.cpp
     C++/handlers.cpp
-    C++/IOStreams.cpp
-    C++/PointersAndReferences.cpp
-    C++/Student.cpp
+    C++/Language/IOStreams.cpp
+    C++/Language/PointersAndReferences.cpp
+    C++/Language/Student.cpp
     C++/utils.cpp
-    C++/Object\ Oriented\ Programming/Car.cpp
-    C++/Object\ Oriented\ Programming/ClassesAndObjects.cpp
-    C++/Object\ Oriented\ Programming/Complex.cpp
-    C++/Object\ Oriented\ Programming/Cuboid.cpp
-    C++/Object\ Oriented\ Programming/Rectangle.cpp
+    C++/Language/Object\ Oriented\ Programming/Car.cpp
+    C++/Language/Object\ Oriented\ Programming/ClassesAndObjects.cpp
+    C++/Language/Object\ Oriented\ Programming/Complex.cpp
+    C++/Language/Object\ Oriented\ Programming/Cuboid.cpp
+    C++/Language/Object\ Oriented\ Programming/Rectangle.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

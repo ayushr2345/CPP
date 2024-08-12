@@ -1,6 +1,6 @@
 #include <iostream>
 #include "CStyleStrings.h"
-#include "utils.h"
+#include "../utils.h"
 
 namespace cStyleStrings
 {
