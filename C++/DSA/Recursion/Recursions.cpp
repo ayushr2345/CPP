@@ -184,7 +184,7 @@ namespace recursions
                   << "........" << std::endl
                   << "....indirectRecursionB(n - 1)" << std::endl
                   << "}" << std::endl;
-        
+
         std::cout << "<return-type> indirectRecursionB(int n)" << std::endl
                   << "{" << std::endl
                   << "........" << std::endl
