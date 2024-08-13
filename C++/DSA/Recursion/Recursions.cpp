@@ -102,15 +102,15 @@ namespace recursions
 	void Recursions::ShowCaseHeadRecursion()
 	{
 		std::cout << "When the Recursive call inside a function is the first statement of the Recursive Function, it is called Head Recursion."
-			      << std::endl;
+			  	  << std::endl;
 		std::cout << "<return-type> headRecursion(int n)" << std::endl
-				  << "{" << std::endl
-				  << "....headRecursion(n - 1)" << std::endl
-				  << "........" << std::endl
-				  << "}" << std::endl;
+			  	  << "{" << std::endl
+			      << "....headRecursion(n - 1)" << std::endl
+			      << "........" << std::endl
+			      << "}" << std::endl;
 
 		std::cout << "The example function is not a proper head recusion as we have pring statements during the calling phase for demonstration"
-				  << " purposes. A real head recursion function will not have any statment present before the recursive call" << std::endl;
+			      << " purposes. A real head recursion function will not have any statment present before the recursive call" << std::endl;
 
 		std::function<void(int)> headRecursion = [&headRecursion](int n) {
 			if (n > 0)
@@ -124,9 +124,59 @@ namespace recursions
 		headRecursion(5);
 	}
 
-	void 	   Recursions::ShowCaseTailRecursion(){}
+	void Recursions::ShowCaseTailRecursion()
+	{
+		std::cout << "When the Recursive call inside a function is the last statement of the Recursive Function, it is called Tail Recursion."
+                  << std::endl;
+        std::cout << "<return-type> tailRecursion(int n)" << std::endl
+                  << "{" << std::endl
+                  << "........" << std::endl
+                  << "....tailRecursion(n - 1)" << std::endl
+                  << "}" << std::endl;
 
-	void 	   Recursions::ShowCaseTreeRecursion(){}
+        std::cout << "The example function is not a proper tail recusion as we have pring statements during the calling phase for demonstration"
+                  << " purposes. A real tail recursion function will not have any statment present after the recursive call" << std::endl;
+
+        std::function<void(int)> tailRecursion = [&tailRecursion](int n) {
+            if (n > 0)
+            {
+                    std::cout << "Calling Phase for n: " << n << std::endl;
+                    tailRecursion(n - 1);
+                    std::cout << "Returning Phase for n: " << n << std::endl;
+            }
+        };
+
+        tailRecursion(5);
+	}
+
+	void Recursions::ShowCaseTreeRecursion()
+	{
+		std::cout << "When the Recursive call inside a function is the last statement of the Recursive Function, it is called Tail Recursion."
+                  << std::endl;
+        std::cout << "<return-type> treeRecursion(int n)" << std::endl
+                  << "{" << std::endl
+                  << "........" << std::endl
+                  << "....treeRecursion(n - 1)" << std::endl
+                  << "....treeRecursion(n - 1)" << std::endl
+                  << "}" << std::endl;
+
+        std::cout << "The example function is not a proper head recusion as we have pring statements during the calling phase for demonstration"
+                  << " purposes. A real head recursion function will not have any statment present before the recursive call" << std::endl;
+
+        std::function<void(int)> treeRecursion = [&treeRecursion](int n) {
+            if (n > 0)
+            {
+                    std::cout << "Calling Phase 1 for n: " << n << std::endl;
+                    treeRecursion(n - 1);
+                    std::cout << "Returning Phase 1 for n: " << n << std::endl;
+                    std::cout << "Calling Phase 2 for n: " << n << std::endl;
+                    treeRecursion(n - 1);
+                    std::cout << "Returning Phase 2 for n: " << n << std::endl;
+            }
+        };
+
+        treeRecursion(3);
+	}
 
 	void 	   Recursions::ShowCaseIndicrectRecursion(){}
 

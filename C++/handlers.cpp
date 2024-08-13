@@ -1338,9 +1338,13 @@ namespace handlers
 			}
 			case 3:
 			{
+				recursionsObj.ShowCaseTailRecursion();
+				break;
 			}
 			case 4:
 			{
+				recursionsObj.ShowCaseTreeRecursion();
+				break;
 			}
 			case 5:
 			{
