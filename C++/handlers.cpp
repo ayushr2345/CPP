@@ -1348,33 +1348,53 @@ namespace handlers
 			}
 			case 5:
 			{
+				recursionsObj.ShowCaseIndicrectRecursion();
+				break;
 			}
 			case 6:
 			{
+				recursionsObj.ShowCaseNestedRecursion();
+				break;
 			}
 			case 7:
 			{
+				recursionsObj.ShowCaseStaticVariableInRecursion();
+				break;
 			}
 			case 8:
 			{
+				recursionsObj.ShowCaseGlobalVariableInRecursion();
+				break;
 			}
 			case 9:
 			{
+				recursionsObj.ShowCaseSumOfNaturalNumbersUsingRecursion();
+				break;
 			}
 			case 10:
 			{
+				recursionsObj.ShowCasePowerUsingRecursion();
+				break;
 			}
 			case 11:
 			{
+				recursionsObj.ShowCaseFactorialUsingRecursion();
+				break;
 			}
 			case 12:
 			{
+				recursionsObj.ShowCaseTaylorSeriesUsingRecursion();
+				break;
 			}
 			case 13:
 			{
+				recursionsObj.ShowCaseFibonacciSeriesUsingRecursion();
+				break;
 			}
 			case 14:
 			{
+				recursionsObj.ShowCaseCombinationUsingRecursion();
+				break;
 			}
 			case 15:
 			{
