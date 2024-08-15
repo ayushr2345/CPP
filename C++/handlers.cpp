@@ -1398,10 +1398,15 @@ namespace handlers
 			}
 			case 15:
 			{
-				previousMenuFlag = 'y';
+				recursionsObj.TowerOfHanoiUsingRecursion();
 				break;
 			}
 			case 16:
+			{
+				previousMenuFlag = 'y';
+				break;
+			}
+			case 17:
 			{
 				exit(0);
 			}

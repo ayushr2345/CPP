@@ -25,12 +25,12 @@ namespace recursions
 			SHOWCASE_TAYLOR_SERIES_USING_RECURSION		    = 12,
 			SHOWCASE_FIBONACCI_SERIES_USING_RECURSION	    = 13,
 			SHOWCASE_COMBINATION_USING_RECURSION		    = 14,
-			BACK_TO_PREVIOUS_MENU							= 15,
-			EXIT_FROM_PROGRAM                         		= 16,
+            TOWER_OF_HANOI_USING_RECURSION                  = 15,
+			BACK_TO_PREVIOUS_MENU							= 16,
+			EXIT_FROM_PROGRAM                         		= 17,
 			MAX_COUNT                                 		= EXIT_FROM_PROGRAM
 		};
 		int						   						    m_choice{ 0 };
-		std::string				   						    m_name;
 		std::map<int, std::string> 							m_RecursionsMenuMap;
 
 	public:
@@ -55,5 +55,6 @@ namespace recursions
 		void 	   ShowCaseTaylorSeriesUsingRecursion();
 		void 	   ShowCaseFibonacciSeriesUsingRecursion();
 		void 	   ShowCaseCombinationUsingRecursion();
+        void       TowerOfHanoiUsingRecursion();
 	};
 } // namespace recursions

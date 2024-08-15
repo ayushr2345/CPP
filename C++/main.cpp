@@ -143,10 +143,24 @@ int main()
 				}
 				case 2:
 				{
-					previousMenuFlag = 'n';
+					std::cout << "Enter the length of the array: ";
+					int length = 0;
+					utils::InputNumberFromUser(length, 0, 15);
+
+					arrayAdt::ArrayADT<int> arrayAdtObj(length);
+					for (int i = 0; i < length; i++)
+					{
+						arrayAdtObj.Insert(arrayAdtObj.GetSize(), i + 1);
+					}
+					handlers::Handle(arrayAdtObj);
 					break;
 				}
 				case 3:
+				{
+					previousMenuFlag = 'y';
+					break;
+				}
+				case 4:
 				{
 					exit(0);
 				}
@@ -158,7 +172,7 @@ int main()
 				}
 				}
 
-				if (previousMenuFlag = 'y')
+				if (previousMenuFlag == 'y')
 				{
 					break;
 				}

@@ -7,7 +7,6 @@ namespace recursions
 {
 	Recursions::Recursions():
 		m_choice            (0),
-		m_name              (""),
 		m_RecursionsMenuMap ({})
 	{
 		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_RECURSION), 
@@ -38,6 +37,8 @@ namespace recursions
 								     std::string("Showcase Fibonacci Series Using Recursion") });
 		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_COMBINATION_USING_RECURSION), 
 								     std::string("Showcase Combination Using Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(TOWER_OF_HANOI_USING_RECURSION), 
+								     std::string("Tower of Hanoi using Recursion") });
 		m_RecursionsMenuMap.insert({ m_RecursionsMenu(BACK_TO_PREVIOUS_MENU), 
 								 	 std::string("Back to Previous Menu") });
 		m_RecursionsMenuMap.insert({ m_RecursionsMenu(EXIT_FROM_PROGRAM), 
@@ -428,5 +429,26 @@ namespace recursions
         };
 
         std::cout << "The combination value of 5C3 is: " << combinationUsingRecursion(5, 3) << std::endl;
+    }
+
+    void Recursions::TowerOfHanoiUsingRecursion()
+    {
+        std::cout << "The tower of hanoi problem can be solved using recursion."
+                  << std::endl;
+
+        std::function<void (int, int, int, int)> towerOfHanoiUsingRecursion = [&towerOfHanoiUsingRecursion] (int n, int A, int B, int C) {
+            if (n > 0)
+            {
+                towerOfHanoiUsingRecursion(n - 1, A, C, B);
+                std::cout << "Move 1 disk from " << A << " to " << C << std::endl;
+                towerOfHanoiUsingRecursion(n - 1, B, A, C);
+            }
+        };
+
+        int A = 1;
+        int B = 2;
+        int C = 3;
+        int n = 3;
+        towerOfHanoiUsingRecursion(n, A, B, C);
     }
 } // namespace recursions

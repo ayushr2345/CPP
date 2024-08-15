@@ -9,6 +9,7 @@
 #include "Language/Object Oriented Programming/ClassesAndObjects.h"
 #include "Language/IOStreams.h"
 #include "DSA/Recursion/Recursions.h"
+#include "DSA/ArrayADT/ArrayADT.h"
 
 namespace handlers
 {
@@ -23,4 +24,9 @@ namespace handlers
 
 	// DSA Handlers
 	void Handle(recursions::Recursions&);
+
+	template<class T>
+	void Handle(arrayAdt::ArrayADT<T>&);
 } // namespace handlers
+
+#include "handlers.tpp"
