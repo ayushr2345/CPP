@@ -57,51 +57,51 @@ namespace arrayAdt
     public:
         ArrayADT(int);
         ~ArrayADT();
-        const int          GetMinCase();
-        const int          GetMaxCase();
-        const int&         GetChoice();
-        void               GetChoiceInputFromUser();
-        void	           PrintMenu();
-        void               PrintSelectedChoice();
-        int                GetSize();
-        int                GetLength();
-        bool               IsIndexInBounds(int);
-        bool               IsEmpty();
-        bool               IsFull();
-        std::optional<T>   Get(int);
-        bool               Set(int, T);
-        void               Display();
-        bool               Insert(int, T);
-        std::optional<T>   Remove(int);
-        std::optional<int> LinearSearch(T);
-        std::optional<int> BinarySearch(T);
-        std::optional<T>                Max();
-        std::optional<T>                Min();
-        std::optional<T>                Sum();
+        const int             GetMinCase();
+        const int             GetMaxCase();
+        const int&            GetChoice();
+        void                  GetChoiceInputFromUser();
+        void	              PrintMenu();
+        void                  PrintSelectedChoice();
+        int                   GetSize();
+        int                   GetLength();
+        bool                  IsIndexInBounds(int);
+        bool                  IsEmpty();
+        bool                  IsFull();
+        std::optional<T>      Get(int);
+        bool                  Set(int, T);
+        void                  Display();
+        bool                  Insert(int, T);
+        std::optional<T>      Remove(int);
+        std::optional<int>    LinearSearch(T);
+        std::optional<int>    BinarySearch(T);
+        std::optional<T>      Max();
+        std::optional<T>      Min();
+        std::optional<T>      Sum();
         std::optional<double> Avg();
-        void             Reverse();
-        void             LeftShift(int, int);
-        void             RightShift(int, int);
-        void             LeftRotate(int, int);
-        void             RightRotate(int, int);
-        bool             IsSorted();
-        void             Sort();
-        bool             InsertSorted(T);
+        void                  Reverse();
+        void                  LeftShift(int, int);
+        void                  RightShift(int, int);
+        void                  LeftRotate(int, int);
+        void                  RightRotate(int, int);
+        bool                  IsSorted();
+        void                  Sort();
+        bool                  InsertSorted(T);
 
         template <class U>
-        friend ArrayADT<U>*     Concatenate(ArrayADT<U>&, ArrayADT<U>&);
+        friend ArrayADT<U>*   Concatenate(ArrayADT<U>&, ArrayADT<U>&);
 
         template <class U>
-        friend ArrayADT<U>*      SortedMerge(ArrayADT<U>&, ArrayADT<U>&);
+        friend ArrayADT<U>*   SortedMerge(ArrayADT<U>&, ArrayADT<U>&);
 
         template <class U>
-        friend ArrayADT<U>*      Union(ArrayADT<U>&, ArrayADT<U>&);
+        friend ArrayADT<U>*   Union(ArrayADT<U>&, ArrayADT<U>&);
         
         template <class U>
-        friend ArrayADT<U>*      Intersection(ArrayADT<U>&, ArrayADT<U>&);
+        friend ArrayADT<U>*   Intersection(ArrayADT<U>&, ArrayADT<U>&);
         
         template <class U>
-        friend ArrayADT<U>*      Difference(ArrayADT<U>&, ArrayADT<U>&);
+        friend ArrayADT<U>*   Difference(ArrayADT<U>&, ArrayADT<U>&);
     };
 } // namespace arrayAdt
 

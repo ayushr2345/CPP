@@ -24,13 +24,13 @@ namespace utils
     enum class LanguageMenu
     {
         MIN_COUNT               = 0,
-        BASICS	                = 1,
+        BASICS                  = 1,
         POINTERS_AND_REFERENCES = 2,
-        C_STYLE_STRINGS			= 3,
-        CPP_STRINGS			    = 4,
-        FUNCTIONS				= 5,
+        C_STYLE_STRINGS         = 3,
+        CPP_STRINGS             = 4,
+        FUNCTIONS               = 5,
         CLASSES_AND_OBJECTS     = 6,
-        IOSTREAMS				= 7,
+        IOSTREAMS               = 7,
         BACK_TO_PREVIOUS_MENU   = 8,
         EXIT                    = 9,
         MAX_COUNT               = EXIT
@@ -40,7 +40,7 @@ namespace utils
     {
         MIN_COUNT             = 0,
         RECURSIONS            = 1,
-        ARRAY_ADT			  = 2,
+        ARRAY_ADT             = 2,
         BACK_TO_PREVIOUS_MENU = 3,
         EXIT                  = 4,
         MAX_COUNT             = EXIT

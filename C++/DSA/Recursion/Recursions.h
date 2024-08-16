@@ -10,28 +10,28 @@ namespace recursions
     private:
         enum m_RecursionsMenu
         {
-            MIN_COUNT                                 		= 0,
-            SHOWCASE_RECURSION								= 1,
-            SHOWCASE_HEAD_RECURSION					  		= 2,
-            SHOWCASE_TAIL_RECURSION					  		= 3,
-            SHOWCASE_TREE_RECURSION					  		= 4,
-            SHOWCASE_INDIRECT_RECURSION				  		= 5,
-            SHOWCASE_NESTED_RECURSION				  		= 6,
-            SHOWCASE_STATIC_VARIABLE_IN_RECURSION	  		= 7,
-            SHOWCASE_GLOBAL_VARIABLE_IN_RECURSION	  		= 8,
-            SHOWCASE_SUM_OF_NATURAL_NUMBERS_USING_RECURSION	= 9,
-            SHOWCASE_POWER_USING_RECURSION		            = 10,
-            SHOWCASE_FACTORIAL_USING_RECURSION			    = 11,
-            SHOWCASE_TAYLOR_SERIES_USING_RECURSION		    = 12,
-            SHOWCASE_FIBONACCI_SERIES_USING_RECURSION	    = 13,
-            SHOWCASE_COMBINATION_USING_RECURSION		    = 14,
+            MIN_COUNT                                       = 0,
+            SHOWCASE_RECURSION                              = 1,
+            SHOWCASE_HEAD_RECURSION                         = 2,
+            SHOWCASE_TAIL_RECURSION                         = 3,
+            SHOWCASE_TREE_RECURSION                         = 4,
+            SHOWCASE_INDIRECT_RECURSION                     = 5,
+            SHOWCASE_NESTED_RECURSION                       = 6,
+            SHOWCASE_STATIC_VARIABLE_IN_RECURSION           = 7,
+            SHOWCASE_GLOBAL_VARIABLE_IN_RECURSION           = 8,
+            SHOWCASE_SUM_OF_NATURAL_NUMBERS_USING_RECURSION = 9,
+            SHOWCASE_POWER_USING_RECURSION                  = 10,
+            SHOWCASE_FACTORIAL_USING_RECURSION              = 11,
+            SHOWCASE_TAYLOR_SERIES_USING_RECURSION          = 12,
+            SHOWCASE_FIBONACCI_SERIES_USING_RECURSION       = 13,
+            SHOWCASE_COMBINATION_USING_RECURSION            = 14,
             TOWER_OF_HANOI_USING_RECURSION                  = 15,
-            BACK_TO_PREVIOUS_MENU							= 16,
-            EXIT_FROM_PROGRAM                         		= 17,
-            MAX_COUNT                                 		= EXIT_FROM_PROGRAM
+            BACK_TO_PREVIOUS_MENU                           = 16,
+            EXIT_FROM_PROGRAM                               = 17,
+            MAX_COUNT                                       = EXIT_FROM_PROGRAM
         };
-        int						   						    m_choice{ 0 };
-        std::map<int, std::string> 							m_RecursionsMenuMap;
+        int                                                 m_choice{ 0 };
+        std::map<int, std::string>                          m_RecursionsMenuMap;
 
     public:
         Recursions();
