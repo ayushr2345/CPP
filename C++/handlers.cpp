@@ -13,7 +13,7 @@ namespace handlers
 		{
 			char previousMenuFlag = 'n';
 			if (selectedChoice > basicObj.GetMinCase() &&
-				selectedChoice < basicObj.GetMaxCase() + 1)
+			    selectedChoice < basicObj.GetMaxCase() + 1)
 			{
 				basicObj.PrintSelectedChoice();
 			}
@@ -114,7 +114,7 @@ namespace handlers
 			default:
 			{
 				std::cout << "The selected option is out of bounds!!! "
-						  << "Please select appropriate option: " << std::endl;
+				  	  << "Please select appropriate option: " << std::endl;
 				break;
 			}
 			}
@@ -141,7 +141,7 @@ namespace handlers
 		{
 			char previousMenuFlag = 'n';
 			if (selectedChoice > pointersAndReferencesObj.GetMinCase() &&
-				selectedChoice < pointersAndReferencesObj.GetMaxCase() + 1)
+			    selectedChoice < pointersAndReferencesObj.GetMaxCase() + 1)
 			{
 				pointersAndReferencesObj.PrintSelectedChoice();
 			}
@@ -166,31 +166,31 @@ namespace handlers
 			case 4:
 			{
 				std::cout << "The member pointer variable points to location with data as: "
-					      << pointersAndReferencesObj.DereferenceMemberPointer() << std::endl;
+					  << pointersAndReferencesObj.DereferenceMemberPointer() << std::endl;
 				break;
 			}
 			case 5:
 			{
 				std::cout << "The address stored in the member pointer variable is: "
-					      << pointersAndReferencesObj.GetDataInPointer() << std::endl;
+					  << pointersAndReferencesObj.GetDataInPointer() << std::endl;
 				break;
 			}
 			case 6:
 			{
 				std::cout << "The address of the member pointer is: "
-					      << pointersAndReferencesObj.GetPointerAddress() << std::endl;
+					  << pointersAndReferencesObj.GetPointerAddress() << std::endl;
 				break;
 			}
 			case 7:
 			{
 				std::cout << "The data in member reference variable is: "
-						  << pointersAndReferencesObj.GetDataInReference() << std::endl;
+				 	  << pointersAndReferencesObj.GetDataInReference() << std::endl;
 				break;
 			}
 			case 8:
 			{
 				std::cout << "The addredd of the member reference variable is: "
-					      << pointersAndReferencesObj.GetAddressOfReference() << std::endl;
+					  << pointersAndReferencesObj.GetAddressOfReference() << std::endl;
 				break;
 			}
 			case 9:
@@ -280,7 +280,7 @@ namespace handlers
 			default:
 			{
 				std::cout << "The selected option is out of bounds!!! "
-					      << "Please select appropriate option: " << std::endl;
+					  << "Please select appropriate option: " << std::endl;
 				break;
 			}
 			}
@@ -307,7 +307,7 @@ namespace handlers
 		{
 			char previousMenuFlag = 'n';
 			if (selectedChoice > cStyleStringsObj.GetMinCase() &&
-				selectedChoice < cStyleStringsObj.GetMaxCase() + 1)
+		            selectedChoice < cStyleStringsObj.GetMaxCase() + 1)
 			{
 				cStyleStringsObj.PrintSelectedChoice();
 			}
@@ -439,7 +439,7 @@ namespace handlers
 			default:
 			{
 				std::cout << "The selected option is out of bounds!!! "
-						  << "Please select appropriate option: " << std::endl;
+					  << "Please select appropriate option: " << std::endl;
 				break;
 			}
 			}
@@ -466,7 +466,7 @@ namespace handlers
 		{
 			char previousMenuFlag = 'n';
 			if (selectedChoice > cppStringsObj.GetMinCase() &&
-				selectedChoice < cppStringsObj.GetMaxCase() + 1)
+			    selectedChoice < cppStringsObj.GetMaxCase() + 1)
 			{
 				cppStringsObj.PrintSelectedChoice();
 			}
@@ -591,7 +591,7 @@ namespace handlers
 			default:
 			{
 				std::cout << "The selected option is out of bounds!!! "
-						  << "Please select appropriate option: " << std::endl;
+			    		  << "Please select appropriate option: " << std::endl;
 				break;
 			}
 			}
@@ -618,7 +618,7 @@ namespace handlers
 		{
 			char previousMenuFlag = 'n';
 			if (selectedChoice > functionsObj.GetMinCase() &&
-				selectedChoice < functionsObj.GetMaxCase() + 1)
+			    selectedChoice < functionsObj.GetMaxCase() + 1)
 			{
 				functionsObj.PrintSelectedChoice();
 			}
@@ -879,7 +879,7 @@ namespace handlers
 			case 19:
 			{
 				std::cout << "A function returns a value or a pointer, then it is rvalue but if it is returning a reference to a variable that exists in the caller stack frame then, "
-						  << "it can act as lvalue" << std::endl;
+					  << "it can act as lvalue" << std::endl;
 
 				int a { 0 };
 				std::cout << "Please enter an integer: ";
@@ -950,7 +950,7 @@ namespace handlers
 			default:
 			{
 				std::cout << "The selected option is out of bounds!!! "
-					<< "Please select appropriate option: " << std::endl;
+			                  << "Please select appropriate option: " << std::endl;
 				break;
 			}
 			}
@@ -977,7 +977,7 @@ namespace handlers
 		{
 			char previousMenuFlag = 'n';
 			if (selectedChoice > classesAndObjectsObj.GetMinCase() &&
-				selectedChoice < classesAndObjectsObj.GetMaxCase() + 1)
+			    selectedChoice < classesAndObjectsObj.GetMaxCase() + 1)
 			{
 				classesAndObjectsObj.PrintSelectedChoice();
 			}
@@ -1221,7 +1221,7 @@ namespace handlers
 			default:
 			{
 				std::cout << "The selected option is out of bounds!!! "
-						  << "Please select appropriate option: " << std::endl;
+					  << "Please select appropriate option: " << std::endl;
 				break;
 			}
 			}
@@ -1248,7 +1248,7 @@ namespace handlers
 		{
 			char previousMenuFlag = 'n';
 			if (selectedChoice > iostreamsObj.GetMinCase() &&
-				selectedChoice < iostreamsObj.GetMaxCase() + 1)
+                            selectedChoice < iostreamsObj.GetMaxCase() + 1)
 			{
 				iostreamsObj.PrintSelectedChoice();
 			}
@@ -1292,7 +1292,7 @@ namespace handlers
 			default:
 			{
 				std::cout << "The selected option is out of bounds!!! "
-						  << "Please select appropriate option: " << std::endl;
+				          << "Please select appropriate option: " << std::endl;
 				break;
 			}
 			}
@@ -1319,7 +1319,7 @@ namespace handlers
 		{
 			char previousMenuFlag = 'n';
 			if (selectedChoice > recursionsObj.GetMinCase() &&
-				selectedChoice < recursionsObj.GetMaxCase() + 1)
+			    selectedChoice < recursionsObj.GetMaxCase() + 1)
 			{
 				recursionsObj.PrintSelectedChoice();
 			}
@@ -1413,7 +1413,7 @@ namespace handlers
 			default:
 			{
 				std::cout << "The selected option is out of bounds!!! "
-						  << "Please select appropriate option: " << std::endl;
+					  << "Please select appropriate option: " << std::endl;
 				break;
 			}
 			}
