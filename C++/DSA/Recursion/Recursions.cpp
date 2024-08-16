@@ -5,129 +5,129 @@
 
 namespace recursions
 {
-	Recursions::Recursions():
-		m_choice            (0),
-		m_RecursionsMenuMap ({})
-	{
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_RECURSION), 
-								     std::string("Showcase Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_HEAD_RECURSION), 
-								     std::string("Showcase Head Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_TAIL_RECURSION), 
-								     std::string("Showcase Tail Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_TREE_RECURSION), 
-								     std::string("Showcase Tree Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_INDIRECT_RECURSION), 
-								     std::string("Showcase Indirect Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_NESTED_RECURSION), 
-								     std::string("Showcase Nested Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_STATIC_VARIABLE_IN_RECURSION), 
-								     std::string("Showcase Static Variable In Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_GLOBAL_VARIABLE_IN_RECURSION), 
-								     std::string("Showcase Global Variable In Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_SUM_OF_NATURAL_NUMBERS_USING_RECURSION), 
-								     std::string("Showcase Sum of Natural Numbers Using Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_POWER_USING_RECURSION), 
-								     std::string("Showcase Power Using Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_FACTORIAL_USING_RECURSION), 
-								     std::string("Showcase Factorial Using Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_TAYLOR_SERIES_USING_RECURSION), 
-								     std::string("Showcase Taylor Series Using Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_FIBONACCI_SERIES_USING_RECURSION), 
-								     std::string("Showcase Fibonacci Series Using Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_COMBINATION_USING_RECURSION), 
-								     std::string("Showcase Combination Using Recursion") });
+    Recursions::Recursions():
+        m_choice            (0),
+        m_RecursionsMenuMap ({})
+    {
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_RECURSION), 
+                                     std::string("Showcase Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_HEAD_RECURSION), 
+                                     std::string("Showcase Head Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_TAIL_RECURSION), 
+                                     std::string("Showcase Tail Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_TREE_RECURSION), 
+                                     std::string("Showcase Tree Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_INDIRECT_RECURSION), 
+                                     std::string("Showcase Indirect Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_NESTED_RECURSION), 
+                                     std::string("Showcase Nested Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_STATIC_VARIABLE_IN_RECURSION), 
+                                     std::string("Showcase Static Variable In Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_GLOBAL_VARIABLE_IN_RECURSION), 
+                                     std::string("Showcase Global Variable In Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_SUM_OF_NATURAL_NUMBERS_USING_RECURSION), 
+                                     std::string("Showcase Sum of Natural Numbers Using Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_POWER_USING_RECURSION), 
+                                     std::string("Showcase Power Using Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_FACTORIAL_USING_RECURSION), 
+                                     std::string("Showcase Factorial Using Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_TAYLOR_SERIES_USING_RECURSION), 
+                                     std::string("Showcase Taylor Series Using Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_FIBONACCI_SERIES_USING_RECURSION), 
+                                     std::string("Showcase Fibonacci Series Using Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(SHOWCASE_COMBINATION_USING_RECURSION), 
+                                     std::string("Showcase Combination Using Recursion") });
         m_RecursionsMenuMap.insert({ m_RecursionsMenu(TOWER_OF_HANOI_USING_RECURSION), 
-								     std::string("Tower of Hanoi using Recursion") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(BACK_TO_PREVIOUS_MENU), 
-								 	 std::string("Back to Previous Menu") });
-		m_RecursionsMenuMap.insert({ m_RecursionsMenu(EXIT_FROM_PROGRAM), 
-							     	 std::string("Exit from program") });
-	}
+                                     std::string("Tower of Hanoi using Recursion") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(BACK_TO_PREVIOUS_MENU), 
+                                      std::string("Back to Previous Menu") });
+        m_RecursionsMenuMap.insert({ m_RecursionsMenu(EXIT_FROM_PROGRAM), 
+                                      std::string("Exit from program") });
+    }
 
-	const int Recursions::GetMinCase()
-	{
-		return m_RecursionsMenu::MIN_COUNT;
-	}
+    const int Recursions::GetMinCase()
+    {
+        return m_RecursionsMenu::MIN_COUNT;
+    }
 
-	const int Recursions::GetMaxCase()
-	{
-		return m_RecursionsMenu::MAX_COUNT;
-	}
+    const int Recursions::GetMaxCase()
+    {
+        return m_RecursionsMenu::MAX_COUNT;
+    }
 
-	const int& Recursions::GetChoice()
-	{
-		return m_choice;
-	}
+    const int& Recursions::GetChoice()
+    {
+        return m_choice;
+    }
 
-	void Recursions::GetChoiceInputFromUser()
-	{
-		utils::InputNumberFromUser(m_choice, 1, static_cast<int>(m_RecursionsMenu::MAX_COUNT));
-	}
+    void Recursions::GetChoiceInputFromUser()
+    {
+        utils::InputNumberFromUser(m_choice, 1, static_cast<int>(m_RecursionsMenu::MAX_COUNT));
+    }
 
-	void Recursions::PrintMenu()
-	{
-		std::cout << std::endl;
-		for (std::map<int, std::string>::iterator it = m_RecursionsMenuMap.begin();
-			it != m_RecursionsMenuMap.end();
-			it++)
-		{
-			std::cout << it->first << ". " << it->second << std::endl;
-		}
-		std::cout << "Please enter your choice: ";
-	}
+    void Recursions::PrintMenu()
+    {
+        std::cout << std::endl;
+        for (std::map<int, std::string>::iterator it = m_RecursionsMenuMap.begin();
+            it != m_RecursionsMenuMap.end();
+            it++)
+        {
+            std::cout << it->first << ". " << it->second << std::endl;
+        }
+        std::cout << "Please enter your choice: ";
+    }
 
-	void Recursions::PrintSelectedChoice()
-	{
-		std::cout << std::endl << std::endl
+    void Recursions::PrintSelectedChoice()
+    {
+        std::cout << std::endl << std::endl
                   << "You have chosen choice "
                   << m_RecursionsMenuMap.at(m_choice)
                   << std::endl;
-	}
+    }
 
-	void Recursions::ShowCaseRecursion()
-	{
-		std::cout << "A function calling itself is known as a Recursive Function and the process is called Recursion."
-				  << std::endl;
-		std::cout << "<return-type> recursion(int n)" << std::endl
-				  << "{" << std::endl
-				  << "........" << std::endl
-				  << "....if (<mandatory_termination_condition>)" << std::endl
-				  << "....{" << std::endl
-				  << "........recursion(n - 1)" << std::endl
-				  << "....}" << std::endl
-				  << "........" << std::endl
-				  << "}" << std::endl;
-	}
+    void Recursions::ShowCaseRecursion()
+    {
+        std::cout << "A function calling itself is known as a Recursive Function and the process is called Recursion."
+                  << std::endl;
+        std::cout << "<return-type> recursion(int n)" << std::endl
+                  << "{" << std::endl
+                  << "........" << std::endl
+                  << "....if (<mandatory_termination_condition>)" << std::endl
+                  << "....{" << std::endl
+                  << "........recursion(n - 1)" << std::endl
+                  << "....}" << std::endl
+                  << "........" << std::endl
+                  << "}" << std::endl;
+    }
 
-	void Recursions::ShowCaseHeadRecursion()
-	{
-		std::cout << "When the Recursive call inside a function is the first statement of the Recursive Function, it is called Head Recursion."
-			  	  << std::endl;
-		std::cout << "<return-type> headRecursion(int n)" << std::endl
-			  	  << "{" << std::endl
-			      << "....headRecursion(n - 1)" << std::endl
-			      << "........" << std::endl
-			      << "}" << std::endl;
+    void Recursions::ShowCaseHeadRecursion()
+    {
+        std::cout << "When the Recursive call inside a function is the first statement of the Recursive Function, it is called Head Recursion."
+                    << std::endl;
+        std::cout << "<return-type> headRecursion(int n)" << std::endl
+                    << "{" << std::endl
+                  << "....headRecursion(n - 1)" << std::endl
+                  << "........" << std::endl
+                  << "}" << std::endl;
 
-		std::cout << "The example function is not a proper head recusion as we have pring statements during the calling phase for demonstration"
-			      << " purposes. A real head recursion function will not have any statment present before the recursive call" << std::endl;
+        std::cout << "The example function is not a proper head recusion as we have pring statements during the calling phase for demonstration"
+                  << " purposes. A real head recursion function will not have any statment present before the recursive call" << std::endl;
 
-		std::function<void(int)> headRecursion = [&headRecursion](int n) {
-			if (n > 0)
-			{
-				std::cout << "Calling Phase for n: " << n << std::endl;
-				headRecursion(n - 1);
-				std::cout << "Returning Phase for n: " << n << std::endl;
-			}
-		};
+        std::function<void(int)> headRecursion = [&headRecursion](int n) {
+            if (n > 0)
+            {
+                std::cout << "Calling Phase for n: " << n << std::endl;
+                headRecursion(n - 1);
+                std::cout << "Returning Phase for n: " << n << std::endl;
+            }
+        };
 
-		headRecursion(5);
-	}
+        headRecursion(5);
+    }
 
-	void Recursions::ShowCaseTailRecursion()
-	{
-		std::cout << "When the Recursive call inside a function is the last statement of the Recursive Function, it is called Tail Recursion."
+    void Recursions::ShowCaseTailRecursion()
+    {
+        std::cout << "When the Recursive call inside a function is the last statement of the Recursive Function, it is called Tail Recursion."
                   << std::endl;
         std::cout << "<return-type> tailRecursion(int n)" << std::endl
                   << "{" << std::endl
@@ -148,11 +148,11 @@ namespace recursions
         };
 
         tailRecursion(5);
-	}
+    }
 
-	void Recursions::ShowCaseTreeRecursion()
-	{
-		std::cout << "If the Recursive function has more than 1 recursice calls, it is knows as Tree Recursion."
+    void Recursions::ShowCaseTreeRecursion()
+    {
+        std::cout << "If the Recursive function has more than 1 recursice calls, it is knows as Tree Recursion."
                   << std::endl;
         std::cout << "<return-type> treeRecursion(int n)" << std::endl
                   << "{" << std::endl
@@ -174,9 +174,9 @@ namespace recursions
         };
 
         treeRecursion(3);
-	}
+    }
 
-	void Recursions::ShowCaseIndicrectRecursion()
+    void Recursions::ShowCaseIndicrectRecursion()
     {
         std::cout << "If a function A calls function B and that itself calls function A, it is known as Indirect Recursion."
                   << std::endl;
@@ -215,7 +215,7 @@ namespace recursions
         indirectRecursionA(3);
     }
 
-	void Recursions::ShowCaseNestedRecursion()
+    void Recursions::ShowCaseNestedRecursion()
     {
         std::cout << "If a recursive call passes another recursive call as its parameter, it is called Nested Recursion."
                   << std::endl;
@@ -239,7 +239,7 @@ namespace recursions
         std::cout << "The output for this nested recursion is: " << nestedRecursion(95) << std::endl;
     }
 
-	void Recursions::ShowCaseStaticVariableInRecursion()
+    void Recursions::ShowCaseStaticVariableInRecursion()
     {
         std::cout << "Static variable lies in the code section and memory doesn't get deleted till the program ends so any update to it is permanent."
                   << std::endl;
@@ -257,7 +257,7 @@ namespace recursions
         std::cout << "The output for static variable in recursion is: " << staticVariableInRecursion(5) << std::endl;
     }
 
-	void Recursions::ShowCaseGlobalVariableInRecursion()
+    void Recursions::ShowCaseGlobalVariableInRecursion()
     {
         std::cout << "Global variable lies in the code section and memory doesn't get deleted till the program ends so any update to it is permanent but"
                   << " its scope lies throughout the program"
@@ -277,7 +277,7 @@ namespace recursions
         std::cout << "The output for global variable in recursion is: " << globalVariableInRecursion(5) << std::endl;
     }
 
-	void Recursions::ShowCaseSumOfNaturalNumbersUsingRecursion()
+    void Recursions::ShowCaseSumOfNaturalNumbersUsingRecursion()
     {
         std::cout << "Sum of natural numbers can be calculated using recursion"
                   << std::endl;
@@ -294,7 +294,7 @@ namespace recursions
         std::cout << "The sum of first 10 natural numbers using formula is: " << 10 * (10 + 1) / 2 << std::endl;
     }
 
-	void Recursions::ShowCasePowerUsingRecursion()
+    void Recursions::ShowCasePowerUsingRecursion()
     {
         std::cout << "Power can be calculated in two ways using recursion, one is the basic one and other is where we reduce the number of multiplications"
                   << " by multiplying one power in the base part and dividing the exponent part by 2"
@@ -320,7 +320,7 @@ namespace recursions
         std::cout << "2 raised to the power of 10 according to powerUsingRecursionImproved is: " << powerUsingRecursionImproved(2, 10) << std::endl;
     }
 
-	void Recursions::ShowCaseFactorialUsingRecursion()
+    void Recursions::ShowCaseFactorialUsingRecursion()
     {
         std::cout << "Factorial can be calculated using loop as well as recursion. The recursion will be of type tail recursion so it is better to"
                   << " use loops"
@@ -338,7 +338,7 @@ namespace recursions
         std::cout << "The factorial of 5 calculated using factorial using recursion is: " << factorialUsingRecursion(5) << std::endl;
     }
 
-	void Recursions::ShowCaseTaylorSeriesUsingRecursion()
+    void Recursions::ShowCaseTaylorSeriesUsingRecursion()
     {
         std::cout << "Taylor series is the infinite sun of e function"
                   << std::endl;
@@ -376,7 +376,7 @@ namespace recursions
         std::cout << "Taylor series result for e^5 with sum for 15 elements using Horner's Rule is: " << taylorSeriesUsingHornersRule(5, 15) << std::endl;
     }
 
-	void Recursions::ShowCaseFibonacciSeriesUsingRecursion()
+    void Recursions::ShowCaseFibonacciSeriesUsingRecursion()
     {
         std::cout << "Fibonacci is a mathematical series where one element is the sum of the previous two elements"
                   << std::endl;
@@ -417,7 +417,7 @@ namespace recursions
         std::cout << "The fibonacci number at index 10 using memoization is: " << fibonacciUsingMemoization(10) << std::endl;
     }
 
-	void Recursions::ShowCaseCombinationUsingRecursion()
+    void Recursions::ShowCaseCombinationUsingRecursion()
     {
         std::cout << "Combination is calculated for the total number of ways a subset can be selected from a set"
                   << std::endl;

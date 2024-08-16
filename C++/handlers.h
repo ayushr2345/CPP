@@ -13,20 +13,21 @@
 
 namespace handlers
 {
-	// Language Handlers
-	void Handle(basics::Basics&);
-	void Handle(pointersAndReferences::PointersAndReferences&);
-	void Handle(cStyleStrings::CStyleStrings&);
-	void Handle(cppStrings::CPPStrings&);
-	void Handle(functions::Functions&);
-	void Handle(classesAndObjects::ClassesAndObjects&);
-	void Handle(iostreams::IOStreams&);
+    // Language Handlers
+    void Handle(basics::Basics&);
+    void Handle(pointersAndReferences::PointersAndReferences&);
+    void Handle(cStyleStrings::CStyleStrings&);
+    void Handle(cppStrings::CPPStrings&);
+    void Handle(functions::Functions&);
+    void Handle(classesAndObjects::ClassesAndObjects&);
+    void Handle(iostreams::IOStreams&);
 
-	// DSA Handlers
-	void Handle(recursions::Recursions&);
+    // DSA Handlers
+    void Handle(recursions::Recursions&);
 
-	template<class T>
-	void Handle(arrayAdt::ArrayADT<T>&);
+    template<class T>
+    void Handle(arrayAdt::ArrayADT<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"
+

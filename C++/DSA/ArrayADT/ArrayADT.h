@@ -8,12 +8,12 @@
 namespace arrayAdt
 {
     template <class T>
-	class ArrayADT
-	{
-	private:
-		enum m_ArrayADTMenu
-		{
-			MIN_COUNT             = 0,
+    class ArrayADT
+    {
+    private:
+        enum m_ArrayADTMenu
+        {
+            MIN_COUNT             = 0,
             IS_EMPTY              = 1,
             IS_FULL               = 2,
             GET                   = 3,
@@ -45,24 +45,24 @@ namespace arrayAdt
             INTERSECTION          = 29,
             DIFFERENCE            = 30,
             BACK_TO_PREVIOUS_MENU = 31,
-			EXIT_FROM_PROGRAM     = 32,
-			MAX_COUNT             = EXIT_FROM_PROGRAM
-		};
-		int                        m_choice          { 0 };
-		std::map<int, std::string> m_arrayADTMenuMap {};
+            EXIT_FROM_PROGRAM     = 32,
+            MAX_COUNT             = EXIT_FROM_PROGRAM
+        };
+        int                        m_choice          { 0 };
+        std::map<int, std::string> m_arrayADTMenuMap {};
         int                        m_size            { 0 };
         int                        m_length          { 0 };
         T*                         m_arr             { nullptr };
 
-	public:
-		ArrayADT(int);
-		~ArrayADT();
-		const int          GetMinCase();
-		const int          GetMaxCase();
-		const int&         GetChoice();
-		void               GetChoiceInputFromUser();
-		void	           PrintMenu();
-		void               PrintSelectedChoice();
+    public:
+        ArrayADT(int);
+        ~ArrayADT();
+        const int          GetMinCase();
+        const int          GetMaxCase();
+        const int&         GetChoice();
+        void               GetChoiceInputFromUser();
+        void	           PrintMenu();
+        void               PrintSelectedChoice();
         int                GetSize();
         int                GetLength();
         bool               IsIndexInBounds(int);
@@ -102,7 +102,7 @@ namespace arrayAdt
         
         template <class U>
         friend ArrayADT<U>*      Difference(ArrayADT<U>&, ArrayADT<U>&);
-	};
+    };
 } // namespace arrayAdt
 
 # include "ArrayADT.tpp"

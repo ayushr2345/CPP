@@ -9,23 +9,23 @@ namespace handlers
     void Handle(arrayAdt::ArrayADT<T>& arrayAdtObj)
     {
         arrayAdtObj.PrintMenu();
-		arrayAdtObj.GetChoiceInputFromUser();
-		const int& selectedChoice = arrayAdtObj.GetChoice();
+        arrayAdtObj.GetChoiceInputFromUser();
+        const int& selectedChoice = arrayAdtObj.GetChoice();
 
-		while (arrayAdtObj.GetChoice())
-		{
-			char previousMenuFlag = 'n';
-			if (selectedChoice > arrayAdtObj.GetMinCase() &&
-				selectedChoice < arrayAdtObj.GetMaxCase() + 1)
-			{
-				arrayAdtObj.PrintSelectedChoice();
-			}
+        while (arrayAdtObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > arrayAdtObj.GetMinCase() &&
+                selectedChoice < arrayAdtObj.GetMaxCase() + 1)
+            {
+                arrayAdtObj.PrintSelectedChoice();
+            }
 
-			switch (selectedChoice)
-			{
-			case 1:
-			{
-				bool isEmpty = arrayAdtObj.IsEmpty();
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = arrayAdtObj.IsEmpty();
                 if (isEmpty)
                 {
                     std::cout << "The array is empty" << std::endl;
@@ -34,11 +34,11 @@ namespace handlers
                 {
                     std::cout << "The array is not empty" << std::endl;
                 }
-				break;
-			}
+                break;
+            }
             case 2:
-			{
-				bool isFull = arrayAdtObj.IsFull();
+            {
+                bool isFull = arrayAdtObj.IsFull();
                 if (isFull)
                 {
                     std::cout << "The array is full" << std::endl;
@@ -47,8 +47,8 @@ namespace handlers
                 {
                     std::cout << "The array is not full" << std::endl;
                 }
-				break;
-			}
+                break;
+            }
             case 3:
             {
                 int index = 0;
@@ -453,32 +453,32 @@ namespace handlers
                 delete tempArray;
                 break;
             }
-			case 31:
-			{
-				previousMenuFlag = 'y';
-				break;
-			}
-			case 32:
-			{
-				exit(0);
-			}
-			default:
-			{
-				std::cout << "The selected option is out of bounds!!! "
-						  << "Please select appropriate option: " << std::endl;
-				break;
-			}
-			}
+            case 31:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 32:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
 
-			if (previousMenuFlag == 'y')
-			{
-				break;
-			}
-			else
-			{
-				arrayAdtObj.PrintMenu();
-				arrayAdtObj.GetChoiceInputFromUser();
-			}
-		}
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                arrayAdtObj.PrintMenu();
+                arrayAdtObj.GetChoiceInputFromUser();
+            }
+        }
     }
 } // namespace handlers
