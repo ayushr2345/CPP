@@ -157,10 +157,16 @@ int main()
                 }
                 case 3:
                 {
-                    previousMenuFlag = 'y';
+                    strings::Strings stringObj;
+                    handlers::Handle(stringObj);
                     break;
                 }
                 case 4:
+                {
+                    previousMenuFlag = 'y';
+                    break;
+                }
+                case 5:
                 {
                     exit(0);
                 }

@@ -20,6 +20,7 @@ set(SOURCE_FILES
     C++/Language/Object\ Oriented\ Programming/Cuboid.cpp
     C++/Language/Object\ Oriented\ Programming/Rectangle.cpp
     C++/DSA/Recursion/Recursions.cpp
+    C++/DSA/Strings/Strings.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

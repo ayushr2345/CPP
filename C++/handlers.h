@@ -10,6 +10,7 @@
 #include "Language/IOStreams.h"
 #include "DSA/Recursion/Recursions.h"
 #include "DSA/ArrayADT/ArrayADT.h"
+#include "DSA/Strings/Strings.h"
 
 namespace handlers
 {
@@ -27,6 +28,8 @@ namespace handlers
 
     template<class T>
     void Handle(arrayAdt::ArrayADT<T>&);
+
+    void Handle(strings::Strings&);
 } // namespace handlers
 
 #include "handlers.tpp"

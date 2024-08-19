@@ -41,8 +41,9 @@ namespace utils
         MIN_COUNT             = 0,
         RECURSIONS            = 1,
         ARRAY_ADT             = 2,
-        BACK_TO_PREVIOUS_MENU = 3,
-        EXIT                  = 4,
+        STRINGS               = 3,
+        BACK_TO_PREVIOUS_MENU = 4,
+        EXIT                  = 5,
         MAX_COUNT             = EXIT
     };
 
@@ -117,6 +118,10 @@ namespace utils
         {
             static_cast<int>(DSAMenu::ARRAY_ADT),
             std::string("Array ADT")
+        },
+        {
+            static_cast<int>(DSAMenu::STRINGS),
+            std::string("Strings")
         },
         {
             static_cast<int>(DSAMenu::BACK_TO_PREVIOUS_MENU),

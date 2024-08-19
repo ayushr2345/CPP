@@ -1429,4 +1429,170 @@ namespace handlers
             }
         }
     }
+
+    void Handle(strings::Strings& stringsObj)
+    {
+        stringsObj.PrintMenu();
+        stringsObj.GetChoiceInputFromUser();
+        const int& selectedChoice = stringsObj.GetChoice();
+
+        while (stringsObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > stringsObj.GetMinCase() &&
+                selectedChoice < stringsObj.GetMaxCase() + 1)
+            {
+                stringsObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                stringsObj.PrintAllASCIICharacters();
+                break;
+            }
+            case 2:
+            {
+                stringsObj.ShowcaseCharArrayVsStrings();
+                break;
+            }
+            case 3:
+            {
+                stringsObj.Display();
+                break;
+            }
+            case 4:
+            {
+                stringsObj.TakeInput();
+                break;
+            }
+            case 5:
+            {
+                stringsObj.FindLenghOfString();
+                break;
+            }
+            case 6:
+            {
+                stringsObj.ChangeCaseToUpper();
+                break;
+            }
+            case 7:
+            {
+                stringsObj.ChangeCaseToLower();
+                break;
+            }
+            case 8:
+            {
+                stringsObj.ToggleCase();
+                break;
+            }
+            case 9:
+            {
+                stringsObj.CountWordsInASentence();
+                break;
+            }
+            case 10:
+            {
+                stringsObj.CountLettersInASentence();
+                break;
+            }
+            case 11:
+            {
+                stringsObj.CountVowelsAndConsonantsInTheSentence();
+                break;
+            }
+            case 12:
+            {
+                stringsObj.ValidateStringForOnlyAlphabets();
+                break;
+            }
+            case 13:
+            {
+                stringsObj.ValidateStringForOnlyNumeric();
+                break;
+            }
+            case 14:
+            {
+                stringsObj.ValidateStringForAlphanumeric();
+                break;
+            }
+            case 15:
+            {
+                stringsObj.ValidateStringForOnlyCharacters();
+                break;
+            }
+            case 16:
+            {
+                stringsObj.ReverseTheString();
+                break;
+            }
+            case 17:
+            {
+                stringsObj.CompareTheStringsMatchCase();
+                break;
+            }
+            case 18:
+            {
+                stringsObj.CompareTheStringsIgnoreCase();
+                break;
+            }
+            case 19:
+            {
+                stringsObj.CheckIfStringIsPalindrome();
+                break;
+            }
+            case 20:
+            {
+                stringsObj.FindDuplicatesInStringN2();
+                break;
+            }
+            case 21:
+            {
+                stringsObj.FindDuplicatesInStringHashTable();
+                break;
+            }
+            case 22:
+            {
+                stringsObj.FindDuplicatesInStringBitwise();
+                break;
+            }
+            case 23:
+            {
+                stringsObj.CheckForAnagram();
+                break;
+            }
+            case 24:
+            {
+                stringsObj.PermutationsOfStringBruteForce();
+                break;
+            }
+            case 25:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 26:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                      << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                stringsObj.PrintMenu();
+                stringsObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers
