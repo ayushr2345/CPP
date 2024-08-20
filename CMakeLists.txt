@@ -21,6 +21,14 @@ set(SOURCE_FILES
     C++/Language/Object\ Oriented\ Programming/Rectangle.cpp
     C++/DSA/Recursion/Recursions.cpp
     C++/DSA/Strings/Strings.cpp
+    C++/DSA/Matrices/MatricesMain.cpp
+    C++/DSA/Matrices/LowerTriangularMatrix.cpp
+    C++/DSA/Matrices/UpperTriangularMatrix.cpp
+    C++/DSA/Matrices/DiagonalMatrix.cpp
+    C++/DSA/Matrices/TridiagonalMatrix.cpp
+    C++/DSA/Matrices/ToeplitzMatrix.cpp
+    C++/DSA/Matrices/SparseMatrix.cpp
+    C++/DSA/Matrices/PolynomialRepresentation.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

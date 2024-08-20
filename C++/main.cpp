@@ -163,10 +163,16 @@ int main()
                 }
                 case 4:
                 {
-                    previousMenuFlag = 'y';
+                    matrices::MatricesMain matricesMainObj;
+                    handlers::Handle(matricesMainObj);
                     break;
                 }
                 case 5:
+                {
+                    previousMenuFlag = 'y';
+                    break;
+                }
+                case 6:
                 {
                     exit(0);
                 }

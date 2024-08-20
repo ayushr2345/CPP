@@ -1595,4 +1595,100 @@ namespace handlers
             }
         }
     }
+
+    void Handle(matrices::MatricesMain& matricesMainObj)
+    {
+        matricesMainObj.PrintMenu();
+        matricesMainObj.GetChoiceInputFromUser();
+        const int& selectedChoice = matricesMainObj.GetChoice();
+
+        while (matricesMainObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > matricesMainObj.GetMinCase() &&
+                selectedChoice < matricesMainObj.GetMaxCase() + 1)
+            {
+                matricesMainObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                matricesMainObj.LowerTriangularMatrix();
+                break;
+            }
+            case 2:
+            {
+                matricesMainObj.UpperTriangularMatrix();
+                break;
+            }
+            case 3:
+            {
+                matricesMainObj.DiagonalMatrix();
+                break;
+            }
+            case 4:
+            {
+                matricesMainObj.TridiagonalMatrix();
+                break;
+            }
+            case 5:
+            {
+                matricesMainObj.ToeplitzMatrix();
+                break;
+            }
+            case 6:
+            {
+                matricesMainObj.SparseMatrix();
+                break;
+            }
+            case 7:
+            {
+                matricesMainObj.SparseMatrixAddition();
+                break;
+            }
+            case 8:
+            {
+                matricesMainObj.PolynomialRepresentation();
+                break;
+            }
+            case 9:
+            {
+                matricesMainObj.PolynomialEvaluation();
+                break;
+            }
+            case 10:
+            {
+                matricesMainObj.PolynomialAddition();
+                break;
+            }
+            case 11:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 12:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                matricesMainObj.PrintMenu();
+                matricesMainObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

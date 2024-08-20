@@ -11,6 +11,7 @@
 #include "DSA/Recursion/Recursions.h"
 #include "DSA/ArrayADT/ArrayADT.h"
 #include "DSA/Strings/Strings.h"
+#include "DSA/Matrices/MatricesMain.h"
 
 namespace handlers
 {
@@ -30,6 +31,7 @@ namespace handlers
     void Handle(arrayAdt::ArrayADT<T>&);
 
     void Handle(strings::Strings&);
+    void Handle(matrices::MatricesMain&);
 } // namespace handlers
 
 #include "handlers.tpp"

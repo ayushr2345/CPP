@@ -42,8 +42,9 @@ namespace utils
         RECURSIONS            = 1,
         ARRAY_ADT             = 2,
         STRINGS               = 3,
-        BACK_TO_PREVIOUS_MENU = 4,
-        EXIT                  = 5,
+        MATRICES              = 4,
+        BACK_TO_PREVIOUS_MENU = 5,
+        EXIT                  = 6,
         MAX_COUNT             = EXIT
     };
 
@@ -124,6 +125,10 @@ namespace utils
             std::string("Strings")
         },
         {
+            static_cast<int>(DSAMenu::MATRICES),
+            std::string("Matrices")
+        },
+        {
             static_cast<int>(DSAMenu::BACK_TO_PREVIOUS_MENU),
             std::string("Back to previous menu")
         },
@@ -143,16 +148,29 @@ namespace utils
     // templates should not have definition in a separate source file 
     // as it would give compilation and linking errors
     template<typename T>
-    void InputNumberFromUser(T& choice, T range_start = std::numeric_limits<T>::min(), T range_stop = std::numeric_limits<T>::max())
+    void InputNumberFromUser(T& choice, T range_start = std::numeric_limits<T>::min(), T range_stop = std::numeric_limits<T>::max(), char newLine = 'y')
     {
         std::cin >> choice;
-        while (std::cin.fail() || std::cin.peek() != '\n' || choice < range_start || choice > range_stop)
+
+        bool condition = ((std::cin.fail()) || (std::cin.peek() != '\n') || (choice < range_start) || (choice > range_stop));
+        if (newLine == 'n')
+        {
+            condition = std::cin.fail() or choice < range_start or choice > range_stop;
+        }
+
+        while(condition)
         {
             ClearCinFlag();
             IgnoreStdCinBufferTillEOL();
             std::cout << "Wrong input type! Please enter a value within range: "
                       << range_start << " to " << range_stop << ": ";
             std::cin >> choice;
+
+            condition = ((std::cin.fail()) || (std::cin.peek() != '\n') || (choice < range_start) || (choice > range_stop));
+            if (newLine == 'n')
+            {
+                condition = std::cin.fail() or choice < range_start or choice > range_stop;
+            }
         }
     }
 } //namespace utils
