@@ -368,4 +368,4 @@ namespace matrices
         temp->Display();
         delete temp;
     }
-} // namespace recursions
+} // namespace matrices

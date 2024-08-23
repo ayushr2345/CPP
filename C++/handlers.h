@@ -12,6 +12,7 @@
 #include "DSA/ArrayADT/ArrayADT.h"
 #include "DSA/Strings/Strings.h"
 #include "DSA/Matrices/MatricesMain.h"
+#include "DSA/LinkedList/LinkedListMain.h"
 
 namespace handlers
 {
@@ -32,6 +33,11 @@ namespace handlers
 
     void Handle(strings::Strings&);
     void Handle(matrices::MatricesMain&);
+    
+    void Handle(linkedList::LinkedListMain&);
+
+    template<class T>
+    void Handle(linkedList::LinearSinglyLinkedList<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

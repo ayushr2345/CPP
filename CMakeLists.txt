@@ -29,6 +29,7 @@ set(SOURCE_FILES
     C++/DSA/Matrices/ToeplitzMatrix.cpp
     C++/DSA/Matrices/SparseMatrix.cpp
     C++/DSA/Matrices/PolynomialRepresentation.cpp
+    C++/DSA/LinkedList/LinkedListMain.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

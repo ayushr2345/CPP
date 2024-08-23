@@ -1691,4 +1691,55 @@ namespace handlers
             }
         }
     }
+
+    void Handle(linkedList::LinkedListMain& linkedListMainObj)
+    {
+        linkedListMainObj.PrintMenu();
+        linkedListMainObj.GetChoiceInputFromUser();
+        const int& selectedChoice = linkedListMainObj.GetChoice();
+
+        while (linkedListMainObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > linkedListMainObj.GetMinCase() &&
+                selectedChoice < linkedListMainObj.GetMaxCase() + 1)
+            {
+                linkedListMainObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                linkedListMainObj.LinearSinglyLinkedList();
+                break;
+            }
+            case 2:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 3:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                linkedListMainObj.PrintMenu();
+                linkedListMainObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

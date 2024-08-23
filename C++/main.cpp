@@ -169,10 +169,16 @@ int main()
                 }
                 case 5:
                 {
-                    previousMenuFlag = 'y';
+                    linkedList::LinkedListMain linkedListMainObj;
+                    handlers::Handle(linkedListMainObj);
                     break;
                 }
                 case 6:
+                {
+                    previousMenuFlag = 'y';
+                    break;
+                }
+                case 7:
                 {
                     exit(0);
                 }
