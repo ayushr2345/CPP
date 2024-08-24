@@ -1716,10 +1716,15 @@ namespace handlers
             }
             case 2:
             {
-                previousMenuFlag = 'y';
+                linkedListMainObj.CircularSinglyLinkedList();
                 break;
             }
             case 3:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 4:
             {
                 exit(0);
             }

@@ -1,105 +1,108 @@
 #pragma once
 
-#include "LinearSinglyLinkedList.h"
+#include "CircularSinglyLinkedList.h"
 #include "../../utils.h"
 
 namespace linkedList
 {
     template <class T>
-    LinearSinglyLinkedList<T>::LinearSinglyLinkedList():
-        m_choice                        ( 0 ),
-        m_linearSinglyLinkedListMenuMap ( {} ),
-        m_head                          ( nullptr )
+    CircularSinglyLinkedList<T>::CircularSinglyLinkedList():
+        m_choice                          ( 0 ),
+        m_circularSinglyLinkedListMenuMap ( {} ),
+        m_head                            ( nullptr )
     {
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(IS_EMPTY),
-                                                 std::string("Check if Linked List is empty") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(GET),
-                                                 std::string("Get an element at a given index") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(DISPLAY),
-                                                 std::string("Display the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(INSERT_BEGINNING),
-                                                 std::string("Insert at the beginning of the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(INSERT_END),
-                                                 std::string("Insert at the end of the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(INSERT_INDEX),
-                                                 std::string("Insert at a given index of the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(DELETE_BEGINNING),
-                                                 std::string("Delete from the beginning of the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(DELETE_END),
-                                                 std::string("Delete from the end of the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(DELETE_INDEX),
-                                                 std::string("Delete from a given index of the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(LINEAR_SEARCH),
-                                                 std::string("Perform a linear search on the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(MAX),
-                                                 std::string("Find max element from the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(MIN),
-                                                 std::string("Find min element from the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(SUM),
-                                                 std::string("Find sum of all the elements in the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(AVG),
-                                                 std::string("Find average of all the elements in the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(REVERSE),
-                                                 std::string("Reverse the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(IS_SORTED),
-                                                 std::string("Check if the linked list is sorted") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(SORT),
-                                                 std::string("Sort the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(INSERT_SORTED),
-                                                 std::string("Insert an element in the sorted position in the linked list") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(CONCATENATE),
-                                                 std::string("Concatenate two linked lists") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(MERGE),
-                                                 std::string("Merge two linked lists") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(BACK_TO_PREVIOUS_MENU),
-                                                 std::string("Back to Previous Menu") });
-        m_linearSinglyLinkedListMenuMap.insert({ m_LinearSinglyLinkedListMenu(EXIT_FROM_PROGRAM),
-                                                 std::string("Exit from program") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(IS_EMPTY),
+                                                   std::string("Check if Linked List is empty") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(GET),
+                                                   std::string("Get an element at a given index") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(DISPLAY),
+                                                   std::string("Display the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(INSERT_BEGINNING),
+                                                   std::string("Insert at the beginning of the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(INSERT_END),
+                                                   std::string("Insert at the end of the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(INSERT_INDEX),
+                                                   std::string("Insert at a given index of the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(DELETE_BEGINNING),
+                                                   std::string("Delete from the beginning of the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(DELETE_END),
+                                                   std::string("Delete from the end of the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(DELETE_INDEX),
+                                                   std::string("Delete from a given index of the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(LINEAR_SEARCH),
+                                                   std::string("Perform a linear search on the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(MAX),
+                                                   std::string("Find max element from the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(MIN),
+                                                   std::string("Find min element from the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(SUM),
+                                                   std::string("Find sum of all the elements in the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(AVG),
+                                                   std::string("Find average of all the elements in the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(REVERSE),
+                                                   std::string("Reverse the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(IS_SORTED),
+                                                   std::string("Check if the linked list is sorted") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(SORT),
+                                                   std::string("Sort the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(INSERT_SORTED),
+                                                   std::string("Insert an element in the sorted position in the linked list") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(CONCATENATE),
+                                                   std::string("Concatenate two linked lists") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(MERGE),
+                                                   std::string("Merge two linked lists") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(BACK_TO_PREVIOUS_MENU),
+                                                   std::string("Back to Previous Menu") });
+        m_circularSinglyLinkedListMenuMap.insert({ m_CircularSinglyLinkedListMenu(EXIT_FROM_PROGRAM),
+                                                   std::string("Exit from program") });
     }
 
     template <class T>
-    LinearSinglyLinkedList<T>::~LinearSinglyLinkedList()
+    CircularSinglyLinkedList<T>::~CircularSinglyLinkedList()
     {
         Node* temp = m_head;
-
         while (temp)
         {
             Node* temp2 = temp->m_m_next;
+            if (temp2 == m_head)
+            {
+                break;
+            }
             delete temp;
             temp = temp2;
         }
     }
     
     template <class T>
-    const int LinearSinglyLinkedList<T>::GetMinCase()
+    const int CircularSinglyLinkedList<T>::GetMinCase()
     {
-        return m_LinearSinglyLinkedListMenu::MIN_COUNT;
+        return m_CircularSinglyLinkedListMenu::MIN_COUNT;
     }
 
     template <class T>
-    const int LinearSinglyLinkedList<T>::GetMaxCase()
+    const int CircularSinglyLinkedList<T>::GetMaxCase()
     {
-        return m_LinearSinglyLinkedListMenu::MAX_COUNT;
+        return m_CircularSinglyLinkedListMenu::MAX_COUNT;
     }
 
     template <class T>
-    const int& LinearSinglyLinkedList<T>::GetChoice()
+    const int& CircularSinglyLinkedList<T>::GetChoice()
     {
         return m_choice;
     }
 
     template <class T>
-    void LinearSinglyLinkedList<T>::GetChoiceInputFromUser()
+    void CircularSinglyLinkedList<T>::GetChoiceInputFromUser()
     {
-        utils::InputNumberFromUser(m_choice, 1, static_cast<int>(m_LinearSinglyLinkedListMenu::MAX_COUNT));
+        utils::InputNumberFromUser(m_choice, 1, static_cast<int>(m_CircularSinglyLinkedListMenu::MAX_COUNT));
     }
 
     template <class T>
-    void LinearSinglyLinkedList<T>::PrintMenu()
+    void CircularSinglyLinkedList<T>::PrintMenu()
     {
         std::cout << std::endl;
-        for (std::map<int, std::string>::iterator it = m_linearSinglyLinkedListMenuMap.begin();
-            it != m_linearSinglyLinkedListMenuMap.end();
+        for (std::map<int, std::string>::iterator it = m_circularSinglyLinkedListMenuMap.begin();
+            it != m_circularSinglyLinkedListMenuMap.end();
             it++)
         {
             std::cout << it->first << ". " << it->second << std::endl;
@@ -108,16 +111,16 @@ namespace linkedList
     }
 
     template <class T>
-    void LinearSinglyLinkedList<T>::PrintSelectedChoice()
+    void CircularSinglyLinkedList<T>::PrintSelectedChoice()
     {
         std::cout << std::endl << std::endl
                 << "You have chosen choice "
-                << m_linearSinglyLinkedListMenuMap.at(m_choice)
+                << m_circularSinglyLinkedListMenuMap.at(m_choice)
                 << std::endl;
     }
 
     template <class T>
-    int LinearSinglyLinkedList<T>::GetSize()
+    int CircularSinglyLinkedList<T>::GetSize()
     {
         if (not m_head)
         {
@@ -125,7 +128,7 @@ namespace linkedList
         }
         int count = 1;
         Node* temp = m_head;
-        while (temp->m_m_next)
+        while (temp->m_m_next != m_head)
         {
             count++;
             temp = temp->m_m_next;
@@ -134,7 +137,7 @@ namespace linkedList
     }
 
     template <class T>
-    LinearSinglyLinkedList<T>::Node* LinearSinglyLinkedList<T>::MoveToIndex(int index)
+    CircularSinglyLinkedList<T>::Node* CircularSinglyLinkedList<T>::MoveToIndex(int index)
     {
         if (not IsIndexInBounds(index))
         {
@@ -152,7 +155,7 @@ namespace linkedList
     }
 
     template <class T>
-    bool LinearSinglyLinkedList<T>::IsIndexInBounds(int index)
+    bool CircularSinglyLinkedList<T>::IsIndexInBounds(int index)
     {
         if (index < 0 or index > GetSize())
         {
@@ -162,13 +165,13 @@ namespace linkedList
     }
 
     template <class T>
-    bool LinearSinglyLinkedList<T>::IsEmpty()
+    bool CircularSinglyLinkedList<T>::IsEmpty()
     {
         return GetSize() ? false : true;
     }
 
     template <class T>
-    std::optional<T> LinearSinglyLinkedList<T>::Get(int index)
+    std::optional<T> CircularSinglyLinkedList<T>::Get(int index)
     {
         if ((not IsIndexInBounds(index))or IsEmpty())
         {
@@ -180,7 +183,7 @@ namespace linkedList
     }
 
     template <class T>
-    void LinearSinglyLinkedList<T>::Display()
+    void CircularSinglyLinkedList<T>::Display()
     {
         if (IsEmpty())
         {
@@ -189,17 +192,18 @@ namespace linkedList
         else
         {
             Node* temp = m_head;
-            while (temp)
+            std::cout << "------>";
+            while (temp->m_m_next != m_head)
             {
                 std::cout << temp->m_m_data << "-->";
                 temp = temp->m_m_next;
             }
-            std::cout << std::endl;
+            std::cout << temp->m_m_data << "------>" << std::endl;
         }
     }
 
     template <class T>
-    bool LinearSinglyLinkedList<T>::Insert(int index, T element)
+    bool CircularSinglyLinkedList<T>::Insert(int index, T element)
     {
         if (not IsIndexInBounds(index))
         {
@@ -212,6 +216,16 @@ namespace linkedList
             Node* temp = new Node;
             temp->m_m_data = element;
             temp->m_m_next = m_head;
+            
+            Node* lastNode = MoveToIndex(GetSize() - 1);
+            if (lastNode)
+            {
+                lastNode->m_m_next = temp;
+            }
+            else
+            {
+                temp->m_m_next = temp;
+            }
             m_head = temp;
         }
         else
@@ -226,7 +240,7 @@ namespace linkedList
     }
 
     template <class T>
-    std::optional<T> LinearSinglyLinkedList<T>::Remove(int index)
+    std::optional<T> CircularSinglyLinkedList<T>::Remove(int index)
     {
         if (not IsIndexInBounds(index))
         {
@@ -244,9 +258,22 @@ namespace linkedList
         if (index == 0)
         {
             Node* deleted = m_head;
+
+            Node* lastNode = MoveToIndex(GetSize() - 1);
+            lastNode->m_m_next = deleted->m_m_next;
+
             m_head = m_head->m_m_next;
             deletedValue = deleted->m_m_data;
-            delete deleted;
+
+            if (deleted == m_head)
+            {
+                delete deleted;
+                m_head = nullptr;
+            }
+            else
+            {
+                delete deleted;
+            }
         }
         else
         {
@@ -255,13 +282,21 @@ namespace linkedList
 
             temp->m_m_next = deleted->m_m_next;
             deletedValue = deleted->m_m_data;
-            delete deleted;
+            if (deleted == m_head)
+            {
+                delete deleted;
+                m_head = nullptr;
+            }
+            else
+            {
+                delete deleted;
+            }
         }
         return deletedValue;
     }
 
     template <class T>
-    std::optional<int> LinearSinglyLinkedList<T>::LinearSearch(T element)
+    std::optional<int> CircularSinglyLinkedList<T>::LinearSearch(T element)
     {
         if (IsEmpty())
         {
@@ -273,12 +308,12 @@ namespace linkedList
             Node* temp = m_head;
             int index = 0;
 
-            while (temp and temp->m_m_data != element)
+            while (temp->m_m_next != m_head and temp->m_m_data != element)
             {
                 temp = temp->m_m_next;
                 index++;
             }
-            if (not temp)
+            if (temp->m_m_data != element)
             {
                 return std::nullopt;
             }
@@ -287,7 +322,7 @@ namespace linkedList
     }
 
     template <class T>
-    std::optional<T> LinearSinglyLinkedList<T>::Max()
+    std::optional<T> CircularSinglyLinkedList<T>::Max()
     {
         if (IsEmpty())
         {
@@ -298,7 +333,7 @@ namespace linkedList
         T max = m_head->m_m_data;
 
         Node* temp = m_head->m_m_next;
-        while (temp)
+        while (temp != m_head)
         {
             if (temp->m_m_data > max)
             {
@@ -310,7 +345,7 @@ namespace linkedList
     }
 
     template <class T>
-    std::optional<T> LinearSinglyLinkedList<T>::Min()
+    std::optional<T> CircularSinglyLinkedList<T>::Min()
     {
         if (IsEmpty())
         {
@@ -321,7 +356,7 @@ namespace linkedList
         T min = m_head->m_m_data;
 
         Node* temp = m_head->m_m_next;
-        while (temp)
+        while (temp != m_head)
         {
             if (temp->m_m_data < min)
             {
@@ -333,7 +368,7 @@ namespace linkedList
     }
 
     template <class T>
-    std::optional<T> LinearSinglyLinkedList<T>::Sum()
+    std::optional<T> CircularSinglyLinkedList<T>::Sum()
     {
         if (IsEmpty())
         {
@@ -341,9 +376,10 @@ namespace linkedList
             return std::nullopt;
         }
         
-        T sum = 0;
-        Node* temp = m_head;
-        while (temp)
+        T sum = m_head->m_m_data;
+
+        Node* temp = m_head->m_m_next;
+        while (temp != m_head)
         {
             sum += temp->m_m_data;
             temp = temp->m_m_next;
@@ -352,7 +388,7 @@ namespace linkedList
     }
 
     template <class T>
-    std::optional<double> LinearSinglyLinkedList<T>::Avg()
+    std::optional<double> CircularSinglyLinkedList<T>::Avg()
     {
         if (IsEmpty())
         {
@@ -364,7 +400,7 @@ namespace linkedList
     }
 
     template <class T>
-    void LinearSinglyLinkedList<T>::Reverse()
+    void CircularSinglyLinkedList<T>::Reverse()
     {
         if (IsEmpty())
         {
@@ -379,20 +415,20 @@ namespace linkedList
             while (q or r)
             {
                 q->m_m_next = p;
-                if (p == m_head)
+                if (q == m_head)
                 {
-                    p->m_m_next = nullptr;
+                    m_head = p;
+                    break;
                 }
                 p = q;
                 q = r;
-                r = r ? r = r->m_m_next : nullptr;
+                r = r->m_m_next;
             }
-            m_head = p;
         }
     }
 
     template <class T>
-    bool LinearSinglyLinkedList<T>::IsSorted()
+    bool CircularSinglyLinkedList<T>::IsSorted()
     {
         if (IsEmpty())
         {
@@ -402,19 +438,22 @@ namespace linkedList
 
         Node* temp = m_head;
 
-        while (temp)
+        while (true)
         {
-            if (temp->m_m_next and not (temp->m_m_data <= (temp->m_m_next)->m_m_data))
+            if (temp->m_m_next != m_head and not (temp->m_m_data <= (temp->m_m_next)->m_m_data))
             {
                 return false;
             }
             temp = temp->m_m_next;
+            if (temp == m_head)
+            {
+                return true;
+            }
         }
-        return true;
     }
 
     template <class T>
-    void LinearSinglyLinkedList<T>::Sort()
+    void CircularSinglyLinkedList<T>::Sort()
     {
         if (IsEmpty())
         {
@@ -422,14 +461,16 @@ namespace linkedList
         }
         else
         {
-            typename LinearSinglyLinkedList<T>::Node* current = m_head;
+            typename CircularSinglyLinkedList<T>::Node* current = m_head;
 
-            while (current != nullptr)
+            int flag = 0;
+
+            while (not flag)
             {
-                typename LinearSinglyLinkedList<T>::Node* minNode = current;
-                typename LinearSinglyLinkedList<T>::Node* nextNode = current->m_m_next;
+                typename CircularSinglyLinkedList<T>::Node* minNode = current;
+                typename CircularSinglyLinkedList<T>::Node* nextNode = current->m_m_next;
 
-                while (nextNode != nullptr)
+                while (nextNode != m_head)
                 {
                     if (nextNode->m_m_data < minNode->m_m_data)
                     {
@@ -447,12 +488,18 @@ namespace linkedList
                 }
 
                 current = current->m_m_next;
+
+                if (current == m_head)
+                {
+                    flag = 1;
+                }
             }
         }
     }
 
+
     template <class T>
-    bool LinearSinglyLinkedList<T>::InsertSorted(T element)
+    bool CircularSinglyLinkedList<T>::InsertSorted(T element)
     {
 
         if (IsEmpty())
@@ -481,7 +528,7 @@ namespace linkedList
             Node* temp = m_head;
             int index = 0;
             
-            while (temp->m_m_next and (element > (temp->m_m_next)->m_m_data))
+            while (temp->m_m_next != m_head and (element > (temp->m_m_next)->m_m_data))
             {
                 index++;
                 temp = temp->m_m_next;
@@ -492,7 +539,7 @@ namespace linkedList
     }
 
     template <class T>
-    LinearSinglyLinkedList<T>* Concatenate(LinearSinglyLinkedList<T>& A, LinearSinglyLinkedList<T>& B)
+    CircularSinglyLinkedList<T>* Concatenate(CircularSinglyLinkedList<T>& A, CircularSinglyLinkedList<T>& B)
     {
         if (A.IsEmpty() and B.IsEmpty())
         {
@@ -500,26 +547,37 @@ namespace linkedList
             return nullptr;
         }
 
-        LinearSinglyLinkedList<T>* temp = new LinearSinglyLinkedList<T>();
+        CircularSinglyLinkedList<T>* temp = new CircularSinglyLinkedList<T>();
 
-        typename LinearSinglyLinkedList<T>::Node* ATemp = A.m_head;
-        while (ATemp)
+        typename CircularSinglyLinkedList<T>::Node* ATemp = A.m_head;
+        int flag = 0;
+        while (ATemp and not flag)
         {
             temp->Insert(temp->GetSize(), ATemp->m_m_data);
             ATemp = ATemp->m_m_next;
+            if (ATemp == A.m_head)
+            {
+                flag = 1;
+            }
         }
 
-        typename LinearSinglyLinkedList<T>::Node* BTemp = B.m_head;
-        while (BTemp)
+        flag = 0;
+
+        typename CircularSinglyLinkedList<T>::Node* BTemp = B.m_head;
+        while (BTemp and not flag)
         {
             temp->Insert(temp->GetSize(), BTemp->m_m_data);
             BTemp = BTemp->m_m_next;
+            if (BTemp == B.m_head)
+            {
+                flag = 1;
+            }
         }
         return temp;
     }
 
     template <class T>
-    LinearSinglyLinkedList<T>* SortedMerge(LinearSinglyLinkedList<T>& A, LinearSinglyLinkedList<T>& B)
+    CircularSinglyLinkedList<T>* SortedMerge(CircularSinglyLinkedList<T>& A, CircularSinglyLinkedList<T>& B)
     {
         if (A.IsEmpty() and B.IsEmpty())
         {
@@ -539,7 +597,7 @@ namespace linkedList
             B.Sort();
         }
 
-        LinearSinglyLinkedList<T>* temp = new LinearSinglyLinkedList<T>();
+        CircularSinglyLinkedList<T>* temp = new CircularSinglyLinkedList<T>();
 
         int i = 0;
         int j = 0;
@@ -582,5 +640,4 @@ namespace linkedList
 
         return temp;
     }
-
 } // namespace linkedList
