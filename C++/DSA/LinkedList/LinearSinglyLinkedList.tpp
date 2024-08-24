@@ -60,11 +60,14 @@ namespace linkedList
     template <class T>
     LinearSinglyLinkedList<T>::~LinearSinglyLinkedList()
     {
+        Node* temp = m_head;
 
-        // delete m_arr;
-        // m_arr = nullptr;
-        // m_size = 0;
-        // m_length = 0;
+        while (temp)
+        {
+            Node* temp2 = temp->next;
+            delete temp;
+            temp = temp2;
+        }
     }
     
     template <class T>
