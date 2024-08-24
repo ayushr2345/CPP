@@ -15,8 +15,8 @@ namespace linkedList
         {
             MIN_COUNT                 = 0,
             LINEAR_SINGLY_LINKED_LIST = 1,
-            BACK_TO_PREVIOUS_MENU     = 11,
-            EXIT_FROM_PROGRAM         = 12,
+            BACK_TO_PREVIOUS_MENU     = 2,
+            EXIT_FROM_PROGRAM         = 3,
             MAX_COUNT                 = EXIT_FROM_PROGRAM
         };
         int                        m_choice                { 0 };

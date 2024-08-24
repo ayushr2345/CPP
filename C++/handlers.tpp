@@ -786,35 +786,35 @@ namespace handlers
             }
             case 19:
             {
-                // arrayAdt::ArrayADT<int> arrayAdtObjB(5);
+                linkedList::LinearSinglyLinkedList<int>* BList = new linkedList::LinearSinglyLinkedList<int>;
 
-                // for (int i = 0; i < 5; i++)
-                // {
-                //     arrayAdtObjB.Insert(arrayAdtObjB.GetSize(), i + 1);
-                // }
+                for (int i = 0; i < 5; i ++)
+                {
+                    BList->Insert(BList->GetSize(), i + 1);
+                }
 
-                // std::cout << "Concatenating the present array with the array 1 2 3 4 5" << std::endl;
+                std::cout << "Concatenating the linked list with another linked list with contents as 1 2 3 4 5" << std::endl;
 
-                // arrayAdt::ArrayADT<int>* tempArray = arrayAdt::Concatenate(arrayAdtObj, arrayAdtObjB);
-                // tempArray->Display();
-                // delete tempArray;
-                // break;
+                linkedList::LinearSinglyLinkedList<int>* concatenatedList = linkedList::Concatenate<int>(linearSinglyLinkedListObj, *BList);
+                concatenatedList->Display();
+                delete concatenatedList;
+                break;
             }
             case 20:
             {
-                // arrayAdt::ArrayADT<int> arrayAdtObjB(5);
+                linkedList::LinearSinglyLinkedList<int>* BList = new linkedList::LinearSinglyLinkedList<int>;
 
-                // for (int i = 0; i < 5; i++)
-                // {
-                //     arrayAdtObjB.Insert(arrayAdtObjB.GetSize(), i + 1);
-                // }
+                for (int i = 0; i < 5; i ++)
+                {
+                    BList->Insert(BList->GetSize(), i + 1);
+                }
 
-                // std::cout << "Sorted merging the present array with the array 1 2 3 4 5" << std::endl;
+                std::cout << "Merging the linked list with another linked list with contents as 1 2 3 4 5" << std::endl;
 
-                // arrayAdt::ArrayADT<int>* tempArray = arrayAdt::SortedMerge(arrayAdtObj, arrayAdtObjB);
-                // tempArray->Display();
-                // delete tempArray;
-                // break;
+                linkedList::LinearSinglyLinkedList<int>* mergedList = linkedList::SortedMerge<int>(linearSinglyLinkedListObj, *BList);
+                mergedList->Display();
+                delete mergedList;
+                break;
             }
             case 21:
             {

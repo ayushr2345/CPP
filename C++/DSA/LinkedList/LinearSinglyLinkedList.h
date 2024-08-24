@@ -75,11 +75,11 @@ namespace linkedList
         void                  Sort();
         bool                  InsertSorted(T);
 
-        // template <class U>
-        // friend LinearSinglyLinkedList<U>*   Concatenate(LinearSinglyLinkedList<U>&, LinearSinglyLinkedList<U>&);
+        template <class U>
+        friend LinearSinglyLinkedList<U>*   Concatenate(LinearSinglyLinkedList<U>&, LinearSinglyLinkedList<U>&);
 
-        // template <class U>
-        // friend LinearSinglyLinkedList<U>*   SortedMerge(LinearSinglyLinkedList<U>&, LinearSinglyLinkedList<U>&);
+        template <class U>
+        friend LinearSinglyLinkedList<U>*   SortedMerge(LinearSinglyLinkedList<U>&, LinearSinglyLinkedList<U>&);
     };
 } // namespace linkedList
 

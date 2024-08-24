@@ -420,24 +420,32 @@ namespace linkedList
         }
         else
         {
-            // for (int i = 0; i < m_size - 1; i++)
-            // {
-            //     int minIndex = i;
-            //     for (int j = i + 1; j < m_size; j++)
-            //     {
-            //         if (m_arr[j] < m_arr[minIndex])
-            //         {
-            //             minIndex = j;
-            //         }
-            //     }
+            typename LinearSinglyLinkedList<T>::Node* current = m_head;
 
-            //     if (minIndex != i)
-            //     {
-            //         T temp = m_arr[i];
-            //         m_arr[i] = m_arr[minIndex];
-            //         m_arr[minIndex] = temp;
-            //     }
-            // }
+            while (current != nullptr)
+            {
+                typename LinearSinglyLinkedList<T>::Node* minNode = current;
+                typename LinearSinglyLinkedList<T>::Node* nextNode = current->m_m_next;
+
+                while (nextNode != nullptr)
+                {
+                    if (nextNode->m_m_data < minNode->m_m_data)
+                    {
+                        minNode = nextNode;
+                    }
+                    nextNode = nextNode->m_m_next;
+                }
+
+                // Swap the data of current node with the minNode found
+                if (minNode != current)
+                {
+                    T temp = current->m_m_data;
+                    current->m_m_data = minNode->m_m_data;
+                    minNode->m_m_data = temp;
+                }
+
+                current = current->m_m_next;
+            }
         }
     }
 
@@ -490,64 +498,87 @@ namespace linkedList
             return nullptr;
         }
 
-        LinearSinglyLinkedList<T>* temp = new LinearSinglyLinkedList<T>(A.GetSize() + B.GetSize());
+        LinearSinglyLinkedList<T>* temp = new LinearSinglyLinkedList<T>();
 
-        LinearSinglyLinkedList::Node* AEnd = A.MoveToIndex(A.GetSize());
+        typename LinearSinglyLinkedList<T>::Node* ATemp = A.m_head;
+        while (ATemp)
+        {
+            temp->Insert(temp->GetSize(), ATemp->m_m_data);
+            ATemp = ATemp->m_m_next;
+        }
+
+        typename LinearSinglyLinkedList<T>::Node* BTemp = B.m_head;
+        while (BTemp)
+        {
+            temp->Insert(temp->GetSize(), BTemp->m_m_data);
+            BTemp = BTemp->m_m_next;
+        }
+        return temp;
     }
 
-    // template <class T>
-    // LinearSinglyLinkedList<T>* SortedMerge(LinearSinglyLinkedList<T>& A, LinearSinglyLinkedList<T>& B)
-    // {
-    //     // if (A.IsEmpty() and B.IsEmpty())
-    //     // {
-    //     //     std::cout << "Both the linked lists are empty, can't do sorted merge" << std::endl;
-    //     //     return nullptr;
-    //     // }
+    template <class T>
+    LinearSinglyLinkedList<T>* SortedMerge(LinearSinglyLinkedList<T>& A, LinearSinglyLinkedList<T>& B)
+    {
+        if (A.IsEmpty() and B.IsEmpty())
+        {
+            std::cout << "Both the linked lists are empty, can't do sorted merge" << std::endl;
+            return nullptr;
+        }
 
-    //     // if (not A.IsSorted())
-    //     // {
-    //     //     std::cout << "Sorted merge can be performed only on sorted linked lists, A is not sorted, sorting it first" << std::endl;
-    //     //     A.Sort();
-    //     // }
+        if (not A.IsSorted())
+        {
+            std::cout << "Sorted merge can be performed only on sorted linked lists, A is not sorted, sorting it first" << std::endl;
+            A.Sort();
+        }
 
-    //     // if (not B.IsSorted())
-    //     // {
-    //     //     std::cout << "Sorted merge can be performed only on sorted linked lists, B is not sorted, sorting it first" << std::endl;
-    //     //     B.Sort();
-    //     // }
+        if (not B.IsSorted())
+        {
+            std::cout << "Sorted merge can be performed only on sorted linked lists, B is not sorted, sorting it first" << std::endl;
+            B.Sort();
+        }
 
-    //     // LinearSinglyLinkedList<T>* temp = new LinearSinglyLinkedList<T>(A.m_size + B.m_size);
+        LinearSinglyLinkedList<T>* temp = new LinearSinglyLinkedList<T>();
 
-    //     // int i = 0;
-    //     // int j = 0;
-    //     // int k = 0;
+        int i = 0;
+        int j = 0;
+        int k = 0;
 
-    //     // while (i < A.m_size)
-    //     // {
-    //     //     if (A.m_arr[i] <= B.m_arr[j])
-    //     //     {
-    //     //         temp->Insert(k, A.m_arr[i]);
-    //     //         k++;
-    //     //         i++;
-    //     //     }
-    //     //     else
-    //     //     {
-    //     //         temp->Insert(k, B.m_arr[j]);
-    //     //         k++;
-    //     //         j++;
-    //     //     }
-    //     // }
+        while (i < A.GetSize() and j < B.GetSize())
+        {
+            const auto getA = A.Get(i);
+            const auto getB = A.Get(j);
+                
+            if (getA.value() <= getB.value())
+            {
+                temp->Insert(k, getA.value());
+                i++;
+                k++;
+            }
+            else
+            {
+                temp->Insert(k, getB.value());
+                j++;
+                k++;
+            }
+        }
 
-    //     // while (j < B.m_size)
-    //     // {
-    //     //     temp->Insert(k, B.m_arr[j]);
-    //     //     j++;
-    //     //     k++;
-    //     // }
+        while (i < A.GetSize())
+        {   
+            const auto getA = A.Get(i);
+            temp->Insert(k, getA.value());
+            i++;
+            k++;
+        }
 
-    //     // return temp;
-    //     LinearSinglyLinkedList::Node* temp = new Node;
-    //     return temp;
-    // }
+        while (j < B.GetSize())
+        {
+            const auto getB = B.Get(j);
+            temp->Insert(k, getB.value());
+            j++;
+            k++;
+        }
+
+        return temp;
+    }
 
 } // namespace linkedList
