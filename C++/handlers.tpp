@@ -144,7 +144,7 @@ namespace handlers
                 utils::InputNumberFromUser(index, 0, arrayAdtObj.GetSize() - 1);
 
                 T element = 0;
-                std::cout << "Enter the element which you want to insert at the end: ";
+                std::cout << "Enter the element which you want to insert at the index: ";
                 utils::InputNumberFromUser(element);
 
                 const bool insertCompleted = arrayAdtObj.Insert(index, element);
@@ -589,7 +589,7 @@ namespace handlers
                 utils::InputNumberFromUser(index, 0, linearSinglyLinkedListObj.GetSize());
 
                 T element = 0;
-                std::cout << "Enter the element which you want to insert at the end: ";
+                std::cout << "Enter the element which you want to insert at the index: ";
                 utils::InputNumberFromUser(element);
 
                 const bool insertCompleted = linearSinglyLinkedListObj.Insert(index, element);
@@ -951,7 +951,7 @@ namespace handlers
                 utils::InputNumberFromUser(index, 0, circularSinglyLinkedListObj.GetSize());
 
                 T element = 0;
-                std::cout << "Enter the element which you want to insert at the end: ";
+                std::cout << "Enter the element which you want to insert at the index: ";
                 utils::InputNumberFromUser(element);
 
                 const bool insertCompleted = circularSinglyLinkedListObj.Insert(index, element);
@@ -1313,7 +1313,7 @@ namespace handlers
                 utils::InputNumberFromUser(index, 0, linearDoublyLinkedListObj.GetSize());
 
                 T element = 0;
-                std::cout << "Enter the element which you want to insert at the end: ";
+                std::cout << "Enter the element which you want to insert at the index: ";
                 utils::InputNumberFromUser(element);
 
                 const bool insertCompleted = linearDoublyLinkedListObj.Insert(index, element);

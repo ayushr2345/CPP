@@ -191,7 +191,7 @@ namespace linkedList
             Node* temp = m_head;
             while (temp)
             {
-                std::cout << temp->m_m_data << "-->";
+                std::cout << temp->m_m_data << "<-->";
                 temp = temp->m_m_next;
             }
             std::cout << std::endl;
@@ -213,7 +213,10 @@ namespace linkedList
             temp->m_m_prev = nullptr;
             temp->m_m_data = element;
             temp->m_m_next = m_head;
-            m_head->m_m_prev = temp;
+            if (m_head) 
+            {
+                m_head->m_m_prev = temp;
+            }
             m_head = temp;
         }
         else
@@ -224,7 +227,10 @@ namespace linkedList
             temp->m_m_prev = insertionNode;
             temp->m_m_next = insertionNode->m_m_next;
             insertionNode->m_m_next = temp;
-            (temp->m_m_next)->m_m_prev = temp;
+            if (temp->m_m_next)
+            {
+                (temp->m_m_next)->m_m_prev = temp;
+            }
         }
         return true;
     }
