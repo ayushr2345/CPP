@@ -8,10 +8,10 @@
 namespace linkedList
 {
     template <class T>
-    class LinearSinglyLinkedList
+    class LinearDoublyLinkedList
     {
     private:
-        enum m_LinearSinglyLinkedListMenu
+        enum m_LinearDoublyLinkedListMenu
         {
             MIN_COUNT             = 0,
             IS_EMPTY              = 1,
@@ -41,16 +41,17 @@ namespace linkedList
         class Node
         {
         public:
+            Node* m_m_prev;
             T     m_m_data;
             Node* m_m_next;
         };
         int                        m_choice                        { 0 };
-        std::map<int, std::string> m_linearSinglyLinkedListMenuMap {};
+        std::map<int, std::string> m_linearDoublyLinkedListMenuMap {};
         Node*                      m_head                          { nullptr };
 
     public:
-        LinearSinglyLinkedList();
-        ~LinearSinglyLinkedList();
+        LinearDoublyLinkedList();
+        ~LinearDoublyLinkedList();
         const int             GetMinCase();
         const int             GetMaxCase();
         const int&            GetChoice();
@@ -76,11 +77,11 @@ namespace linkedList
         bool                  InsertSorted(T);
 
         template <class U>
-        friend LinearSinglyLinkedList<U>* Concatenate(LinearSinglyLinkedList<U>&, LinearSinglyLinkedList<U>&);
+        friend LinearDoublyLinkedList<U>* Concatenate(LinearDoublyLinkedList<U>&, LinearDoublyLinkedList<U>&);
 
         template <class U>
-        friend LinearSinglyLinkedList<U>* SortedMerge(LinearSinglyLinkedList<U>&, LinearSinglyLinkedList<U>&);
+        friend LinearDoublyLinkedList<U>* SortedMerge(LinearDoublyLinkedList<U>&, LinearDoublyLinkedList<U>&);
     };
 } // namespace linkedList
 
-# include "LinearSinglyLinkedList.tpp"
+# include "LinearDoublyLinkedList.tpp"

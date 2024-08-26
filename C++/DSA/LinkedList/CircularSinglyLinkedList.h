@@ -76,10 +76,10 @@ namespace linkedList
         bool                  InsertSorted(T);
 
         template <class U>
-        friend CircularSinglyLinkedList<U>*   Concatenate(CircularSinglyLinkedList<U>&, CircularSinglyLinkedList<U>&);
+        friend CircularSinglyLinkedList<U>* Concatenate(CircularSinglyLinkedList<U>&, CircularSinglyLinkedList<U>&);
 
         template <class U>
-        friend CircularSinglyLinkedList<U>*   SortedMerge(CircularSinglyLinkedList<U>&, CircularSinglyLinkedList<U>&);
+        friend CircularSinglyLinkedList<U>* SortedMerge(CircularSinglyLinkedList<U>&, CircularSinglyLinkedList<U>&);
     };
 } // namespace linkedList
 
