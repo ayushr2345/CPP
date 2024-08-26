@@ -251,6 +251,7 @@ namespace linkedList
             m_head = m_head->m_m_next;
             deletedValue = deleted->m_m_data;
             delete deleted;
+            m_head->m_m_prev = nullptr;
         }
         else
         {
@@ -258,6 +259,7 @@ namespace linkedList
             Node* deleted = temp->m_m_next;
 
             temp->m_m_next = deleted->m_m_next;
+            (temp->m_m_next)->m_m_prev = temp;
             deletedValue = deleted->m_m_data;
             delete deleted;
         }
