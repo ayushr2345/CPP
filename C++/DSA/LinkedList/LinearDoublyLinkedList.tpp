@@ -257,15 +257,21 @@ namespace linkedList
             m_head = m_head->m_m_next;
             deletedValue = deleted->m_m_data;
             delete deleted;
-            m_head->m_m_prev = nullptr;
+            if (m_head)
+            {
+                m_head->m_m_prev = nullptr;
+            }
         }
         else
         {
             Node* temp = MoveToIndex(index - 1);
             Node* deleted = temp->m_m_next;
-
+            std::cout << temp->m_m_data << std::endl;
             temp->m_m_next = deleted->m_m_next;
-            (temp->m_m_next)->m_m_prev = temp;
+            if (temp->m_m_next)
+            {
+                (temp->m_m_next)->m_m_prev = temp; 
+            }
             deletedValue = deleted->m_m_data;
             delete deleted;
         }
@@ -384,21 +390,21 @@ namespace linkedList
         }
         else
         {
-            Node* p = m_head;
-            Node* q = p->m_m_next;
+            Node* p = nullptr;
+            Node* q = m_head;
             Node* r = q->m_m_next;
 
-            while (q or r)
+            while (q)
             {
-                q->m_m_next = p;
                 q->m_m_prev = r;
+                q->m_m_next = p;
                 if (p == m_head)
                 {
                     p->m_m_next = nullptr;
                 }
                 p = q;
                 q = r;
-                r = r ? r = r->m_m_next : nullptr;
+                r = r->m_m_next;
             }
             m_head = p;
         }
