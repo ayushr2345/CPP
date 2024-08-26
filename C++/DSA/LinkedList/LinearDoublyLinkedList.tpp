@@ -385,6 +385,7 @@ namespace linkedList
             while (q or r)
             {
                 q->m_m_next = p;
+                q->m_m_prev = r;
                 if (p == m_head)
                 {
                     p->m_m_next = nullptr;

@@ -14,6 +14,8 @@ namespace linkedList
                                          std::string("Linear Singly Linked List") });
         m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(CIRCULAR_SINGLY_LINKED_LIST), 
                                          std::string("Circular Singly Linked List") });
+        m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(LINEAR_DOUBLY_LINKED_LIST), 
+                                         std::string("Linear Doubly Linked List") });
         m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(BACK_TO_PREVIOUS_MENU),
                                          std::string("Back to Previous Menu") });
         m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(EXIT_FROM_PROGRAM),
@@ -70,5 +72,11 @@ namespace linkedList
     {
         linkedList::CircularSinglyLinkedList<int> circularSinglyLinkedListObj;
         handlers::Handle(circularSinglyLinkedListObj);
+    }
+
+    void LinkedListMain::LinearDoublyLinkedList()
+    {
+        linkedList::LinearDoublyLinkedList<int> linearDoublyLinkedListObj;
+        handlers::Handle(linearDoublyLinkedListObj);
     }
 } // namespace linkedList
