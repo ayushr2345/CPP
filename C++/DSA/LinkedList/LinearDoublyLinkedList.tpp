@@ -404,7 +404,10 @@ namespace linkedList
                 }
                 p = q;
                 q = r;
-                r = r->m_m_next;
+                if (r)
+                {
+                    r = r->m_m_next;
+                }
             }
             m_head = p;
         }
