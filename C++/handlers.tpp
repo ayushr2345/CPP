@@ -1568,4 +1568,366 @@ namespace handlers
             }
         }
     }
+
+template <class T>
+    void Handle(linkedList::CircularDoublyLinkedList<T>& circularDoublyLinkedListObj)
+    {
+        circularDoublyLinkedListObj.PrintMenu();
+        circularDoublyLinkedListObj.GetChoiceInputFromUser();
+        const int& selectedChoice = circularDoublyLinkedListObj.GetChoice();
+
+        while (circularDoublyLinkedListObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > circularDoublyLinkedListObj.GetMinCase() &&
+                selectedChoice < circularDoublyLinkedListObj.GetMaxCase() + 1)
+            {
+                circularDoublyLinkedListObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = circularDoublyLinkedListObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The linked list is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The linked list is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                if (circularDoublyLinkedListObj.IsEmpty())
+                {
+                    std::cout << "The Linked list is empty" << std::endl;
+                    break;
+                }
+                int index = 0;
+                std::cout << "Enter the index which you want to get: ";
+                utils::InputNumberFromUser(index, 0, circularDoublyLinkedListObj.GetSize() - 1);
+
+                const auto element = circularDoublyLinkedListObj.Get(index);
+                
+                if (element.has_value())
+                {
+                    std::cout << "The element at index: " << index << " is: " << element.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "The index does not exist" << std::endl;
+                }
+
+                break;
+            }
+            case 3:
+            {
+                circularDoublyLinkedListObj.Display();
+                break;
+            }
+            case 4:
+            {
+                T element = 0;
+                std::cout << "Enter the element which you want to insert at the beginning: ";
+                utils::InputNumberFromUser(element);
+
+                const bool insertCompleted = circularDoublyLinkedListObj.Insert(0, element);
+                
+                if (insertCompleted)
+                {
+                    std::cout << "The element: " << element
+                              <<  " has been inserted at index: 0" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element cannot be inserted" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                T element = 0;
+                std::cout << "Enter the element which you want to insert at the end: ";
+                utils::InputNumberFromUser(element);
+
+                const bool insertCompleted = circularDoublyLinkedListObj.Insert(circularDoublyLinkedListObj.GetSize(), element);
+                
+                if (insertCompleted)
+                {
+                    std::cout << "The element: " << element
+                              <<  " has been inserted at index: " << circularDoublyLinkedListObj.GetSize() - 1 << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element cannot be inserted" << std::endl;
+                }
+
+                break;
+            }
+            case 6:
+            {
+                int index = 0;
+                std::cout << "Enter the index at which you want to insert: ";
+                utils::InputNumberFromUser(index, 0, circularDoublyLinkedListObj.GetSize());
+
+                T element = 0;
+                std::cout << "Enter the element which you want to insert at the index: ";
+                utils::InputNumberFromUser(element);
+
+                const bool insertCompleted = circularDoublyLinkedListObj.Insert(index, element);
+                
+                if (insertCompleted)
+                {
+                    std::cout << "The element: " << element
+                              <<  " has been inserted at index: " << index << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element cannot be inserted" << std::endl;
+                }
+
+                break;
+            }
+            case 7:
+            {
+                const std::optional<T> deleteCompleted = circularDoublyLinkedListObj.Remove(0);
+                
+                if (deleteCompleted.has_value())
+                {
+                    std::cout << "The element: " << deleteCompleted.value()
+                              <<  " has been deleted from index: " << 0 << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element cannot be deleted" << std::endl;
+                }
+
+                break;
+            }
+            case 8:
+            {
+                const std::optional<T> deleteCompleted = circularDoublyLinkedListObj.Remove(circularDoublyLinkedListObj.GetSize() - 1);
+                
+                if (deleteCompleted.has_value())
+                {
+                    std::cout << "The element: " << deleteCompleted.value()
+                              <<  " has been deleted from index: " << circularDoublyLinkedListObj.GetSize() << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element cannot be deleted" << std::endl;
+                }
+
+                break;
+            }
+            case 9:
+            {
+                if (circularDoublyLinkedListObj.IsEmpty())
+                {
+                    std::cout << "The Linked list is empty" << std::endl;
+                    break;
+                }
+                int index = 0;
+                std::cout << "Enter the index from which you want to delete: ";
+                utils::InputNumberFromUser(index, 0, circularDoublyLinkedListObj.GetSize() - 1);
+
+                const std::optional<T> deleteCompleted = circularDoublyLinkedListObj.Remove(index);
+                
+                if (deleteCompleted.has_value())
+                {
+                    std::cout << "The element: " << deleteCompleted.value()
+                              <<  " has been deleted from index: " << index << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element cannot be deleted" << std::endl;
+                }
+
+                break;
+            }
+            case 10:
+            {
+                T element = 0;
+                std::cout << "Enter the element you want to linear search for in the linked list: ";
+                utils::InputNumberFromUser(element);
+
+                const std::optional<int> linearSearchResult = circularDoublyLinkedListObj.LinearSearch(element);
+                
+                if (linearSearchResult.has_value())
+                {
+                    std::cout << "The linear search was successful, element: " << element
+                              << " found at index: " << linearSearchResult.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not found in the array" << std::endl;
+                }
+
+                break;
+            }
+            case 11:
+            {
+                const std::optional<T> maxResult = circularDoublyLinkedListObj.Max();
+                
+                if (maxResult.has_value())
+                {
+                    std::cout << "The max value in the linked list is: " << maxResult.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not find the maximum value in the linked list" << std::endl;
+                }
+
+                break;
+            }
+            case 12:
+            {
+                const std::optional<T> minResult = circularDoublyLinkedListObj.Min();
+                
+                if (minResult.has_value())
+                {
+                    std::cout << "The min value in the linked list is: " << minResult.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not find the minimum value in the linked list" << std::endl;
+                }
+
+                break;
+            }
+            case 13:
+            {
+                const std::optional<T> sumResult = circularDoublyLinkedListObj.Sum();
+                
+                if (sumResult.has_value())
+                {
+                    std::cout << "The sum of all the elements in the linked list is: " << sumResult.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not find the sum of all the elements in the linked list" << std::endl;
+                }
+
+                break;
+            }
+            case 14:
+            {
+                const std::optional<double> averageResult = circularDoublyLinkedListObj.Avg();
+                
+                if (averageResult.has_value())
+                {
+                    std::cout << "The average of all the elements in the linked list is: " << averageResult.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not find the average of all the elements in the linked list" << std::endl;
+                }
+
+                break;
+            }
+            case 15:
+            {
+                circularDoublyLinkedListObj.Reverse();
+                break;
+            }
+            case 16:
+            {
+                const bool isSorted = circularDoublyLinkedListObj.IsSorted();
+                if (isSorted)
+                {
+                    std::cout << "The linked list is sorted" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The linked list is not sorted" << std::endl;
+                }
+                break;
+            }
+            case 17:
+            {
+                circularDoublyLinkedListObj.Sort();
+                break;
+            }
+            case 18:
+            {
+                T element = 0;
+                std::cout << "Enter the element you want to insert in a sorted position in the linked list: ";
+                utils::InputNumberFromUser(element);
+
+                const bool insertSortedResult = circularDoublyLinkedListObj.InsertSorted(element);
+
+                if (insertSortedResult)
+                {
+                    std::cout << "The element was successfully inserted at its sorted position in the linked list" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element could not be inserted in the linked list" << std::endl;
+                }
+                break;
+            }
+            case 19:
+            {
+                linkedList::CircularDoublyLinkedList<int>* BList = new linkedList::CircularDoublyLinkedList<int>;
+
+                for (int i = 0; i < 5; i ++)
+                {
+                    BList->Insert(BList->GetSize(), i + 1);
+                }
+
+                std::cout << "Concatenating the linked list with another linked list with contents as 1 2 3 4 5" << std::endl;
+
+                linkedList::CircularDoublyLinkedList<int>* concatenatedList = linkedList::Concatenate<int>(circularDoublyLinkedListObj, *BList);
+                concatenatedList->Display();
+                delete concatenatedList;
+                break;
+            }
+            case 20:
+            {
+                linkedList::CircularDoublyLinkedList<int>* BList = new linkedList::CircularDoublyLinkedList<int>;
+
+                for (int i = 0; i < 5; i ++)
+                {
+                    BList->Insert(BList->GetSize(), i + 1);
+                }
+
+                std::cout << "Merging the linked list with another linked list with contents as 1 2 3 4 5" << std::endl;
+
+                linkedList::CircularDoublyLinkedList<int>* mergedList = linkedList::SortedMerge<int>(circularDoublyLinkedListObj, *BList);
+                mergedList->Display();
+                delete mergedList;
+                break;
+            }
+            case 21:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 22:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                circularDoublyLinkedListObj.PrintMenu();
+                circularDoublyLinkedListObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

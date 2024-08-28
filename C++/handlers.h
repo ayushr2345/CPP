@@ -44,6 +44,9 @@ namespace handlers
 
     template<class T>
     void Handle(linkedList::LinearDoublyLinkedList<T>&);
+
+    template<class T>
+    void Handle(linkedList::CircularDoublyLinkedList<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

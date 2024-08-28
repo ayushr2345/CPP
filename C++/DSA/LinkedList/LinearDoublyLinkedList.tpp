@@ -388,6 +388,10 @@ namespace linkedList
         {
             std::cout << "Cannot reverse the linked list as it is empty" << std::endl;
         }
+        else if (GetSize() == 1)
+        {
+            std::cout << "Cannot reverse the Linked List as the size if 1" << std::endl;
+        }
         else
         {
             Node* p = nullptr;
@@ -398,9 +402,9 @@ namespace linkedList
             {
                 q->m_m_prev = r;
                 q->m_m_next = p;
-                if (p == m_head)
+                if (p == nullptr)
                 {
-                    p->m_m_next = nullptr;
+                    q->m_m_next = MoveToIndex(GetSize() - 1);
                 }
                 p = q;
                 q = r;
@@ -604,5 +608,4 @@ namespace linkedList
 
         return temp;
     }
-
 } // namespace linkedList

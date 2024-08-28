@@ -7,6 +7,7 @@
 #include "LinearSinglyLinkedList.h"
 #include "CircularSinglyLinkedList.h"
 #include "LinearDoublyLinkedList.h"
+#include "CircularDoublyLinkedList.h"
 
 namespace linkedList
 {
@@ -18,9 +19,10 @@ namespace linkedList
             MIN_COUNT                   = 0,
             LINEAR_SINGLY_LINKED_LIST   = 1,
             CIRCULAR_SINGLY_LINKED_LIST = 2,
-            LINEAR_DOUBLY_LINKED_LIST = 3,
-            BACK_TO_PREVIOUS_MENU       = 4,
-            EXIT_FROM_PROGRAM           = 5,
+            LINEAR_DOUBLY_LINKED_LIST   = 3,
+            CIRCULAR_DOUBLY_LINKED_LIST   = 4,
+            BACK_TO_PREVIOUS_MENU       = 5,
+            EXIT_FROM_PROGRAM           = 6,
             MAX_COUNT                   = EXIT_FROM_PROGRAM
         };
         int                        m_choice                { 0 };
@@ -37,5 +39,6 @@ namespace linkedList
         void       LinearSinglyLinkedList();
         void       CircularSinglyLinkedList();
         void       LinearDoublyLinkedList();
+        void       CircularDoublyLinkedList();
     };
 } // namespace linkedList
