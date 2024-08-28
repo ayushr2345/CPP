@@ -22,6 +22,12 @@ namespace linkedList
                                          std::string("Sparse Matrix") });
         m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(SPARSE_MATRIX_ADDITION), 
                                          std::string("Sparse Matrix Addition") });
+        m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(POLYNOMIAL_REPRESENTATION), 
+                                         std::string("Polynomial Representation") });
+        m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(POLYNOMIAL_EVALUATION), 
+                                         std::string("Polynomial Evaluation") });
+        m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(POLYNOMIAL_ADDITION), 
+                                         std::string("Polynomial Addition") });
         m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(BACK_TO_PREVIOUS_MENU),
                                          std::string("Back to Previous Menu") });
         m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(EXIT_FROM_PROGRAM),
@@ -167,6 +173,102 @@ namespace linkedList
         linkedList::SparseMatrix *temp = smObj1 + smObj2;
         temp->Display();
 
+        delete temp;
+    }
+
+    void LinkedListMain::PolynomialRepresentationUsingLinkedList()
+    {
+        std::cout << "Polynomials can be represented by storing the number of terms and their respective coefficients and exponents" << std::endl;
+
+        int numTerms = 0;
+        std::cout << "Enter the number of terms for the polynomial: ";
+        utils::InputNumberFromUser(numTerms, 1, 10);
+
+        linkedList::PolynomialRepresentation prObj(numTerms);
+
+        std::cout << "Please enter the coefficients and exponents in descending order: " << std::endl;
+
+        int coefficient = 0;
+        int exponent    = 0;
+        for (int i = 0; i < numTerms; i++)
+        {
+            utils::InputNumberFromUser(coefficient, 0, 10, 'n');
+            utils::InputNumberFromUser(exponent, 0, 10, 'n');
+            prObj.Set(coefficient, exponent);
+        }
+
+        prObj.Display();
+    }
+
+    void LinkedListMain::PolynomialEvaluationUsingLinkedList()
+    {
+        int numTerms = 0;
+        std::cout << "Enter the number of terms for the polynomial: ";
+        utils::InputNumberFromUser(numTerms, 1, 10);
+
+        linkedList::PolynomialRepresentation prObj(numTerms);
+
+        std::cout << "Please enter the coefficients and exponents in descending order: " << std::endl;
+
+        int coefficient = 0;
+        int exponent    = 0;
+        for (int i = 0; i < numTerms; i++)
+        {
+            utils::InputNumberFromUser(coefficient, 0, 10, 'n');
+            utils::InputNumberFromUser(exponent, 0, 10, 'n');
+            prObj.Set(coefficient, exponent);
+        }
+        
+        int x = 0;
+        std::cout << "Please enter the value of x: ";
+        utils::InputNumberFromUser(x, 1, 10);
+
+        prObj.Display();
+        double result = prObj.Evaluate(x);
+
+        std::cout << "The result of the evaluation is: " << result << std::endl;
+    }
+
+    void LinkedListMain::PolynomialAdditionUsingLinkedList()
+    {
+        int numTerms = 0;
+        std::cout << "Enter the number of terms for the polynomial 1: ";
+        utils::InputNumberFromUser(numTerms, 1, 10);
+
+        linkedList::PolynomialRepresentation prObj1(numTerms);
+
+        std::cout << "Please enter the coefficients and exponents in descending order: " << std::endl;
+
+        int coefficient = 0;
+        int exponent    = 0;
+        for (int i = 0; i < numTerms; i++)
+        {
+            utils::InputNumberFromUser(coefficient, 0, 10, 'n');
+            utils::InputNumberFromUser(exponent, 0, 10, 'n');
+            prObj1.Set(coefficient, exponent);
+        }
+        
+        prObj1.Display();
+
+
+        std::cout << "Enter the number of terms for the polynomial 2: ";
+        utils::InputNumberFromUser(numTerms, 1, 10);
+
+        linkedList::PolynomialRepresentation prObj2(numTerms);
+
+        std::cout << "Please enter the coefficients and exponents in descending order: " << std::endl;
+
+        for (int i = 0; i < numTerms; i++)
+        {
+            utils::InputNumberFromUser(coefficient, 0, 10, 'n');
+            utils::InputNumberFromUser(exponent, 0, 10, 'n');
+            prObj2.Set(coefficient, exponent);
+        }
+        
+        prObj2.Display();
+
+        linkedList::PolynomialRepresentation* temp = prObj1 + prObj2;
+        temp->Display();
         delete temp;
     }
 } // namespace linkedList

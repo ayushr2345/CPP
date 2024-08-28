@@ -1741,10 +1741,25 @@ namespace handlers
             }
             case 7:
             {
-                previousMenuFlag = 'y';
+                linkedListMainObj.PolynomialRepresentationUsingLinkedList();
                 break;
             }
             case 8:
+            {
+                linkedListMainObj.PolynomialEvaluationUsingLinkedList();
+                break;
+            }
+            case 9:
+            {
+                linkedListMainObj.PolynomialAdditionUsingLinkedList();
+                break;
+            }
+            case 10:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 11:
             {
                 exit(0);
             }

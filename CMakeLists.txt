@@ -31,6 +31,7 @@ set(SOURCE_FILES
     C++/DSA/Matrices/PolynomialRepresentation.cpp
     C++/DSA/LinkedList/LinkedListMain.cpp
     C++/DSA/LinkedList/SparseMatrix.cpp
+    C++/DSA/LinkedList/PolynomialRepresentation.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
