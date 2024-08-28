@@ -1,7 +1,7 @@
 #include <iostream>
 #include "SparseMatrix.h"
 
-namespace matrices
+namespace linkedList
 {
     SparseMatrix::SparseMatrix(int rows, int columns, int numNonZero):
         m_size_row     { rows },
@@ -10,33 +10,38 @@ namespace matrices
         m_data_idx     { 0 },
         m_data         { nullptr }
     {
-        m_data = new Element[m_num_non_zero];
+        m_data = new LinearSinglyLinkedList<Element>;
     }
 
     SparseMatrix::~SparseMatrix()
     {
-        delete []m_data;
+        delete m_data;
         m_size_row     = 0;
         m_size_column  = 0;
         m_num_non_zero = 0;
     }
 
+    void SparseMatrix::SetNumNonZero(int num)
+    {
+        m_num_non_zero = num;
+    }
+
     void SparseMatrix::Set(int i, int j, int x)
     {
-        (m_data + m_data_idx)->m_m_row     = i;
-        (m_data + m_data_idx)->m_m_column  = j;
-        (m_data + m_data_idx)->m_m_element = x;
+        m_data->Insert(m_data_idx, Element(i, j, x));
         m_data_idx++;
     }
 
     int SparseMatrix::Get(int i, int j)
     {
+        auto temp = m_data->MoveToIndex(0);
         for (int a = 0; a < m_num_non_zero; a++)
-        {
-            if ((m_data + a)->m_m_row == i and (m_data + a)->m_m_column == j)
+        {            
+            if ((temp->m_m_data).m_m_row == i and (temp->m_m_data).m_m_column == j)
             {
-                return (m_data + a)->m_m_element;
+                return (temp->m_m_data).m_m_element;
             }
+            temp = temp->m_m_next;
         }
         return 0;
     }
@@ -66,51 +71,63 @@ namespace matrices
 
             int i = 0;
             int j = 0;
-            int k = 0;
 
             while (i < smObj1.m_num_non_zero and j < smObj2.m_num_non_zero)
             {
-                if (smObj1.m_data[i].m_m_row < smObj2.m_data[j].m_m_row)
+                auto getA = smObj1.m_data->Get(i);
+                auto getB = smObj2.m_data->Get(j);
+
+                if (getA->m_m_row < getB->m_m_row)
                 {
-                    temp->m_data[k++] = smObj1.m_data[i++];
+                    temp->Set(getA->m_m_row, getA->m_m_column, getA->m_m_element);
+                    i++;
                 }
-                else if (smObj1.m_data[i].m_m_row > smObj2.m_data[j].m_m_row)
+                else if (getA->m_m_row > getB->m_m_row)
                 {
-                    temp->m_data[k++] = smObj2.m_data[j++];
+                    temp->Set(getB->m_m_row, getB->m_m_column, getB->m_m_element);
+                    j++;
                 }
                 else
                 {
-                    if (smObj1.m_data[i].m_m_column < smObj2.m_data[j].m_m_column)
+                    if (getA->m_m_column < getB->m_m_column)
                     {
-                        temp->m_data[k++] = smObj1.m_data[i++];
+                        temp->Set(getA->m_m_row, getA->m_m_column, getA->m_m_element);
+                        i++;
                     }
-                    else if (smObj1.m_data[i].m_m_column > smObj2.m_data[j].m_m_column)
+                    else if (getA->m_m_column > getB->m_m_column)
                     {
-                        temp->m_data[k++] = smObj2.m_data[j++];
+                        temp->Set(getB->m_m_row, getB->m_m_column, getB->m_m_element);
+                        j++;
                     }
                     else
                     {
-                        temp->m_data[k] = smObj1.m_data[i++];
-                        temp->m_data[k++].m_m_element += smObj2.m_data[j++].m_m_element;
+                        temp->Set(getA->m_m_row, getA->m_m_column, getA->m_m_element + getB->m_m_element);
+                        i++;
+                        j++;
                     }
                 }
             }
 
             while (i < smObj1.m_num_non_zero)
             {
-                temp->m_data[k++] = smObj1.m_data[i++];
+                auto getA = smObj1.m_data->Get(i);
+                temp->Set(getA->m_m_row, getA->m_m_column, getA->m_m_element);
+                i++;
             }
 
             while (j < smObj2.m_num_non_zero)
             {
-                temp->m_data[k++] = smObj2.m_data[j++];
+                auto getB = smObj2.m_data->Get(j);
+                temp->Set(getB->m_m_row, getB->m_m_column, getB->m_m_element);
+                j++;
             }
+            temp->SetNumNonZero(temp->m_data->GetSize());
             return temp;
         }
         else
         {
-            std::cout << "The sizes of the two matrices are not equal, cannot add" << std::endl;
+            std::cout << "The sizes of the two sparse matrix are not equal, cannot add" << std::endl;
             return nullptr;
         }
     }
-} // namespace matrices
+} // namespace linkedList

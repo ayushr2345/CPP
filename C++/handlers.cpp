@@ -1731,10 +1731,20 @@ namespace handlers
             }
             case 5:
             {
-                previousMenuFlag = 'y';
+                linkedListMainObj.SparseMatrixUsingLinkedList();
                 break;
             }
             case 6:
+            {
+                linkedListMainObj.SparseMatrixAdditionUsingLinkedList();
+                break;
+            }
+            case 7:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 8:
             {
                 exit(0);
             }

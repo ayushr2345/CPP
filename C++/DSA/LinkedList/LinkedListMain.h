@@ -8,6 +8,7 @@
 #include "CircularSinglyLinkedList.h"
 #include "LinearDoublyLinkedList.h"
 #include "CircularDoublyLinkedList.h"
+#include "SparseMatrix.h"
 
 namespace linkedList
 {
@@ -20,9 +21,11 @@ namespace linkedList
             LINEAR_SINGLY_LINKED_LIST   = 1,
             CIRCULAR_SINGLY_LINKED_LIST = 2,
             LINEAR_DOUBLY_LINKED_LIST   = 3,
-            CIRCULAR_DOUBLY_LINKED_LIST   = 4,
-            BACK_TO_PREVIOUS_MENU       = 5,
-            EXIT_FROM_PROGRAM           = 6,
+            CIRCULAR_DOUBLY_LINKED_LIST = 4,
+            SPARSE_MATRIX               = 5,
+            SPARSE_MATRIX_ADDITION      = 6,
+            BACK_TO_PREVIOUS_MENU       = 7,
+            EXIT_FROM_PROGRAM           = 8,
             MAX_COUNT                   = EXIT_FROM_PROGRAM
         };
         int                        m_choice                { 0 };
@@ -40,5 +43,7 @@ namespace linkedList
         void       CircularSinglyLinkedList();
         void       LinearDoublyLinkedList();
         void       CircularDoublyLinkedList();
+        void       SparseMatrixUsingLinkedList();
+        void       SparseMatrixAdditionUsingLinkedList();
     };
 } // namespace linkedList

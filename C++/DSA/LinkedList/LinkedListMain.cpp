@@ -18,6 +18,10 @@ namespace linkedList
                                          std::string("Linear Doubly Linked List") });
         m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(CIRCULAR_DOUBLY_LINKED_LIST), 
                                          std::string("Circular Doubly Linked List") });
+        m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(SPARSE_MATRIX), 
+                                         std::string("Sparse Matrix") });
+        m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(SPARSE_MATRIX_ADDITION), 
+                                         std::string("Sparse Matrix Addition") });
         m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(BACK_TO_PREVIOUS_MENU),
                                          std::string("Back to Previous Menu") });
         m_linkedListMainMenuMap.insert({ m_LinkedListMainMenu(EXIT_FROM_PROGRAM),
@@ -86,5 +90,83 @@ namespace linkedList
     {
         linkedList::CircularDoublyLinkedList<int> CircularDoublyLinkedListObj;
         handlers::Handle(CircularDoublyLinkedListObj);
+    }
+
+    void LinkedListMain::SparseMatrixUsingLinkedList()
+    {
+        std::cout << "The matrix non-zero elements are very less than number of zero elements" << std::endl;
+
+        int numRows    = { 0 };
+        int numColumns = { 0 };
+        int numNonZero = { 0 };
+        std::cout << "Please enter the number of rows in the matrix: ";
+        utils::InputNumberFromUser(numRows, 2, 10);
+
+        std::cout << "Please enter number of columns in the matrix: ";
+        utils::InputNumberFromUser(numColumns, 2, 10);
+
+        std::cout << "Please enter the number of non-zero elements in the matrix: ";
+        utils::InputNumberFromUser(numNonZero, 2, numRows * numColumns);
+
+        linkedList::SparseMatrix smObj(numRows, numColumns, numNonZero);
+
+        std::cout << "Please enter all the non-zero elements row by row: " << std::endl;
+
+        int row, column, element;
+        for (int i = 0; i < numNonZero; i++)
+        {
+            utils::InputNumberFromUser(row, 1, numRows, 'n');
+            utils::InputNumberFromUser(column, 1, numColumns, 'n');
+            utils::InputNumberFromUser(element, 1, 9, 'n');
+            smObj.Set(row, column, element);
+        }
+
+        smObj.Display();
+    }
+
+    void LinkedListMain::SparseMatrixAdditionUsingLinkedList()
+    {
+        int numRows    = { 0 };
+        int numColumns = { 0 };
+        int numNonZero = { 0 };
+        std::cout << "Please enter the number of rows in the matrix: ";
+        utils::InputNumberFromUser(numRows, 2, 10);
+
+        std::cout << "Please enter number of columns in the matrix: ";
+        utils::InputNumberFromUser(numColumns, 2, 10);
+
+        std::cout << "Please enter the number of non-zero elements in the matrix: ";
+        utils::InputNumberFromUser(numNonZero, 2, numRows * numColumns);
+
+        linkedList::SparseMatrix smObj1(numRows, numColumns, numNonZero);
+
+        std::cout << "Please enter all the non-zero elements row by row: " << std::endl;
+
+        int row, column, element;
+        for (int i = 0; i < numNonZero; i++)
+        {
+            utils::InputNumberFromUser(row, 1, numRows, 'n');
+            utils::InputNumberFromUser(column, 1, numColumns, 'n');
+            utils::InputNumberFromUser(element, 1, 9, 'n');
+            smObj1.Set(row, column, element);
+        }
+
+        linkedList::SparseMatrix smObj2(numRows, numColumns, numNonZero);
+        smObj2.Set(1, 2, 1);
+        smObj2.Set(1, 3, 5);
+        smObj2.Set(2, 3, 5);
+        smObj2.Set(3, 2, 1);
+        smObj2.Set(4, 2, 1);
+
+        smObj1.Display();
+        std::cout << std::endl;
+
+        smObj2.Display();
+        std::cout << std::endl;
+
+        linkedList::SparseMatrix *temp = smObj1 + smObj2;
+        temp->Display();
+
+        delete temp;
     }
 } // namespace linkedList
