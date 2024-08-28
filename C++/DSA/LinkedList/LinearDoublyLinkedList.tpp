@@ -574,7 +574,7 @@ namespace linkedList
         while (i < A.GetSize() and j < B.GetSize())
         {
             const auto getA = A.Get(i);
-            const auto getB = A.Get(j);
+            const auto getB = B.Get(j);
                 
             if (getA.value() <= getB.value())
             {
