@@ -13,6 +13,7 @@
 #include "DSA/Strings/Strings.h"
 #include "DSA/Matrices/MatricesMain.h"
 #include "DSA/LinkedList/LinkedListMain.h"
+#include "DSA/Stack/StackMain.h"
 
 namespace handlers
 {
@@ -26,14 +27,21 @@ namespace handlers
     void Handle(iostreams::IOStreams&);
 
     // DSA Handlers
+
+    // Recursion
     void Handle(recursions::Recursions&);
 
+    // Array ADT
     template<class T>
     void Handle(arrayAdt::ArrayADT<T>&);
 
+    // Strings
     void Handle(strings::Strings&);
+    
+    // Matrices
     void Handle(matrices::MatricesMain&);
     
+    // Linked List
     void Handle(linkedList::LinkedListMain&);
 
     template<class T>
@@ -49,6 +57,9 @@ namespace handlers
     void Handle(linkedList::CircularDoublyLinkedList<T>&);
 
     void Handle(linkedList::SparseMatrix&);
+
+    // Stack
+    void Handle(stack::StackMain&);
 } // namespace handlers
 
 #include "handlers.tpp"

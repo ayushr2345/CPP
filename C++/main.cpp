@@ -175,10 +175,15 @@ int main()
                 }
                 case 6:
                 {
+                    stack::StackMain stackMainObj;
+                    handlers::Handle(stackMainObj);
+                }
+                case 7:
+                {
                     previousMenuFlag = 'y';
                     break;
                 }
-                case 7:
+                case 8:
                 {
                     exit(0);
                 }

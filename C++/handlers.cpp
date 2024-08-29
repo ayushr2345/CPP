@@ -1782,4 +1782,55 @@ namespace handlers
             }
         }
     }
+
+    void Handle(stack::StackMain& stackMainObj)
+    {
+        stackMainObj.PrintMenu();
+        stackMainObj.GetChoiceInputFromUser();
+        const int& selectedChoice = stackMainObj.GetChoice();
+
+        while (stackMainObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > stackMainObj.GetMinCase() &&
+                selectedChoice < stackMainObj.GetMaxCase() + 1)
+            {
+                stackMainObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                stackMainObj.StackUsingArray();
+                break;
+            }
+            case 10:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 11:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                stackMainObj.PrintMenu();
+                stackMainObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

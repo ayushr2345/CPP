@@ -44,8 +44,9 @@ namespace utils
         STRINGS               = 3,
         MATRICES              = 4,
         LINKED_LIST           = 5,
-        BACK_TO_PREVIOUS_MENU = 6,
-        EXIT                  = 7,
+        STACK                 = 6,
+        BACK_TO_PREVIOUS_MENU = 7,
+        EXIT                  = 8,
         MAX_COUNT             = EXIT
     };
 
@@ -132,6 +133,10 @@ namespace utils
         {
             static_cast<int>(DSAMenu::LINKED_LIST),
             std::string("Linked Lists")
+        },
+        {
+            static_cast<int>(DSAMenu::STACK),
+            std::string("Stacks")
         },
         {
             static_cast<int>(DSAMenu::BACK_TO_PREVIOUS_MENU),

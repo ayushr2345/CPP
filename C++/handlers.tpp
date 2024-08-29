@@ -1,7 +1,6 @@
 #pragma once
 
 #include "DSA/ArrayADT/ArrayADT.h"
-#include "DSA/LinkedList/LinearSinglyLinkedList.h"
 #include "utils.h"
 
 namespace handlers
@@ -1569,7 +1568,7 @@ namespace handlers
         }
     }
 
-template <class T>
+    template <class T>
     void Handle(linkedList::CircularDoublyLinkedList<T>& circularDoublyLinkedListObj)
     {
         circularDoublyLinkedListObj.PrintMenu();
@@ -1927,6 +1926,146 @@ template <class T>
             {
                 circularDoublyLinkedListObj.PrintMenu();
                 circularDoublyLinkedListObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    template <class T>
+    void Handle(stack::StackUsingArray<T>& stackUsingArrayObj)
+    {
+        stackUsingArrayObj.PrintMenu();
+        stackUsingArrayObj.GetChoiceInputFromUser();
+        const int& selectedChoice = stackUsingArrayObj.GetChoice();
+
+        while (stackUsingArrayObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > stackUsingArrayObj.GetMinCase() &&
+                selectedChoice < stackUsingArrayObj.GetMaxCase() + 1)
+            {
+                stackUsingArrayObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = stackUsingArrayObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The stack is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The stack is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                bool isFull = stackUsingArrayObj.IsFull();
+                if (isFull)
+                {
+                    std::cout << "The stack is full" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The stack is not full" << std::endl;
+                }
+                break;
+            }
+            case 3:
+            {
+                stackUsingArrayObj.Display();
+                break;
+            }
+            case 4:
+            {
+                int element;
+                std::cout << "Please enter the element you want to push into the stack: ";
+                utils::InputNumberFromUser(element);
+                bool resultPush = stackUsingArrayObj.Push(element);                
+
+                if (resultPush)
+                {
+                    std::cout << "The element: "<< element << " was successfully pushed in the stack" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not successfully pushed in the stack" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                const auto resultPop = stackUsingArrayObj.Pop();
+
+                if (resultPop)
+                {
+                    std::cout << "The element: " << resultPop.value << " was successfully popped from the stack" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not pop from the stack" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                int position;
+                std::cout << "Please enter the position at which you want to peek in the stack: ";
+                utils::InputNumberFromUser(position);
+                const auto resultPeek = stackUsingArrayObj.Peek(position);                
+
+                if (resultPeek)
+                {
+                    std::cout << "The element present at " << position << " is: " << resultPeek.value << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not peek in the stack" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                const auto resultTop = stackUsingArrayObj.GetTop();                
+
+                if (resultTop)
+                {
+                    std::cout << "The element present at the top is: " << resultTop.value << std::endl;
+                }
+                else
+                {
+                    std::cout << "The stack is empty" << std::endl;
+                }
+                break;
+            }
+            case 8:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 9:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                stackUsingArrayObj.PrintMenu();
+                stackUsingArrayObj.GetChoiceInputFromUser();
             }
         }
     }
