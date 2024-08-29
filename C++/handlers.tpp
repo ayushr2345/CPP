@@ -2002,7 +2002,7 @@ namespace handlers
 
                 if (resultPop)
                 {
-                    std::cout << "The element: " << resultPop.value << " was successfully popped from the stack" << std::endl;
+                    std::cout << "The element: " << resultPop.value() << " was successfully popped from the stack" << std::endl;
                 }
                 else
                 {
@@ -2019,7 +2019,7 @@ namespace handlers
 
                 if (resultPeek)
                 {
-                    std::cout << "The element present at " << position << " is: " << resultPeek.value << std::endl;
+                    std::cout << "The element present at " << position << " is: " << resultPeek.value() << std::endl;
                 }
                 else
                 {
@@ -2033,7 +2033,7 @@ namespace handlers
 
                 if (resultTop)
                 {
-                    std::cout << "The element present at the top is: " << resultTop.value << std::endl;
+                    std::cout << "The element present at the top is: " << resultTop.value() << std::endl;
                 }
                 else
                 {

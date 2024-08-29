@@ -109,7 +109,7 @@ namespace stack
             return 0;
         }
         
-        m_data[m_top++] = element;
+        m_data[++m_top] = element;
         return true;
     }
 
@@ -138,7 +138,7 @@ namespace stack
 
         int index = m_top - (position - 1);
 
-        if (index <= m_top)
+        if (index >= 0 and index <= m_top)
         {
             return m_data[index];
         }
@@ -171,7 +171,7 @@ namespace stack
             std::cout << "Printing the stack from top:" << std::endl;
             for (int i = m_top; i > -1; i--)
             {
-                std::cout << i << std::endl;
+                std::cout << m_data[i] << std::endl;
             }
         }
     }
