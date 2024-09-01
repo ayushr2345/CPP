@@ -37,5 +37,6 @@ namespace stack
         void       PrintSelectedChoice();
         void       StackUsingArray();
         void       StackUsingLinkedList();
+        void       ParanthesisMatching();
     };
 } // namespace stack

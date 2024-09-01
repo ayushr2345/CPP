@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <functional>
 #include "StackMain.h"
 #include "../../utils.h"
@@ -79,5 +80,110 @@ namespace stack
     {
         stack::StackUsingLinkedList<int> stackUsingLinkedListObj;
         handlers::Handle(stackUsingLinkedListObj);
+    }
+
+    void StackMain::ParanthesisMatching()
+    {
+        std::cout << "Six expressions:" << std::endl
+                  << "1. ((a + b) * (c - d))" << std::endl
+                  << "2. ((a + b) * (c - d)" << std::endl
+                  << "3. ((a + b) * (c - d)))" << std::endl
+                  << "4. [{(a + b) - c} + {c * (d + e)}]" << std::endl
+                  << "5. [{(a + b) - c} + {c * (d + e}]" << std::endl
+                  << "6. [{(a + b) - c} + {c * (d + e))}]" << std::endl;
+
+        std::string ExpressionArray[6] = {
+            "((a + b) * (c - d))",
+            "((a + b) * (c - d)",
+            "((a + b) * (c - d)))",
+            "[{(a + b) - c} + {c * (d + e)}]",
+            "[{(a + b) - c} + {c * (d + e}]",
+            "[{(a + b) - c} + {c * (d + e))}]"
+        };
+
+        for (const auto Expression: ExpressionArray)
+        {
+            stack::StackUsingArray<char> expressionStack(20);
+            int flag = 0;
+            std::cout << "Matching Paranthesis for expression: " << Expression << std::endl;
+            for (const auto ch: Expression)
+            {
+                if ((ch == '(') or
+                    (ch == '{') or
+                    (ch == '['))
+                {
+                    expressionStack.Push(ch);
+                    continue;
+                }
+
+                if (ch == ')')
+                {
+                    std::optional<char> poppedOutChar = expressionStack.Pop();
+
+                    if (not poppedOutChar.has_value())
+                    {
+                        flag = 1;
+                        break;
+                    }
+                    else
+                    {
+                        if (poppedOutChar.value() != '(')
+                        {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    continue;
+                }
+
+                if (ch == '}')
+                {
+                    std::optional<char> poppedOutChar = expressionStack.Pop();
+
+                    if (not poppedOutChar.has_value())
+                    {
+                        flag = 1;
+                        break;
+                    }
+                    else
+                    {
+                        if (poppedOutChar.value() != '{')
+                        {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    continue;
+                }
+
+                if (ch == ']')
+                {
+                    std::optional<char> poppedOutChar = expressionStack.Pop();
+
+                    if (not poppedOutChar.has_value())
+                    {
+                        flag = 1;
+                        break;
+                    }
+                    else
+                    {
+                        if (poppedOutChar.value() != '[')
+                        {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    continue;
+                }
+            }
+            if (not expressionStack.IsEmpty() or flag == 1)
+            {
+                std::cout << "The paranthesis is not matching" << std::endl;
+            }
+            else
+            {
+                std::cout << "The paranthesis is matching" << std::endl;
+            }
+        }
     }
 } // namespace stack

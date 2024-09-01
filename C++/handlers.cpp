@@ -1812,10 +1812,15 @@ namespace handlers
             }
             case 3:
             {
-                previousMenuFlag = 'y';
+                stackMainObj.ParanthesisMatching();
                 break;
             }
             case 4:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 5:
             {
                 exit(0);
             }
