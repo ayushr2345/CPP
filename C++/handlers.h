@@ -60,6 +60,12 @@ namespace handlers
 
     // Stack
     void Handle(stack::StackMain&);
+
+    template <class T>
+    void Handle(stack::StackUsingArray<T>&);
+
+    template <class T>
+    void Handle(stack::StackUsingLinkedList<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

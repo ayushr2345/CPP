@@ -5,6 +5,7 @@
 #include <optional>
 #include <iostream>
 #include "StackUsingArray.h"
+#include "StackUsingLinkedList.h"
 
 namespace stack
 {
@@ -35,5 +36,6 @@ namespace stack
         void	   PrintMenu();
         void       PrintSelectedChoice();
         void       StackUsingArray();
+        void       StackUsingLinkedList();
     };
 } // namespace stack

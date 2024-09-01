@@ -6,39 +6,35 @@
 namespace stack
 {
     template <class T>
-    StackUsingLinkedList<T>::StackUsingLinkedList(int size):
+    StackUsingLinkedList<T>::StackUsingLinkedList():
         m_choice                      ( 0 ),
-        m_StackUsingLinkedListMenuMap ( {} ),
-        m_top                         { -1 },
+        m_stackUsingLinkedListMenuMap ( {} ),
         m_data                        { nullptr }
     {
-        m_StackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(IS_EMPTY),
+        m_stackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(IS_EMPTY),
                                                std::string("Check if the stack is empty") });
-        m_StackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(IS_FULL),
-                                               std::string("Check if the stack is full") });
-        m_StackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(DISPLAY),
+        m_stackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(DISPLAY),
                                                std::string("Display the stack") });
-        m_StackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(PUSH),
+        m_stackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(PUSH),
                                                std::string("Push into the stack") });
-        m_StackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(POP),
+        m_stackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(POP),
                                                std::string("Pop from the stack") });
-        m_StackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(PEEK),
+        m_stackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(PEEK),
                                                std::string("Peek to a position in the stack") });
-        m_StackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(GET_TOP),
+        m_stackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(GET_TOP),
                                                std::string("Get the top position of the stack") });
-        m_StackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(BACK_TO_PREVIOUS_MENU),
+        m_stackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(BACK_TO_PREVIOUS_MENU),
                                                std::string("Back to Previous Menu") });
-        m_StackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(EXIT_FROM_PROGRAM),
+        m_stackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(EXIT_FROM_PROGRAM),
                                                std::string("Exit from program") });
         
-        m_data = new LinearSinglyLinkedList<int>;
+        m_data = new linkedList::LinearSinglyLinkedList<int>;
     }
 
     template <class T>
     StackUsingLinkedList<T>::~StackUsingLinkedList()
     {
         delete m_data;
-        m_size = 0;
     }
     
     template <class T>
@@ -69,8 +65,8 @@ namespace stack
     void StackUsingLinkedList<T>::PrintMenu()
     {
         std::cout << std::endl;
-        for (std::map<int, std::string>::iterator it = m_StackUsingLinkedListMenuMap.begin();
-            it != m_StackUsingLinkedListMenuMap.end();
+        for (std::map<int, std::string>::iterator it = m_stackUsingLinkedListMenuMap.begin();
+            it != m_stackUsingLinkedListMenuMap.end();
             it++)
         {
             std::cout << it->first << ". " << it->second << std::endl;
@@ -83,33 +79,22 @@ namespace stack
     {
         std::cout << std::endl << std::endl
                 << "You have chosen choice "
-                << m_StackUsingLinkedListMenuMap.at(m_choice)
+                << m_stackUsingLinkedListMenuMap.at(m_choice)
                 << std::endl;
     }
 
     template <class T>
     bool StackUsingLinkedList<T>::IsEmpty()
     {
-        return m_top > -1 ? false : true;
-    }
-
-    template <class T>
-    bool StackUsingLinkedList<T>::IsFull()
-    {
-        return m_top == m_size - 1 ? true : false;
+        return m_data->IsEmpty() ? true : false;
     }
 
     template <class T>
     bool StackUsingLinkedList<T>::Push(T element)
     {
-        if (IsFull())
-        {
-            std::cout << "The stack is full" << std::endl;
-            return 0;
-        }
+        bool isInserted = m_data->Insert(0, element);
         
-        m_data[++m_top] = element;
-        return true;
+        return isInserted ? true : false;
     }
 
     template <class T>
@@ -121,9 +106,13 @@ namespace stack
             return std::nullopt;
         }
 
-        T deleted = m_data[m_top];
-        m_data[m_top--] = 0;
-        return deleted;
+        const auto deleted = m_data->Remove(0);
+        
+        if (deleted.has_value())
+        {
+            return deleted.value();
+        }
+        return std::nullopt;
     }
 
     template <class T>
@@ -135,11 +124,17 @@ namespace stack
             return std::nullopt;
         }
 
-        int index = m_top - (position - 1);
+        int index = position - 1;
 
-        if (index >= 0 and index <= m_top)
+        if (index >= 0 and index <= (m_data->GetSize() - 1))
         {
-            return m_data[index];
+            const auto peekedValue = m_data->Get(index);
+
+            if (peekedValue.has_value())
+            {
+                return peekedValue.value();
+            }
+            return std::nullopt;
         }
 
         std::cout << "The position does not exist" << std::endl;
@@ -155,7 +150,13 @@ namespace stack
             return std::nullopt;
         }
 
-        return m_data[m_top];
+        const auto topValue = m_data->Get(0);
+
+        if (topValue.has_value())
+        {
+            return topValue.value();
+        }
+        return std::nullopt;
     }
 
     template <class T>
@@ -168,10 +169,7 @@ namespace stack
         else
         {
             std::cout << "Printing the stack from top:" << std::endl;
-            for (int i = m_top; i > -1; i--)
-            {
-                std::cout << m_data[i] << std::endl;
-            }
+            m_data->Display();
         }
     }
 } //namespace stack

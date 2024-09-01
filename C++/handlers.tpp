@@ -1,7 +1,7 @@
 #pragma once
 
-#include "DSA/ArrayADT/ArrayADT.h"
 #include "utils.h"
+
 
 namespace handlers
 {
@@ -2066,6 +2066,133 @@ namespace handlers
             {
                 stackUsingArrayObj.PrintMenu();
                 stackUsingArrayObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    template <class T>
+    void Handle(stack::StackUsingLinkedList<T>& stackUsingLinkedListObj)
+    {
+        stackUsingLinkedListObj.PrintMenu();
+        stackUsingLinkedListObj.GetChoiceInputFromUser();
+        const int& selectedChoice = stackUsingLinkedListObj.GetChoice();
+
+        while (stackUsingLinkedListObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > stackUsingLinkedListObj.GetMinCase() &&
+                selectedChoice < stackUsingLinkedListObj.GetMaxCase() + 1)
+            {
+                stackUsingLinkedListObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = stackUsingLinkedListObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The stack is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The stack is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                stackUsingLinkedListObj.Display();
+                break;
+            }
+            case 3:
+            {
+                int element;
+                std::cout << "Please enter the element you want to push into the stack: ";
+                utils::InputNumberFromUser(element);
+                bool resultPush = stackUsingLinkedListObj.Push(element);                
+
+                if (resultPush)
+                {
+                    std::cout << "The element: "<< element << " was successfully pushed in the stack" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not successfully pushed in the stack" << std::endl;
+                }
+                break;
+            }
+            case 4:
+            {
+                const auto resultPop = stackUsingLinkedListObj.Pop();
+
+                if (resultPop)
+                {
+                    std::cout << "The element: " << resultPop.value() << " was successfully popped from the stack" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not pop from the stack" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                int position;
+                std::cout << "Please enter the position at which you want to peek in the stack: ";
+                utils::InputNumberFromUser(position);
+                const auto resultPeek = stackUsingLinkedListObj.Peek(position);                
+
+                if (resultPeek)
+                {
+                    std::cout << "The element present at " << position << " is: " << resultPeek.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not peek in the stack" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                const auto resultTop = stackUsingLinkedListObj.GetTop();                
+
+                if (resultTop)
+                {
+                    std::cout << "The element present at the top is: " << resultTop.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "The stack is empty" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 8:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                stackUsingLinkedListObj.PrintMenu();
+                stackUsingLinkedListObj.GetChoiceInputFromUser();
             }
         }
     }

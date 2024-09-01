@@ -74,4 +74,10 @@ namespace stack
         stack::StackUsingArray<int> stackUsingArrayObj(size);
         handlers::Handle(stackUsingArrayObj);
     }
+
+    void StackMain::StackUsingLinkedList()
+    {
+        stack::StackUsingLinkedList<int> stackUsingLinkedListObj;
+        handlers::Handle(stackUsingLinkedListObj);
+    }
 } // namespace stack

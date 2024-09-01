@@ -1805,12 +1805,17 @@ namespace handlers
                 stackMainObj.StackUsingArray();
                 break;
             }
-            case 10:
+            case 2:
+            {
+                stackMainObj.StackUsingLinkedList();
+                break;
+            }
+            case 3:
             {
                 previousMenuFlag = 'y';
                 break;
             }
-            case 11:
+            case 4:
             {
                 exit(0);
             }

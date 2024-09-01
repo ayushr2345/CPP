@@ -4,7 +4,7 @@
 #include <string>
 #include <optional>
 #include <iostream>
-#include "LinkedList/LinearSinglyLinkedList.h"
+#include "../LinkedList/LinearSinglyLinkedList.h"
 
 namespace stack
 {
@@ -16,19 +16,17 @@ namespace stack
         {
             MIN_COUNT             = 0,
             IS_EMPTY              = 1,
-            IS_FULL               = 2,
-            DISPLAY               = 3,
-            PUSH                  = 4,
-            POP                   = 5,
-            PEEK                  = 6,
-            GET_TOP               = 7,
-            BACK_TO_PREVIOUS_MENU = 8,
-            EXIT_FROM_PROGRAM     = 9,
+            DISPLAY               = 2,
+            PUSH                  = 3,
+            POP                   = 4,
+            PEEK                  = 5,
+            GET_TOP               = 6,
+            BACK_TO_PREVIOUS_MENU = 7,
+            EXIT_FROM_PROGRAM     = 8,
             MAX_COUNT             = EXIT_FROM_PROGRAM
         };
         int                                      m_choice                      { 0 };
         std::map<int, std::string>               m_stackUsingLinkedListMenuMap {};
-        int                                      m_top                         { -1 };
         linkedList::LinearSinglyLinkedList<int>* m_data                        { nullptr };
 
     public:
@@ -41,7 +39,6 @@ namespace stack
         void	         PrintMenu();
         void             PrintSelectedChoice();
         bool             IsEmpty();
-        bool             IsFull();
         std::optional<T> GetTop();
         bool             Push(T);
         std::optional<T> Pop();
