@@ -38,5 +38,6 @@ namespace stack
         void       StackUsingArray();
         void       StackUsingLinkedList();
         void       ParanthesisMatching();
+        void       InfixToPostfixConversion();
     };
 } // namespace stack

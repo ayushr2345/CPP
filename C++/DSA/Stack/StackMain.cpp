@@ -186,4 +186,130 @@ namespace stack
             }
         }
     }
+
+    void StackMain::InfixToPostfixConversion()
+    {
+        std::cout << "Normally inifix expressions are solved by moving randomly, but internally"
+                  << " converts it into postfix to convert evaluate it in one scan" << std::endl;
+
+        // std::string infixExpression = "((a+b)-(c-d))";
+        std::string infixExpression = "((a+b)*c)-d^e^f";
+        std::string postfixExpression {};
+
+        std::function<int (char)> outOfStackPrecedence = [](char ch) -> int {
+            switch (ch)
+            {
+            case ')':
+            {
+                return 0;
+            }
+            case '-':
+            case '+':
+            {
+                return 1;
+            }
+            case '*':
+            case '/':
+            {
+                return 3;
+            }
+            case '^':
+            {
+                return 6;
+            }
+            case '(':
+            {
+                return 7;
+            }
+            default:
+            {
+                return -1;
+                break;
+            }
+            }
+        };
+
+        std::function<int (char)> insideStackPrecedence = [](char ch) -> int {
+            switch (ch)
+            {
+            case ')':
+            {
+                return -1;
+            }
+            case '-':
+            case '+':
+            {
+                return 2;
+            }
+            case '*':
+            case '/':
+            {
+                return 4;
+            }
+            case '^':
+            {
+                return 5;
+            }
+            case '(':
+            {
+                return 0;
+            }
+            default:
+            {
+                return -1;
+                break;
+            }
+            }
+        };
+
+        stack::StackUsingArray<char> expressionStack(20);
+        int flag = 0;
+        for (char ch: infixExpression)
+        {
+            if (ch == '(')
+            {
+                expressionStack.Push(ch);
+            }
+            else if ((ch >= 65 and ch <= 90) or
+                     (ch >= 97 and ch <= 122) or
+                     (ch >= 48 and ch <= 57))
+            {
+                postfixExpression.push_back(ch);
+            }
+            else if (not expressionStack.IsEmpty() and
+                     outOfStackPrecedence(ch) <= insideStackPrecedence(expressionStack.GetTop().value()))
+            {
+                auto poppedChar = expressionStack.Pop();
+                if (not (poppedChar.value() == '('))
+                {
+                    postfixExpression.push_back(poppedChar.value());
+                }
+            }
+            else
+            {
+                expressionStack.Push(ch);
+            }
+        }
+
+        while (not (expressionStack.IsEmpty()))
+        {
+            auto poppedChar = expressionStack.Pop();
+            if (not (poppedChar.value() == '('))
+            {
+                postfixExpression.push_back(poppedChar.value());
+            }
+        }
+
+        expressionStack.Display();
+        std::cout << postfixExpression << std::endl;
+
+        if (flag == 1 or not expressionStack.IsEmpty())
+        {
+            std::cout << "Conversion was unsuccessful" << std::endl;
+        }
+        else
+        {
+            std::cout << "The conversion was successful: " << postfixExpression << std::endl;
+        }
+    }
 } // namespace stack
