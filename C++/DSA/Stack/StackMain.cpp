@@ -187,129 +187,177 @@ namespace stack
         }
     }
 
-    void StackMain::InfixToPostfixConversion()
+    std::string StackMain::InfixToPostfixConversion(std::string infixExpression)
     {
         std::cout << "Normally inifix expressions are solved by moving randomly, but internally"
                   << " converts it into postfix to convert evaluate it in one scan" << std::endl;
 
         // std::string infixExpression = "((a+b)-(c-d))";
-        std::string infixExpression = "((a+b)*c)-d^e^f";
-        std::string postfixExpression {};
+        // std::string infixExpression = "((a+b)*c)-d^e^f";
+        std::string postfixExpression;
 
         std::function<int (char)> outOfStackPrecedence = [](char ch) -> int {
             switch (ch)
             {
-            case ')':
-            {
-                return 0;
-            }
-            case '-':
             case '+':
-            {
+            case '-':
                 return 1;
-            }
             case '*':
             case '/':
-            {
                 return 3;
-            }
             case '^':
-            {
                 return 6;
-            }
             case '(':
-            {
                 return 7;
-            }
+            case ')':
+                return 0;
             default:
-            {
                 return -1;
-                break;
-            }
             }
         };
 
         std::function<int (char)> insideStackPrecedence = [](char ch) -> int {
             switch (ch)
             {
-            case ')':
-            {
-                return -1;
-            }
-            case '-':
             case '+':
-            {
+            case '-':
                 return 2;
-            }
             case '*':
             case '/':
-            {
                 return 4;
-            }
             case '^':
-            {
                 return 5;
-            }
             case '(':
-            {
                 return 0;
-            }
-            default:
-            {
+            case ')':
                 return -1;
-                break;
-            }
+            default:
+                return -1;
             }
         };
 
         stack::StackUsingArray<char> expressionStack(20);
         int flag = 0;
+
         for (char ch: infixExpression)
         {
             if (ch == '(')
             {
                 expressionStack.Push(ch);
-            }
-            else if ((ch >= 65 and ch <= 90) or
-                     (ch >= 97 and ch <= 122) or
-                     (ch >= 48 and ch <= 57))
+            } 
+            else if (isalnum(ch))
             {
                 postfixExpression.push_back(ch);
-            }
-            else if (not expressionStack.IsEmpty() and
-                     outOfStackPrecedence(ch) <= insideStackPrecedence(expressionStack.GetTop().value()))
+            } 
+            else if (ch == ')')
             {
-                auto poppedChar = expressionStack.Pop();
-                if (not (poppedChar.value() == '('))
+                while (not (expressionStack.IsEmpty()) and expressionStack.GetTop().value() != '(') 
                 {
-                    postfixExpression.push_back(poppedChar.value());
+                    postfixExpression.push_back(expressionStack.Pop().value());
                 }
-            }
+                expressionStack.Pop(); // Remove the '(' from the stack
+            } 
             else
             {
+                while (not (expressionStack.IsEmpty()) and 
+                       outOfStackPrecedence(ch) <= insideStackPrecedence(expressionStack.GetTop().value()))
+                {
+                    postfixExpression.push_back(expressionStack.Pop().value());
+                }
                 expressionStack.Push(ch);
             }
         }
 
-        while (not (expressionStack.IsEmpty()))
+        while (!expressionStack.IsEmpty())
         {
-            auto poppedChar = expressionStack.Pop();
-            if (not (poppedChar.value() == '('))
+            char poppedChar = expressionStack.Pop().value();
+            if (poppedChar != '(')
             {
-                postfixExpression.push_back(poppedChar.value());
+                postfixExpression.push_back(poppedChar);
             }
         }
 
-        expressionStack.Display();
-        std::cout << postfixExpression << std::endl;
-
-        if (flag == 1 or not expressionStack.IsEmpty())
+        if (flag == 1 or not (expressionStack.IsEmpty()))
         {
             std::cout << "Conversion was unsuccessful" << std::endl;
         }
-        else
+        else 
         {
             std::cout << "The conversion was successful: " << postfixExpression << std::endl;
+        }
+
+        return postfixExpression;
+    }
+
+    void StackMain::EvaluationOfExpression()
+    {
+        std::string infixExpression = "6+5+3*4";
+        std::string postfixExpression = InfixToPostfixConversion(infixExpression);
+
+        stack::StackUsingArray<int> valueStack(20);
+
+        int flag = 0;
+        for (const char ch: postfixExpression)
+        {
+            if (isdigit(ch))
+            {
+                valueStack.Push(static_cast<int>(ch - '0'));
+            }
+            else if (ch == '+' or
+                     ch == '-' or
+                     ch == '*' or
+                     ch == '/')
+            {
+                std::optional<int> poppedValue1 = valueStack.Pop();
+                std::optional<int> poppedValue2 = valueStack.Pop();
+
+                if (not (poppedValue1.has_value() and poppedValue2.has_value()))
+                {
+                    flag = 1;
+                    break;
+                }
+                else
+                {
+                    switch (ch)
+                    {
+                    case '+':
+                    {
+                        int res = poppedValue2.value() + poppedValue1.value();
+                        valueStack.Push(res);
+                        break;
+                    }
+                    case '-':
+                    {
+                        int res = poppedValue2.value() - poppedValue1.value();
+                        valueStack.Push(res);
+                        break;
+                    }
+                    case '*':
+                    {
+                        int res = poppedValue2.value() * poppedValue1.value();
+                        valueStack.Push(res);
+                        break;
+                    }
+                    case '/':
+                    {
+                        int res = poppedValue2.value() / poppedValue1.value();
+                        valueStack.Push(res);
+                        break;
+                    }
+                    default:
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (flag == 1)
+        {
+            std::cout << "Evaluation failed" << std::endl;
+        }
+        else
+        {
+            std::cout << "Evaluation successful: " << valueStack.GetTop().value() << std::endl;
         }
     }
 } // namespace stack

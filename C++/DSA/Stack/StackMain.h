@@ -29,15 +29,16 @@ namespace stack
 
     public:
         StackMain();
-        const int  GetMinCase();
-        const int  GetMaxCase();
-        const int& GetChoice();
-        void       GetChoiceInputFromUser();
-        void	   PrintMenu();
-        void       PrintSelectedChoice();
-        void       StackUsingArray();
-        void       StackUsingLinkedList();
-        void       ParanthesisMatching();
-        void       InfixToPostfixConversion();
+        const int   GetMinCase();
+        const int   GetMaxCase();
+        const int&  GetChoice();
+        void        GetChoiceInputFromUser();
+        void	    PrintMenu();
+        void        PrintSelectedChoice();
+        void        StackUsingArray();
+        void        StackUsingLinkedList();
+        void        ParanthesisMatching();
+        std::string InfixToPostfixConversion(std::string);
+        void        EvaluationOfExpression();
     };
 } // namespace stack

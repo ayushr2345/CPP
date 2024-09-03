@@ -1817,15 +1817,20 @@ namespace handlers
             }
             case 4:
             {
-                stackMainObj.InfixToPostfixConversion();
+                stackMainObj.InfixToPostfixConversion("((a+b)*c)-d^e^f");
                 break;
             }
             case 5:
             {
-                previousMenuFlag = 'y';
+                stackMainObj.EvaluationOfExpression();
                 break;
             }
             case 6:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 7:
             {
                 exit(0);
             }
