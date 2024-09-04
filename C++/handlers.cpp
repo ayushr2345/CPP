@@ -1853,4 +1853,55 @@ namespace handlers
             }
         }
     }
+
+    void Handle(queue:: QueueMain& queueMainObj)
+    {
+        queueMainObj.PrintMenu();
+        queueMainObj.GetChoiceInputFromUser();
+        const int& selectedChoice = queueMainObj.GetChoice();
+
+        while (queueMainObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > queueMainObj.GetMinCase() &&
+                selectedChoice < queueMainObj.GetMaxCase() + 1)
+            {
+                queueMainObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                queueMainObj.QueueUsingArray();
+                break;
+            }
+            case 2:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 3:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                queueMainObj.PrintMenu();
+                queueMainObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

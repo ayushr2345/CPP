@@ -14,6 +14,7 @@
 #include "DSA/Matrices/MatricesMain.h"
 #include "DSA/LinkedList/LinkedListMain.h"
 #include "DSA/Stack/StackMain.h"
+#include "DSA/Queues/QueueMain.h"
 
 namespace handlers
 {
@@ -66,6 +67,9 @@ namespace handlers
 
     template <class T>
     void Handle(stack::StackUsingLinkedList<T>&);
+
+    // Queue
+    void Handle(queue::QueueMain&);
 } // namespace handlers
 
 #include "handlers.tpp"

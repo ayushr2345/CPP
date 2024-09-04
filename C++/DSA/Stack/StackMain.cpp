@@ -349,6 +349,7 @@ namespace stack
                     }
                 }
             }
+            valueStack.Display();
         }
 
         if (flag == 1)

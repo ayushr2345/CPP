@@ -177,13 +177,20 @@ int main()
                 {
                     stack::StackMain stackMainObj;
                     handlers::Handle(stackMainObj);
+                    break;
                 }
                 case 7:
+                {
+                    queue::QueueMain queueMainObj;
+                    handlers::Handle(queueMainObj);
+                    break;
+                }
+                case 8:
                 {
                     previousMenuFlag = 'y';
                     break;
                 }
-                case 8:
+                case 9:
                 {
                     exit(0);
                 }

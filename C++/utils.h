@@ -45,8 +45,9 @@ namespace utils
         MATRICES              = 4,
         LINKED_LIST           = 5,
         STACK                 = 6,
-        BACK_TO_PREVIOUS_MENU = 7,
-        EXIT                  = 8,
+        QUEUE                 = 7,
+        BACK_TO_PREVIOUS_MENU = 8,
+        EXIT                  = 9,
         MAX_COUNT             = EXIT
     };
 
@@ -137,6 +138,10 @@ namespace utils
         {
             static_cast<int>(DSAMenu::STACK),
             std::string("Stacks")
+        },
+        {
+            static_cast<int>(DSAMenu::QUEUE),
+            std::string("Queues")
         },
         {
             static_cast<int>(DSAMenu::BACK_TO_PREVIOUS_MENU),

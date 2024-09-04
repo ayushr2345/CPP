@@ -2196,4 +2196,152 @@ namespace handlers
             }
         }
     }
+
+     template <class T>
+    void Handle(queue::QueueUsingArray<T>& queueUsingArrayObj)
+    {
+        queueUsingArrayObj.PrintMenu();
+        queueUsingArrayObj.GetChoiceInputFromUser();
+        const int& selectedChoice = queueUsingArrayObj.GetChoice();
+
+        while (queueUsingArrayObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > queueUsingArrayObj.GetMinCase() &&
+                selectedChoice < queueUsingArrayObj.GetMaxCase() + 1)
+            {
+                queueUsingArrayObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = queueUsingArrayObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The queue is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                bool isFull = queueUsingArrayObj.IsFull();
+                if (isFull)
+                {
+                    std::cout << "The queue is full" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not full" << std::endl;
+                }
+                break;
+            }
+            case 3:
+            {
+                queueUsingArrayObj.Display();
+                break;
+            }
+            case 4:
+            {
+                int numElements = queueUsingArrayObj.NumElements();
+                std::cout << "There are " << numElements << " elements in the queue" << std::endl;
+                break;
+            }
+            case 5:
+            {
+                T element = 0;
+                std::cout << "Enter the number you want to insert: ";
+                utils::InputNumberFromUser(element);
+
+                bool enqueueRes = queueUsingArrayObj.Enqueue(element);
+                if (enqueueRes)
+                {
+                    std::cout << "The element " << element << " was successfully enqueued" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not enqueued" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                std::optional<T> dequeuedElement = queueUsingArrayObj.Dequeue();
+
+                if (dequeuedElement.has_value())
+                {
+                    std::cout << "Element " << dequeuedElement.value() << " was successfully dequeued from the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform dequeue operation" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                std::optional<T> frontElement = queueUsingArrayObj.Front();
+
+                if (frontElement.has_value())
+                {
+                    std::cout << "Element in front: " << frontElement.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform Front() operation" << std::endl;
+                }
+                break;
+            }
+            case 8:
+            {
+                std::optional<T> rearElement = queueUsingArrayObj.Rear();
+
+                if (rearElement.has_value())
+                {
+                    std::cout << "Element in rear: " << rearElement.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform Rear() operation" << std::endl;
+                }
+                break;
+            }
+            case 9:
+            {
+                queueUsingArrayObj.Reset();
+                break;
+            }
+            case 10:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 11:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                queueUsingArrayObj.PrintMenu();
+                queueUsingArrayObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers
