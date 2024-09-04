@@ -88,4 +88,10 @@ namespace queue
         queue::CircularQueue<int> circularQueueObj(sizeOfQueue);
         handlers::Handle(circularQueueObj);
     }
+
+    void QueueMain::QueueUsingLinkedList()
+    {
+        queue::QueueUsingLinkedList<int> queueUsingLinkedListObj;
+        handlers::Handle(queueUsingLinkedListObj);
+    }
 } // namespace queue

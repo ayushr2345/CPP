@@ -7,12 +7,12 @@ namespace queue
 {
     template <class T>
     CircularQueue<T>::CircularQueue(int size):
-        m_choice                 ( 0 ),
+        m_choice               ( 0 ),
         m_circularQueueMenuMap ( {} ),
-        m_front                  { -1 },
-        m_rear                   { -1 },
-        m_size                   { size },
-        m_data                   { nullptr }
+        m_front                { 0 },
+        m_rear                 { 0 },
+        m_size                 { size },
+        m_data                 { nullptr }
     {
         m_circularQueueMenuMap.insert({ m_CircularQueueMenu(IS_EMPTY),
                                           std::string("Check if the queue is empty") });

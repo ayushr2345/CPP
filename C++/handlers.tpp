@@ -2492,4 +2492,139 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(queue::QueueUsingLinkedList<T>& queueUsingLinkedListObj)
+    {
+        queueUsingLinkedListObj.PrintMenu();
+        queueUsingLinkedListObj.GetChoiceInputFromUser();
+        const int& selectedChoice = queueUsingLinkedListObj.GetChoice();
+
+        while (queueUsingLinkedListObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > queueUsingLinkedListObj.GetMinCase() &&
+                selectedChoice < queueUsingLinkedListObj.GetMaxCase() + 1)
+            {
+                queueUsingLinkedListObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = queueUsingLinkedListObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The queue is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                queueUsingLinkedListObj.Display();
+                break;
+            }
+            case 3:
+            {
+                int numElements = queueUsingLinkedListObj.NumElements();
+                std::cout << "There are " << numElements << " elements in the queue" << std::endl;
+                break;
+            }
+            case 4:
+            {
+                T element = 0;
+                std::cout << "Enter the number you want to insert: ";
+                utils::InputNumberFromUser(element);
+
+                bool enqueueRes = queueUsingLinkedListObj.Enqueue(element);
+                if (enqueueRes)
+                {
+                    std::cout << "The element " << element << " was successfully enqueued" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not enqueued" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                std::optional<T> dequeuedElement = queueUsingLinkedListObj.Dequeue();
+
+                if (dequeuedElement.has_value())
+                {
+                    std::cout << "Element " << dequeuedElement.value() << " was successfully dequeued from the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform dequeue operation" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                std::optional<T> frontElement = queueUsingLinkedListObj.Front();
+
+                if (frontElement.has_value())
+                {
+                    std::cout << "Element in front: " << frontElement.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform Front() operation" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                std::optional<T> rearElement = queueUsingLinkedListObj.Rear();
+
+                if (rearElement.has_value())
+                {
+                    std::cout << "Element in rear: " << rearElement.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform Rear() operation" << std::endl;
+                }
+                break;
+            }
+            case 8:
+            {
+                queueUsingLinkedListObj.Reset();
+                break;
+            }
+            case 9:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 10:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                queueUsingLinkedListObj.PrintMenu();
+                queueUsingLinkedListObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

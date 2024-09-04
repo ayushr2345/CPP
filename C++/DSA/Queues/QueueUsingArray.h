@@ -29,8 +29,8 @@ namespace queue
         };
         int                        m_choice                 { 0 };
         std::map<int, std::string> m_queueUsingArrayMenuMap {};
-        int                        m_front                  { 0 };
-        int                        m_rear                   { 0 };
+        int                        m_front                  { -1 };
+        int                        m_rear                   { -1 };
         int                        m_size                   { 0 };
         T*                         m_data                   { nullptr };
 

@@ -27,12 +27,12 @@ namespace queue
             EXIT_FROM_PROGRAM     = 11,
             MAX_COUNT             = EXIT_FROM_PROGRAM
         };
-        int                        m_choice                 { 0 };
+        int                        m_choice               { 0 };
         std::map<int, std::string> m_circularQueueMenuMap {};
-        int                        m_front                  { -1 };
-        int                        m_rear                   { -1 };
-        int                        m_size                   { 0 };
-        T*                         m_data                   { nullptr };
+        int                        m_front                { 0 };
+        int                        m_rear                 { 0 };
+        int                        m_size                 { 0 };
+        T*                         m_data                 { nullptr };
 
     public:
         CircularQueue(int);

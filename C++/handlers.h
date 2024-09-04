@@ -76,6 +76,9 @@ namespace handlers
 
     template <class T>
     void Handle(queue::CircularQueue<T>&);
+
+    template <class T>
+    void Handle(queue::QueueUsingLinkedList<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

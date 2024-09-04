@@ -6,6 +6,7 @@
 #include <iostream>
 #include "QueueUsingArray.h"
 #include "CircularQueue.h"
+#include "QueueUsingLinkedList.h"
 
 namespace queue
 {
@@ -39,5 +40,6 @@ namespace queue
         void        PrintSelectedChoice();
         void        QueueUsingArray();
         void        CircularQueue();
+        void        QueueUsingLinkedList();
     };
 } // namespace queue
