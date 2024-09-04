@@ -2627,4 +2627,170 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(queue::DoubleEndedQueue<T>& doubleEndedQueueObj)
+    {
+        doubleEndedQueueObj.PrintMenu();
+        doubleEndedQueueObj.GetChoiceInputFromUser();
+        const int& selectedChoice = doubleEndedQueueObj.GetChoice();
+
+        while (doubleEndedQueueObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > doubleEndedQueueObj.GetMinCase() &&
+                selectedChoice < doubleEndedQueueObj.GetMaxCase() + 1)
+            {
+                doubleEndedQueueObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = doubleEndedQueueObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The queue is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                doubleEndedQueueObj.Display();
+                break;
+            }
+            case 3:
+            {
+                int numElements = doubleEndedQueueObj.NumElements();
+                std::cout << "There are " << numElements << " elements in the queue" << std::endl;
+                break;
+            }
+            case 4:
+            {
+                T element = 0;
+                std::cout << "Enter the number you want to insert in front: ";
+                utils::InputNumberFromUser(element);
+
+                bool enqueueRes = doubleEndedQueueObj.EnqueueFront(element);
+                if (enqueueRes)
+                {
+                    std::cout << "The element " << element << " was successfully enqueued in front" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not enqueued" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                T element = 0;
+                std::cout << "Enter the number you want to insert in rear: ";
+                utils::InputNumberFromUser(element);
+
+                bool enqueueRes = doubleEndedQueueObj.EnqueueRear(element);
+                if (enqueueRes)
+                {
+                    std::cout << "The element " << element << " was successfully enqueued in rear" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not enqueued" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                std::optional<T> dequeuedElement = doubleEndedQueueObj.DequeueFront();
+
+                if (dequeuedElement.has_value())
+                {
+                    std::cout << "Element " << dequeuedElement.value() << " was successfully dequeued from the queue front" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform dequeue operation" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                std::optional<T> dequeuedElement = doubleEndedQueueObj.DequeueRear();
+
+                if (dequeuedElement.has_value())
+                {
+                    std::cout << "Element " << dequeuedElement.value() << " was successfully dequeued from the queue rear" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform dequeue operation" << std::endl;
+                }
+                break;
+            }
+            case 8:
+            {
+                std::optional<T> frontElement = doubleEndedQueueObj.Front();
+
+                if (frontElement.has_value())
+                {
+                    std::cout << "Element in front: " << frontElement.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform Front() operation" << std::endl;
+                }
+                break;
+            }
+            case 9:
+            {
+                std::optional<T> rearElement = doubleEndedQueueObj.Rear();
+
+                if (rearElement.has_value())
+                {
+                    std::cout << "Element in rear: " << rearElement.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform Rear() operation" << std::endl;
+                }
+                break;
+            }
+            case 10:
+            {
+                doubleEndedQueueObj.Reset();
+                break;
+            }
+            case 11:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 12:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                doubleEndedQueueObj.PrintMenu();
+                doubleEndedQueueObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

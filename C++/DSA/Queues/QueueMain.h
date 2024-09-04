@@ -7,6 +7,7 @@
 #include "QueueUsingArray.h"
 #include "CircularQueue.h"
 #include "QueueUsingLinkedList.h"
+#include "DoubleEndedQueue.h"
 
 namespace queue
 {
@@ -41,5 +42,6 @@ namespace queue
         void        QueueUsingArray();
         void        CircularQueue();
         void        QueueUsingLinkedList();
+        void        DoubleEndedQueue();
     };
 } // namespace queue

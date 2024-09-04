@@ -94,4 +94,10 @@ namespace queue
         queue::QueueUsingLinkedList<int> queueUsingLinkedListObj;
         handlers::Handle(queueUsingLinkedListObj);
     }
+
+    void QueueMain::DoubleEndedQueue()
+    {
+        queue::DoubleEndedQueue<int> doubleEndedQueueObj;
+        handlers::Handle(doubleEndedQueueObj);
+    }
 } // namespace queue

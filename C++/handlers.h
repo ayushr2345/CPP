@@ -79,6 +79,9 @@ namespace handlers
 
     template <class T>
     void Handle(queue::QueueUsingLinkedList<T>&);
+
+    template <class T>
+    void Handle(queue::DoubleEndedQueue<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"
