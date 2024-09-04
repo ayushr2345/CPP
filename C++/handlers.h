@@ -70,6 +70,12 @@ namespace handlers
 
     // Queue
     void Handle(queue::QueueMain&);
+
+    template <class T>
+    void Handle(queue::QueueUsingArray<T>&);
+
+    template <class T>
+    void Handle(queue::CircularQueue<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

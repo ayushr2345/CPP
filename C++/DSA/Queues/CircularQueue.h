@@ -8,10 +8,10 @@
 namespace queue
 {
     template <class T>
-    class QueueUsingArray
+    class CircularQueue
     {
     private:
-        enum m_QueueUsingArrayMenu
+        enum m_CircularQueueMenu
         {
             MIN_COUNT             = 0,
             IS_EMPTY              = 1,
@@ -28,15 +28,15 @@ namespace queue
             MAX_COUNT             = EXIT_FROM_PROGRAM
         };
         int                        m_choice                 { 0 };
-        std::map<int, std::string> m_queueUsingArrayMenuMap {};
-        int                        m_front                  { 0 };
-        int                        m_rear                   { 0 };
+        std::map<int, std::string> m_circularQueueMenuMap {};
+        int                        m_front                  { -1 };
+        int                        m_rear                   { -1 };
         int                        m_size                   { 0 };
         T*                         m_data                   { nullptr };
 
     public:
-        QueueUsingArray(int);
-        ~QueueUsingArray();
+        CircularQueue(int);
+        ~CircularQueue();
         const int        GetMinCase();
         const int        GetMaxCase();
         const int&       GetChoice();
@@ -55,4 +55,4 @@ namespace queue
     };
 } // namespace queue
 
-# include "QueueUsingArray.tpp"
+# include "CircularQueue.tpp"

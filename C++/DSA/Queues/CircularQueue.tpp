@@ -1,82 +1,82 @@
 #pragma once
 
-#include "QueueUsingArray.h"
+#include "CircularQueue.h"
 #include "../../utils.h"
 
 namespace queue
 {
     template <class T>
-    QueueUsingArray<T>::QueueUsingArray(int size):
+    CircularQueue<T>::CircularQueue(int size):
         m_choice                 ( 0 ),
-        m_queueUsingArrayMenuMap ( {} ),
+        m_circularQueueMenuMap ( {} ),
         m_front                  { -1 },
         m_rear                   { -1 },
         m_size                   { size },
         m_data                   { nullptr }
     {
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(IS_EMPTY),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(IS_EMPTY),
                                           std::string("Check if the queue is empty") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(IS_FULL),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(IS_FULL),
                                           std::string("Check if the queue is full") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(DISPLAY),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(DISPLAY),
                                           std::string("Display the queue") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(NUM_ELEMENTS),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(NUM_ELEMENTS),
                                           std::string("Number of elements in the queue") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(ENQUEUE),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(ENQUEUE),
                                           std::string("Enqueue") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(DEQUEUE),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(DEQUEUE),
                                           std::string("Dequeue") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(FRONT),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(FRONT),
                                           std::string("Get front of the Queue") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(REAR),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(REAR),
                                           std::string("Get rear of the Queue") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(RESET),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(RESET),
                                           std::string("Reset the queue") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(BACK_TO_PREVIOUS_MENU),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(BACK_TO_PREVIOUS_MENU),
                                           std::string("Back to Previous Menu") });
-        m_queueUsingArrayMenuMap.insert({ m_QueueUsingArrayMenu(EXIT_FROM_PROGRAM),
+        m_circularQueueMenuMap.insert({ m_CircularQueueMenu(EXIT_FROM_PROGRAM),
                                           std::string("Exit from program") });
         
         m_data = new T[m_size];
     }
 
     template <class T>
-    QueueUsingArray<T>::~QueueUsingArray()
+    CircularQueue<T>::~CircularQueue()
     {
         delete []m_data;
         m_size = 0;
     }
     
     template <class T>
-    const int QueueUsingArray<T>::GetMinCase()
+    const int CircularQueue<T>::GetMinCase()
     {
-        return m_QueueUsingArrayMenu::MIN_COUNT;
+        return m_CircularQueueMenu::MIN_COUNT;
     }
 
     template <class T>
-    const int QueueUsingArray<T>::GetMaxCase()
+    const int CircularQueue<T>::GetMaxCase()
     {
-        return m_QueueUsingArrayMenu::MAX_COUNT;
+        return m_CircularQueueMenu::MAX_COUNT;
     }
 
     template <class T>
-    const int& QueueUsingArray<T>::GetChoice()
+    const int& CircularQueue<T>::GetChoice()
     {
         return m_choice;
     }
 
     template <class T>
-    void QueueUsingArray<T>::GetChoiceInputFromUser()
+    void CircularQueue<T>::GetChoiceInputFromUser()
     {
-        utils::InputNumberFromUser(m_choice, 1, static_cast<int>(m_QueueUsingArrayMenu::MAX_COUNT));
+        utils::InputNumberFromUser(m_choice, 1, static_cast<int>(m_CircularQueueMenu::MAX_COUNT));
     }
 
     template <class T>
-    void QueueUsingArray<T>::PrintMenu()
+    void CircularQueue<T>::PrintMenu()
     {
         std::cout << std::endl;
-        for (std::map<int, std::string>::iterator it = m_queueUsingArrayMenuMap.begin();
-            it != m_queueUsingArrayMenuMap.end();
+        for (std::map<int, std::string>::iterator it = m_circularQueueMenuMap.begin();
+            it != m_circularQueueMenuMap.end();
             it++)
         {
             std::cout << it->first << ". " << it->second << std::endl;
@@ -85,28 +85,28 @@ namespace queue
     }
 
     template <class T>
-    void QueueUsingArray<T>::PrintSelectedChoice()
+    void CircularQueue<T>::PrintSelectedChoice()
     {
         std::cout << std::endl << std::endl
                 << "You have chosen choice "
-                << m_queueUsingArrayMenuMap.at(m_choice)
+                << m_circularQueueMenuMap.at(m_choice)
                 << std::endl;
     }
 
     template <class T>
-    bool QueueUsingArray<T>::IsEmpty()
+    bool CircularQueue<T>::IsEmpty()
     {
         return m_front == m_rear ? true : false;
     }
 
     template <class T>
-    bool QueueUsingArray<T>::IsFull()
+    bool CircularQueue<T>::IsFull()
     {
-        return m_rear == m_size - 1 ? true : false;
+        return ((m_rear + 1) % m_size == m_front) ? true : false;
     }
 
     template <class T>
-    void QueueUsingArray<T>::Display()
+    void CircularQueue<T>::Display()
     {
         if (IsEmpty())
         {
@@ -116,7 +116,7 @@ namespace queue
         {
             std::cout << "The contents of the queue are:" << std::endl;
 
-            for (int i = m_front + 1; i <= m_rear; i++)
+            for (int i = (m_front + 1) % m_size; i != m_front; i = (i + 1) % m_size)
             {
                 std::cout << m_data[i] << " ";
             }
@@ -125,7 +125,7 @@ namespace queue
     }
 
     template <class T>
-    int QueueUsingArray<T>::NumElements()
+    int CircularQueue<T>::NumElements()
     {
         if (IsEmpty())
         {
@@ -133,46 +133,47 @@ namespace queue
         }
         else
         {
-            return m_rear - m_front;
+            return m_front < m_rear ? m_rear - m_front : m_size - m_front + m_rear;
         }
     }
 
     template <class T>
-    bool QueueUsingArray<T>::Enqueue(T element)
+    bool CircularQueue<T>::Enqueue(T element)
     {
         if (IsFull())
         {
             return false;
         }
-        m_data[++m_rear] = element;
+        m_rear = (m_rear + 1) % m_size;
+        m_data[m_rear] = element;
         return true;
     }
 
     template <class T>
-    std::optional<T> QueueUsingArray<T>::Dequeue()
+    std::optional<T> CircularQueue<T>::Dequeue()
     {
         if (IsEmpty())
         {
             return std::nullopt;
         }
-        T deleted = m_data[m_front + 1];
-        m_data[m_front + 1] = 0;
-        m_front++;
+        m_front = (m_front + 1) % m_size;
+        T deleted = m_data[m_front];
+        m_data[m_front] = 0;
         return deleted;
     }
 
     template <class T>
-    std::optional<T> QueueUsingArray<T>::Front()
+    std::optional<T> CircularQueue<T>::Front()
     {
         if (IsEmpty())
         {
             return std::nullopt;
         }
-        return m_data[m_front + 1];
+        return m_data[(m_front + 1) % m_size];
     }
 
     template <class T>
-    std::optional<T> QueueUsingArray<T>::Rear()
+    std::optional<T> CircularQueue<T>::Rear()
     {
         if (IsEmpty())
         {
@@ -182,13 +183,13 @@ namespace queue
     }
 
     template <class T>
-    void QueueUsingArray<T>::Reset()
+    void CircularQueue<T>::Reset()
     {
         for (int i = 0; i < m_size; i++)
         {
             m_data[i] = 0;
         }
-        m_front = -1;
-        m_rear  = -1;
+        m_front = 0;
+        m_rear  = 0;
     }
 } //namespace queue

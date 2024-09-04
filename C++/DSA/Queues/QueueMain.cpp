@@ -79,4 +79,13 @@ namespace queue
         queue::QueueUsingArray<int> queueUsingArrayObj(sizeOfQueue);
         handlers::Handle(queueUsingArrayObj);
     }
+
+    void QueueMain::CircularQueue()
+    {
+        std::cout << "Enter the max size of the queue: ";
+        int sizeOfQueue = 0;
+        utils::InputNumberFromUser(sizeOfQueue, 1, 20);
+        queue::CircularQueue<int> circularQueueObj(sizeOfQueue);
+        handlers::Handle(circularQueueObj);
+    }
 } // namespace queue

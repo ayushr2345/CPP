@@ -2197,7 +2197,7 @@ namespace handlers
         }
     }
 
-     template <class T>
+    template <class T>
     void Handle(queue::QueueUsingArray<T>& queueUsingArrayObj)
     {
         queueUsingArrayObj.PrintMenu();
@@ -2341,6 +2341,154 @@ namespace handlers
             {
                 queueUsingArrayObj.PrintMenu();
                 queueUsingArrayObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    template <class T>
+    void Handle(queue::CircularQueue<T>& circularQueueObj)
+    {
+        circularQueueObj.PrintMenu();
+        circularQueueObj.GetChoiceInputFromUser();
+        const int& selectedChoice = circularQueueObj.GetChoice();
+
+        while (circularQueueObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > circularQueueObj.GetMinCase() &&
+                selectedChoice < circularQueueObj.GetMaxCase() + 1)
+            {
+                circularQueueObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = circularQueueObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The queue is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                bool isFull = circularQueueObj.IsFull();
+                if (isFull)
+                {
+                    std::cout << "The queue is full" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not full" << std::endl;
+                }
+                break;
+            }
+            case 3:
+            {
+                circularQueueObj.Display();
+                break;
+            }
+            case 4:
+            {
+                int numElements = circularQueueObj.NumElements();
+                std::cout << "There are " << numElements << " elements in the queue" << std::endl;
+                break;
+            }
+            case 5:
+            {
+                T element = 0;
+                std::cout << "Enter the number you want to insert: ";
+                utils::InputNumberFromUser(element);
+
+                bool enqueueRes = circularQueueObj.Enqueue(element);
+                if (enqueueRes)
+                {
+                    std::cout << "The element " << element << " was successfully enqueued" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not enqueued" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                std::optional<T> dequeuedElement = circularQueueObj.Dequeue();
+
+                if (dequeuedElement.has_value())
+                {
+                    std::cout << "Element " << dequeuedElement.value() << " was successfully dequeued from the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform dequeue operation" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                std::optional<T> frontElement = circularQueueObj.Front();
+
+                if (frontElement.has_value())
+                {
+                    std::cout << "Element in front: " << frontElement.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform Front() operation" << std::endl;
+                }
+                break;
+            }
+            case 8:
+            {
+                std::optional<T> rearElement = circularQueueObj.Rear();
+
+                if (rearElement.has_value())
+                {
+                    std::cout << "Element in rear: " << rearElement.value() << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform Rear() operation" << std::endl;
+                }
+                break;
+            }
+            case 9:
+            {
+                circularQueueObj.Reset();
+                break;
+            }
+            case 10:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 11:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                circularQueueObj.PrintMenu();
+                circularQueueObj.GetChoiceInputFromUser();
             }
         }
     }

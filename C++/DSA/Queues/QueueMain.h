@@ -5,6 +5,7 @@
 #include <optional>
 #include <iostream>
 #include "QueueUsingArray.h"
+#include "CircularQueue.h"
 
 namespace queue
 {
@@ -37,5 +38,6 @@ namespace queue
         void	    PrintMenu();
         void        PrintSelectedChoice();
         void        QueueUsingArray();
+        void        CircularQueue();
     };
 } // namespace queue
