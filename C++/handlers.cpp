@@ -1898,10 +1898,15 @@ namespace handlers
             }
             case 6:
             {
-                previousMenuFlag = 'y';
+                queueMainObj.PriorityQueueElement();
                 break;
             }
             case 7:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 8:
             {
                 exit(0);
             }

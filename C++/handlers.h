@@ -84,7 +84,10 @@ namespace handlers
     void Handle(queue::DoubleEndedQueue<T>&);
 
     template <class T>
-    void Handle(queue::DoubleEndedQueue<T>&);
+    void Handle(queue::PriorityQueueLimitedSet<T>&);
+
+    template <class T>
+    void Handle(queue::PriorityQueueElement<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

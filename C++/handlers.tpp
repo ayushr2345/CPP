@@ -2875,7 +2875,7 @@ namespace handlers
 
                 if (peekFront.has_value())
                 {
-                    std::cout << "Element " << peekFront.value() << " is present in the front of queue with highes priority" << std::endl;
+                    std::cout << "Element " << peekFront.value() << " is present in the front of queue with highest priority" << std::endl;
                 }
                 else
                 {
@@ -2930,6 +2930,141 @@ namespace handlers
             {
                 priorityQueueLimitedSetObj.PrintMenu();
                 priorityQueueLimitedSetObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    template <class T>
+    void Handle(queue::PriorityQueueElement<T>& priorityQueueElementObj)
+    {
+        priorityQueueElementObj.PrintMenu();
+        priorityQueueElementObj.GetChoiceInputFromUser();
+        const int& selectedChoice = priorityQueueElementObj.GetChoice();
+
+        while (priorityQueueElementObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > priorityQueueElementObj.GetMinCase() &&
+                selectedChoice < priorityQueueElementObj.GetMaxCase() + 1)
+            {
+                priorityQueueElementObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = priorityQueueElementObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The queue is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                priorityQueueElementObj.Display();
+                break;
+            }
+            case 3:
+            {
+                int numElements = priorityQueueElementObj.NumElements();
+                std::cout << "There are " << numElements << " elements in the queue" << std::endl;
+                break;
+            }
+            case 4:
+            {
+                T element = 0;
+                std::cout << "Enter the number you want to enqueue: ";
+                utils::InputNumberFromUser(element);
+
+                bool enqueueRes = priorityQueueElementObj.Enqueue(element);
+                if (enqueueRes)
+                {
+                    std::cout << "The element " << element << " was successfully enqueued in the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not enqueued" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                std::optional<T> dequeuedElement = priorityQueueElementObj.Dequeue();
+
+                if (dequeuedElement.has_value())
+                {
+                    std::cout << "Element " << dequeuedElement.value() << " was successfully dequeued from the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform dequeue operation" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                std::optional<T> front = priorityQueueElementObj.Front();
+
+                if (front.has_value())
+                {
+                    std::cout << "Element " << front.value() << " is present in the front of queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform front operation" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                std::optional<T> rear = priorityQueueElementObj.Rear();
+
+                if (rear.has_value())
+                {
+                    std::cout << "Element " << rear.value() << " is present in the rear of queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform rear operation" << std::endl;
+                }
+                break;
+            }
+            case 8:
+            {
+                priorityQueueElementObj.Reset();
+                break;
+            }
+            case 9:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 10:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                priorityQueueElementObj.PrintMenu();
+                priorityQueueElementObj.GetChoiceInputFromUser();
             }
         }
     }

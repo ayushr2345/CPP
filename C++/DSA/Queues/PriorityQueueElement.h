@@ -4,14 +4,15 @@
 #include <string>
 #include <optional>
 #include <iostream>
+#include "QueueUsingLinkedList.h"
 
 namespace queue
 {
     template <class T>
-    class QueueUsingLinkedList
+    class PriorityQueueElement
     {
     private:
-        enum m_QueueUsingLinkedListMenu
+        enum m_PriorityQueueElementMenu
         {
             MIN_COUNT             = 0,
             IS_EMPTY              = 1,
@@ -27,19 +28,12 @@ namespace queue
             MAX_COUNT             = EXIT_FROM_PROGRAM
         };
 
-        class Node
-        {
-        public:
-            T     m_m_data {};
-            Node* m_m_next {nullptr};
-        };
-        int                        m_choice                      { 0 };
-        std::map<int, std::string> m_queueUsingLinkedListMenuMap {};
-        Node*                      m_front                       { nullptr };
-        Node*                      m_rear                        { nullptr };
+        int                             m_choice                      { 0 };
+        std::map<int, std::string>      m_priorityQueueElementMenuMap {};
+        queue::QueueUsingLinkedList<T>* m_data                        { nullptr };
     public:
-        QueueUsingLinkedList();
-        ~QueueUsingLinkedList();
+        PriorityQueueElement();
+        ~PriorityQueueElement();
         const int        GetMinCase();
         const int        GetMaxCase();
         const int&       GetChoice();
@@ -50,7 +44,6 @@ namespace queue
         void             Display();
         int              NumElements();
         bool             Enqueue(T);
-        bool             EnqueueSorted(T);
         std::optional<T> Dequeue();
         std::optional<T> Front();
         std::optional<T> Rear();
@@ -58,4 +51,4 @@ namespace queue
     };
 } // namespace queue
 
-# include "QueueUsingLinkedList.tpp"
+# include "PriorityQueueElement.tpp"

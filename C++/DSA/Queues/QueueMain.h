@@ -9,6 +9,7 @@
 #include "QueueUsingLinkedList.h"
 #include "DoubleEndedQueue.h"
 #include "PriorityQueueLimitedSet.h"
+#include "PriorityQueueElement.h"
 
 namespace queue
 {
@@ -45,5 +46,6 @@ namespace queue
         void        QueueUsingLinkedList();
         void        DoubleEndedQueue();
         void        PriorityQueueLimitedSet();
+        void        PriorityQueueElement();
     };
 } // namespace queue

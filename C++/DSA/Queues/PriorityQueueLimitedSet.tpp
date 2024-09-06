@@ -39,6 +39,7 @@ namespace queue
     PriorityQueueLimitedSet<T>::~PriorityQueueLimitedSet()
     {
         Reset();
+        m_data = nullptr;
     }
 
     template <class T>
@@ -191,7 +192,9 @@ namespace queue
     template <class T>
     void PriorityQueueLimitedSet<T>::Reset()
     {
-        delete []m_data;
-        m_data = nullptr;
+        for (int i = 0; i < m_numPriorities; i++)
+        {
+            m_data[i].Reset();
+        }
     }
 } //namespace queue

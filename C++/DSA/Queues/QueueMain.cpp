@@ -109,4 +109,10 @@ namespace queue
         queue::PriorityQueueLimitedSet<int> priorityQueueLimitedSetObj(numPriorities);
         handlers::Handle(priorityQueueLimitedSetObj);
     }
+
+    void QueueMain::PriorityQueueElement()
+    {
+        queue::PriorityQueueElement<int> priorityQueueElementObj;
+        handlers::Handle(priorityQueueElementObj);
+    }
 } // namespace queue

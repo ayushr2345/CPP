@@ -156,6 +156,52 @@ namespace queue
     }
 
     template <class T>
+    bool QueueUsingLinkedList<T>::EnqueueSorted(T element)
+    {
+        if (m_front == nullptr)
+        {
+            Node* temp = new Node;
+            temp->m_m_data = element;
+            temp->m_m_next = nullptr;
+            m_front = temp;
+            m_rear  = temp;
+        }
+        else
+        {
+            Node* temp = new Node;
+            temp->m_m_data = element;
+            
+            if (element < m_front->m_m_data)
+            {
+                temp->m_m_next = m_front;
+                m_front = temp;
+            }
+            else if (element > m_rear->m_m_data)
+            {
+                temp->m_m_next = nullptr;
+                m_rear->m_m_next = temp;
+                m_rear = temp;
+            }
+            else
+            {
+                Node* itTemp = m_front;
+
+                while (itTemp != nullptr)
+                {
+                    if ((itTemp->m_m_next)->m_m_data >= element)
+                    {
+                        temp->m_m_next = itTemp->m_m_next;
+                        itTemp->m_m_next = temp;
+                        break;
+                    }
+                    itTemp = itTemp->m_m_next;
+                }
+            }
+        }
+        return true;
+    }
+
+    template <class T>
     std::optional<T> QueueUsingLinkedList<T>::Dequeue()
     {
         if (IsEmpty())
