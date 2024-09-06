@@ -3068,4 +3068,133 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(queue::QueueUsingTwoStacks<T>& queueUsingTwoStacksObj)
+    {
+        queueUsingTwoStacksObj.PrintMenu();
+        queueUsingTwoStacksObj.GetChoiceInputFromUser();
+        const int& selectedChoice = queueUsingTwoStacksObj.GetChoice();
+
+        while (queueUsingTwoStacksObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > queueUsingTwoStacksObj.GetMinCase() &&
+                selectedChoice < queueUsingTwoStacksObj.GetMaxCase() + 1)
+            {
+                queueUsingTwoStacksObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = queueUsingTwoStacksObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The queue is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                queueUsingTwoStacksObj.Display();
+                break;
+            }
+            case 3:
+            {
+                T element = 0;
+                std::cout << "Enter the number you want to enqueue: ";
+                utils::InputNumberFromUser(element);
+
+                bool enqueueRes = queueUsingTwoStacksObj.Enqueue(element);
+                if (enqueueRes)
+                {
+                    std::cout << "The element " << element << " was successfully enqueued in the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not enqueued" << std::endl;
+                }
+                break;
+            }
+            case 4:
+            {
+                std::optional<T> dequeuedElement = queueUsingTwoStacksObj.Dequeue();
+
+                if (dequeuedElement.has_value())
+                {
+                    std::cout << "Element " << dequeuedElement.value() << " was successfully dequeued from the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform dequeue operation" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                std::optional<T> front = queueUsingTwoStacksObj.Front();
+
+                if (front.has_value())
+                {
+                    std::cout << "Element " << front.value() << " is present in the front of queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform front operation" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                std::optional<T> rear = queueUsingTwoStacksObj.Rear();
+
+                if (rear.has_value())
+                {
+                    std::cout << "Element " << rear.value() << " is present in the rear of queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform rear operation" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                queueUsingTwoStacksObj.Reset();
+                break;
+            }
+            case 8:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 9:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                queueUsingTwoStacksObj.PrintMenu();
+                queueUsingTwoStacksObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

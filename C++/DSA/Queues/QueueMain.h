@@ -10,6 +10,7 @@
 #include "DoubleEndedQueue.h"
 #include "PriorityQueueLimitedSet.h"
 #include "PriorityQueueElement.h"
+#include "QueueUsingTwoStacks.h"
 
 namespace queue
 {
@@ -47,5 +48,6 @@ namespace queue
         void        DoubleEndedQueue();
         void        PriorityQueueLimitedSet();
         void        PriorityQueueElement();
+        void        QueueUsingTwoStacks();
     };
 } // namespace queue

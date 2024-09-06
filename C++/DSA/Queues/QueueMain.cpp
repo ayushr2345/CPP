@@ -115,4 +115,10 @@ namespace queue
         queue::PriorityQueueElement<int> priorityQueueElementObj;
         handlers::Handle(priorityQueueElementObj);
     }
+
+    void QueueMain::QueueUsingTwoStacks()
+    {
+        queue::QueueUsingTwoStacks<int> queueUsingTwoStacksObj;
+        handlers::Handle(queueUsingTwoStacksObj);
+    }
 } // namespace queue
