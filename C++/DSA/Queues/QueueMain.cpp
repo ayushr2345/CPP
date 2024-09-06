@@ -100,4 +100,13 @@ namespace queue
         queue::DoubleEndedQueue<int> doubleEndedQueueObj;
         handlers::Handle(doubleEndedQueueObj);
     }
+
+    void QueueMain::PriorityQueueLimitedSet()
+    {
+        int numPriorities = 0;
+        std::cout << "Please enter the number of priorities: ";
+        utils::InputNumberFromUser(numPriorities, 0, 5);
+        queue::PriorityQueueLimitedSet<int> priorityQueueLimitedSetObj(numPriorities);
+        handlers::Handle(priorityQueueLimitedSetObj);
+    }
 } // namespace queue

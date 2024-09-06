@@ -2793,4 +2793,144 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(queue::PriorityQueueLimitedSet<T>& priorityQueueLimitedSetObj)
+    {
+        priorityQueueLimitedSetObj.PrintMenu();
+        priorityQueueLimitedSetObj.GetChoiceInputFromUser();
+        const int& selectedChoice = priorityQueueLimitedSetObj.GetChoice();
+
+        while (priorityQueueLimitedSetObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > priorityQueueLimitedSetObj.GetMinCase() &&
+                selectedChoice < priorityQueueLimitedSetObj.GetMaxCase() + 1)
+            {
+                priorityQueueLimitedSetObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = priorityQueueLimitedSetObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The queue is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                priorityQueueLimitedSetObj.Display();
+                break;
+            }
+            case 3:
+            {
+                int numElements = priorityQueueLimitedSetObj.NumElements();
+                std::cout << "There are " << numElements << " elements in the queue" << std::endl;
+                break;
+            }
+            case 4:
+            {
+                T element = 0;
+                int priority = 0;
+                std::cout << "Enter the number you want to enqueue with its priority: ";
+                utils::InputNumberFromUser(element, 1, 10,'n');
+                utils::InputNumberFromUser(priority, 1, priorityQueueLimitedSetObj.GetNumPriorities(),'n');
+
+                bool enqueueRes = priorityQueueLimitedSetObj.Enqueue(element, priority);
+                if (enqueueRes)
+                {
+                    std::cout << "The element " << element << " was successfully enqueued in front" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not enqueued" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                std::optional<T> dequeuedElement = priorityQueueLimitedSetObj.Dequeue();
+
+                if (dequeuedElement.has_value())
+                {
+                    std::cout << "Element " << dequeuedElement.value() << " was successfully dequeued from the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform dequeue operation" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                std::optional<T> peekFront = priorityQueueLimitedSetObj.PeekFront();
+
+                if (peekFront.has_value())
+                {
+                    std::cout << "Element " << peekFront.value() << " is present in the front of queue with highes priority" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform Peek front operation" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                int priority = 0;
+                std::cout << "Enter the priority you want to get the front for: ";
+                utils::InputNumberFromUser(priority, 1, priorityQueueLimitedSetObj.GetNumPriorities(),'n');
+                std::optional<T> peekPriority = priorityQueueLimitedSetObj.PeekPriority(priority);
+
+                if (peekPriority.has_value())
+                {
+                    std::cout << "Element " << peekPriority.value() << " is present in the front of queue with priority: " << priority << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform peek priority operation" << std::endl;
+                }
+                break;
+            }
+            case 8:
+            {
+                priorityQueueLimitedSetObj.Reset();
+                break;
+            }
+            case 9:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 10:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                priorityQueueLimitedSetObj.PrintMenu();
+                priorityQueueLimitedSetObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

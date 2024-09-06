@@ -8,6 +8,7 @@
 #include "CircularQueue.h"
 #include "QueueUsingLinkedList.h"
 #include "DoubleEndedQueue.h"
+#include "PriorityQueueLimitedSet.h"
 
 namespace queue
 {
@@ -43,5 +44,6 @@ namespace queue
         void        CircularQueue();
         void        QueueUsingLinkedList();
         void        DoubleEndedQueue();
+        void        PriorityQueueLimitedSet();
     };
 } // namespace queue
