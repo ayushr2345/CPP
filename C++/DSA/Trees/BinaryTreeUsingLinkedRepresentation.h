@@ -1,0 +1,58 @@
+#pragma once
+
+#include <map>
+#include <string>
+#include <optional>
+#include <iostream>
+#include "../Queues/QueueUsingLinkedList.h"
+
+namespace tree
+{
+    template <class T>
+    class BinaryTreeUsingLinkedRepresentation
+    {
+    private:
+        enum m_BinaryTreeUsingLinkedRepresentationMenu
+        {
+            MIN_COUNT             = 0,
+            DOES_TREE_EXIST       = 1,
+            DISPLAY_PREORDER      = 2,
+            DISPLAY_INORDER       = 3,
+            DISPLAY_POSTORDER     = 4,
+            GENERATE_TREE         = 5,
+            RESET_TREE            = 6,
+            BACK_TO_PREVIOUS_MENU = 7,
+            EXIT_FROM_PROGRAM     = 8,
+            MAX_COUNT             = EXIT_FROM_PROGRAM
+        };
+
+        class Node
+        {
+        public:
+            Node* m_m_leftChild = { nullptr };
+            T     m_m_data;
+            Node* m_m_rightChild = { nullptr };
+        };
+        int                        m_choice                                     { 0 };
+        std::map<int, std::string> m_binaryTreeUsingLinkedRepresentationMenuMap {};
+        Node*                      m_rootNode                                   {};
+    public:
+        BinaryTreeUsingLinkedRepresentation();
+        ~BinaryTreeUsingLinkedRepresentation();
+        const int        GetMinCase();
+        const int        GetMaxCase();
+        const int&       GetChoice();
+        void             GetChoiceInputFromUser();
+        void	         PrintMenu();
+        void             PrintSelectedChoice();
+        const Node*      GetRootNode();
+        bool             IsExisting();
+        void             DisplayPreOrder(const Node*);
+        void             DisplayInOrder(const Node*);
+        void             DisplayPostOrder(const Node*);
+        void             GenerateTree();
+        void             ResetTree(const Node*);
+    };
+} // namespace tree
+
+# include "BinaryTreeUsingLinkedRepresentation.tpp"

@@ -34,6 +34,7 @@ set(SOURCE_FILES
     C++/DSA/LinkedList/PolynomialRepresentation.cpp
     C++/DSA/Stack/StackMain.cpp
     C++/DSA/Queues/QueueMain.cpp
+    C++/DSA/Trees/TreeMain.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

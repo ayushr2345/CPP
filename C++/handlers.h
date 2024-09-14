@@ -15,6 +15,7 @@
 #include "DSA/LinkedList/LinkedListMain.h"
 #include "DSA/Stack/StackMain.h"
 #include "DSA/Queues/QueueMain.h"
+#include "DSA/Trees/TreeMain.h"
 
 namespace handlers
 {
@@ -91,6 +92,15 @@ namespace handlers
 
     template <class T>
     void Handle(queue::QueueUsingTwoStacks<T>&);
+
+    // Trees
+    void Handle(tree::TreeMain&);
+
+    template <class T>
+    void Handle(tree::BinaryTreeUsingArray<T>&);
+
+    template <class T>
+    void Handle(tree::BinaryTreeUsingLinkedRepresentation<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

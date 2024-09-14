@@ -3197,4 +3197,238 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(tree::BinaryTreeUsingArray<T>& binaryTreeUsingArrayObj)
+    {
+        binaryTreeUsingArrayObj.PrintMenu();
+        binaryTreeUsingArrayObj.GetChoiceInputFromUser();
+        const int& selectedChoice = binaryTreeUsingArrayObj.GetChoice();
+
+        while (binaryTreeUsingArrayObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > binaryTreeUsingArrayObj.GetMinCase() &&
+                selectedChoice < binaryTreeUsingArrayObj.GetMaxCase() + 1)
+            {
+                binaryTreeUsingArrayObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool res = binaryTreeUsingArrayObj.IsExisting();
+                
+                if (res)
+                {
+                    std::cout << "The tree exists" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingArrayObj.DisplayPreOrder(1);
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 3:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingArrayObj.DisplayInOrder(1);
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 4:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingArrayObj.DisplayPostOrder(1);
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                if (binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "Tree already exists, cannot generate tree if already exists, reset and try again" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingArrayObj.GenerateTree();
+                }
+                break;
+            }
+            case 6:
+            {
+                binaryTreeUsingArrayObj.ResetTree();
+                break;
+            }
+            case 7:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 8:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                binaryTreeUsingArrayObj.PrintMenu();
+                binaryTreeUsingArrayObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    template <class T>
+    void Handle(tree::BinaryTreeUsingLinkedRepresentation<T>& binaryTreeUsingLinkedRepresentationObj)
+    {
+        binaryTreeUsingLinkedRepresentationObj.PrintMenu();
+        binaryTreeUsingLinkedRepresentationObj.GetChoiceInputFromUser();
+        const int& selectedChoice = binaryTreeUsingLinkedRepresentationObj.GetChoice();
+
+        while (binaryTreeUsingLinkedRepresentationObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > binaryTreeUsingLinkedRepresentationObj.GetMinCase() &&
+                selectedChoice < binaryTreeUsingLinkedRepresentationObj.GetMaxCase() + 1)
+            {
+                binaryTreeUsingLinkedRepresentationObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool res = binaryTreeUsingLinkedRepresentationObj.IsExisting();
+                
+                if (res)
+                {
+                    std::cout << "The tree exists" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingLinkedRepresentationObj.DisplayPreOrder(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 3:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingLinkedRepresentationObj.DisplayInOrder(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 4:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingLinkedRepresentationObj.DisplayPostOrder(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                if (binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "Tree already exists, cannot generate tree if already exists, reset and try again" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingLinkedRepresentationObj.GenerateTree();
+                }
+                break;
+            }
+            case 6:
+            {
+                binaryTreeUsingLinkedRepresentationObj.ResetTree(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                break;
+            }
+            case 7:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 8:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                binaryTreeUsingLinkedRepresentationObj.PrintMenu();
+                binaryTreeUsingLinkedRepresentationObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

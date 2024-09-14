@@ -187,10 +187,16 @@ int main()
                 }
                 case 8:
                 {
-                    previousMenuFlag = 'y';
+                    tree::TreeMain treeMainObj;
+                    handlers::Handle(treeMainObj);
                     break;
                 }
                 case 9:
+                {
+                    previousMenuFlag = 'y';
+                    break;
+                }
+                case 10:
                 {
                     exit(0);
                 }

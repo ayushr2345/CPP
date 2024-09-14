@@ -1854,7 +1854,7 @@ namespace handlers
         }
     }
 
-    void Handle(queue:: QueueMain& queueMainObj)
+    void Handle(queue::QueueMain& queueMainObj)
     {
         queueMainObj.PrintMenu();
         queueMainObj.GetChoiceInputFromUser();
@@ -1931,6 +1931,88 @@ namespace handlers
             {
                 queueMainObj.PrintMenu();
                 queueMainObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    void Handle(tree::TreeMain& treeMainObj)
+    {
+        treeMainObj.PrintMenu();
+        treeMainObj.GetChoiceInputFromUser();
+        const int& selectedChoice = treeMainObj.GetChoice();
+
+        while (treeMainObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > treeMainObj.GetMinCase() &&
+                selectedChoice < treeMainObj.GetMaxCase() + 1)
+            {
+                treeMainObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                std::cout << "Please use Binary Tree using Arrays only for Full Trees" << std::endl;
+                treeMainObj.BinaryTreeUsingArray();
+                break;
+            }
+            case 2:
+            {
+                treeMainObj.BinaryTreeUsingLinkedRepresentation();
+                break;
+            }
+            // case 3:
+            // {
+            //     treeMainObj.QueueUsingLinkedList();
+            //     break;
+            // }
+            // case 4:
+            // {
+            //     treeMainObj.DoubleEndedQueue();
+            //     break;
+            // }
+            // case 5:
+            // {
+            //     treeMainObj.PriorityQueueLimitedSet();
+            //     break;
+            // }
+            // case 6:
+            // {
+            //     treeMainObj.PriorityQueueElement();
+            //     break;
+            // }
+            // case 2:
+            // {
+            //     treeMainObj.QueueUsingTwoStacks();
+            //     break;
+            // }
+            case 3:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 4:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                treeMainObj.PrintMenu();
+                treeMainObj.GetChoiceInputFromUser();
             }
         }
     }
