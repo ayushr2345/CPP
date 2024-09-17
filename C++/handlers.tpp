@@ -3238,7 +3238,7 @@ namespace handlers
                 }
                 else
                 {
-                    binaryTreeUsingArrayObj.DisplayPreOrder(1);
+                    binaryTreeUsingArrayObj.DisplayPreOrderRecursive(1);
                     std::cout << std::endl;
                 }
                 break;
@@ -3251,7 +3251,7 @@ namespace handlers
                 }
                 else
                 {
-                    binaryTreeUsingArrayObj.DisplayInOrder(1);
+                    binaryTreeUsingArrayObj.DisplayInOrderRecursive(1);
                     std::cout << std::endl;
                 }
                 break;
@@ -3264,7 +3264,7 @@ namespace handlers
                 }
                 else
                 {
-                    binaryTreeUsingArrayObj.DisplayPostOrder(1);
+                    binaryTreeUsingArrayObj.DisplayPostOrderRecursive(1);
                     std::cout << std::endl;
                 }
                 break;
@@ -3355,7 +3355,7 @@ namespace handlers
                 }
                 else
                 {
-                    binaryTreeUsingLinkedRepresentationObj.DisplayPreOrder(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    binaryTreeUsingLinkedRepresentationObj.DisplayPreOrderRecursive(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
                     std::cout << std::endl;
                 }
                 break;
@@ -3368,7 +3368,7 @@ namespace handlers
                 }
                 else
                 {
-                    binaryTreeUsingLinkedRepresentationObj.DisplayInOrder(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    binaryTreeUsingLinkedRepresentationObj.DisplayInOrderRecursive(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
                     std::cout << std::endl;
                 }
                 break;
@@ -3381,7 +3381,7 @@ namespace handlers
                 }
                 else
                 {
-                    binaryTreeUsingLinkedRepresentationObj.DisplayPostOrder(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    binaryTreeUsingLinkedRepresentationObj.DisplayPostOrderRecursive(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
                     std::cout << std::endl;
                 }
                 break;

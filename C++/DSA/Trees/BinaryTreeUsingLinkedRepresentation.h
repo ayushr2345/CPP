@@ -14,16 +14,16 @@ namespace tree
     private:
         enum m_BinaryTreeUsingLinkedRepresentationMenu
         {
-            MIN_COUNT             = 0,
-            DOES_TREE_EXIST       = 1,
-            DISPLAY_PREORDER      = 2,
-            DISPLAY_INORDER       = 3,
-            DISPLAY_POSTORDER     = 4,
-            GENERATE_TREE         = 5,
-            RESET_TREE            = 6,
-            BACK_TO_PREVIOUS_MENU = 7,
-            EXIT_FROM_PROGRAM     = 8,
-            MAX_COUNT             = EXIT_FROM_PROGRAM
+            MIN_COUNT                   = 0,
+            DOES_TREE_EXIST             = 1,
+            DISPLAY_PREORDER_RECURSIVE  = 2,
+            DISPLAY_INORDER_RECURSIVE   = 3,
+            DISPLAY_POSTORDER_RECURSIVE = 4,
+            GENERATE_TREE               = 5,
+            RESET_TREE                  = 6,
+            BACK_TO_PREVIOUS_MENU       = 7,
+            EXIT_FROM_PROGRAM           = 8,
+            MAX_COUNT                   = EXIT_FROM_PROGRAM
         };
 
         class Node
@@ -47,9 +47,9 @@ namespace tree
         void             PrintSelectedChoice();
         const Node*      GetRootNode();
         bool             IsExisting();
-        void             DisplayPreOrder(const Node*);
-        void             DisplayInOrder(const Node*);
-        void             DisplayPostOrder(const Node*);
+        void             DisplayPreOrderRecursive(const Node*);
+        void             DisplayInOrderRecursive(const Node*);
+        void             DisplayPostOrderRecursive(const Node*);
         void             GenerateTree();
         void             ResetTree(const Node*);
     };

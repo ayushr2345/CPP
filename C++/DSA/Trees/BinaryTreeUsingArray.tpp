@@ -15,12 +15,12 @@ namespace tree
     {
         m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DOES_TREE_EXIST),
                                                std::string("Check if the tree exists") });
-        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_PREORDER),
-                                               std::string("Display Preorder") });
-        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_INORDER),
-                                               std::string("Display Inorder") });
-        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_POSTORDER),
-                                               std::string("Display Postorder") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_PREORDER_RECURSIVE),
+                                               std::string("Display Preorder Recursive") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_INORDER_RECURSIVE),
+                                               std::string("Display Inorder Recursive") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_POSTORDER_RECURSIVE),
+                                               std::string("Display Postorder Recursive") });
         m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(GENERATE_TREE),
                                                std::string("Generate Tree") });
         m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(RESET_TREE),
@@ -97,34 +97,34 @@ namespace tree
     }
 
     template <class T>
-    void BinaryTreeUsingArray<T>::DisplayPreOrder(const int node)
+    void BinaryTreeUsingArray<T>::DisplayPreOrderRecursive(const int node)
     {
         if (node <= m_numNodes)
         {
             std::cout << m_data[node] << " ";
-            DisplayPreOrder(2 * node);
-            DisplayPreOrder(2 * node + 1);
+            DisplayPreOrderRecursive(2 * node);
+            DisplayPreOrderRecursive(2 * node + 1);
         }
     }
 
     template <class T>
-    void BinaryTreeUsingArray<T>::DisplayInOrder(const int node)
+    void BinaryTreeUsingArray<T>::DisplayInOrderRecursive(const int node)
     {
         if (node <= m_numNodes)
         {
-            DisplayInOrder(2 * node);
+            DisplayInOrderRecursive(2 * node);
             std::cout << m_data[node] << " ";
-            DisplayInOrder(2 * node + 1);
+            DisplayInOrderRecursive(2 * node + 1);
         }
     }
 
     template <class T>
-    void BinaryTreeUsingArray<T>::DisplayPostOrder(const int node)
+    void BinaryTreeUsingArray<T>::DisplayPostOrderRecursive(const int node)
     {
         if (node <= m_numNodes)
         {
-            DisplayPostOrder(2 * node);
-            DisplayPostOrder(2 * node + 1);
+            DisplayPostOrderRecursive(2 * node);
+            DisplayPostOrderRecursive(2 * node + 1);
             std::cout << m_data[node] << " ";
         }
     }
