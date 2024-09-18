@@ -3284,6 +3284,58 @@ namespace handlers
             }
             case 6:
             {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingArrayObj.DisplayPreOrderIterative();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingArrayObj.DisplayInOrderIterative();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 8:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingArrayObj.DisplayPostOrderIterative();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 9:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingArrayObj.DisplayLevelOrderIterative();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 10:
+            {
                 if (binaryTreeUsingArrayObj.IsExisting())
                 {
                     std::cout << "Tree already exists, cannot generate tree if already exists, reset and try again" << std::endl;
@@ -3294,17 +3346,17 @@ namespace handlers
                 }
                 break;
             }
-            case 7:
+            case 11:
             {
                 binaryTreeUsingArrayObj.ResetTree();
                 break;
             }
-            case 8:
+            case 12:
             {
                 previousMenuFlag = 'y';
                 break;
             }
-            case 9:
+            case 13:
             {
                 exit(0);
             }
@@ -3414,6 +3466,58 @@ namespace handlers
             }
             case 6:
             {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingLinkedRepresentationObj.DisplayPreOrderIterative();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingLinkedRepresentationObj.DisplayInOrderIterative();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 8:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingLinkedRepresentationObj.DisplayPostOrderIterative();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 9:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingLinkedRepresentationObj.DisplayLevelOrderIterative();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 10:
+            {
                 if (binaryTreeUsingLinkedRepresentationObj.IsExisting())
                 {
                     std::cout << "Tree already exists, cannot generate tree if already exists, reset and try again" << std::endl;
@@ -3424,17 +3528,17 @@ namespace handlers
                 }
                 break;
             }
-            case 7:
+            case 11:
             {
                 binaryTreeUsingLinkedRepresentationObj.ResetTree(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
                 break;
             }
-            case 8:
+            case 12:
             {
                 previousMenuFlag = 'y';
                 break;
             }
-            case 9:
+            case 13:
             {
                 exit(0);
             }

@@ -21,6 +21,14 @@ namespace tree
                                                               std::string("Display Postorder Recursive") });
         m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(DISPLAY_LEVELORDER_RECURSIVE),
                                                               std::string("Display Level order Recursive") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(DISPLAY_PREORDER_ITERATIVE),
+                                                              std::string("Display Preorder Iterative") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(DISPLAY_INORDER_ITERATIVE),
+                                                              std::string("Display Inorder Iterative") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(DISPLAY_POSTORDER_ITERATIVE),
+                                                              std::string("Display Postorder Iterative") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(DISPLAY_LEVELORDER_ITERATIVE),
+                                                              std::string("Display Level order Iterative") });
         m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(GENERATE_TREE),
                                                               std::string("Generate Tree") });
         m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(RESET_TREE),
@@ -147,6 +155,108 @@ namespace tree
             }
             DisplayLevelOrderRecursive(node->m_m_leftChild);
             DisplayLevelOrderRecursive(node->m_m_rightChild);
+        }
+    }
+
+    template <class T>
+    void BinaryTreeUsingLinkedRepresentation<T>::DisplayPreOrderIterative()
+    {
+        stack::StackUsingLinkedList<Node*> treeStack;
+
+        Node* temp = m_rootNode;
+        while (not treeStack.IsEmpty() or temp != nullptr)
+        {
+            if (temp)
+            {
+                std::cout << temp->m_m_data << " ";
+                treeStack.Push(temp);
+                temp = temp->m_m_leftChild;
+            }
+            else
+            {
+                std::optional<Node*> poppedNode = treeStack.Pop();
+                temp = poppedNode.value()->m_m_rightChild;
+            }
+        }
+    }
+
+    template <class T>
+    void BinaryTreeUsingLinkedRepresentation<T>::DisplayInOrderIterative()
+    {
+        stack::StackUsingLinkedList<Node*> treeStack;
+
+        Node* temp = m_rootNode;
+        while (not treeStack.IsEmpty() or temp != nullptr)
+        {
+            if (temp)
+            {
+                treeStack.Push(temp);
+                temp = temp->m_m_leftChild;
+            }
+            else
+            {
+                std::optional<Node*> poppedNode = treeStack.Pop();
+                std::cout << poppedNode.value()->m_m_data << " ";
+                temp = poppedNode.value()->m_m_rightChild;
+            }
+        }
+    }
+
+    template <class T>
+    void BinaryTreeUsingLinkedRepresentation<T>::DisplayPostOrderIterative()
+    {
+        stack::StackUsingLinkedList<Node*> treeStack;
+
+        Node* temp = m_rootNode;
+        while (not treeStack.IsEmpty() or temp != nullptr)
+        {
+            if (temp)
+            {
+                treeStack.Push(temp);
+                temp = temp->m_m_leftChild;
+            }
+            else
+            {
+                std::optional<Node*> poppedNode = treeStack.Pop();
+                // Check if the LSB is 1
+                bool isTagged = reinterpret_cast<intptr_t>(poppedNode.value()) & 1;
+                if (isTagged)
+                {
+                    // untag the node address (remove the LSB)
+                    Node* taggedNode = reinterpret_cast<Node*>(reinterpret_cast<intptr_t>(poppedNode.value()) & ~1);
+                    std::cout << taggedNode->m_m_data << " ";
+                }
+                else
+                {
+                    temp = poppedNode.value()->m_m_rightChild;
+                    // Set the LSB to 1
+                    treeStack.Push(reinterpret_cast<Node*>(reinterpret_cast<intptr_t>(poppedNode.value()) | 1));
+                }
+            }
+        }
+    }
+
+    template <class T>
+    void BinaryTreeUsingLinkedRepresentation<T>::DisplayLevelOrderIterative()
+    {
+        queue::QueueUsingLinkedList<Node*> treeQueue;
+
+        Node* temp = m_rootNode;
+        treeQueue.Enqueue(temp);
+        std::cout << temp->m_m_data << " ";
+        while (not treeQueue.IsEmpty())
+        {
+            temp = treeQueue.Dequeue().value();
+            if (temp->m_m_leftChild)
+            {
+                std::cout << temp->m_m_leftChild->m_m_data << " ";
+                treeQueue.Enqueue(temp->m_m_leftChild);
+            }
+            if (temp->m_m_rightChild)
+            {
+                std::cout << temp->m_m_rightChild->m_m_data << " ";
+                treeQueue.Enqueue(temp->m_m_rightChild);
+            }
         }
     }
 

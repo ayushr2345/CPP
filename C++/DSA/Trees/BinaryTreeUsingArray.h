@@ -5,6 +5,7 @@
 #include <optional>
 #include <iostream>
 #include "../Queues/QueueUsingLinkedList.h"
+#include "../Stack/StackUsingLinkedList.h"
 
 namespace tree
 {
@@ -20,10 +21,14 @@ namespace tree
             DISPLAY_INORDER_RECURSIVE    = 3,
             DISPLAY_POSTORDER_RECURSIVE  = 4,
             DISPLAY_LEVELORDER_RECURSIVE = 5,
-            GENERATE_TREE                = 6,
-            RESET_TREE                   = 7,
-            BACK_TO_PREVIOUS_MENU        = 8,
-            EXIT_FROM_PROGRAM            = 9,
+            DISPLAY_PREORDER_ITERATIVE   = 6,
+            DISPLAY_INORDER_ITERATIVE    = 7,
+            DISPLAY_POSTORDER_ITERATIVE  = 8,
+            DISPLAY_LEVELORDER_ITERATIVE = 9,
+            GENERATE_TREE                = 10,
+            RESET_TREE                   = 11,
+            BACK_TO_PREVIOUS_MENU        = 12,
+            EXIT_FROM_PROGRAM            = 13,
             MAX_COUNT                    = EXIT_FROM_PROGRAM
         };
 
@@ -47,6 +52,10 @@ namespace tree
         void             DisplayInOrderRecursive(const int);
         void             DisplayPostOrderRecursive(const int);
         void             DisplayLevelOrderRecursive(const int);
+        void             DisplayPreOrderIterative();
+        void             DisplayInOrderIterative();
+        void             DisplayPostOrderIterative();
+        void             DisplayLevelOrderIterative();
         void             GenerateTree();
         void             ResetTree();
     };

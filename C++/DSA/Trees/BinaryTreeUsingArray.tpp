@@ -23,6 +23,14 @@ namespace tree
                                                std::string("Display Postorder Recursive") });
         m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_LEVELORDER_RECURSIVE),
                                                std::string("Display Level order Recursive") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_PREORDER_ITERATIVE),
+                                               std::string("Display Preorder Iterative") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_INORDER_ITERATIVE),
+                                               std::string("Display Inorder Iterative") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_POSTORDER_ITERATIVE),
+                                               std::string("Display Postorder Iterative") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_LEVELORDER_ITERATIVE),
+                                               std::string("Display Level order Iterative") });
         m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(GENERATE_TREE),
                                                std::string("Generate Tree") });
         m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(RESET_TREE),
@@ -150,6 +158,103 @@ namespace tree
             }
             DisplayLevelOrderRecursive(2 * node);
             DisplayLevelOrderRecursive(2 * node + 1);
+        }
+    }
+
+    template <class T>
+    void BinaryTreeUsingArray<T>::DisplayPreOrderIterative()
+    {
+        stack::StackUsingLinkedList<int> treeStack;
+
+        int temp = 1;
+        while (not treeStack.IsEmpty() or temp <= m_numNodes)
+        {
+            if (temp <= m_numNodes)
+            {
+                std::cout << m_data[temp] << " ";
+                treeStack.Push(temp);
+                temp = 2 * temp;
+            }
+            else
+            {
+                std::optional<int> poppedNode = treeStack.Pop();
+                temp = 2 * poppedNode.value() + 1;
+            }
+        }
+    }
+
+    template <class T>
+    void BinaryTreeUsingArray<T>::DisplayInOrderIterative()
+    {
+        stack::StackUsingLinkedList<int> treeStack;
+
+        int temp = 1;
+        while (not treeStack.IsEmpty() or temp <= m_numNodes)
+        {
+            if (temp <= m_numNodes)
+            {
+                treeStack.Push(temp);
+                temp = 2 * temp;
+            }
+            else
+            {
+                std::optional<int> poppedNode = treeStack.Pop();
+                std::cout << m_data[poppedNode.value()] << " ";
+                temp = 2 * poppedNode.value() + 1;
+            }
+        }
+    }
+
+    template <class T>
+    void BinaryTreeUsingArray<T>::DisplayPostOrderIterative()
+    {
+        stack::StackUsingLinkedList<int> treeStack;
+
+        int temp = 1;
+        while (not treeStack.IsEmpty() or temp <= m_numNodes)
+        {
+            if (temp <= m_numNodes)
+            {
+                treeStack.Push(temp);
+                temp = 2 * temp;
+            }
+            else
+            {
+                std::optional<int> poppedNode = treeStack.Pop();
+                if (poppedNode.value() < 0)
+                {
+                    std::cout << m_data[abs(poppedNode.value())] << " ";
+                }
+                else
+                {
+                    treeStack.Push(-poppedNode.value());
+                    temp = 2 * poppedNode.value() + 1;
+                }
+            }
+        }
+    }
+
+    template <class T>
+    void BinaryTreeUsingArray<T>::DisplayLevelOrderIterative()
+    {
+        queue::QueueUsingLinkedList<int> treeQueue;
+
+        int temp = 1;
+        treeQueue.Enqueue(temp);
+        std::cout << m_data[temp] << " ";
+        while (not treeQueue.IsEmpty())
+        {
+            temp = treeQueue.Dequeue().value();
+            if ((2 * temp) <= m_numNodes)
+            {
+                std::cout << m_data[2 * temp] << " ";
+                treeQueue.Enqueue(2 * temp);
+            }
+            if ((2 * temp + 1) <= m_numNodes)
+            {
+                std::cout << m_data[2 * temp + 1] << " ";
+                treeQueue.Enqueue(2 * temp + 1);
+            }
         }
     }
 

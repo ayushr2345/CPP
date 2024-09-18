@@ -28,7 +28,7 @@ namespace stack
         m_stackUsingLinkedListMenuMap.insert({ m_StackUsingLinkedListMenu(EXIT_FROM_PROGRAM),
                                                std::string("Exit from program") });
         
-        m_data = new linkedList::LinearSinglyLinkedList<int>;
+        m_data = new linkedList::LinearSinglyLinkedList<T>;
     }
 
     template <class T>

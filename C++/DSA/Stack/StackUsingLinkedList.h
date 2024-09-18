@@ -27,7 +27,7 @@ namespace stack
         };
         int                                      m_choice                      { 0 };
         std::map<int, std::string>               m_stackUsingLinkedListMenuMap {};
-        linkedList::LinearSinglyLinkedList<int>* m_data                        { nullptr };
+        linkedList::LinearSinglyLinkedList<T>*   m_data                        { nullptr };
 
     public:
         StackUsingLinkedList();
