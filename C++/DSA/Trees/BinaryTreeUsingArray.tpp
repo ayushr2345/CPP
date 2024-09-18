@@ -31,6 +31,20 @@ namespace tree
                                                std::string("Display Postorder Iterative") });
         m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(DISPLAY_LEVELORDER_ITERATIVE),
                                                std::string("Display Level order Iterative") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(CALCULATE_DEG0_NODES_OF_TREE),
+                                               std::string("Calculate degree 0 nodes of tree") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(CALCULATE_DEG1_NODES_OF_TREE),
+                                               std::string("Calculate degree 1 nodes of tree") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(CALCULATE_DEG2_NODES_OF_TREE),
+                                               std::string("Calculate degree 2 nodes of tree") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(CALCULATE_INTERNAL_NODES_OF_TREE),
+                                               std::string("Calculate internal nodes of tree") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(CALCULATE_EXTERNAL_NODES_OF_TREE),
+                                               std::string("Calculate external nodes of tree") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(CALCULATE_NO_NODES_OF_TREE),
+                                               std::string("Calculate total nodes of tree") });
+        m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(CALCULATE_HEIGHT_OF_TREE),
+                                               std::string("Calculate height of tree") });
         m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(GENERATE_TREE),
                                                std::string("Generate Tree") });
         m_binaryTreeUsingArrayMenuMap.insert({ m_BinaryTreeUsingArrayMenu(RESET_TREE),
@@ -257,6 +271,88 @@ namespace tree
             }
         }
     }
+
+    template <class T>
+    int BinaryTreeUsingArray<T>::CalculateNoNodesOfTree(const int node)
+    {
+        if (node <= m_numNodes)
+        {
+            int x = CalculateNoNodesOfTree(2 * node);
+            int y = CalculateNoNodesOfTree(2 * node + 1);
+            return x + y + 1;
+        }
+        return 0;
+    }
+
+    template <class T>
+    int BinaryTreeUsingArray<T>::CalculateDeg0NodesOfTree(const int node)
+    {
+        if (node <= m_numNodes)
+        {
+            int x = CalculateDeg0NodesOfTree(2 * node);
+            int y = CalculateDeg0NodesOfTree(2 * node + 1);
+            if ((2 * node) > m_numNodes)
+            {
+                return x + y + 1;
+            }
+            return x + y;
+        }
+        return 0;
+    }
+    
+    template <class T>
+    int BinaryTreeUsingArray<T>::CalculateDeg2NodesOfTree(const int node)
+    {
+        if (node <= m_numNodes)
+        {
+            int x = CalculateDeg2NodesOfTree(2 * node);
+            int y = CalculateDeg2NodesOfTree(2 * node + 1);
+            if ((2 * node + 1) <= m_numNodes)
+            {
+                return x + y + 1;
+            }
+            return x + y;
+        }
+        return 0;
+    }
+
+    template <class T>
+    int BinaryTreeUsingArray<T>::CalculateDeg1NodesOfTree(const int node)
+    {
+        return CalculateNoNodesOfTree(1) - CalculateDeg0NodesOfTree(1) - CalculateDeg2NodesOfTree(1);
+    }
+
+    template <class T>
+    int BinaryTreeUsingArray<T>::CalculateInternalNodesOfTree()
+    {
+        return CalculateDeg1NodesOfTree(1) + CalculateDeg2NodesOfTree(1);
+    }
+    
+    template <class T>
+    int BinaryTreeUsingArray<T>::CalculateExternalNodesOfTree()
+    {
+        return CalculateDeg0NodesOfTree(1);
+    }
+    
+    template <class T>
+    int BinaryTreeUsingArray<T>::CalculateHeightOfTree(const int node)
+    {
+        if (node <= m_numNodes)
+        {
+            int x = CalculateHeightOfTree(2 * node);
+            int y = CalculateHeightOfTree(2 * node + 1);
+            if (x > y)
+            {
+                return x + 1;
+            }
+            else
+            {
+                return y + 1;
+            }
+        }
+        return -1;
+    }
+
 
     template <class T>
     void BinaryTreeUsingArray<T>::GenerateTree()

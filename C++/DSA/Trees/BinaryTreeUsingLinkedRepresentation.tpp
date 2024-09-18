@@ -29,6 +29,20 @@ namespace tree
                                                               std::string("Display Postorder Iterative") });
         m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(DISPLAY_LEVELORDER_ITERATIVE),
                                                               std::string("Display Level order Iterative") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(CALCULATE_DEG0_NODES_OF_TREE),
+                                                              std::string("Calculate degree 0 nodes of tree") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(CALCULATE_DEG1_NODES_OF_TREE),
+                                                              std::string("Calculate degree 1 nodes of tree") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(CALCULATE_DEG2_NODES_OF_TREE),
+                                                              std::string("Calculate degree 2 nodes of tree") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(CALCULATE_INTERNAL_NODES_OF_TREE),
+                                                              std::string("Calculate internal nodes of tree") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(CALCULATE_EXTERNAL_NODES_OF_TREE),
+                                                              std::string("Calculate external nodes of tree") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(CALCULATE_NO_NODES_OF_TREE),
+                                                              std::string("Calculate total nodes of tree") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(CALCULATE_HEIGHT_OF_TREE),
+                                                              std::string("Calculate height of tree") });
         m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(GENERATE_TREE),
                                                               std::string("Generate Tree") });
         m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(RESET_TREE),
@@ -258,6 +272,92 @@ namespace tree
                 treeQueue.Enqueue(temp->m_m_rightChild);
             }
         }
+    }
+
+    template <class T>
+    int BinaryTreeUsingLinkedRepresentation<T>::CalculateDeg0NodesOfTree(const Node* node)
+    {
+        if (node)
+        {
+            int x = CalculateDeg0NodesOfTree(node->m_m_leftChild);
+            int y = CalculateDeg0NodesOfTree(node->m_m_rightChild);
+            if (not node->m_m_leftChild and not node->m_m_rightChild)
+            {
+                return x + y + 1;
+            }
+            return x + y;
+        }
+        return 0;
+    }
+    
+    template <class T>
+    int BinaryTreeUsingLinkedRepresentation<T>::CalculateDeg1NodesOfTree(const Node* node)
+    {
+        if (node)
+        {
+            int x = CalculateDeg1NodesOfTree(node->m_m_leftChild);
+            int y = CalculateDeg1NodesOfTree(node->m_m_rightChild);
+            if ((not node->m_m_leftChild and node->m_m_rightChild) or
+                (node->m_m_leftChild and not node->m_m_rightChild))
+            {
+                return x + y + 1;
+            }
+            return x + y;
+        }
+        return 0;
+    }
+    
+    template <class T>
+    int BinaryTreeUsingLinkedRepresentation<T>::CalculateDeg2NodesOfTree(const Node* node)
+    {
+        if (node)
+        {
+            int x = CalculateDeg2NodesOfTree(node->m_m_leftChild);
+            int y = CalculateDeg2NodesOfTree(node->m_m_rightChild);
+            if (node->m_m_leftChild and node->m_m_rightChild)
+            {
+                return x + y + 1;
+            }
+            return x + y;
+        }
+        return 0;
+    }
+    
+    template <class T>
+    int BinaryTreeUsingLinkedRepresentation<T>::CalculateInternalNodesOfTree()
+    {
+        return CalculateDeg1NodesOfTree(m_rootNode) + CalculateDeg2NodesOfTree(m_rootNode);
+    }
+    
+    template <class T>
+    int BinaryTreeUsingLinkedRepresentation<T>::CalculateExternalNodesOfTree()
+    {
+        return CalculateDeg0NodesOfTree(m_rootNode);
+    }
+    
+    template <class T>
+    int BinaryTreeUsingLinkedRepresentation<T>::CalculateNoNodesOfTree()
+    {
+        return CalculateInternalNodesOfTree() + CalculateExternalNodesOfTree();
+    }
+    
+    template <class T>
+    int BinaryTreeUsingLinkedRepresentation<T>::CalculateHeightOfTree(const Node* node)
+    {
+        if (node)
+        {
+            int x = CalculateHeightOfTree(node->m_m_leftChild);
+            int y = CalculateHeightOfTree(node->m_m_rightChild);
+            if (x > y)
+            {
+                return x + 1;
+            }
+            else
+            {
+                return y + 1;
+            }
+        }
+        return -1;
     }
 
     template <class T>

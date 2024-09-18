@@ -15,21 +15,28 @@ namespace tree
     private:
         enum m_BinaryTreeUsingArrayMenu
         {
-            MIN_COUNT                    = 0,
-            DOES_TREE_EXIST              = 1,
-            DISPLAY_PREORDER_RECURSIVE   = 2,
-            DISPLAY_INORDER_RECURSIVE    = 3,
-            DISPLAY_POSTORDER_RECURSIVE  = 4,
-            DISPLAY_LEVELORDER_RECURSIVE = 5,
-            DISPLAY_PREORDER_ITERATIVE   = 6,
-            DISPLAY_INORDER_ITERATIVE    = 7,
-            DISPLAY_POSTORDER_ITERATIVE  = 8,
-            DISPLAY_LEVELORDER_ITERATIVE = 9,
-            GENERATE_TREE                = 10,
-            RESET_TREE                   = 11,
-            BACK_TO_PREVIOUS_MENU        = 12,
-            EXIT_FROM_PROGRAM            = 13,
-            MAX_COUNT                    = EXIT_FROM_PROGRAM
+            MIN_COUNT                        = 0,
+            DOES_TREE_EXIST                  = 1,
+            DISPLAY_PREORDER_RECURSIVE       = 2,
+            DISPLAY_INORDER_RECURSIVE        = 3,
+            DISPLAY_POSTORDER_RECURSIVE      = 4,
+            DISPLAY_LEVELORDER_RECURSIVE     = 5,
+            DISPLAY_PREORDER_ITERATIVE       = 6,
+            DISPLAY_INORDER_ITERATIVE        = 7,
+            DISPLAY_POSTORDER_ITERATIVE      = 8,
+            DISPLAY_LEVELORDER_ITERATIVE     = 9,
+            CALCULATE_DEG0_NODES_OF_TREE     = 10,
+            CALCULATE_DEG1_NODES_OF_TREE     = 11,
+            CALCULATE_DEG2_NODES_OF_TREE     = 12,
+            CALCULATE_INTERNAL_NODES_OF_TREE = 13,
+            CALCULATE_EXTERNAL_NODES_OF_TREE = 14,
+            CALCULATE_NO_NODES_OF_TREE       = 15,
+            CALCULATE_HEIGHT_OF_TREE         = 16,
+            GENERATE_TREE                    = 17,
+            RESET_TREE                       = 18,
+            BACK_TO_PREVIOUS_MENU            = 19,
+            EXIT_FROM_PROGRAM                = 20,
+            MAX_COUNT                        = EXIT_FROM_PROGRAM
         };
 
         int                        m_choice                      { 0 };
@@ -56,6 +63,13 @@ namespace tree
         void             DisplayInOrderIterative();
         void             DisplayPostOrderIterative();
         void             DisplayLevelOrderIterative();
+        int              CalculateDeg0NodesOfTree(const int);
+        int              CalculateDeg1NodesOfTree(const int);
+        int              CalculateDeg2NodesOfTree(const int);
+        int              CalculateInternalNodesOfTree();
+        int              CalculateExternalNodesOfTree();
+        int              CalculateNoNodesOfTree(const int);
+        int              CalculateHeightOfTree(const int);
         void             GenerateTree();
         void             ResetTree();
     };

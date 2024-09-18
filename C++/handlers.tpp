@@ -3336,6 +3336,97 @@ namespace handlers
             }
             case 10:
             {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingArrayObj.CalculateDeg0NodesOfTree(1);
+                    std::cout << "The number of nodes with degree 0 in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 11:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingArrayObj.CalculateDeg1NodesOfTree(1);
+                    std::cout << "The number of nodes with degree 1 in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 12:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingArrayObj.CalculateDeg2NodesOfTree(1);
+                    std::cout << "The number of nodes with degree 2 in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 13:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingArrayObj.CalculateInternalNodesOfTree();
+                    std::cout << "The number of internal nodes in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 14:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingArrayObj.CalculateExternalNodesOfTree();
+                    std::cout << "The number of external nodes in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 15:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingArrayObj.CalculateNoNodesOfTree(1);
+                    std::cout << "The number of nodes in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 16:
+            {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingArrayObj.CalculateHeightOfTree(1);
+                    std::cout << "The height of the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 17:
+            {
                 if (binaryTreeUsingArrayObj.IsExisting())
                 {
                     std::cout << "Tree already exists, cannot generate tree if already exists, reset and try again" << std::endl;
@@ -3346,17 +3437,17 @@ namespace handlers
                 }
                 break;
             }
-            case 11:
+            case 18:
             {
                 binaryTreeUsingArrayObj.ResetTree();
                 break;
             }
-            case 12:
+            case 19:
             {
                 previousMenuFlag = 'y';
                 break;
             }
-            case 13:
+            case 20:
             {
                 exit(0);
             }
@@ -3518,6 +3609,97 @@ namespace handlers
             }
             case 10:
             {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingLinkedRepresentationObj.CalculateDeg0NodesOfTree(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    std::cout << "The number of nodes with degree 0 in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 11:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingLinkedRepresentationObj.CalculateDeg1NodesOfTree(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    std::cout << "The number of nodes with degree 1 in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 12:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingLinkedRepresentationObj.CalculateDeg2NodesOfTree(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    std::cout << "The number of nodes with degree 2 in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 13:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingLinkedRepresentationObj.CalculateInternalNodesOfTree();
+                    std::cout << "The number of internal nodes in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 14:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingLinkedRepresentationObj.CalculateExternalNodesOfTree();
+                    std::cout << "The number of external nodes in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 15:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingLinkedRepresentationObj.CalculateNoNodesOfTree();
+                    std::cout << "The number of nodes in the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 16:
+            {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    int nodes = binaryTreeUsingLinkedRepresentationObj.CalculateHeightOfTree(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    std::cout << "The height of the tree is: " << nodes <<  std::endl;
+                }
+                break;
+            }
+            case 17:
+            {
                 if (binaryTreeUsingLinkedRepresentationObj.IsExisting())
                 {
                     std::cout << "Tree already exists, cannot generate tree if already exists, reset and try again" << std::endl;
@@ -3528,17 +3710,17 @@ namespace handlers
                 }
                 break;
             }
-            case 11:
+            case 18:
             {
                 binaryTreeUsingLinkedRepresentationObj.ResetTree(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
                 break;
             }
-            case 12:
+            case 19:
             {
                 previousMenuFlag = 'y';
                 break;
             }
-            case 13:
+            case 20:
             {
                 exit(0);
             }
