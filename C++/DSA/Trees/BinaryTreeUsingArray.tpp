@@ -100,13 +100,10 @@ namespace tree
 
     template <class T>
     void BinaryTreeUsingArray<T>::DisplayPreOrderRecursive(const int node)
-    void BinaryTreeUsingArray<T>::DisplayPreOrderRecursive(const int node)
     {
         if (node <= m_numNodes)
         {
             std::cout << m_data[node] << " ";
-            DisplayPreOrderRecursive(2 * node);
-            DisplayPreOrderRecursive(2 * node + 1);
             DisplayPreOrderRecursive(2 * node);
             DisplayPreOrderRecursive(2 * node + 1);
         }
@@ -114,26 +111,20 @@ namespace tree
 
     template <class T>
     void BinaryTreeUsingArray<T>::DisplayInOrderRecursive(const int node)
-    void BinaryTreeUsingArray<T>::DisplayInOrderRecursive(const int node)
     {
         if (node <= m_numNodes)
         {
             DisplayInOrderRecursive(2 * node);
-            DisplayInOrderRecursive(2 * node);
             std::cout << m_data[node] << " ";
-            DisplayInOrderRecursive(2 * node + 1);
             DisplayInOrderRecursive(2 * node + 1);
         }
     }
 
     template <class T>
     void BinaryTreeUsingArray<T>::DisplayPostOrderRecursive(const int node)
-    void BinaryTreeUsingArray<T>::DisplayPostOrderRecursive(const int node)
     {
         if (node <= m_numNodes)
         {
-            DisplayPostOrderRecursive(2 * node);
-            DisplayPostOrderRecursive(2 * node + 1);
             DisplayPostOrderRecursive(2 * node);
             DisplayPostOrderRecursive(2 * node + 1);
             std::cout << m_data[node] << " ";
