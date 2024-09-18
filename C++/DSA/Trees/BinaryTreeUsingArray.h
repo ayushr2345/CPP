@@ -14,16 +14,17 @@ namespace tree
     private:
         enum m_BinaryTreeUsingArrayMenu
         {
-            MIN_COUNT                   = 0,
-            DOES_TREE_EXIST             = 1,
-            DISPLAY_PREORDER_RECURSIVE  = 2,
-            DISPLAY_INORDER_RECURSIVE   = 3,
-            DISPLAY_POSTORDER_RECURSIVE = 4,
-            GENERATE_TREE               = 5,
-            RESET_TREE                  = 6,
-            BACK_TO_PREVIOUS_MENU       = 7,
-            EXIT_FROM_PROGRAM           = 8,
-            MAX_COUNT                   = EXIT_FROM_PROGRAM
+            MIN_COUNT                    = 0,
+            DOES_TREE_EXIST              = 1,
+            DISPLAY_PREORDER_RECURSIVE   = 2,
+            DISPLAY_INORDER_RECURSIVE    = 3,
+            DISPLAY_POSTORDER_RECURSIVE  = 4,
+            DISPLAY_LEVELORDER_RECURSIVE = 5,
+            GENERATE_TREE                = 6,
+            RESET_TREE                   = 7,
+            BACK_TO_PREVIOUS_MENU        = 8,
+            EXIT_FROM_PROGRAM            = 9,
+            MAX_COUNT                    = EXIT_FROM_PROGRAM
         };
 
         int                        m_choice                      { 0 };
@@ -45,6 +46,7 @@ namespace tree
         void             DisplayPreOrderRecursive(const int);
         void             DisplayInOrderRecursive(const int);
         void             DisplayPostOrderRecursive(const int);
+        void             DisplayLevelOrderRecursive(const int);
         void             GenerateTree();
         void             ResetTree();
     };

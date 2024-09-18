@@ -3271,6 +3271,19 @@ namespace handlers
             }
             case 5:
             {
+                if (not binaryTreeUsingArrayObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingArrayObj.DisplayLevelOrderRecursive(1);
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
                 if (binaryTreeUsingArrayObj.IsExisting())
                 {
                     std::cout << "Tree already exists, cannot generate tree if already exists, reset and try again" << std::endl;
@@ -3281,17 +3294,17 @@ namespace handlers
                 }
                 break;
             }
-            case 6:
+            case 7:
             {
                 binaryTreeUsingArrayObj.ResetTree();
                 break;
             }
-            case 7:
+            case 8:
             {
                 previousMenuFlag = 'y';
                 break;
             }
-            case 8:
+            case 9:
             {
                 exit(0);
             }
@@ -3388,6 +3401,19 @@ namespace handlers
             }
             case 5:
             {
+                if (not binaryTreeUsingLinkedRepresentationObj.IsExisting())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binaryTreeUsingLinkedRepresentationObj.DisplayLevelOrderRecursive(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
                 if (binaryTreeUsingLinkedRepresentationObj.IsExisting())
                 {
                     std::cout << "Tree already exists, cannot generate tree if already exists, reset and try again" << std::endl;
@@ -3398,17 +3424,17 @@ namespace handlers
                 }
                 break;
             }
-            case 6:
+            case 7:
             {
                 binaryTreeUsingLinkedRepresentationObj.ResetTree(binaryTreeUsingLinkedRepresentationObj.GetRootNode());
                 break;
             }
-            case 7:
+            case 8:
             {
                 previousMenuFlag = 'y';
                 break;
             }
-            case 8:
+            case 9:
             {
                 exit(0);
             }

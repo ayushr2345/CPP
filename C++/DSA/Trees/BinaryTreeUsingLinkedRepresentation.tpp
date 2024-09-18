@@ -19,6 +19,8 @@ namespace tree
                                                               std::string("Display Inorder Recursive") });
         m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(DISPLAY_POSTORDER_RECURSIVE),
                                                               std::string("Display Postorder Recursive") });
+        m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(DISPLAY_LEVELORDER_RECURSIVE),
+                                                              std::string("Display Level order Recursive") });
         m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(GENERATE_TREE),
                                                               std::string("Generate Tree") });
         m_binaryTreeUsingLinkedRepresentationMenuMap.insert({ m_BinaryTreeUsingLinkedRepresentationMenu(RESET_TREE),
@@ -95,10 +97,13 @@ namespace tree
 
     template <class T>
     void BinaryTreeUsingLinkedRepresentation<T>::DisplayPreOrderRecursive(const Node* node)
+    void BinaryTreeUsingLinkedRepresentation<T>::DisplayPreOrderRecursive(const Node* node)
     {
         if (node)
         {
             std::cout << node->m_m_data << " ";
+            DisplayPreOrderRecursive(node->m_m_leftChild);
+            DisplayPreOrderRecursive(node->m_m_rightChild);
             DisplayPreOrderRecursive(node->m_m_leftChild);
             DisplayPreOrderRecursive(node->m_m_rightChild);
         }
@@ -106,23 +111,51 @@ namespace tree
 
     template <class T>
     void BinaryTreeUsingLinkedRepresentation<T>::DisplayInOrderRecursive(const Node* node)
+    void BinaryTreeUsingLinkedRepresentation<T>::DisplayInOrderRecursive(const Node* node)
     {
         if (node)
         {
             DisplayInOrderRecursive(node->m_m_leftChild);
+            DisplayInOrderRecursive(node->m_m_leftChild);
             std::cout << node->m_m_data << " ";
+            DisplayInOrderRecursive(node->m_m_rightChild);
             DisplayInOrderRecursive(node->m_m_rightChild);
         }
     }
 
     template <class T>
     void BinaryTreeUsingLinkedRepresentation<T>::DisplayPostOrderRecursive(const Node* node)
+    void BinaryTreeUsingLinkedRepresentation<T>::DisplayPostOrderRecursive(const Node* node)
     {
         if (node)
         {
             DisplayPostOrderRecursive(node->m_m_leftChild);
             DisplayPostOrderRecursive(node->m_m_rightChild);
+            DisplayPostOrderRecursive(node->m_m_leftChild);
+            DisplayPostOrderRecursive(node->m_m_rightChild);
             std::cout << node->m_m_data << " ";
+        }
+    }
+
+    template <class T>
+    void BinaryTreeUsingLinkedRepresentation<T>::DisplayLevelOrderRecursive(const Node* node)
+    {
+        if (node == m_rootNode)
+        {
+            std::cout << node->m_m_data << " ";
+        }
+        if (node)
+        {
+            if (node->m_m_leftChild)
+            {
+                std::cout << node->m_m_leftChild->m_m_data << " ";
+            }
+            if (node->m_m_rightChild)
+            {
+                std::cout << node->m_m_rightChild->m_m_data << " ";
+            }
+            DisplayLevelOrderRecursive(node->m_m_leftChild);
+            DisplayLevelOrderRecursive(node->m_m_rightChild);
         }
     }
 
