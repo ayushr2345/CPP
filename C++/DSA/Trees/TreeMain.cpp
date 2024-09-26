@@ -15,6 +15,8 @@ namespace tree
                                    std::string("Binary Tree using Array") });
         m_treeMainMenuMap.insert({ m_TreeMainMenu(BINARY_TREE_USING_LINKED_REPRESENTATION),
                                    std::string("Binary Tree using Linked Representation") });
+        m_treeMainMenuMap.insert({ m_TreeMainMenu(BINARY_SEARCH_TREE),
+                                   std::string("Binary Search Tree") });
         m_treeMainMenuMap.insert({ m_TreeMainMenu(BACK_TO_PREVIOUS_MENU),
                                    std::string("Back to Previous Menu") });
         m_treeMainMenuMap.insert({ m_TreeMainMenu(EXIT_FROM_PROGRAM),
@@ -76,5 +78,11 @@ namespace tree
     {
         tree::BinaryTreeUsingLinkedRepresentation<int> binaryTreeUsingLinkedRepresentationObj;
         handlers::Handle(binaryTreeUsingLinkedRepresentationObj);
+    }
+
+    void TreeMain::BinarySearchTree()
+    {
+        tree::BinarySearchTree<int> binarySearchTreeObj;
+        handlers::Handle(binarySearchTreeObj);
     }
 } // namespace tree

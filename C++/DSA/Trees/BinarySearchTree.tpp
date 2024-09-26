@@ -219,10 +219,10 @@ namespace tree
         }
         if (temp->m_m_data == element)
         {
-            return temp;
+            return const_cast<BinaryTree<T>::Node*>(temp);
         }
 
-        if (key > temp->m_m_data)
+        if (element > temp->m_m_data)
         {
             return SearchNodeRecursive(temp->m_m_rightChild, element);
         }
@@ -230,6 +230,114 @@ namespace tree
         {
             return SearchNodeRecursive(temp->m_m_leftChild, element);
         }
+    }
+
+    template <class T>
+    BinaryTree<T>::Node* BinaryTree<T>::InsertNodeRecursive(Node* temp, const T element)
+    {
+        if (temp == nullptr)
+        {
+            Node* newNode = new Node;
+            newNode->m_m_data = element;
+            newNode->m_m_leftChild = nullptr;
+            newNode->m_m_rightChild = nullptr;
+            return newNode;
+        }
+        else if (element > temp->m_m_data)
+        {
+            temp->m_m_rightChild = InsertNodeRecursive(temp->m_m_rightChild, element);
+        }
+        else
+        {
+            temp->m_m_leftChild = InsertNodeRecursive(temp->m_m_leftChild, element);
+        }
+        return temp;
+    }
+
+    template <class T>
+    int BinaryTree<T>::GetDegOfNode(const Node* temp)
+    {
+        if (not temp)
+        {
+            return -1;
+        }
+        if(temp->m_m_leftChild and temp->m_m_rightChild)
+        {
+            return 2;
+        }
+
+        if ((temp->m_m_leftChild and not temp->m_m_rightChild) or
+            (temp->m_m_rightChild and not temp->m_m_leftChild))
+        {
+            return 1;
+        }
+
+        return 0;
+    }
+
+    template <class T>
+    BinaryTree<T>::Node* BinaryTree<T>::InOrderPredecessor(Node* temp)
+    {
+        while (temp and temp->m_m_rightChild)
+        {
+            temp = temp->m_m_rightChild;
+        }
+        return temp;
+    }
+    
+    template <class T>
+    BinaryTree<T>::Node* BinaryTree<T>::InOrderSuccessor(Node* temp)
+    {
+        while (temp and temp->m_m_leftChild)
+        {
+            temp = temp->m_m_leftChild;
+        }
+        return temp;
+    }
+
+    template <class T>
+    BinaryTree<T>::Node* BinaryTree<T>::DeleteNodeRecursive(Node* temp, const T element)
+    {
+        if (temp == nullptr)
+        {
+            return nullptr;
+        }
+
+        if (GetDegOfNode(temp) == 0)
+        {
+            if (temp == m_rootNode)
+            {
+                m_rootNode = nullptr;
+            }
+            delete temp;
+            return nullptr;
+        }
+
+        if (element > temp->m_m_data)
+        {
+            temp->m_m_rightChild = DeleteNodeRecursive(temp->m_m_rightChild, element);
+        }
+        else if (element < temp->m_m_data)
+        {
+            temp->m_m_leftChild = DeleteNodeRecursive(temp->m_m_leftChild, element);
+        }
+        else
+        {
+            FillInOrderTraversalVector(m_rootNode);
+            if (CalculateHeightOfTree(temp->m_m_leftChild) > CalculateHeightOfTree(temp->m_m_rightChild))
+            {
+                Node* inOrderPredecessorNode = InOrderPredecessor(temp->m_m_leftChild);
+                temp->m_m_data = inOrderPredecessorNode->m_m_data; 
+                temp->m_m_leftChild = DeleteNodeRecursive(temp->m_m_leftChild, inOrderPredecessorNode->m_m_data);
+            }
+            else
+            {
+                Node* inOrderSuccessorNode = InOrderSuccessor(temp->m_m_rightChild);
+                temp->m_m_data = inOrderSuccessorNode->m_m_data; 
+                temp->m_m_rightChild = DeleteNodeRecursive(temp->m_m_rightChild, inOrderSuccessorNode->m_m_data);
+            }
+        }
+        return temp;
     }
     // private methods end
 
@@ -495,6 +603,101 @@ namespace tree
         return m_inOrderTraversalVector; 
     }
 
+    template <class T>
+    BinaryTree<T>::Node* BinaryTree<T>::SearchNodeRecursive(const T element)
+    {
+        return SearchNodeRecursive(m_rootNode, element);
+    }
+
+    template <class T>
+    BinaryTree<T>::Node* BinaryTree<T>::SearchNodeIterative(const T element)
+    {
+        Node* temp = m_rootNode;
+        while (temp)
+        {
+            if (temp->m_m_data == element)
+            {
+                return temp;
+            }
+            else if (temp->m_m_data < element)
+            {
+                temp = temp->m_m_rightChild;
+            }
+            else
+            {
+                temp = temp->m_m_leftChild;
+            }
+        }
+        return nullptr;
+    }
+
+    template <class T>
+    bool BinaryTree<T>::InsertNodeRecursive(const T element)
+    {
+        Node* searchRes = SearchNodeRecursive(element);
+
+        if (searchRes)
+        {
+            return false;
+        }
+        InsertNodeRecursive(m_rootNode, element);
+        return true;
+    }
+
+    template <class T>
+    bool BinaryTree<T>::InsertNodeIterative(const T element)
+    {
+        Node* searchRes = SearchNodeIterative(element);
+
+        if (searchRes)
+        {
+            return false;
+        }
+        
+        Node* prevTemp = nullptr;
+        Node* temp = m_rootNode;
+
+        while (temp)
+        {
+            prevTemp = temp;
+            if (element > temp->m_m_data)
+            {
+                temp = temp->m_m_rightChild;
+            }
+            else
+            {
+                temp = temp->m_m_leftChild;
+            }
+        }
+
+        Node* newNode = new Node;
+        newNode->m_m_data = element;
+        newNode->m_m_leftChild = nullptr;
+        newNode->m_m_rightChild = nullptr;
+
+        if (newNode->m_m_data > prevTemp->m_m_data)
+        {
+            prevTemp->m_m_rightChild = newNode;
+        }
+        else
+        {
+            prevTemp->m_m_leftChild = newNode;
+        }
+        return true;
+    }
+
+    template <class T>
+    bool BinaryTree<T>::DeleteNodeRecursive(const T element)
+    {
+        Node* searchRes = SearchNodeRecursive(element);
+        if (not searchRes)
+        {
+            return false;
+        }
+        DeleteNodeRecursive(m_rootNode, element);
+        return true;
+    }
+
     //
     //   BINARY SEARCH TREE
     //
@@ -502,8 +705,7 @@ namespace tree
     template <class T>
     BinarySearchTree<T>::BinarySearchTree():
         m_choice                  ( 0 ),
-        m_binarySearchTreeMenuMap ( {} ),
-        m_binaryTree              { nullptr }
+        m_binarySearchTreeMenuMap ( {} )
     {
         m_binarySearchTreeMenuMap.insert({ m_BinarySearchTreeMenu(DOES_TREE_EXIST),
                                            std::string("Check if the tree exists") });
@@ -527,8 +729,6 @@ namespace tree
                                            std::string("Insert Node Iterative") });
         m_binarySearchTreeMenuMap.insert({ m_BinarySearchTreeMenu(DELETE_NODE_RECURSIVE),
                                            std::string("Delete Node Recursive") });
-        m_binarySearchTreeMenuMap.insert({ m_BinarySearchTreeMenu(DELETE_NODE_ITERATIVE),
-                                           std::string("Delete Node Iterative") });
         m_binarySearchTreeMenuMap.insert({ m_BinarySearchTreeMenu(RESET_TREE),
                                            std::string("Reset Tree") });
         m_binarySearchTreeMenuMap.insert({ m_BinarySearchTreeMenu(BACK_TO_PREVIOUS_MENU),
@@ -540,7 +740,7 @@ namespace tree
     template <class T>
     BinarySearchTree<T>::~BinarySearchTree()
     {
-        m_binaryTree.Reset();
+        m_binaryTree.ResetTree();
     }
 
     template <class T>
@@ -681,5 +881,39 @@ namespace tree
         }
     }
 
-    
+    template <class T>
+    bool BinarySearchTree<T>::InsertRecursive(const T element)
+    {
+        return m_binaryTree.InsertNodeRecursive(element);
+    }
+
+    template <class T>
+    bool BinarySearchTree<T>::InsertIterative(const T element)
+    {
+        return m_binaryTree.InsertNodeIterative(element);
+    }
+
+    template <class T>
+    bool BinarySearchTree<T>::SearchRecursive(const T element)
+    {
+        return m_binaryTree.SearchNodeRecursive(element);
+    }
+
+    template <class T>
+    bool BinarySearchTree<T>::SearchIterative(const T element)
+    {
+        return m_binaryTree.SearchNodeIterative(element);
+    }
+
+    template <class T>
+    bool BinarySearchTree<T>::DeleteRecursive(const T element)
+    {
+        return m_binaryTree.DeleteNodeRecursive(element);
+    }
+
+    template <class T>
+    void BinarySearchTree<T>::ResetTree()
+    {
+        m_binaryTree.ResetTree();
+    }
 } //namespace tree

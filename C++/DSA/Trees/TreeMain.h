@@ -7,6 +7,7 @@
 #include <iostream>
 #include "BinaryTreeUsingArray.h"
 #include "BinaryTreeUsingLinkedRepresentation.h"
+#include "BinarySearchTree.h"
 
 namespace tree
 {
@@ -18,8 +19,9 @@ namespace tree
             MIN_COUNT                               = 0,
             BINARY_TREE_USING_ARRAY                 = 1,
             BINARY_TREE_USING_LINKED_REPRESENTATION = 2,
-            BACK_TO_PREVIOUS_MENU                   = 3,
-            EXIT_FROM_PROGRAM                       = 4,
+            BINARY_SEARCH_TREE                      = 3,
+            BACK_TO_PREVIOUS_MENU                   = 4,
+            EXIT_FROM_PROGRAM                       = 5,
             MAX_COUNT                               = EXIT_FROM_PROGRAM
         };
         int                        m_choice          { 0 };
@@ -35,5 +37,6 @@ namespace tree
         void        PrintSelectedChoice();
         void        BinaryTreeUsingArray();
         void        BinaryTreeUsingLinkedRepresentation();
+        void        BinarySearchTree();
     };
 } // namespace tree

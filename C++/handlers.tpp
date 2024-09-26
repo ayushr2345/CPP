@@ -3743,4 +3743,249 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(tree::BinarySearchTree<T>& binarySearchTreeObj)
+    {
+        binarySearchTreeObj.PrintMenu();
+        binarySearchTreeObj.GetChoiceInputFromUser();
+        const int& selectedChoice = binarySearchTreeObj.GetChoice();
+
+        while (binarySearchTreeObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > binarySearchTreeObj.GetMinCase() &&
+                selectedChoice < binarySearchTreeObj.GetMaxCase() + 1)
+            {
+                binarySearchTreeObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool res = binarySearchTreeObj.DoesTreeExist();
+                
+                if (res)
+                {
+                    std::cout << "The tree exists" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                if (binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "Tree already exists, cannot generate tree if already exists, reset and try again" << std::endl;
+                }
+                else
+                {
+                    binarySearchTreeObj.GenerateTree();
+                }
+                break;
+            }
+            case 3:
+            {
+                if (not binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binarySearchTreeObj.DisplayPreOrder();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 4:
+            {
+                if (not binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binarySearchTreeObj.DisplayInOrder();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                if (not binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binarySearchTreeObj.DisplayPostOrder();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                if (not binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    binarySearchTreeObj.DisplayLevelOrder();
+                    std::cout << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                T searchElement;
+                std::cout << "Enter the element to searched for: ";
+                utils::InputNumberFromUser(searchElement);
+                if (not binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    bool res = binarySearchTreeObj.SearchRecursive(searchElement);
+                    if (res)
+                    {
+                        std::cout << "The element is present in the tree" << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "The element is not present in the tree" << std::endl;
+                    }
+                }
+                break;
+            }
+            case 8:
+            {
+                T searchElement;
+                std::cout << "Enter the element to searched for: ";
+                utils::InputNumberFromUser(searchElement);
+                if (not binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    bool res = binarySearchTreeObj.SearchIterative(searchElement);
+                    if (res)
+                    {
+                        std::cout << "The element is present in the tree" << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "The element is not present in the tree" << std::endl;
+                    }
+                }
+                break;
+            }
+            case 9:
+            {
+                T insertElement;
+                std::cout << "Enter the element to be inserted: ";
+                utils::InputNumberFromUser(insertElement);
+                if (not binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    bool res = binarySearchTreeObj.InsertRecursive(insertElement);
+                    if (res)
+                    {
+                        std::cout << "The element was successfully inserted in the tree" << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "The element could not be inserted in the tree" << std::endl;
+                    }
+                }
+                break;
+            }
+            case 10:
+            {
+                T insertElement;
+                std::cout << "Enter the element to be inserted: ";
+                utils::InputNumberFromUser(insertElement);
+                if (not binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    bool res = binarySearchTreeObj.InsertIterative(insertElement);
+                    if (res)
+                    {
+                        std::cout << "The element was successfully inserted in the tree" << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "The element could not be inserted in the tree" << std::endl;
+                    }
+                }
+                break;
+            }
+            case 11:
+            {
+                T deleteElement;
+                std::cout << "Enter the element to be deleted: ";
+                utils::InputNumberFromUser(deleteElement);
+                if (not binarySearchTreeObj.DoesTreeExist())
+                {
+                    std::cout << "The tree does not exist" << std::endl;
+                }
+                else
+                {
+                    bool res = binarySearchTreeObj.DeleteRecursive(deleteElement);
+                    if (res)
+                    {
+                        std::cout << "The element was successfully deleted from the tree" << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "The element could not be deleted from the tree" << std::endl;
+                    }
+                }
+                break;
+            }
+            case 12:
+            {
+                binarySearchTreeObj.ResetTree();
+                break;
+            }
+            case 13:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 14:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                binarySearchTreeObj.PrintMenu();
+                binarySearchTreeObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

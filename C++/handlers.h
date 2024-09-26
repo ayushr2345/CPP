@@ -101,6 +101,9 @@ namespace handlers
 
     template <class T>
     void Handle(tree::BinaryTreeUsingLinkedRepresentation<T>&);
+
+    template <class T>
+    void Handle(tree::BinarySearchTree<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

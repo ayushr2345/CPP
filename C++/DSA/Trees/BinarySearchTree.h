@@ -38,6 +38,12 @@ namespace tree
         void      ResetTree(const Node*);
         void      FillInOrderTraversalVector(const Node*);
         Node*     SearchNodeRecursive(const Node*, const T);
+        Node*     InsertNodeRecursive(Node*, const T);
+        int       GetDegOfNode(const Node*);
+        Node*     InOrderPredecessor(Node*);
+        Node*     InOrderSuccessor(Node*);
+        Node*     DeleteNodeRecursive(Node*, const T);
+
     public:
         BinaryTree();
         ~BinaryTree();
@@ -60,6 +66,11 @@ namespace tree
         void           GenerateTree();
         void           ResetTree();
         std::vector<T> GetInOrderTraversal();
+        Node*          SearchNodeRecursive(const T);
+        Node*          SearchNodeIterative(const T);
+        bool           InsertNodeRecursive(const T);
+        bool           InsertNodeIterative(const T);
+        bool           DeleteNodeRecursive(const T);
     };
 
     template <class T>
@@ -80,10 +91,9 @@ namespace tree
             INSERT_NODE_RECURSIVE            = 9,
             INSERT_NODE_ITERATIVE            = 10,
             DELETE_NODE_RECURSIVE            = 11,
-            DELETE_NODE_ITERATIVE            = 12,
-            RESET_TREE                       = 13,
-            BACK_TO_PREVIOUS_MENU            = 14,
-            EXIT_FROM_PROGRAM                = 15,
+            RESET_TREE                       = 12,
+            BACK_TO_PREVIOUS_MENU            = 13,
+            EXIT_FROM_PROGRAM                = 14,
             MAX_COUNT                        = EXIT_FROM_PROGRAM
         };
         int                        m_choice                  { 0 };
@@ -91,7 +101,6 @@ namespace tree
         BinaryTree<T>              m_binaryTree              {};
         bool                       IsBST();
         bool                       IsSortedAndUnique(const std::vector<T>);
-        void                       SearchNodeRecursive(const Node*, const T);
     public:
         BinarySearchTree();
         ~BinarySearchTree();
@@ -107,16 +116,13 @@ namespace tree
         void             DisplayInOrder();
         void             DisplayPostOrder();
         void             DisplayLevelOrder();
-
-        
-        void             SearchNodeIterative(const T);
-        void             InsertNodeRecursive(const T);
-        void             InsertNodeIterative(const T);
-        void             DeleteNodeRecursive(const T);
-        void             DeleteNodeIterative(const T);
+        bool             InsertRecursive(const T);
+        bool             InsertIterative(const T);
+        bool             SearchRecursive(const T);
+        bool             SearchIterative(const T);
+        bool             DeleteRecursive(const T);
         void             ResetTree();
     };
 } // namespace tree
 
 # include "BinarySearchTree.tpp"
-x
