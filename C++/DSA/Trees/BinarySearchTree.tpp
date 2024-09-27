@@ -750,6 +750,53 @@ namespace tree
         }
     }
 
+    template <class T>
+    void BinaryTree<T>::GenerateTreeFromPostOrder(const std::vector<T>& postOrder)
+    {
+        if (IsExisting())
+        {
+            std::cout << "The tree already exists, resetting the tree" << std::endl;
+            ResetTree();
+        }
+
+        int postOrderVectorSize = postOrder.size();
+        m_rootNode = new Node;
+        m_rootNode->m_m_data = postOrder[postOrderVectorSize - 1];
+        m_rootNode->m_m_leftChild = nullptr;
+        m_rootNode->m_m_rightChild = nullptr;
+
+        Node* temp = m_rootNode;
+        int i = postOrderVectorSize - 2;
+        std::stack<Node*> treeStack;
+        while (i >= 0)
+        {
+            Node* newNode = new Node;
+            newNode->m_m_data = postOrder[i];
+            newNode->m_m_leftChild = nullptr;
+            newNode->m_m_rightChild = nullptr;
+
+            if (postOrder[i] > temp->m_m_data)
+            {
+                temp->m_m_rightChild = newNode;
+                treeStack.push(temp);
+                temp = temp->m_m_rightChild;
+            }
+            else
+            {
+                while (not treeStack.empty() and postOrder[i] < treeStack.top()->m_m_data)
+                {
+                    Node* poppedValue = treeStack.top();
+                    treeStack.pop();
+                    temp = poppedValue;
+                }
+
+                temp->m_m_leftChild = newNode;
+                temp = temp->m_m_leftChild;
+            }
+            i--;
+        }
+    }
+
     //
     //   BINARY SEARCH TREE
     //
@@ -783,6 +830,8 @@ namespace tree
                                            std::string("Delete Node Recursive") });
         m_binarySearchTreeMenuMap.insert({ m_BinarySearchTreeMenu(GENERATE_TREE_FROM_PREORDER),
                                            std::string("Generate Tree From Preorder Traversal") });
+        m_binarySearchTreeMenuMap.insert({ m_BinarySearchTreeMenu(GENERATE_TREE_FROM_POSTORDER),
+                                           std::string("Generate Tree From Postorder Traversal") });
         m_binarySearchTreeMenuMap.insert({ m_BinarySearchTreeMenu(RESET_TREE),
                                            std::string("Reset Tree") });
         m_binarySearchTreeMenuMap.insert({ m_BinarySearchTreeMenu(BACK_TO_PREVIOUS_MENU),
@@ -969,6 +1018,12 @@ namespace tree
     void BinarySearchTree<T>::GenerateTreeFromPreOrder(const std::vector<T>& preOrder)
     {
         return m_binaryTree.GenerateTreeFromPreOrder(preOrder);
+    }
+
+    template <class T>
+    void BinarySearchTree<T>::GenerateTreeFromPostOrder(const std::vector<T>& postOrder)
+    {
+        return m_binaryTree.GenerateTreeFromPostOrder(postOrder);
     }
 
     template <class T>
