@@ -3957,15 +3957,33 @@ namespace handlers
             }
             case 12:
             {
-                binarySearchTreeObj.ResetTree();
+                int numNodes = 0;
+                std::cout << "Enter the number of nodes: ";
+                utils::InputNumberFromUser(numNodes, 1, 20);
+
+                std::vector<int> preOrderTraversal;
+                std::cout << "Enter the preOrderTraversal" << std::endl;
+                int x;
+                for (int i = 0; i < numNodes; i++)
+                {
+                    std::cin >> x;
+                    preOrderTraversal.push_back(x);
+                }
+
+                binarySearchTreeObj.GenerateTreeFromPreOrder(preOrderTraversal);
                 break;
             }
             case 13:
             {
-                previousMenuFlag = 'y';
+                binarySearchTreeObj.ResetTree();
                 break;
             }
             case 14:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 15:
             {
                 exit(0);
             }

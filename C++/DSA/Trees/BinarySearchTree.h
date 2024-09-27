@@ -71,6 +71,7 @@ namespace tree
         bool           InsertNodeRecursive(const T);
         bool           InsertNodeIterative(const T);
         bool           DeleteNodeRecursive(const T);
+        void           GenerateTreeFromPreOrder(const std::vector<T>&);
     };
 
     template <class T>
@@ -91,9 +92,10 @@ namespace tree
             INSERT_NODE_RECURSIVE            = 9,
             INSERT_NODE_ITERATIVE            = 10,
             DELETE_NODE_RECURSIVE            = 11,
-            RESET_TREE                       = 12,
-            BACK_TO_PREVIOUS_MENU            = 13,
-            EXIT_FROM_PROGRAM                = 14,
+            GENERATE_TREE_FROM_PREORDER      = 12,
+            RESET_TREE                       = 13,
+            BACK_TO_PREVIOUS_MENU            = 14,
+            EXIT_FROM_PROGRAM                = 15,
             MAX_COUNT                        = EXIT_FROM_PROGRAM
         };
         int                        m_choice                  { 0 };
@@ -121,6 +123,7 @@ namespace tree
         bool             SearchRecursive(const T);
         bool             SearchIterative(const T);
         bool             DeleteRecursive(const T);
+        void             GenerateTreeFromPreOrder(const std::vector<T>&);
         void             ResetTree();
     };
 } // namespace tree
