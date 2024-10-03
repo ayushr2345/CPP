@@ -94,7 +94,7 @@ namespace tree
             INSERT_NODE_ITERATIVE            = 10,
             DELETE_NODE_RECURSIVE            = 11,
             GENERATE_TREE_FROM_PREORDER      = 12,
-            GENERATE_TREE_FROM_POSTORDER      = 13,
+            GENERATE_TREE_FROM_POSTORDER     = 13,
             RESET_TREE                       = 14,
             BACK_TO_PREVIOUS_MENU            = 15,
             EXIT_FROM_PROGRAM                = 16,
