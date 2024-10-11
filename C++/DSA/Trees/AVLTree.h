@@ -38,6 +38,10 @@ namespace tree
         };
         std::map<int, std::string> m_avlTreeMenuMap {};
         Node*                      m_rootNode { nullptr };
+	void DisplayPreOrder(const Node*);
+	void DisplayInOrder(const Node*);
+	void DisplayPostOrder(const Node*);
+	void DisplayLevelOrder(const Node*);
     public:
         AVLTree();
         ~AVLTree();
@@ -57,4 +61,4 @@ namespace tree
         std::optional<T> DeleteNode(const& T);
 } // namespace tree
 
-# include "BinarySearchTree.tpp"
+# include "AVLTree.tpp"
