@@ -5,7 +5,6 @@
 
 namespace tree
 {
-
     template <class T>
     BinaryTree<T>::BinaryTree():
         m_rootNode               { nullptr },
@@ -25,7 +24,10 @@ namespace tree
         return m_rootNode ? true : false;
     }
 
-    // private methods
+    /******************************************
+    ************* PRIVATE METHODS *************
+    *******************************************/
+
     template <class T>
     void BinaryTree<T>::DisplayPreOrderRecursive(const Node* node)
     {
@@ -96,7 +98,7 @@ namespace tree
         }
         return 0;
     }
-    
+
     template <class T>
     int BinaryTree<T>::CalculateDeg1NodesOfTree(const Node* node)
     {
@@ -104,8 +106,8 @@ namespace tree
         {
             int x = CalculateDeg1NodesOfTree(node->m_m_leftChild);
             int y = CalculateDeg1NodesOfTree(node->m_m_rightChild);
-            if ((not node->m_m_leftChild and node->m_m_rightChild) or
-                (node->m_m_leftChild and not node->m_m_rightChild))
+            if ( (not node->m_m_leftChild and node->m_m_rightChild) or
+                 (node->m_m_leftChild and not node->m_m_rightChild) )
             {
                 return x + y + 1;
             }
@@ -113,7 +115,7 @@ namespace tree
         }
         return 0;
     }
-    
+
     template <class T>
     int BinaryTree<T>::CalculateDeg2NodesOfTree(const Node* node)
     {
@@ -129,7 +131,7 @@ namespace tree
         }
         return 0;
     }
-    
+
     template <class T>
     int BinaryTree<T>::CalculateInternalNodesOfTree(const Node* node)
     {
@@ -145,7 +147,7 @@ namespace tree
         }
         return 0;
     }
-    
+
     template <class T>
     int BinaryTree<T>::CalculateExternalNodesOfTree(const Node* node)
     {
@@ -161,7 +163,7 @@ namespace tree
         }
         return 0;
     }
-    
+
     template <class T>
     int BinaryTree<T>::CalculateNoNodesOfTree(const Node* node)
     {
@@ -173,7 +175,7 @@ namespace tree
         }
         return 0;
     }
-    
+
     template <class T>
     int BinaryTree<T>::CalculateHeightOfTree(const Node* node)
     {
@@ -261,17 +263,16 @@ namespace tree
         {
             return -1;
         }
-        if(temp->m_m_leftChild and temp->m_m_rightChild)
+        if (temp->m_m_leftChild and temp->m_m_rightChild)
         {
             return 2;
         }
 
-        if ((temp->m_m_leftChild and not temp->m_m_rightChild) or
-            (temp->m_m_rightChild and not temp->m_m_leftChild))
+        if ( (temp->m_m_leftChild and not temp->m_m_rightChild) or
+             (not temp->m_m_leftChild and temp->m_m_rightChild))
         {
             return 1;
         }
-
         return 0;
     }
 
@@ -284,7 +285,7 @@ namespace tree
         }
         return temp;
     }
-    
+
     template <class T>
     BinaryTree<T>::Node* BinaryTree<T>::InOrderSuccessor(Node* temp)
     {
@@ -327,19 +328,21 @@ namespace tree
             if (CalculateHeightOfTree(temp->m_m_leftChild) > CalculateHeightOfTree(temp->m_m_rightChild))
             {
                 Node* inOrderPredecessorNode = InOrderPredecessor(temp->m_m_leftChild);
-                temp->m_m_data = inOrderPredecessorNode->m_m_data; 
+                temp->m_m_data = inOrderPredecessorNode->m_m_data;
                 temp->m_m_leftChild = DeleteNodeRecursive(temp->m_m_leftChild, inOrderPredecessorNode->m_m_data);
             }
             else
             {
                 Node* inOrderSuccessorNode = InOrderSuccessor(temp->m_m_rightChild);
-                temp->m_m_data = inOrderSuccessorNode->m_m_data; 
+                temp->m_m_data = inOrderSuccessorNode->m_m_data;
                 temp->m_m_rightChild = DeleteNodeRecursive(temp->m_m_rightChild, inOrderSuccessorNode->m_m_data);
             }
         }
         return temp;
     }
-    // private methods end
+    /******************************************
+    *********** PRIVATE METHODS END ***********
+    *******************************************/
 
     template <class T>
     void BinaryTree<T>::DisplayPreOrderRecursive()
@@ -382,7 +385,7 @@ namespace tree
             else
             {
                 Node* poppedValue = treeStack.pop();
-                temp = poppedValue->m_m_rightChild;
+                temp = poppedValue->m_m_rightChild();
             }
         }
     }
@@ -412,7 +415,7 @@ namespace tree
     template <class T>
     void BinaryTree<T>::DisplayPostOrderIterative()
     {
-        std::stack<Node*> treeStack;
+        std::stack<T> treeStack;
 
         Node* temp = m_rootNode;
         while (temp or treeStack.size())
@@ -797,9 +800,9 @@ namespace tree
         }
     }
 
-    //
-    //   BINARY SEARCH TREE
-    //
+    /******************************************
+    *********** BINARY SEARCH TREE ************
+    *******************************************/
 
     template <class T>
     BinarySearchTree<T>::BinarySearchTree():
