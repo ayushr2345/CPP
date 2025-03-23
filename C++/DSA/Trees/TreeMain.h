@@ -8,6 +8,7 @@
 #include "BinaryTreeUsingArray.h"
 #include "BinaryTreeUsingLinkedRepresentation.h"
 #include "BinarySearchTree.h"
+#include "AVLTree.h"
 
 namespace tree
 {
@@ -20,8 +21,9 @@ namespace tree
             BINARY_TREE_USING_ARRAY                 = 1,
             BINARY_TREE_USING_LINKED_REPRESENTATION = 2,
             BINARY_SEARCH_TREE                      = 3,
-            BACK_TO_PREVIOUS_MENU                   = 4,
-            EXIT_FROM_PROGRAM                       = 5,
+            AVL_TREE                                = 4,
+            BACK_TO_PREVIOUS_MENU                   = 5,
+            EXIT_FROM_PROGRAM                       = 6,
             MAX_COUNT                               = EXIT_FROM_PROGRAM
         };
         int                        m_choice          { 0 };
@@ -38,5 +40,6 @@ namespace tree
         void        BinaryTreeUsingArray();
         void        BinaryTreeUsingLinkedRepresentation();
         void        BinarySearchTree();
+        void        AVLTree();
     };
 } // namespace tree

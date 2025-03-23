@@ -1968,11 +1968,11 @@ namespace handlers
                 treeMainObj.BinarySearchTree();
                 break;
             }
-            // case 4:
-            // {
-            //     treeMainObj.DoubleEndedQueue();
-            //     break;
-            // }
+            case 4:
+            {
+                treeMainObj.AVLTree();
+                break;
+            }
             // case 5:
             // {
             //     treeMainObj.PriorityQueueLimitedSet();
@@ -1988,12 +1988,12 @@ namespace handlers
             //     treeMainObj.QueueUsingTwoStacks();
             //     break;
             // }
-            case 4:
+            case 5:
             {
                 previousMenuFlag = 'y';
                 break;
             }
-            case 5:
+            case 6:
             {
                 exit(0);
             }
