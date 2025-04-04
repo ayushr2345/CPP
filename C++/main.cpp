@@ -193,10 +193,16 @@ int main()
                 }
                 case 9:
                 {
-                    previousMenuFlag = 'y';
+                    heap::HeapMain heapMainObj;
+                    handlers::Handle(heapMainObj);
                     break;
                 }
                 case 10:
+                {
+                    previousMenuFlag = 'y';
+                    break;
+                }
+                case 11:
                 {
                     exit(0);
                 }

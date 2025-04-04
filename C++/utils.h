@@ -47,8 +47,9 @@ namespace utils
         STACK                 = 6,
         QUEUE                 = 7,
         TREES                 = 8,
-        BACK_TO_PREVIOUS_MENU = 9,
-        EXIT                  = 10,
+        HEAPS                 = 9,
+        BACK_TO_PREVIOUS_MENU = 10,
+        EXIT                  = 11,
         MAX_COUNT             = EXIT
     };
 
@@ -147,6 +148,10 @@ namespace utils
         {
             static_cast<int>(DSAMenu::TREES),
             std::string("Trees")
+        },
+        {
+            static_cast<int>(DSAMenu::HEAPS),
+            std::string("Heaps")
         },
         {
             static_cast<int>(DSAMenu::BACK_TO_PREVIOUS_MENU),

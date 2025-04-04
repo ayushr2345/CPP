@@ -16,6 +16,7 @@
 #include "DSA/Stack/StackMain.h"
 #include "DSA/Queues/QueueMain.h"
 #include "DSA/Trees/TreeMain.h"
+#include "DSA/Heaps/HeapMain.h"
 
 namespace handlers
 {
@@ -107,6 +108,12 @@ namespace handlers
 
     template <class T>
     void Handle(tree::AVLTree<T>&);
+
+    // Heaps
+    void Handle(heap::HeapMain&);
+
+    template <class T>
+    void Handle(heap::MaxHeap<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

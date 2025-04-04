@@ -1973,21 +1973,6 @@ namespace handlers
                 treeMainObj.AVLTree();
                 break;
             }
-            // case 5:
-            // {
-            //     treeMainObj.PriorityQueueLimitedSet();
-            //     break;
-            // }
-            // case 6:
-            // {
-            //     treeMainObj.PriorityQueueElement();
-            //     break;
-            // }
-            // case 2:
-            // {
-            //     treeMainObj.QueueUsingTwoStacks();
-            //     break;
-            // }
             case 5:
             {
                 previousMenuFlag = 'y';
@@ -2013,6 +1998,57 @@ namespace handlers
             {
                 treeMainObj.PrintMenu();
                 treeMainObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    void Handle(heap::HeapMain& heapMainObj)
+    {
+        heapMainObj.PrintMenu();
+        heapMainObj.GetChoiceInputFromUser();
+        const int& selectedChoice = heapMainObj.GetChoice();
+
+        while (heapMainObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > heapMainObj.GetMinCase() &&
+                selectedChoice < heapMainObj.GetMaxCase() + 1)
+            {
+                heapMainObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                heapMainObj.MaxHeap();
+                break;
+            }
+            case 2:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 3:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                heapMainObj.PrintMenu();
+                heapMainObj.GetChoiceInputFromUser();
             }
         }
     }

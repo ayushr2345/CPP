@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(C++)
+project(Cpp)
 
 set (CMAKE_CXX_STANDARD 20)
 
@@ -35,6 +35,7 @@ set(SOURCE_FILES
     C++/DSA/Stack/StackMain.cpp
     C++/DSA/Queues/QueueMain.cpp
     C++/DSA/Trees/TreeMain.cpp
+    C++/DSA/Heaps/HeapMain.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

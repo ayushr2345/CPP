@@ -4204,4 +4204,136 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(heap::MaxHeap<T>& maxHeapObj)
+    {
+        maxHeapObj.PrintMenu();
+        maxHeapObj.GetChoiceInputFromUser();
+        const int& selectedChoice = maxHeapObj.GetChoice();
+
+        while (maxHeapObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > maxHeapObj.GetMinCase() &&
+                selectedChoice < maxHeapObj.GetMaxCase() + 1)
+            {
+                maxHeapObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                if (maxHeapObj.DoesHeapExist())
+                {
+                    std::cout << "The heap exists" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                T insertElement;
+                std::cout << "Enter the element to be inserted: ";
+                utils::InputNumberFromUser(insertElement);
+                bool res = maxHeapObj.InsertInHeap(insertElement);
+                if (res)
+                {
+                    std::cout << "The element " << insertElement << " was successfully inserted in the heap" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not successfully inserted in the heap" << std::endl;
+                }
+                break;
+            }
+            case 3:
+            {
+                if (not maxHeapObj.DoesHeapExist())
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                else
+                {
+                    T deleted = maxHeapObj.DeleteFromHeap();
+                    if (deleted)
+                    {
+                        std::cout << "The element " << deleted << " was successfully deleted from the heap" << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "Could not delete from the heap" << std::endl;
+                    }
+                }
+                break;
+            }
+            case 4:
+            {
+                if (not maxHeapObj.DoesHeapExist())
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                else
+                {
+                    maxHeapObj.DisplayHeap();
+                }
+                break;
+            }
+            case 5:
+            {
+                maxHeapObj.DisplayArray();
+                break;
+            }
+            case 6:
+            {
+                if (not maxHeapObj.DoesHeapExist())
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                else
+                {
+                    maxHeapObj.HeapSort();
+                    std::cout << "Performed HeapSort() function on the heap, the array should be sorted now, printing..." << std::endl;
+                    maxHeapObj.DisplayArray();
+                }
+                break;
+            }
+            case 7:
+            {
+                std::cout << "Resetting the heap" << std::endl;
+                maxHeapObj.ResetHeap();
+                break;
+            }
+            case 8:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 9:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                maxHeapObj.PrintMenu();
+                maxHeapObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers
