@@ -4336,4 +4336,136 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(heap::MinHeap<T>& minHeapObj)
+    {
+        minHeapObj.PrintMenu();
+        minHeapObj.GetChoiceInputFromUser();
+        const int& selectedChoice = minHeapObj.GetChoice();
+
+        while (minHeapObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > minHeapObj.GetMinCase() &&
+                selectedChoice < minHeapObj.GetMaxCase() + 1)
+            {
+                minHeapObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                if (minHeapObj.DoesHeapExist())
+                {
+                    std::cout << "The heap exists" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                T insertElement;
+                std::cout << "Enter the element to be inserted: ";
+                utils::InputNumberFromUser(insertElement);
+                bool res = minHeapObj.InsertInHeap(insertElement);
+                if (res)
+                {
+                    std::cout << "The element " << insertElement << " was successfully inserted in the heap" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not successfully inserted in the heap" << std::endl;
+                }
+                break;
+            }
+            case 3:
+            {
+                if (not minHeapObj.DoesHeapExist())
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                else
+                {
+                    T deleted = minHeapObj.DeleteFromHeap();
+                    if (deleted)
+                    {
+                        std::cout << "The element " << deleted << " was successfully deleted from the heap" << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "Could not delete from the heap" << std::endl;
+                    }
+                }
+                break;
+            }
+            case 4:
+            {
+                if (not minHeapObj.DoesHeapExist())
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                else
+                {
+                    minHeapObj.DisplayHeap();
+                }
+                break;
+            }
+            case 5:
+            {
+                minHeapObj.DisplayArray();
+                break;
+            }
+            case 6:
+            {
+                if (not minHeapObj.DoesHeapExist())
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                else
+                {
+                    minHeapObj.HeapSort();
+                    std::cout << "Performed HeapSort() function on the heap, the array should be sorted now, printing..." << std::endl;
+                    minHeapObj.DisplayArray();
+                }
+                break;
+            }
+            case 7:
+            {
+                std::cout << "Resetting the heap" << std::endl;
+                minHeapObj.ResetHeap();
+                break;
+            }
+            case 8:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 9:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                minHeapObj.PrintMenu();
+                minHeapObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

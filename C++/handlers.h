@@ -114,6 +114,9 @@ namespace handlers
 
     template <class T>
     void Handle(heap::MaxHeap<T>&);
+
+    template <class T>
+    void Handle(heap::MinHeap<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

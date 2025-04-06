@@ -13,6 +13,8 @@ namespace heap
     {
         m_heapMainMenuMap.insert({ m_HeapMainMenu(MAX_HEAP),
                                    std::string("Max Heap") });
+        m_heapMainMenuMap.insert({ m_HeapMainMenu(MIN_HEAP),
+                                   std::string("Min Heap") });
         m_heapMainMenuMap.insert({ m_HeapMainMenu(BACK_TO_PREVIOUS_MENU),
                                    std::string("Back to Previous Menu") });
         m_heapMainMenuMap.insert({ m_HeapMainMenu(EXIT_FROM_PROGRAM),
@@ -67,5 +69,15 @@ namespace heap
         std::cout << "Creating an array of " << elements + 1 << " size to store the elements" << std::endl;
         heap::MaxHeap<int> maxHeapObj(elements + 1);
         handlers::Handle(maxHeapObj);
+    }
+
+    void HeapMain::MinHeap()
+    {
+        std::cout << "Please enter the max number of elements in the min heap: ";
+        int elements;
+        utils::InputNumberFromUser(elements, 0, 20);
+        std::cout << "Creating an array of " << elements + 1 << " size to store the elements" << std::endl;
+        heap::MinHeap<int> minHeapObj(elements + 1);
+        handlers::Handle(minHeapObj);
     }
 } // namespace heap
