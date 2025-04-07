@@ -4579,4 +4579,90 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(heap::PriorityQueuesUsingHeaps<T>& priorityQueuesUsingHeapsObj)
+    {
+        priorityQueuesUsingHeapsObj.PrintMenu();
+        priorityQueuesUsingHeapsObj.GetChoiceInputFromUser();
+        const int& selectedChoice = priorityQueuesUsingHeapsObj.GetChoice();
+
+        while (priorityQueuesUsingHeapsObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > priorityQueuesUsingHeapsObj.GetMinCase() &&
+                selectedChoice < priorityQueuesUsingHeapsObj.GetMaxCase() + 1)
+            {
+                priorityQueuesUsingHeapsObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                T insertElement;
+                std::cout << "Enter the element to be inserted: ";
+                utils::InputNumberFromUser(insertElement);
+                bool res = priorityQueuesUsingHeapsObj.Enqueue(insertElement);
+                if (res)
+                {
+                    std::cout << "The element " << insertElement << " was successfully enqueues" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not successfully enqueued in the heap" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                T deleted = priorityQueuesUsingHeapsObj.Dequeue();
+                if (deleted)
+                {
+                    std::cout << "The element " << deleted << " was successfully dequeued from the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not dequeue from the queue" << std::endl;
+                }
+                break;
+            }
+            case 3:
+            {
+                priorityQueuesUsingHeapsObj.DisplayHeap();
+                break;
+            }
+            case 4:
+            {
+                priorityQueuesUsingHeapsObj.DisplayArray();
+                break;
+            }
+            case 5:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 6:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                priorityQueuesUsingHeapsObj.PrintMenu();
+                priorityQueuesUsingHeapsObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

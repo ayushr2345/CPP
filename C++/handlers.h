@@ -18,6 +18,7 @@
 #include "DSA/Trees/TreeMain.h"
 #include "DSA/Heaps/HeapMain.h"
 #include "DSA/Heaps/Heapify.h"
+#include "DSA/Heaps/PriorityQueuesUsingHeaps.h"
 
 namespace handlers
 {
@@ -121,6 +122,9 @@ namespace handlers
 
     template <class T>
     void Handle(heap::Heapify<T>&);
+
+    template <class T>
+    void Handle(heap::PriorityQueuesUsingHeaps<T>&);
 } // namespace handlers
 
 #include "handlers.tpp"

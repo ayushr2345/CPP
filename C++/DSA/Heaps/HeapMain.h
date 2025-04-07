@@ -8,6 +8,7 @@
 #include "MaxHeap.h"
 #include "MinHeap.h"
 #include "Heapify.h"
+#include "PriorityQueuesUsingHeaps.h"
 
 namespace heap
 {
@@ -20,8 +21,9 @@ namespace heap
             MAX_HEAP                                = 1,
             MIN_HEAP                                = 2,
             HEAPIFY                                 = 3,
-            BACK_TO_PREVIOUS_MENU                   = 4,
-            EXIT_FROM_PROGRAM                       = 5,
+            PRIORITY_QUEUES_USING_HEAPS             = 4,
+            BACK_TO_PREVIOUS_MENU                   = 5,
+            EXIT_FROM_PROGRAM                       = 6,
             MAX_COUNT                               = EXIT_FROM_PROGRAM
         };
         int                        m_choice          { 0 };
@@ -38,5 +40,6 @@ namespace heap
         void        MaxHeap();
         void        MinHeap();
         void        Heapify();
+        void        PriorityQueuesUsingHeaps();
     };
 } // namespace heap

@@ -17,6 +17,8 @@ namespace heap
                                    std::string("Min Heap") });
         m_heapMainMenuMap.insert({ m_HeapMainMenu(HEAPIFY),
                                    std::string("Heapify") });
+        m_heapMainMenuMap.insert({ m_HeapMainMenu(PRIORITY_QUEUES_USING_HEAPS),
+                                   std::string("Priority queues using heaps") });
         m_heapMainMenuMap.insert({ m_HeapMainMenu(BACK_TO_PREVIOUS_MENU),
                                    std::string("Back to Previous Menu") });
         m_heapMainMenuMap.insert({ m_HeapMainMenu(EXIT_FROM_PROGRAM),
@@ -91,5 +93,16 @@ namespace heap
         std::cout << "Creating an array of " << elements + 1 << " size to store the elements" << std::endl;
         heap::Heapify<int> heapifyObj(elements + 1);
         handlers::Handle(heapifyObj);
+    }
+
+    void HeapMain::PriorityQueuesUsingHeaps()
+    {
+        std::cout << "Please set the priority: " << std::endl
+                  << "1. Larger the element higher the priority" << std::endl
+                  << "2. Smaller the element higher the priority" << std::endl;
+        int choice;
+        utils::InputNumberFromUser(choice, 1, 2);
+        heap::PriorityQueuesUsingHeaps<int> priorityQueuesUsingHeapsObj(choice);
+        handlers::Handle(priorityQueuesUsingHeapsObj);
     }
 } // namespace heap
