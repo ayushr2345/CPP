@@ -4468,4 +4468,115 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(heap::Heapify<T>& heapifyObj)
+    {
+        heapifyObj.PrintMenu();
+        heapifyObj.GetChoiceInputFromUser();
+        const int& selectedChoice = heapifyObj.GetChoice();
+
+        while (heapifyObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > heapifyObj.GetMinCase() &&
+                selectedChoice < heapifyObj.GetMaxCase() + 1)
+            {
+                heapifyObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                if (heapifyObj.DoesHeapExist())
+                {
+                    std::cout << "The heap exists" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                heapifyObj.TakeInputForTheArray();
+                break;
+            }
+            case 3:
+            {
+                if (not heapifyObj.DoesHeapExist())
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                else
+                {
+                    heapifyObj.MaxHeapHeapify();
+                }
+                break;
+            }
+            case 4:
+            {
+                if (not heapifyObj.DoesHeapExist())
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                else
+                {
+                    heapifyObj.MinHeapHeapify();
+                }
+                break;
+            }
+            case 5:
+            {
+                if (not heapifyObj.DoesHeapExist())
+                {
+                    std::cout << "The heap does not exist" << std::endl;
+                }
+                else
+                {
+                    heapifyObj.DisplayHeap();
+                }
+                break;
+            }
+            case 6:
+            {
+                heapifyObj.DisplayArray();
+                break;
+            }
+            case 7:
+            {
+                std::cout << "Resetting the heap" << std::endl;
+                heapifyObj.ResetHeap();
+                break;
+            }
+            case 8:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 9:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                heapifyObj.PrintMenu();
+                heapifyObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

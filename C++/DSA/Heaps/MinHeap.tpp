@@ -217,8 +217,11 @@ namespace heap
     template <class T>
     void MinHeap<T>::ResetHeap()
     {
+        for (int i = 0; i <= m_sizeHeap; i++)
+        {
+            m_data[i] = 0;
+        }
         m_numElements = 0;
         m_sizeHeap = 0;
-        m_data = nullptr;
     }
 } //namespace heap

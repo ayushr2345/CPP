@@ -7,6 +7,7 @@
 #include <iostream>
 #include "MaxHeap.h"
 #include "MinHeap.h"
+#include "Heapify.h"
 
 namespace heap
 {
@@ -17,9 +18,10 @@ namespace heap
         {
             MIN_COUNT                               = 0,
             MAX_HEAP                                = 1,
-            MIN_HEAP                                = 2, 
-            BACK_TO_PREVIOUS_MENU                   = 3,
-            EXIT_FROM_PROGRAM                       = 4,
+            MIN_HEAP                                = 2,
+            HEAPIFY                                 = 3,
+            BACK_TO_PREVIOUS_MENU                   = 4,
+            EXIT_FROM_PROGRAM                       = 5,
             MAX_COUNT                               = EXIT_FROM_PROGRAM
         };
         int                        m_choice          { 0 };
@@ -35,5 +37,6 @@ namespace heap
         void        PrintSelectedChoice();
         void        MaxHeap();
         void        MinHeap();
+        void        Heapify();
     };
 } // namespace heap
