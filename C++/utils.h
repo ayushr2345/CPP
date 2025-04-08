@@ -14,11 +14,12 @@ namespace utils
 {
     enum class MainMenu
     {
-        MIN_COUNT = 0,
-        LANGUAGE  = 1,
-        DSA       = 2,
-        EXIT	  = 3,
-        MAX_COUNT = EXIT
+        MIN_COUNT       = 0,
+        LANGUAGE        = 1,
+        DATA_STRUCTURES = 2,
+        ALGORITHMS      = 3,
+        EXIT	        = 4,
+        MAX_COUNT       = EXIT
     };
 
     enum class LanguageMenu
@@ -36,7 +37,7 @@ namespace utils
         MAX_COUNT               = EXIT
     };
 
-    enum class DSAMenu
+    enum class DataStructuresMenu
     {
         MIN_COUNT             = 0,
         RECURSIONS            = 1,
@@ -53,6 +54,15 @@ namespace utils
         MAX_COUNT             = EXIT
     };
 
+    enum class AlgorithmsMenu
+    {
+        MIN_COUNT             = 0,
+        SORTING_ALGORITHMS    = 1,
+        BACK_TO_PREVIOUS_MENU = 2,
+        EXIT                  = 3,
+        MAX_COUNT             = EXIT
+    };
+
     // The extern keyword in C++ is used to declare a global variable 
     // or function which can be accessed from any part of the program 
     // or from other files included in the program's header.
@@ -66,8 +76,12 @@ namespace utils
             std::string("Language")
         },
         {
-            static_cast<int>(MainMenu::DSA),
-            std::string("DSA")
+            static_cast<int>(MainMenu::DATA_STRUCTURES),
+            std::string("Data Structures")
+        },
+        {
+            static_cast<int>(MainMenu::ALGORITHMS),
+            std::string("Algorithms")
         },
         {
             static_cast<int>(MainMenu::EXIT),
@@ -115,50 +129,66 @@ namespace utils
         }
     };
 
-    static std::map<int, std::string> DSAMenuMap =
+    static std::map<int, std::string> DataStructuresMenuMap =
     {
         {
-            static_cast<int>(DSAMenu::RECURSIONS),
+            static_cast<int>(DataStructuresMenu::RECURSIONS),
             std::string("Recursions")
         },
         {
-            static_cast<int>(DSAMenu::ARRAY_ADT),
+            static_cast<int>(DataStructuresMenu::ARRAY_ADT),
             std::string("Array ADT")
         },
         {
-            static_cast<int>(DSAMenu::STRINGS),
+            static_cast<int>(DataStructuresMenu::STRINGS),
             std::string("Strings")
         },
         {
-            static_cast<int>(DSAMenu::MATRICES),
+            static_cast<int>(DataStructuresMenu::MATRICES),
             std::string("Matrices")
         },
         {
-            static_cast<int>(DSAMenu::LINKED_LIST),
+            static_cast<int>(DataStructuresMenu::LINKED_LIST),
             std::string("Linked Lists")
         },
         {
-            static_cast<int>(DSAMenu::STACK),
+            static_cast<int>(DataStructuresMenu::STACK),
             std::string("Stacks")
         },
         {
-            static_cast<int>(DSAMenu::QUEUE),
+            static_cast<int>(DataStructuresMenu::QUEUE),
             std::string("Queues")
         },
         {
-            static_cast<int>(DSAMenu::TREES),
+            static_cast<int>(DataStructuresMenu::TREES),
             std::string("Trees")
         },
         {
-            static_cast<int>(DSAMenu::HEAPS),
+            static_cast<int>(DataStructuresMenu::HEAPS),
             std::string("Heaps")
         },
         {
-            static_cast<int>(DSAMenu::BACK_TO_PREVIOUS_MENU),
+            static_cast<int>(DataStructuresMenu::BACK_TO_PREVIOUS_MENU),
             std::string("Back to previous menu")
         },
         {
-            static_cast<int>(DSAMenu::EXIT),
+            static_cast<int>(DataStructuresMenu::EXIT),
+            std::string("Exit from program")
+        }
+    };
+
+    static std::map<int, std::string> AlgorithmsMenuMap =
+    {
+        {
+            static_cast<int>(AlgorithmsMenu::SORTING_ALGORITHMS),
+            std::string("Sorting Algorithms")
+        },
+        {
+            static_cast<int>(AlgorithmsMenu::BACK_TO_PREVIOUS_MENU),
+            std::string("Back to previous menu")
+        },
+        {
+            static_cast<int>(AlgorithmsMenu::EXIT),
             std::string("Exit from program")
         }
     };

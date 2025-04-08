@@ -123,15 +123,15 @@ int main()
         case 2:
         {
             char previousMenuFlag = 'n';
-            utils::PrintMenu(utils::DSAMenuMap);
+            utils::PrintMenu(utils::DataStructuresMenuMap);
             int choice { 0 };
-            utils::InputNumberFromUser(choice, 1, static_cast<int>(utils::DSAMenu::MAX_COUNT));
+            utils::InputNumberFromUser(choice, 1, static_cast<int>(utils::DataStructuresMenu::MAX_COUNT));
             while (choice)
             {
-                if (choice > static_cast<int>(utils::DSAMenu::MIN_COUNT) &&
-                    choice < static_cast<int>(utils::DSAMenu::MAX_COUNT) + 1)
+                if (choice > static_cast<int>(utils::DataStructuresMenu::MIN_COUNT) &&
+                    choice < static_cast<int>(utils::DataStructuresMenu::MAX_COUNT) + 1)
                 {
-                    utils::PrintSelectedChoice(choice, utils::DSAMenuMap);
+                    utils::PrintSelectedChoice(choice, utils::DataStructuresMenuMap);
                 }
                 switch (choice)
                 {
@@ -220,13 +220,63 @@ int main()
                 }
                 else
                 {
-                    utils::PrintMenu(utils::DSAMenuMap);
+                    utils::PrintMenu(utils::DataStructuresMenuMap);
                     std::cin >> choice;
                 }
             }
             break;
         }
         case 3:
+        {
+            char previousMenuFlag = 'n';
+            utils::PrintMenu(utils::AlgorithmsMenuMap);
+            int choice { 0 };
+            utils::InputNumberFromUser(choice, 1, static_cast<int>(utils::AlgorithmsMenu::MAX_COUNT));
+            while (choice)
+            {
+                if (choice > static_cast<int>(utils::AlgorithmsMenu::MIN_COUNT) &&
+                    choice < static_cast<int>(utils::AlgorithmsMenu::MAX_COUNT) + 1)
+                {
+                    utils::PrintSelectedChoice(choice, utils::AlgorithmsMenuMap);
+                }
+                switch (choice)
+                {
+                case 1:
+                {
+                    sorting_algorithms::SortingAlgorithmsMain sortingAlgorithmMainObj;
+                    handlers::Handle(sortingAlgorithmMainObj);
+                    break;
+                }
+                case 2:
+                {
+                    previousMenuFlag = 'n';
+                    break;
+                }
+                case 3:
+                {
+                    exit(0);
+                }
+                default:
+                {
+                    std::cout << "The selected option is out of bounds!!! "
+                              << "Please select appropriate option: " << std::endl;
+                    break;
+                }
+                }
+
+                if (previousMenuFlag = 'y')
+                {
+                    break;
+                }
+                else
+                {
+                    utils::PrintMenu(utils::LanguageMenuMap);
+                    std::cin >> choice;
+                }
+            }
+            break;
+        }
+        case 4:
         {
             exit(0);
         }

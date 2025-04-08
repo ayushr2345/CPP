@@ -2067,4 +2067,55 @@ namespace handlers
             }
         }
     }
+
+    void Handle(sorting_algorithms::SortingAlgorithmsMain& sortingAlgorithmsMainObj)
+    {
+        sortingAlgorithmsMainObj.PrintMenu();
+        sortingAlgorithmsMainObj.GetChoiceInputFromUser();
+        const int& selectedChoice = sortingAlgorithmsMainObj.GetChoice();
+
+        while (sortingAlgorithmsMainObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > sortingAlgorithmsMainObj.GetMinCase() &&
+                selectedChoice < sortingAlgorithmsMainObj.GetMaxCase() + 1)
+            {
+                sortingAlgorithmsMainObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                sortingAlgorithmsMainObj.BubbleSort();
+                break;
+            }
+            case 2:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 3:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                sortingAlgorithmsMainObj.PrintMenu();
+                sortingAlgorithmsMainObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers

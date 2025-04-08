@@ -19,23 +19,24 @@ set(SOURCE_FILES
     C++/Language/Object\ Oriented\ Programming/Complex.cpp
     C++/Language/Object\ Oriented\ Programming/Cuboid.cpp
     C++/Language/Object\ Oriented\ Programming/Rectangle.cpp
-    C++/DSA/Recursion/Recursions.cpp
-    C++/DSA/Strings/Strings.cpp
-    C++/DSA/Matrices/MatricesMain.cpp
-    C++/DSA/Matrices/LowerTriangularMatrix.cpp
-    C++/DSA/Matrices/UpperTriangularMatrix.cpp
-    C++/DSA/Matrices/DiagonalMatrix.cpp
-    C++/DSA/Matrices/TridiagonalMatrix.cpp
-    C++/DSA/Matrices/ToeplitzMatrix.cpp
-    C++/DSA/Matrices/SparseMatrix.cpp
-    C++/DSA/Matrices/PolynomialRepresentation.cpp
-    C++/DSA/LinkedList/LinkedListMain.cpp
-    C++/DSA/LinkedList/SparseMatrix.cpp
-    C++/DSA/LinkedList/PolynomialRepresentation.cpp
-    C++/DSA/Stack/StackMain.cpp
-    C++/DSA/Queues/QueueMain.cpp
-    C++/DSA/Trees/TreeMain.cpp
-    C++/DSA/Heaps/HeapMain.cpp
+    C++/DataStructures/Recursion/Recursions.cpp
+    C++/DataStructures/Strings/Strings.cpp
+    C++/DataStructures/Matrices/MatricesMain.cpp
+    C++/DataStructures/Matrices/LowerTriangularMatrix.cpp
+    C++/DataStructures/Matrices/UpperTriangularMatrix.cpp
+    C++/DataStructures/Matrices/DiagonalMatrix.cpp
+    C++/DataStructures/Matrices/TridiagonalMatrix.cpp
+    C++/DataStructures/Matrices/ToeplitzMatrix.cpp
+    C++/DataStructures/Matrices/SparseMatrix.cpp
+    C++/DataStructures/Matrices/PolynomialRepresentation.cpp
+    C++/DataStructures/LinkedList/LinkedListMain.cpp
+    C++/DataStructures/LinkedList/SparseMatrix.cpp
+    C++/DataStructures/LinkedList/PolynomialRepresentation.cpp
+    C++/DataStructures/Stack/StackMain.cpp
+    C++/DataStructures/Queues/QueueMain.cpp
+    C++/DataStructures/Trees/TreeMain.cpp
+    C++/DataStructures/Heaps/HeapMain.cpp
+    C++/Algorithms/SortingAlgorithms/SortingAlgorithmsMain.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

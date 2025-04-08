@@ -8,17 +8,16 @@
 #include "Language/Functions.h"
 #include "Language/Object Oriented Programming/ClassesAndObjects.h"
 #include "Language/IOStreams.h"
-#include "DSA/Recursion/Recursions.h"
-#include "DSA/ArrayADT/ArrayADT.h"
-#include "DSA/Strings/Strings.h"
-#include "DSA/Matrices/MatricesMain.h"
-#include "DSA/LinkedList/LinkedListMain.h"
-#include "DSA/Stack/StackMain.h"
-#include "DSA/Queues/QueueMain.h"
-#include "DSA/Trees/TreeMain.h"
-#include "DSA/Heaps/HeapMain.h"
-#include "DSA/Heaps/Heapify.h"
-#include "DSA/Heaps/PriorityQueuesUsingHeaps.h"
+#include "DataStructures/Recursion/Recursions.h"
+#include "DataStructures/ArrayADT/ArrayADT.h"
+#include "DataStructures/Strings/Strings.h"
+#include "DataStructures/Matrices/MatricesMain.h"
+#include "DataStructures/LinkedList/LinkedListMain.h"
+#include "DataStructures/Stack/StackMain.h"
+#include "DataStructures/Queues/QueueMain.h"
+#include "DataStructures/Trees/TreeMain.h"
+#include "DataStructures/Heaps/HeapMain.h"
+#include "Algorithms/SortingAlgorithms/SortingAlgorithmsMain.h"
 
 namespace handlers
 {
@@ -125,6 +124,13 @@ namespace handlers
 
     template <class T>
     void Handle(heap::PriorityQueuesUsingHeaps<T>&);
+
+    // Sorting Algorithms
+    void Handle(sorting_algorithms::SortingAlgorithmsMain&);
+
+    template <class T>
+    void Handle(sorting_algorithms::BubbleSort<T>&);
 } // namespace handlers
 
-#include "handlers.tpp"
+#include "handlers_data_structures.tpp"
+#include "handlers_algorithms.tpp"
