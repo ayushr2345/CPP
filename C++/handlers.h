@@ -130,6 +130,9 @@ namespace handlers
 
     template <class T>
     void Handle(sorting_algorithms::BubbleSort<T>&);
+
+    template <class T>
+    void Handle(sorting_algorithms::InsertionSort<T>&);
 } // namespace handlers
 
 #include "handlers_data_structures.tpp"
