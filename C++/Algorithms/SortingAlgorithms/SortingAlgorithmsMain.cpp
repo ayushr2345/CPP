@@ -15,6 +15,8 @@ namespace sorting_algorithms
                                                 std::string("Bubble Sort") });
         m_sortingAlgorithmsMainMenuMap.insert({ m_SortingAlgorithmsMainMenu(INSERTION_SORT),
                                                 std::string("Insertion Sort") });
+        m_sortingAlgorithmsMainMenuMap.insert({ m_SortingAlgorithmsMainMenu(SELECTION_SORT),
+                                                std::string("Selection Sort") });
         m_sortingAlgorithmsMainMenuMap.insert({ m_SortingAlgorithmsMainMenu(BACK_TO_PREVIOUS_MENU),
                                                 std::string("Back to Previous Menu") });
         m_sortingAlgorithmsMainMenuMap.insert({ m_SortingAlgorithmsMainMenu(EXIT_FROM_PROGRAM),
@@ -77,5 +79,14 @@ namespace sorting_algorithms
         utils::InputNumberFromUser(numElements, 1, 20);
         sorting_algorithms::InsertionSort<int> insertionSortObj(numElements);
         handlers::Handle(insertionSortObj);
+    }
+
+    void SortingAlgorithmsMain::SelectionSort()
+    {
+        std::cout << "Enter the number of elements to be present in the array: ";
+        int numElements;
+        utils::InputNumberFromUser(numElements, 1, 20);
+        sorting_algorithms::SelectionSort<int> selectionSortObj(numElements);
+        handlers::Handle(selectionSortObj);
     }
 } // namespace sorting_algorithms

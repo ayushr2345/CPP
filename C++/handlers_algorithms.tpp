@@ -133,16 +133,16 @@ namespace handlers
             {
                 if (not insertionSortObj.DoesDataExist())
                 {
-                    std::cout << "No element present in the array, cannot perform bubble sort" << std::endl;
+                    std::cout << "No element present in the array, cannot perform insertion sort" << std::endl;
                 }
                 bool res = insertionSortObj.PerformInsertionSort();
                 if (res)
                 {
-                    std::cout << "Successfully performed bubble sort on the array" << std::endl;
+                    std::cout << "Successfully performed insertion sort on the array" << std::endl;
                 }
                 else
                 {
-                    std::cout << "Could not perform bubble sort on the array" << std::endl;
+                    std::cout << "Could not perform insertion sort on the array" << std::endl;
                 }
                 break;
             }
@@ -183,6 +183,97 @@ namespace handlers
             {
                 insertionSortObj.PrintMenu();
                 insertionSortObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    template <class T>
+    void Handle(sorting_algorithms::SelectionSort<T>& selectionSortObj)
+    {
+        selectionSortObj.PrintMenu();
+        selectionSortObj.GetChoiceInputFromUser();
+        const int& selectedChoice = selectionSortObj.GetChoice();
+
+        while (selectionSortObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > selectionSortObj.GetMinCase() &&
+                selectedChoice < selectionSortObj.GetMaxCase() + 1)
+            {
+                selectionSortObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                selectionSortObj.ShowcaseSelectionSort();
+                break;
+            }
+            case 2:
+            {
+                selectionSortObj.ShowcaseSelectionSortAction();
+                break;
+            }
+            case 3:
+            {
+                selectionSortObj.InsertElements();
+                break;
+            }
+            case 4:
+            {
+                if (not selectionSortObj.DoesDataExist())
+                {
+                    std::cout << "No element present in the array, cannot perform selection sort" << std::endl;
+                }
+                bool res = selectionSortObj.PerformSelectionSort();
+                if (res)
+                {
+                    std::cout << "Successfully performed selection sort on the array" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform selection sort on the array" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                if (not selectionSortObj.DoesDataExist())
+                {
+                    std::cout << "No element present in the array, nothing to display" << std::endl;
+                }
+                else
+                {
+                    selectionSortObj.DisplayArray();
+                }
+                break;
+            }
+            case 6:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 7:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                selectionSortObj.PrintMenu();
+                selectionSortObj.GetChoiceInputFromUser();
             }
         }
     }

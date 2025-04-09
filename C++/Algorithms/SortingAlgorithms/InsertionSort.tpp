@@ -5,22 +5,6 @@
 
 namespace sorting_algorithms
 {
-    /*****************************
-     ****** PRIVATE METHODS ******
-    *****************************/
-
-    template <class T>
-    void InsertionSort<T>::Swap(T& elementA, T& elementB)
-    {
-        T temp = elementA;
-        elementA = elementB;
-        elementB = temp;
-    }
-
-    /*****************************
-     **** PRIVATE METHODS END ****
-    *****************************/
-
     template <class T>
     InsertionSort<T>::InsertionSort(int size):
         m_choice            ( 0 ),

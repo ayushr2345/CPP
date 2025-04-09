@@ -2097,10 +2097,15 @@ namespace handlers
             }
             case 3:
             {
-                previousMenuFlag = 'y';
+                sortingAlgorithmsMainObj.SelectionSort();
                 break;
             }
             case 4:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 5:
             {
                 exit(0);
             }

@@ -8,16 +8,16 @@
 namespace sorting_algorithms
 {
     template <class T>
-    class InsertionSort
+    class SelectionSort
     {
     private:
-        enum m_InsertionSortMenu
+        enum m_SelectionSortMenu
         {
             MIN_COUNT                      = 0,
-            SHOWCASE_INSERTION_SORT        = 1,
-            SHOWCASE_INSERTION_SORT_ACTION = 2,
+            SHOWCASE_SELECTION_SORT        = 1,
+            SHOWCASE_SELECTION_SORT_ACTION = 2,
             INSERT_ELEMENTS_IN_ARRAY       = 3,
-            PERFORM_INSERTION_SORT         = 4,
+            PERFORM_SELECTION_SORT         = 4,
             DISPLAY_ARRAY                  = 5,
             BACK_TO_PREVIOUS_MENU          = 6,
             EXIT_FROM_PROGRAM              = 7,
@@ -25,26 +25,27 @@ namespace sorting_algorithms
         };
 
         int                        m_choice         { 0 };
-        std::map<int, std::string> m_insertionSortMenuMap {};
+        std::map<int, std::string> m_selectionSortMenuMap {};
         int                        m_size           { 0 };
         T*                         m_data           { nullptr };
+        void                       Swap(T&, T&);
 
     public:
-        InsertionSort(int);
-        ~InsertionSort();
+        SelectionSort(int);
+        ~SelectionSort();
         const int        GetMinCase();
         const int        GetMaxCase();
         const int&       GetChoice();
         void             GetChoiceInputFromUser();
         void	         PrintMenu();
         void             PrintSelectedChoice();
-        void             ShowcaseInsertionSort();
-        void             ShowcaseInsertionSortAction();
+        void             ShowcaseSelectionSort();
+        void             ShowcaseSelectionSortAction();
         bool             DoesDataExist();
         void             InsertElements();
-        bool             PerformInsertionSort();
+        bool             PerformSelectionSort();
         void             DisplayArray();
     };
 } // namespace sorting_algorithms
 
-# include "InsertionSort.tpp"
+# include "SelectionSort.tpp"
