@@ -8,6 +8,7 @@
 #include "BubbleSort.h"
 #include "InsertionSort.h"
 #include "SelectionSort.h"
+#include "QuickSort.h"
 
 namespace sorting_algorithms
 {
@@ -20,8 +21,9 @@ namespace sorting_algorithms
             BUBBLE_SORT           = 1,
             INSERTION_SORT        = 2,
             SELECTION_SORT        = 3,
-            BACK_TO_PREVIOUS_MENU = 4,
-            EXIT_FROM_PROGRAM     = 5,
+            QUICK_SORT            = 4,
+            BACK_TO_PREVIOUS_MENU = 5,
+            EXIT_FROM_PROGRAM     = 6,
             MAX_COUNT             = EXIT_FROM_PROGRAM
         };
         int                        m_choice          { 0 };
@@ -38,5 +40,6 @@ namespace sorting_algorithms
         void        BubbleSort();
         void        InsertionSort();
         void        SelectionSort();
+        void        QuickSort();
     };
 } // namespace sorting_algorithms

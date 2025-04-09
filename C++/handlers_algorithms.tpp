@@ -277,4 +277,95 @@ namespace handlers
             }
         }
     }
+
+    template <class T>
+    void Handle(sorting_algorithms::QuickSort<T>& quickSortObj)
+    {
+        quickSortObj.PrintMenu();
+        quickSortObj.GetChoiceInputFromUser();
+        const int& selectedChoice = quickSortObj.GetChoice();
+
+        while (quickSortObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > quickSortObj.GetMinCase() &&
+                selectedChoice < quickSortObj.GetMaxCase() + 1)
+            {
+                quickSortObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                quickSortObj.ShowcaseQuickSort();
+                break;
+            }
+            case 2:
+            {
+                quickSortObj.ShowcaseQuickSortAction();
+                break;
+            }
+            case 3:
+            {
+                quickSortObj.InsertElements();
+                break;
+            }
+            case 4:
+            {
+                if (not quickSortObj.DoesDataExist())
+                {
+                    std::cout << "No element present in the array, cannot perform quick sort" << std::endl;
+                }
+                bool res = quickSortObj.PerformQuickSort();
+                if (res)
+                {
+                    std::cout << "Successfully performed quick sort on the array" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform quick sort on the array" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                if (not quickSortObj.DoesDataExist())
+                {
+                    std::cout << "No element present in the array, nothing to display" << std::endl;
+                }
+                else
+                {
+                    quickSortObj.DisplayArray();
+                }
+                break;
+            }
+            case 6:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 7:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                quickSortObj.PrintMenu();
+                quickSortObj.GetChoiceInputFromUser();
+            }
+        }
+    }
 } // namespace handlers
