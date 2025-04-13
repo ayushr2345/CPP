@@ -279,6 +279,97 @@ namespace handlers
     }
 
     template <class T>
+    void Handle(sorting_algorithms::HeapSort<T>& heapSortObj)
+    {
+        heapSortObj.PrintMenu();
+        heapSortObj.GetChoiceInputFromUser();
+        const int& selectedChoice = heapSortObj.GetChoice();
+
+        while (heapSortObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > heapSortObj.GetMinCase() &&
+                selectedChoice < heapSortObj.GetMaxCase() + 1)
+            {
+                heapSortObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                heapSortObj.ShowcaseHeapSort();
+                break;
+            }
+            case 2:
+            {
+                heapSortObj.ShowcaseHeapSortAction();
+                break;
+            }
+            case 3:
+            {
+                heapSortObj.InsertElements();
+                break;
+            }
+            case 4:
+            {
+                if (not heapSortObj.DoesDataExist())
+                {
+                    std::cout << "No element present in the array, cannot perform quick sort" << std::endl;
+                }
+                bool res = heapSortObj.PerformHeapSort();
+                if (res)
+                {
+                    std::cout << "Successfully performed quick sort on the array" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform quick sort on the array" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                if (not heapSortObj.DoesDataExist())
+                {
+                    std::cout << "No element present in the array, nothing to display" << std::endl;
+                }
+                else
+                {
+                    heapSortObj.DisplayArray();
+                }
+                break;
+            }
+            case 6:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 7:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                          << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                heapSortObj.PrintMenu();
+                heapSortObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    template <class T>
     void Handle(sorting_algorithms::QuickSort<T>& quickSortObj)
     {
         quickSortObj.PrintMenu();

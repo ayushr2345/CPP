@@ -138,6 +138,9 @@ namespace handlers
     void Handle(sorting_algorithms::SelectionSort<T>&);
 
     template <class T>
+    void Handle(sorting_algorithms::HeapSort<T>&);
+
+    template <class T>
     void Handle(sorting_algorithms::QuickSort<T>&);
 } // namespace handlers
 

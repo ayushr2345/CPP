@@ -2102,15 +2102,20 @@ namespace handlers
             }
             case 4:
             {
-                sortingAlgorithmsMainObj.QuickSort();
+                sortingAlgorithmsMainObj.HeapSort();
                 break;
             }
             case 5:
             {
-                previousMenuFlag = 'y';
+                sortingAlgorithmsMainObj.QuickSort();
                 break;
             }
             case 6:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 7:
             {
                 exit(0);
             }

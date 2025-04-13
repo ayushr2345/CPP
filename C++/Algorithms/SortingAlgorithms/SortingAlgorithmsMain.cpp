@@ -17,6 +17,8 @@ namespace sorting_algorithms
                                                 std::string("Insertion Sort") });
         m_sortingAlgorithmsMainMenuMap.insert({ m_SortingAlgorithmsMainMenu(SELECTION_SORT),
                                                 std::string("Selection Sort") });
+        m_sortingAlgorithmsMainMenuMap.insert({ m_SortingAlgorithmsMainMenu(HEAP_SORT),
+                                                std::string("Heap Sort") });
         m_sortingAlgorithmsMainMenuMap.insert({ m_SortingAlgorithmsMainMenu(QUICK_SORT),
                                                 std::string("Quick Sort") });
         m_sortingAlgorithmsMainMenuMap.insert({ m_SortingAlgorithmsMainMenu(BACK_TO_PREVIOUS_MENU),
@@ -99,5 +101,14 @@ namespace sorting_algorithms
         utils::InputNumberFromUser(numElements, 1, 20);
         sorting_algorithms::QuickSort<int> quickSortObj(numElements);
         handlers::Handle(quickSortObj);
+    }
+
+    void SortingAlgorithmsMain::HeapSort()
+    {
+        std::cout << "Enter the number of elements to be present in the array: ";
+        int numElements;
+        utils::InputNumberFromUser(numElements, 1, 20);
+        sorting_algorithms::HeapSort<int> heapSortObj(numElements + 1);
+        handlers::Handle(heapSortObj);
     }
 } // namespace sorting_algorithms
