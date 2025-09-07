@@ -286,7 +286,7 @@ namespace strings
         int spacesA = 0;
         for (int i = 0; m_string_A[i] != '\0'; i++)
         {
-            if (m_string_A[i] == ' ' and m_string_A[i] != ' ')
+            if (m_string_A[i] == ' ' and m_string_A[i - 1] != ' ')
             {
                 spacesA++;
             }

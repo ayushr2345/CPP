@@ -127,12 +127,14 @@ namespace queue
     template <class T>
     std::optional<T> QueueUsingTwoStacks<T>::Front()
     {
+        // wrong as can be empty
         return m_dataDequeue->GetTop();
     }
 
     template <class T>
     std::optional<T> QueueUsingTwoStacks<T>::Rear()
     {
+        // wrong as can be empty
         return m_dataEnqueue->GetTop();
     }
 

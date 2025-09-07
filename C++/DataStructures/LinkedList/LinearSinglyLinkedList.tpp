@@ -416,6 +416,7 @@ namespace linkedList
     template <class T>
     void LinearSinglyLinkedList<T>::Sort()
     {
+        // Selection Sort
         if (IsEmpty())
         {
             std::cout << "The linked list is empty" << std::endl;
