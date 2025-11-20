@@ -4,12 +4,7 @@
 #include <string>
 #include <optional>
 #include <iostream>
-
-// for queue using two stacks from scratch,
-// need a stack from scratch
-// for a stack from scratch need a linked list from scratch
-
-
+#include <vector>
 
 namespace queue
 {
@@ -27,18 +22,28 @@ namespace queue
     public:
         LinkedListFromScratch();
         ~LinkedListFromScratch();
-        bool                 IsEmpty();
-        int                  GetSize();
-        bool                 IsIndexOutOfBounds(const int);
-        std::optional<Node*> GetNodeFromIndex(int);
-        bool                 Insert(const T, const int);
-        std::optional<T>     Remove(const int);
+        bool                          IsEmpty();
+        int                           GetSize();
+        bool                          IsIndexOutOfBounds(const int);
+        std::optional<Node*>          GetNodeFromIndex(int);
+        bool                          Insert(const T, const int);
+        std::optional<T>              Remove(const int);
+        std::optional<std::vector<T>> GetElements(const bool forward = true);
     };
 
     template <class T>
     class StackFromScratch
     {
-
+    private:
+		LinkedListFromScratch<T>* m_data { nullptr };
+    public:
+        StackFromScratch();
+        ~StackFromScratch();
+        bool             IsEmpty();
+        bool             Push(const T);
+        std::optional<T> Pop();
+        std::optional<T> GetTop();
+        void             Display(const bool forward = true);
     };
 
     template <class T>
@@ -60,10 +65,10 @@ namespace queue
             MAX_COUNT             = EXIT_FROM_PROGRAM
         };
 
-        int                             m_choice                     { 0 };
-        std::map<int, std::string>      m_QueueUsingTwoStacksFromScratchMenuMap {};
-        stack::StackUsingLinkedList<T>* m_dataEnqueue                { nullptr };
-        stack::StackUsingLinkedList<T>* m_dataDequeue                { nullptr };
+        int                         m_choice                                { 0 };
+        std::map<int, std::string>  m_QueueUsingTwoStacksFromScratchMenuMap {};
+        StackFromScratch<T>*        m_dataEnqueue                           { nullptr };
+        StackFromScratch<T>*        m_dataDequeue                           { nullptr };
     public:
         QueueUsingTwoStacksFromScratch();
         ~QueueUsingTwoStacksFromScratch();
@@ -75,7 +80,7 @@ namespace queue
         void             PrintSelectedChoice();
         bool             IsEmpty();
         void             Display();
-        bool             Enqueue(T);
+        bool             Enqueue(const T);
         std::optional<T> Dequeue();
         std::optional<T> Front();
         std::optional<T> Rear();

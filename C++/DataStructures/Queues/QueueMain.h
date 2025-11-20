@@ -11,6 +11,7 @@
 #include "PriorityQueueLimitedSet.h"
 #include "PriorityQueueElement.h"
 #include "QueueUsingTwoStacks.h"
+#include "QueueUsingTwoStacksFromScratch.h"
 
 namespace queue
 {
@@ -19,17 +20,18 @@ namespace queue
     private:
         enum m_QueueMainMenu
         {
-            MIN_COUNT                   = 0,
-            QUEUE_USING_ARRAY           = 1,
-            CIRCULAR_QUEUE              = 2,
-            QUEUE_USING_LINKED_LIST     = 3,
-            DOUBLE_ENDED_QUEUE          = 4,
-            PRIORITY_QUEUE_LIMITED_SET  = 5,
-            PRIORITY_QUEUE_ELEMENT      = 6,
-            QUEUE_USING_TWO_STACKS      = 7,
-            BACK_TO_PREVIOUS_MENU       = 8,
-            EXIT_FROM_PROGRAM           = 9,
-            MAX_COUNT                   = EXIT_FROM_PROGRAM
+            MIN_COUNT                           = 0,
+            QUEUE_USING_ARRAY                   = 1,
+            CIRCULAR_QUEUE                      = 2,
+            QUEUE_USING_LINKED_LIST             = 3,
+            DOUBLE_ENDED_QUEUE                  = 4,
+            PRIORITY_QUEUE_LIMITED_SET          = 5,
+            PRIORITY_QUEUE_ELEMENT              = 6,
+            QUEUE_USING_TWO_STACKS              = 7,
+            QUEUE_USING_TWO_STACKS_FROM_SCRATCH = 8,
+            BACK_TO_PREVIOUS_MENU               = 9,
+            EXIT_FROM_PROGRAM                   = 10,
+            MAX_COUNT                           = EXIT_FROM_PROGRAM
         };
         int                        m_choice           { 0 };
         std::map<int, std::string> m_queueMainMenuMap { };
@@ -38,7 +40,7 @@ namespace queue
         QueueMain();
         const int   GetMinCase();
         const int   GetMaxCase();
-        const int&  GetChoice();
+        const int&  GetChoice() const;
         void        GetChoiceInputFromUser();
         void	    PrintMenu();
         void        PrintSelectedChoice();
@@ -49,5 +51,6 @@ namespace queue
         void        PriorityQueueLimitedSet();
         void        PriorityQueueElement();
         void        QueueUsingTwoStacks();
+        void        QueueUsingTwoStacksFromScratch();
     };
 } // namespace queue

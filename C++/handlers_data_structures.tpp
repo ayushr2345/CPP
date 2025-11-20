@@ -1981,7 +1981,7 @@ namespace handlers
             }
             case 4:
             {
-                int element;
+                int element = 0;
                 std::cout << "Please enter the element you want to push into the stack: ";
                 utils::InputNumberFromUser(element);
                 bool resultPush = stackUsingArrayObj.Push(element);                
@@ -2012,7 +2012,7 @@ namespace handlers
             }
             case 6:
             {
-                int position;
+                int position = 0;
                 std::cout << "Please enter the position at which you want to peek in the stack: ";
                 utils::InputNumberFromUser(position);
                 const auto resultPeek = stackUsingArrayObj.Peek(position);                
@@ -2108,7 +2108,7 @@ namespace handlers
             }
             case 3:
             {
-                int element;
+                int element = 0;
                 std::cout << "Please enter the element you want to push into the stack: ";
                 utils::InputNumberFromUser(element);
                 bool resultPush = stackUsingLinkedListObj.Push(element);                
@@ -2139,7 +2139,7 @@ namespace handlers
             }
             case 5:
             {
-                int position;
+                int position = 0;
                 std::cout << "Please enter the position at which you want to peek in the stack: ";
                 utils::InputNumberFromUser(position);
                 const auto resultPeek = stackUsingLinkedListObj.Peek(position);                
@@ -3199,6 +3199,135 @@ namespace handlers
     }
 
     template <class T>
+    void Handle(queue::QueueUsingTwoStacksFromScratch<T>& queueUsingTwoStacksFromScratchObj)
+    {
+        queueUsingTwoStacksFromScratchObj.PrintMenu();
+        queueUsingTwoStacksFromScratchObj.GetChoiceInputFromUser();
+        const int& selectedChoice = queueUsingTwoStacksFromScratchObj.GetChoice();
+
+        while (queueUsingTwoStacksFromScratchObj.GetChoice())
+        {
+            char previousMenuFlag = 'n';
+            if (selectedChoice > queueUsingTwoStacksFromScratchObj.GetMinCase() &&
+                selectedChoice < queueUsingTwoStacksFromScratchObj.GetMaxCase() + 1)
+            {
+                queueUsingTwoStacksFromScratchObj.PrintSelectedChoice();
+            }
+
+            switch (selectedChoice)
+            {
+            case 1:
+            {
+                bool isEmpty = queueUsingTwoStacksFromScratchObj.IsEmpty();
+                if (isEmpty)
+                {
+                    std::cout << "The queue is empty" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The queue is not empty" << std::endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                queueUsingTwoStacksFromScratchObj.Display();
+                break;
+            }
+            case 3:
+            {
+                T element = 0;
+                std::cout << "Enter the number you want to enqueue: ";
+                utils::InputNumberFromUser(element);
+
+                bool enqueueRes = queueUsingTwoStacksFromScratchObj.Enqueue(element);
+                if (enqueueRes)
+                {
+                    std::cout << "The element " << element << " was successfully enqueued in the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "The element was not enqueued" << std::endl;
+                }
+                break;
+            }
+            case 4:
+            {
+                std::optional<T> dequeuedElement = queueUsingTwoStacksFromScratchObj.Dequeue();
+
+                if (dequeuedElement.has_value())
+                {
+                    std::cout << "Element " << dequeuedElement.value() << " was successfully dequeued from the queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform dequeue operation" << std::endl;
+                }
+                break;
+            }
+            case 5:
+            {
+                std::optional<T> front = queueUsingTwoStacksFromScratchObj.Front();
+
+                if (front.has_value())
+                {
+                    std::cout << "Element " << front.value() << " is present in the front of queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform front operation" << std::endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                std::optional<T> rear = queueUsingTwoStacksFromScratchObj.Rear();
+
+                if (rear.has_value())
+                {
+                    std::cout << "Element " << rear.value() << " is present in the rear of queue" << std::endl;
+                }
+                else
+                {
+                    std::cout << "Could not perform rear operation" << std::endl;
+                }
+                break;
+            }
+            case 7:
+            {
+                queueUsingTwoStacksFromScratchObj.Reset();
+                break;
+            }
+            case 8:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 9:
+            {
+                exit(0);
+            }
+            default:
+            {
+                std::cout << "The selected option is out of bounds!!! "
+                    << "Please select appropriate option: " << std::endl;
+                break;
+            }
+            }
+
+            if (previousMenuFlag == 'y')
+            {
+                break;
+            }
+            else
+            {
+                queueUsingTwoStacksFromScratchObj.PrintMenu();
+                queueUsingTwoStacksFromScratchObj.GetChoiceInputFromUser();
+            }
+        }
+    }
+
+    template <class T>
     void Handle(tree::BinaryTreeUsingArray<T>& binaryTreeUsingArrayObj)
     {
         binaryTreeUsingArrayObj.PrintMenu();
@@ -3842,7 +3971,7 @@ namespace handlers
             }
             case 7:
             {
-                T searchElement;
+                T searchElement = 0;
                 std::cout << "Enter the element to searched for: ";
                 utils::InputNumberFromUser(searchElement);
                 if (not binarySearchTreeObj.DoesTreeExist())
@@ -3865,7 +3994,7 @@ namespace handlers
             }
             case 8:
             {
-                T searchElement;
+                T searchElement = 0;
                 std::cout << "Enter the element to searched for: ";
                 utils::InputNumberFromUser(searchElement);
                 if (not binarySearchTreeObj.DoesTreeExist())
@@ -3888,7 +4017,7 @@ namespace handlers
             }
             case 9:
             {
-                T insertElement;
+                T insertElement = 0;
                 std::cout << "Enter the element to be inserted: ";
                 utils::InputNumberFromUser(insertElement);
                 if (not binarySearchTreeObj.DoesTreeExist())
@@ -3911,7 +4040,7 @@ namespace handlers
             }
             case 10:
             {
-                T insertElement;
+                T insertElement{};
                 std::cout << "Enter the element to be inserted: ";
                 utils::InputNumberFromUser(insertElement);
                 if (not binarySearchTreeObj.DoesTreeExist())
@@ -3934,7 +4063,7 @@ namespace handlers
             }
             case 11:
             {
-                T deleteElement;
+                T deleteElement{};
                 std::cout << "Enter the element to be deleted: ";
                 utils::InputNumberFromUser(deleteElement);
                 if (not binarySearchTreeObj.DoesTreeExist())
@@ -4111,7 +4240,7 @@ namespace handlers
             }
             case 6:
             {
-                T searchElement;
+                T searchElement{};
                 std::cout << "Enter the element to searched for: ";
                 utils::InputNumberFromUser(searchElement);
                 if (not avlTreeObj.DoesTreeExist())
@@ -4134,7 +4263,7 @@ namespace handlers
             }
             case 7:
             {
-                T insertElement;
+                T insertElement{};
                 std::cout << "Enter the element to be inserted: ";
                 utils::InputNumberFromUser(insertElement);
                 bool res = avlTreeObj.InsertRecursive(insertElement);
@@ -4150,7 +4279,7 @@ namespace handlers
             }
             case 8:
             {
-                T deleteElement;
+                T deleteElement{};
                 std::cout << "Enter the element to be deleted: ";
                 utils::InputNumberFromUser(deleteElement);
                 if (not avlTreeObj.DoesTreeExist())
@@ -4237,7 +4366,7 @@ namespace handlers
             }
             case 2:
             {
-                T insertElement;
+                T insertElement{};
                 std::cout << "Enter the element to be inserted: ";
                 utils::InputNumberFromUser(insertElement);
                 bool res = maxHeapObj.InsertInHeap(insertElement);
@@ -4369,7 +4498,7 @@ namespace handlers
             }
             case 2:
             {
-                T insertElement;
+                T insertElement{};
                 std::cout << "Enter the element to be inserted: ";
                 utils::InputNumberFromUser(insertElement);
                 bool res = minHeapObj.InsertInHeap(insertElement);
@@ -4600,7 +4729,7 @@ namespace handlers
             {
             case 1:
             {
-                T insertElement;
+                T insertElement {};
                 std::cout << "Enter the element to be inserted: ";
                 utils::InputNumberFromUser(insertElement);
                 bool res = priorityQueuesUsingHeapsObj.Enqueue(insertElement);

@@ -95,6 +95,9 @@ namespace handlers
     template <class T>
     void Handle(queue::QueueUsingTwoStacks<T>&);
 
+    template <class T>
+    void Handle(queue::QueueUsingTwoStacksFromScratch<T>&);
+
     // Trees
     void Handle(tree::TreeMain&);
 

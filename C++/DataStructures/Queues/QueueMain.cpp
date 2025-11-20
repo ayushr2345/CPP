@@ -25,6 +25,8 @@ namespace queue
                                     std::string("Priority queue using element priority") });
         m_queueMainMenuMap.insert({ m_QueueMainMenu(QUEUE_USING_TWO_STACKS),
                                     std::string("Queue using two stacks") });
+        m_queueMainMenuMap.insert({ m_QueueMainMenu(QUEUE_USING_TWO_STACKS_FROM_SCRATCH),
+                                    std::string("Queue using two stacks from scratch") });
         m_queueMainMenuMap.insert({ m_QueueMainMenu(BACK_TO_PREVIOUS_MENU),
                                     std::string("Back to Previous Menu") });
         m_queueMainMenuMap.insert({ m_QueueMainMenu(EXIT_FROM_PROGRAM),
@@ -41,7 +43,7 @@ namespace queue
         return m_QueueMainMenu::MAX_COUNT;
     }
 
-    const int& QueueMain::GetChoice()
+    const int& QueueMain::GetChoice() const
     {
         return m_choice;
     }
@@ -120,5 +122,11 @@ namespace queue
     {
         queue::QueueUsingTwoStacks<int> queueUsingTwoStacksObj;
         handlers::Handle(queueUsingTwoStacksObj);
+    }
+
+    void QueueMain::QueueUsingTwoStacksFromScratch()
+    {
+        queue::QueueUsingTwoStacksFromScratch<int> queueUsingTwoStacksFromScratchObj;
+        handlers::Handle(queueUsingTwoStacksFromScratchObj);
     }
 } // namespace queue
