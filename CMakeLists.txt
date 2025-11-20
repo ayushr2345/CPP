@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
 project(Cpp)
 
+# This ensures the -g flag is added to the compiler command
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
+
 set (CMAKE_CXX_STANDARD 20)
 
 set(SOURCE_FILES

@@ -143,12 +143,12 @@ namespace queue
     template <class T>
     std::optional<std::vector<T>> LinkedListFromScratch<T>::GetElements(const bool forward)
     {
+        std::vector<T> vec;
         if (IsEmpty())
         {
-            return std::vector<T>;
+            return vec;
         }
 
-        std::vector<T> vec;
         Node* temp = m_head;
         while (temp != nullptr)
         {
@@ -162,8 +162,8 @@ namespace queue
         }
         else
         {
-            uint8_t i = 0;
-            uint8_t j = vec.size() - 1;
+            int i = 0;
+            int j = vec.size() - 1;
             while (i <= j)
             {
                 T temp = vec[i];
@@ -177,9 +177,9 @@ namespace queue
     }
 
     template <class T>
-    StackFromScratch<T>::StackFromScratch():
-        m_data {}
+    StackFromScratch<T>::StackFromScratch()
     {
+        m_data = new LinkedListFromScratch<T>;
     }
 
     template <class T>
@@ -191,7 +191,7 @@ namespace queue
     template <class T>
     bool StackFromScratch<T>::IsEmpty()
     {
-        return m_data->IsEmpty() ? true : false;
+        return m_data->IsEmpty();
     }
 
     template <class T>
@@ -218,7 +218,7 @@ namespace queue
         {
             return std::nullopt;
         }
-        std::optional<Node*> topNode = m_data->GetNodeFromIndex(0);
+        auto topNode = m_data->GetNodeFromIndex(0);
         if (topNode.has_value())
         {
             return topNode.value()->m_m_data;
@@ -234,11 +234,15 @@ namespace queue
             return;
         }
 
-        std::vector<T> elements = m_data->GetElements(forward);
-        auto size = elements.size();
+        auto elements = m_data->GetElements(forward);
+        if (not elements.has_value())
+        {
+            return;
+        }
+        auto size = elements.value().size();
         for (int i = 0; i < size; i++)
         {
-            std::cout << elements[i] << " ";
+            std::cout << elements.value()[i] << " ";
         }
     }
 
@@ -327,7 +331,7 @@ namespace queue
 	template <class T>
     bool QueueUsingTwoStacksFromScratch<T>::IsEmpty()
     {
-        return m_dataEnqueue->IsEmpty() and m_dataDequeue->IsEmpty() ? true : false;
+        return m_dataEnqueue->IsEmpty() and m_dataDequeue->IsEmpty();
 	}
 
     template <class T>

@@ -1908,10 +1908,15 @@ namespace handlers
             }
             case 8:
             {
-                previousMenuFlag = 'y';
+                queueMainObj.QueueUsingTwoStacksFromScratch();
                 break;
             }
             case 9:
+            {
+                previousMenuFlag = 'y';
+                break;
+            }
+            case 10:
             {
                 exit(0);
             }
