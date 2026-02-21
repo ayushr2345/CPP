@@ -499,8 +499,7 @@ namespace basics
         std::cout << "Please enter the number: ";
         utils::InputNumberFromUser(number, 0, 10);
 
-        int i = 0;
-        for (i; i <= number; i++)
+        for (int i = 0; i <= number; i++)
         {
             std::cout << i << " ";
         }

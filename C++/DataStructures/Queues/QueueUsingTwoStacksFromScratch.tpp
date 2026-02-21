@@ -20,7 +20,7 @@ namespace queue
             delete temp;
             temp = next;
         }
-        m_head == nullptr;
+        m_head = nullptr;
     }
 
     template <class T>

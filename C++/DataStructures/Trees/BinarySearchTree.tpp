@@ -435,7 +435,7 @@ namespace tree
                 }
                 else
                 {
-                    treeStack.push(-temp);
+                    treeStack.push(temp * -1);
                     temp = poppedValue->m_m_rightChild;
                 }
             }

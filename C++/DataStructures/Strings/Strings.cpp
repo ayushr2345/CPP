@@ -10,8 +10,8 @@ namespace strings
         m_stringsMenuMap ( {   } ),
         m_size_A         ( 0 ),
         m_size_B         ( 0 ),
-        m_string_A       ( { 0 } ),
-        m_string_B       ( { 0 } )
+        m_string_A       ( 0 ),
+        m_string_B       ( 0 )
     {
         m_stringsMenuMap.insert({ m_StringsMenu(PRINT_ALL_ASCII_CHARACTERS),
                                   std::string("Print all the ASCII characters") });
@@ -198,14 +198,19 @@ namespace strings
     void Strings::FindLenghOfString()
     {
         int i = 0;
-        for (i; m_string_A[i] != '\0'; i++)
-        {}
+        while (m_string_A[i] != '\0')
+        {
+            i++;
+        }
+
         std::cout << "The length of string A is: " << i << std::endl;
         m_size_A = i;
 
         int j = 0;
-        for (j; m_string_B[j] != '\0'; j++)
-        {}
+        while (m_string_B[j] != '\0')
+        {
+            j++;
+        }
         m_size_B = j;
         std::cout << "The length of string B is: " << j << std::endl;
     }
@@ -834,7 +839,7 @@ namespace strings
 
             for (int i = 0; i < 26; i++)
             {
-                if (not H[i] == 0)
+                if (not (H[i] == 0))
                 {
                     std::cout << "The strings are not anagrams" << std::endl;
                     return;
